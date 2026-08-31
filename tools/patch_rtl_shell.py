@@ -118,6 +118,12 @@ RTL_CSS = """
 .pm-list a:hover{transform:translateX(-4px)}
 .fmodal a.mkgo i u{transform:translateX(4px)}
 
+/* --- the hero's "copy-left" slide keeps its inset on the physical left,
+       so under RTL the panel is pushed past the right edge and the first
+       word of each line is clipped. Mirror the padding. --- */
+.hs-slide.copy-left .in{padding-left:0;padding-right:clamp(68px,5vw,86px)}
+@media(max-width:900px){ .hs-slide.copy-left .in{padding-left:0;padding-right:24px} }
+
 /* --- text that was pinned to the physical left --- */
 .hs-copy .heh,.hs-slide.copy-topcenter .hs-copy,
 .bandcap.side,.bandcap.bottom,.bandcap.top,.mxtog{text-align:right}
