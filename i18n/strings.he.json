@@ -1,0 +1,10604 @@
+[
+ {
+  "id": "t0000",
+  "kind": "text",
+  "ctx": "page",
+  "start": 139,
+  "end": 163,
+  "en": "GT Everyday · B2B — R124",
+  "he": "GT Everyday · סיטונאות למסעדנות"
+ },
+ {
+  "id": "a0001",
+  "kind": "attr:aria-label",
+  "ctx": "page",
+  "start": 60126,
+  "end": 60137,
+  "en": "GT Everyday",
+  "he": "GT Everyday"
+ },
+ {
+  "id": "a0002",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 60343,
+  "end": 60354,
+  "en": "GT Everyday",
+  "he": "GT Everyday"
+ },
+ {
+  "id": "t0003",
+  "kind": "text",
+  "ctx": "page",
+  "start": 60600,
+  "end": 60608,
+  "en": "Products",
+  "he": "מוצרים"
+ },
+ {
+  "id": "t0004",
+  "kind": "text",
+  "ctx": "page",
+  "start": 60702,
+  "end": 60717,
+  "en": "11 tea essences",
+  "he": "11 תרכיזי תה"
+ },
+ {
+  "id": "t0005",
+  "kind": "text",
+  "ctx": "page",
+  "start": 60830,
+  "end": 60835,
+  "en": "Detox",
+  "he": "Detox"
+ },
+ {
+  "id": "t0006",
+  "kind": "text",
+  "ctx": "page",
+  "start": 60947,
+  "end": 60953,
+  "en": "Revive",
+  "he": "Revive"
+ },
+ {
+  "id": "t0007",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61065,
+  "end": 61071,
+  "en": "Energy",
+  "he": "Energy"
+ },
+ {
+  "id": "t0008",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61197,
+  "end": 61210,
+  "en": "Consciousness",
+  "he": "Consciousness"
+ },
+ {
+  "id": "t0009",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61326,
+  "end": 61334,
+  "en": "American",
+  "he": "American"
+ },
+ {
+  "id": "t0010",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61444,
+  "end": 61449,
+  "en": "Fresh",
+  "he": "Fresh"
+ },
+ {
+  "id": "t0011",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61565,
+  "end": 61573,
+  "en": "Desertea",
+  "he": "Desertea"
+ },
+ {
+  "id": "t0012",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61681,
+  "end": 61685,
+  "en": "Calm",
+  "he": "Calm"
+ },
+ {
+  "id": "t0013",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61801,
+  "end": 61809,
+  "en": "Namastea",
+  "he": "Namastea"
+ },
+ {
+  "id": "t0014",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61835,
+  "end": 61856,
+  "en": "Specials &amp; purées",
+  "he": "אבקות ופירה"
+ },
+ {
+  "id": "t0015",
+  "kind": "text",
+  "ctx": "page",
+  "start": 61971,
+  "end": 61977,
+  "en": "Matcha",
+  "he": "מאצ׳ה"
+ },
+ {
+  "id": "t0016",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62091,
+  "end": 62098,
+  "en": "Hojicha",
+  "he": "הוג׳יצ׳ה"
+ },
+ {
+  "id": "t0017",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62204,
+  "end": 62207,
+  "en": "Ube",
+  "he": "אובה"
+ },
+ {
+  "id": "t0018",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62317,
+  "end": 62322,
+  "en": "Mango",
+  "he": "מנגו"
+ },
+ {
+  "id": "t0019",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62442,
+  "end": 62452,
+  "en": "Strawberry",
+  "he": "תות"
+ },
+ {
+  "id": "t0020",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62562,
+  "end": 62567,
+  "en": "Peach",
+  "he": "אפרסק"
+ },
+ {
+  "id": "t0021",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62610,
+  "end": 62616,
+  "en": "Drinks",
+  "he": "משקאות"
+ },
+ {
+  "id": "t0022",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62640,
+  "end": 62648,
+  "en": "Partners",
+  "he": "לקוחות"
+ },
+ {
+  "id": "t0023",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62671,
+  "end": 62678,
+  "en": "Pricing",
+  "he": "מחירון"
+ },
+ {
+  "id": "t0024",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62699,
+  "end": 62704,
+  "en": "About",
+  "he": "עלינו"
+ },
+ {
+  "id": "t0025",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62723,
+  "end": 62726,
+  "en": "FAQ",
+  "he": "שאלות"
+ },
+ {
+  "id": "t0026",
+  "kind": "text",
+  "ctx": "page",
+  "start": 62773,
+  "end": 62789,
+  "en": "Become a partner",
+  "he": "רוצים להתחיל"
+ },
+ {
+  "id": "a0027",
+  "kind": "attr:aria-label",
+  "ctx": "page",
+  "start": 62927,
+  "end": 62935,
+  "en": "Previous",
+  "he": "הקודם"
+ },
+ {
+  "id": "a0028",
+  "kind": "attr:aria-label",
+  "ctx": "page",
+  "start": 63012,
+  "end": 63016,
+  "en": "Next",
+  "he": "הבא"
+ },
+ {
+  "id": "t0029",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63392,
+  "end": 63422,
+  "en": "Summer 2026 · collection 01/10",
+  "he": "קיץ 2026 · קולקציה 01/10"
+ },
+ {
+  "id": "t0030",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63433,
+  "end": 63441,
+  "en": "Iced Tea",
+  "he": "חליטות קרות"
+ },
+ {
+  "id": "t0031",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63463,
+  "end": 63474,
+  "en": "חליטות קרות",
+  "he": "Iced Tea"
+ },
+ {
+  "id": "t0032",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63483,
+  "end": 63523,
+  "en": "Seven cold infusions. One measured pour.",
+  "he": "שבע חליטות קרות. מזיגה אחת מדודה."
+ },
+ {
+  "id": "t0033",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63551,
+  "end": 63559,
+  "en": "7 drinks",
+  "he": "7 משקאות"
+ },
+ {
+  "id": "t0034",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63572,
+  "end": 63579,
+  "en": "RRP ₪19",
+  "he": "מחיר מומלץ ₪19"
+ },
+ {
+  "id": "t0035",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63669,
+  "end": 63684,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0036",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 63750,
+  "end": 63768,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0037",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64121,
+  "end": 64151,
+  "en": "Summer 2026 · collection 02/10",
+  "he": "קיץ 2026 · קולקציה 02/10"
+ },
+ {
+  "id": "t0038",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64162,
+  "end": 64170,
+  "en": "Lemonade",
+  "he": "לימונדות"
+ },
+ {
+  "id": "t0039",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64192,
+  "end": 64200,
+  "en": "לימונדות",
+  "he": "Lemonade"
+ },
+ {
+  "id": "t0040",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64209,
+  "end": 64243,
+  "en": "Three lemonades on real tea bases.",
+  "he": "שלוש לימונדות על בסיס תה אמיתי."
+ },
+ {
+  "id": "t0041",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64271,
+  "end": 64279,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "t0042",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64292,
+  "end": 64299,
+  "en": "RRP ₪19",
+  "he": "מחיר מומלץ ₪19"
+ },
+ {
+  "id": "t0043",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64389,
+  "end": 64404,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0044",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64470,
+  "end": 64488,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0045",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64841,
+  "end": 64871,
+  "en": "Summer 2026 · collection 03/10",
+  "he": "קיץ 2026 · קולקציה 03/10"
+ },
+ {
+  "id": "t0046",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64882,
+  "end": 64891,
+  "en": "Signature",
+  "he": "משקאות הדגל"
+ },
+ {
+  "id": "t0047",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64913,
+  "end": 64924,
+  "en": "משקאות הדגל",
+  "he": "Signature"
+ },
+ {
+  "id": "t0048",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64933,
+  "end": 64969,
+  "en": "Flagship drinks on 50% fruit purées.",
+  "he": "משקאות הדגל, על פירה פירות 50%."
+ },
+ {
+  "id": "t0049",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 64997,
+  "end": 65005,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "t0050",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65018,
+  "end": 65025,
+  "en": "RRP ₪24",
+  "he": "מחיר מומלץ ₪24"
+ },
+ {
+  "id": "t0051",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65115,
+  "end": 65130,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0052",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65196,
+  "end": 65214,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0053",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65567,
+  "end": 65597,
+  "en": "Summer 2026 · collection 04/10",
+  "he": "קיץ 2026 · קולקציה 04/10"
+ },
+ {
+  "id": "t0054",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65608,
+  "end": 65613,
+  "en": "Gazoz",
+  "he": "גזוז"
+ },
+ {
+  "id": "t0055",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65635,
+  "end": 65639,
+  "en": "גזוז",
+  "he": "Gazoz"
+ },
+ {
+  "id": "t0056",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65648,
+  "end": 65676,
+  "en": "Tel-Aviv sparkle, tea-first.",
+  "he": "בועות תל אביביות, על בסיס תה."
+ },
+ {
+  "id": "t0057",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65704,
+  "end": 65712,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "t0058",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65725,
+  "end": 65732,
+  "en": "RRP ₪22",
+  "he": "מחיר מומלץ ₪22"
+ },
+ {
+  "id": "t0059",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65822,
+  "end": 65837,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0060",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 65903,
+  "end": 65921,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0061",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66274,
+  "end": 66304,
+  "en": "Summer 2026 · collection 05/10",
+  "he": "קיץ 2026 · קולקציה 05/10"
+ },
+ {
+  "id": "t0062",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66315,
+  "end": 66325,
+  "en": "Ice Matcha",
+  "he": "אייס מאצ׳ה"
+ },
+ {
+  "id": "t0063",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66347,
+  "end": 66357,
+  "en": "אייס מאצ'ה",
+  "he": "Ice Matcha"
+ },
+ {
+  "id": "t0064",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66366,
+  "end": 66396,
+  "en": "Ceremonial Shizuoka, six ways.",
+  "he": "שיזואוקה טקסי, בשש דרכים."
+ },
+ {
+  "id": "t0065",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66424,
+  "end": 66432,
+  "en": "6 drinks",
+  "he": "6 משקאות"
+ },
+ {
+  "id": "t0066",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66445,
+  "end": 66452,
+  "en": "RRP ₪26",
+  "he": "מחיר מומלץ ₪26"
+ },
+ {
+  "id": "t0067",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66542,
+  "end": 66557,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0068",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66623,
+  "end": 66641,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0069",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 66994,
+  "end": 67024,
+  "en": "Summer 2026 · collection 06/10",
+  "he": "קיץ 2026 · קולקציה 06/10"
+ },
+ {
+  "id": "t0070",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67035,
+  "end": 67050,
+  "en": "Matcha Specials",
+  "he": "מאצ׳ה ספיישל"
+ },
+ {
+  "id": "t0071",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67072,
+  "end": 67084,
+  "en": "מאצ'ה ספיישל",
+  "he": "Matcha Specials"
+ },
+ {
+  "id": "t0072",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67093,
+  "end": 67117,
+  "en": "Vanilla to black sesame.",
+  "he": "מוניל ועד שומשום שחור."
+ },
+ {
+  "id": "t0073",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67145,
+  "end": 67153,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "t0074",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67166,
+  "end": 67173,
+  "en": "RRP ₪28",
+  "he": "מחיר מומלץ ₪28"
+ },
+ {
+  "id": "t0075",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67263,
+  "end": 67278,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0076",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67344,
+  "end": 67362,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0077",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67715,
+  "end": 67745,
+  "en": "Summer 2026 · collection 07/10",
+  "he": "קיץ 2026 · קולקציה 07/10"
+ },
+ {
+  "id": "t0078",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67756,
+  "end": 67770,
+  "en": "Matcha Coconut",
+  "he": "מאצ׳ה קוקוס"
+ },
+ {
+  "id": "t0079",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67792,
+  "end": 67803,
+  "en": "מאצ'ה קוקוס",
+  "he": "Matcha Coconut"
+ },
+ {
+  "id": "t0080",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67812,
+  "end": 67849,
+  "en": "Coconut water, coconut cream, matcha.",
+  "he": "מי קוקוס, קרם קוקוס, מאצ׳ה."
+ },
+ {
+  "id": "t0081",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67877,
+  "end": 67885,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "t0082",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67898,
+  "end": 67905,
+  "en": "RRP ₪28",
+  "he": "מחיר מומלץ ₪28"
+ },
+ {
+  "id": "t0083",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 67995,
+  "end": 68010,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0084",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68076,
+  "end": 68094,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0085",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68447,
+  "end": 68477,
+  "en": "Summer 2026 · collection 08/10",
+  "he": "קיץ 2026 · קולקציה 08/10"
+ },
+ {
+  "id": "t0086",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68488,
+  "end": 68500,
+  "en": "Chai Massala",
+  "he": "צ׳אי מסאלה"
+ },
+ {
+  "id": "t0087",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68522,
+  "end": 68532,
+  "en": "צ'אי מסאלה",
+  "he": "Chai Massala"
+ },
+ {
+  "id": "t0088",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68541,
+  "end": 68568,
+  "en": "The bestseller, six serves.",
+  "he": "הלהיט הגדול, בשש הגשות."
+ },
+ {
+  "id": "t0089",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68596,
+  "end": 68604,
+  "en": "6 drinks",
+  "he": "6 משקאות"
+ },
+ {
+  "id": "t0090",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68617,
+  "end": 68624,
+  "en": "RRP ₪24",
+  "he": "מחיר מומלץ ₪24"
+ },
+ {
+  "id": "t0091",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68714,
+  "end": 68729,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0092",
+  "kind": "text",
+  "ctx": "hs-track",
+  "start": 68795,
+  "end": 68813,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0093",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69166,
+  "end": 69196,
+  "en": "Summer 2026 · collection 09/10",
+  "he": "קיץ 2026 · קולקציה 09/10"
+ },
+ {
+  "id": "t0094",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69207,
+  "end": 69216,
+  "en": "Cold Foam",
+  "he": "קולד פואם"
+ },
+ {
+  "id": "t0095",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69238,
+  "end": 69247,
+  "en": "קולד פואם",
+  "he": "Cold Foam"
+ },
+ {
+  "id": "t0096",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69256,
+  "end": 69287,
+  "en": "Silky cold foam, four flavours.",
+  "he": "קצף קטיפתי, בארבעה טעמים."
+ },
+ {
+  "id": "t0097",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69315,
+  "end": 69323,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "t0098",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69336,
+  "end": 69343,
+  "en": "RRP ₪28",
+  "he": "מחיר מומלץ ₪28"
+ },
+ {
+  "id": "t0099",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69433,
+  "end": 69448,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0100",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69514,
+  "end": 69532,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0101",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69885,
+  "end": 69915,
+  "en": "Summer 2026 · collection 10/10",
+  "he": "קיץ 2026 · קולקציה 10/10"
+ },
+ {
+  "id": "t0102",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69926,
+  "end": 69929,
+  "en": "Ube",
+  "he": "אובה"
+ },
+ {
+  "id": "t0103",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69951,
+  "end": 69955,
+  "en": "אובה",
+  "he": "Ube"
+ },
+ {
+  "id": "t0104",
+  "kind": "text",
+  "ctx": "page",
+  "start": 69964,
+  "end": 69997,
+  "en": "The purple that stops the scroll.",
+  "he": "הסגול שעוצר את הגלילה."
+ },
+ {
+  "id": "t0105",
+  "kind": "text",
+  "ctx": "page",
+  "start": 70025,
+  "end": 70033,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "t0106",
+  "kind": "text",
+  "ctx": "page",
+  "start": 70046,
+  "end": 70053,
+  "en": "RRP ₪28",
+  "he": "מחיר מומלץ ₪28"
+ },
+ {
+  "id": "t0107",
+  "kind": "text",
+  "ctx": "page",
+  "start": 70143,
+  "end": 70158,
+  "en": "See the recipes",
+  "he": "למתכונים"
+ },
+ {
+  "id": "t0108",
+  "kind": "text",
+  "ctx": "page",
+  "start": 70224,
+  "end": 70242,
+  "en": "Get the price list",
+  "he": "רוצה מחירון"
+ },
+ {
+  "id": "t0109",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70379,
+  "end": 70387,
+  "en": "Iced Tea",
+  "he": "חליטות קרות"
+ },
+ {
+  "id": "t0110",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70411,
+  "end": 70419,
+  "en": "Lemonade",
+  "he": "לימונדות"
+ },
+ {
+  "id": "t0111",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70443,
+  "end": 70448,
+  "en": "Gazoz",
+  "he": "גזוז"
+ },
+ {
+  "id": "t0112",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70472,
+  "end": 70481,
+  "en": "Signature",
+  "he": "משקאות הדגל"
+ },
+ {
+  "id": "t0113",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70505,
+  "end": 70515,
+  "en": "Ice Matcha",
+  "he": "אייס מאצ׳ה"
+ },
+ {
+  "id": "t0114",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70539,
+  "end": 70551,
+  "en": "Chai Massala",
+  "he": "צ׳אי מסאלה"
+ },
+ {
+  "id": "t0115",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70575,
+  "end": 70584,
+  "en": "Cold Foam",
+  "he": "קולד פואם"
+ },
+ {
+  "id": "t0116",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70608,
+  "end": 70611,
+  "en": "Ube",
+  "he": "אובה"
+ },
+ {
+  "id": "t0117",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70635,
+  "end": 70658,
+  "en": "48 drinks · Summer 2026",
+  "he": "48 משקאות · קיץ 2026"
+ },
+ {
+  "id": "t0118",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70674,
+  "end": 70682,
+  "en": "Iced Tea",
+  "he": "חליטות קרות"
+ },
+ {
+  "id": "t0119",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70706,
+  "end": 70714,
+  "en": "Lemonade",
+  "he": "לימונדות"
+ },
+ {
+  "id": "t0120",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70738,
+  "end": 70743,
+  "en": "Gazoz",
+  "he": "גזוז"
+ },
+ {
+  "id": "t0121",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70767,
+  "end": 70776,
+  "en": "Signature",
+  "he": "משקאות הדגל"
+ },
+ {
+  "id": "t0122",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70800,
+  "end": 70810,
+  "en": "Ice Matcha",
+  "he": "אייס מאצ׳ה"
+ },
+ {
+  "id": "t0123",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70834,
+  "end": 70846,
+  "en": "Chai Massala",
+  "he": "צ׳אי מסאלה"
+ },
+ {
+  "id": "t0124",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70870,
+  "end": 70879,
+  "en": "Cold Foam",
+  "he": "קולד פואם"
+ },
+ {
+  "id": "t0125",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70903,
+  "end": 70906,
+  "en": "Ube",
+  "he": "אובה"
+ },
+ {
+  "id": "t0126",
+  "kind": "text",
+  "ctx": "hs-dots",
+  "start": 70930,
+  "end": 70953,
+  "en": "48 drinks · Summer 2026",
+  "he": "48 משקאות · קיץ 2026"
+ },
+ {
+  "id": "t0127",
+  "kind": "text",
+  "ctx": "products",
+  "start": 71075,
+  "end": 71085,
+  "en": "The lineup",
+  "he": "הקו"
+ },
+ {
+  "id": "t0128",
+  "kind": "text",
+  "ctx": "products",
+  "start": 71117,
+  "end": 71128,
+  "en": "Explore the",
+  "he": "הכירו את"
+ },
+ {
+  "id": "t0129",
+  "kind": "text",
+  "ctx": "products",
+  "start": 71133,
+  "end": 71140,
+  "en": "blends.",
+  "he": "התערובות."
+ },
+ {
+  "id": "t0130",
+  "kind": "text",
+  "ctx": "products",
+  "start": 71158,
+  "end": 71276,
+  "en": "Eleven concentrates from around the tea world. ₪33 / 500 ml · ₪65 / 1 L. Sealed bottles need no fridge. Hover to pour.",
+  "he": "אחד עשר תרכיזים מכל עולם התה. ₪33 ל־500 מ״ל · ₪65 לליטר. בקבוק סגור לא צריך מקרר. העבירו עכבר כדי למזוג."
+ },
+ {
+  "id": "t0131",
+  "kind": "text",
+  "ctx": "products",
+  "start": 71726,
+  "end": 71734,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "a0132",
+  "kind": "attr:alt",
+  "ctx": "products",
+  "start": 72572,
+  "end": 72587,
+  "en": "GT Detox poured",
+  "he": "GT Detox נמזג"
+ },
+ {
+  "id": "t0133",
+  "kind": "text",
+  "ctx": "products",
+  "start": 72851,
+  "end": 72864,
+  "en": "Israeli blend",
+  "he": "תערובת ישראלית"
+ },
+ {
+  "id": "t0134",
+  "kind": "text",
+  "ctx": "products",
+  "start": 72874,
+  "end": 72879,
+  "en": "Detox",
+  "he": "Detox"
+ },
+ {
+  "id": "t0135",
+  "kind": "text",
+  "ctx": "products",
+  "start": 72903,
+  "end": 73038,
+  "en": "The glass your guests already order by name. A light, clean profile every age gets instantly — a health story that needs no explaining.",
+  "he": "הכוס שהאורחים שלכם כבר מזמינים בשם. פרופיל נקי וקליל שכל גיל מבין מיד — סיפור בריאות שלא צריך להסביר."
+ },
+ {
+  "id": "t0136",
+  "kind": "text",
+  "ctx": "products",
+  "start": 73062,
+  "end": 73101,
+  "en": "Green tea · lemon verbena · mint · lime",
+  "he": "תה ירוק · לואיזה · נענע · ליים"
+ },
+ {
+  "id": "t0137",
+  "kind": "text",
+  "ctx": "products",
+  "start": 73131,
+  "end": 73143,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0138",
+  "kind": "text",
+  "ctx": "products",
+  "start": 73156,
+  "end": 73165,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0139",
+  "kind": "text",
+  "ctx": "products",
+  "start": 73610,
+  "end": 73618,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "a0140",
+  "kind": "attr:alt",
+  "ctx": "products",
+  "start": 74456,
+  "end": 74472,
+  "en": "GT Revive poured",
+  "he": "GT Revive נמזג"
+ },
+ {
+  "id": "t0141",
+  "kind": "text",
+  "ctx": "products",
+  "start": 74736,
+  "end": 74750,
+  "en": "Japanese blend",
+  "he": "תערובת יפנית"
+ },
+ {
+  "id": "t0142",
+  "kind": "text",
+  "ctx": "products",
+  "start": 74760,
+  "end": 74766,
+  "en": "Revive",
+  "he": "Revive"
+ },
+ {
+  "id": "t0143",
+  "kind": "text",
+  "ctx": "products",
+  "start": 74790,
+  "end": 74934,
+  "en": "Sencha straight from Japan. Passionfruit straight to the point. 70% top-grade Japanese sencha — a quiet-luxury tea with a story guests remember.",
+  "he": "סנצ׳ה ישר מיפן. פסיפלורה ישר לעניין. 70% סנצ׳ה יפני מובחר — תה של יוקרה שקטה, עם סיפור שאורחים זוכרים."
+ },
+ {
+  "id": "t0144",
+  "kind": "text",
+  "ctx": "products",
+  "start": 74958,
+  "end": 75001,
+  "en": "70% Japanese sencha · tropical passionfruit",
+  "he": "70% סנצ׳ה יפני · פסיפלורה טרופית"
+ },
+ {
+  "id": "t0145",
+  "kind": "text",
+  "ctx": "products",
+  "start": 75031,
+  "end": 75043,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0146",
+  "kind": "text",
+  "ctx": "products",
+  "start": 75056,
+  "end": 75065,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0147",
+  "kind": "text",
+  "ctx": "products",
+  "start": 75510,
+  "end": 75518,
+  "en": "2 drinks",
+  "he": "2 משקאות"
+ },
+ {
+  "id": "a0148",
+  "kind": "attr:alt",
+  "ctx": "products",
+  "start": 76077,
+  "end": 76093,
+  "en": "GT Energy 250 ml",
+  "he": "GT Energy 250 מ״ל"
+ },
+ {
+  "id": "a0149",
+  "kind": "attr:alt",
+  "ctx": "products",
+  "start": 76350,
+  "end": 76366,
+  "en": "GT Energy poured",
+  "he": "GT Energy נמזג"
+ },
+ {
+  "id": "t0150",
+  "kind": "text",
+  "ctx": "products",
+  "start": 76630,
+  "end": 76644,
+  "en": "Shanghai blend",
+  "he": "תערובת שנחאית"
+ },
+ {
+  "id": "t0151",
+  "kind": "text",
+  "ctx": "products",
+  "start": 76654,
+  "end": 76660,
+  "en": "Energy",
+  "he": "Energy"
+ },
+ {
+  "id": "t0152",
+  "kind": "text",
+  "ctx": "products",
+  "start": 76684,
+  "end": 76796,
+  "en": "Natural caffeine with a lemongrass kick. Real presence, real aroma — the green alternative that widens any menu.",
+  "he": "קפאין טבעי עם בעיטה של למון גראס. נוכחות אמיתית, ארומה אמיתית — האלטרנטיבה הירוקה שמרחיבה כל תפריט."
+ },
+ {
+  "id": "t0153",
+  "kind": "text",
+  "ctx": "products",
+  "start": 76820,
+  "end": 76857,
+  "en": "Green tea · lemongrass · mint · lemon",
+  "he": "תה ירוק · למון גראס · נענע · לימון"
+ },
+ {
+  "id": "t0154",
+  "kind": "text",
+  "ctx": "products",
+  "start": 76887,
+  "end": 76899,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0155",
+  "kind": "text",
+  "ctx": "products",
+  "start": 76912,
+  "end": 76921,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0156",
+  "kind": "text",
+  "ctx": "page",
+  "start": 77373,
+  "end": 77381,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "a0157",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 78219,
+  "end": 78242,
+  "en": "GT Consciousness poured",
+  "he": "GT Consciousness נמזג"
+ },
+ {
+  "id": "t0158",
+  "kind": "text",
+  "ctx": "page",
+  "start": 78506,
+  "end": 78518,
+  "en": "Korean blend",
+  "he": "תערובת קוריאנית"
+ },
+ {
+  "id": "t0159",
+  "kind": "text",
+  "ctx": "page",
+  "start": 78528,
+  "end": 78541,
+  "en": "Consciousness",
+  "he": "Consciousness"
+ },
+ {
+  "id": "t0160",
+  "kind": "text",
+  "ctx": "page",
+  "start": 78565,
+  "end": 78681,
+  "en": "Jasmine &amp; lychee. Elegance you can pour. 70% jasmine tea with a soft aroma that lingers long after the last sip.",
+  "he": "יסמין וליצ׳י. אלגנטיות שאפשר למזוג. 70% תה יסמין, עם ארומה עדינה שנשארת הרבה אחרי הלגימה האחרונה."
+ },
+ {
+  "id": "t0161",
+  "kind": "text",
+  "ctx": "page",
+  "start": 78705,
+  "end": 78737,
+  "en": "70% jasmine tea · natural lychee",
+  "he": "70% תה יסמין · ליצ׳י טבעי"
+ },
+ {
+  "id": "t0162",
+  "kind": "text",
+  "ctx": "page",
+  "start": 78767,
+  "end": 78779,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0163",
+  "kind": "text",
+  "ctx": "page",
+  "start": 78792,
+  "end": 78801,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0164",
+  "kind": "text",
+  "ctx": "page",
+  "start": 79248,
+  "end": 79256,
+  "en": "2 drinks",
+  "he": "2 משקאות"
+ },
+ {
+  "id": "a0165",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 80094,
+  "end": 80112,
+  "en": "GT American poured",
+  "he": "GT American נמזג"
+ },
+ {
+  "id": "t0166",
+  "kind": "text",
+  "ctx": "page",
+  "start": 80376,
+  "end": 80390,
+  "en": "American blend",
+  "he": "תערובת אמריקאית"
+ },
+ {
+  "id": "t0167",
+  "kind": "text",
+  "ctx": "page",
+  "start": 80400,
+  "end": 80408,
+  "en": "American",
+  "he": "American"
+ },
+ {
+  "id": "t0168",
+  "kind": "text",
+  "ctx": "page",
+  "start": 80432,
+  "end": 80557,
+  "en": "A classic with Israeli chutzpah. Aged teas meet yuzu, bergamot and citrus — and it pairs perfectly with peach or mango purée.",
+  "he": "קלאסיקה עם חוצפה ישראלית. תה מיושן פוגש יוזו, ברגמוט והדרים — ומסתדר מצוין עם פירה אפרסק או מנגו."
+ },
+ {
+  "id": "t0169",
+  "kind": "text",
+  "ctx": "page",
+  "start": 80581,
+  "end": 80636,
+  "en": "Black tea · aged Chinese tea · yuzu · bergamot · citrus",
+  "he": "תה שחור · תה סיני מיושן · יוזו · ברגמוט · הדרים"
+ },
+ {
+  "id": "t0170",
+  "kind": "text",
+  "ctx": "page",
+  "start": 80666,
+  "end": 80678,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0171",
+  "kind": "text",
+  "ctx": "page",
+  "start": 80691,
+  "end": 80700,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0172",
+  "kind": "text",
+  "ctx": "page",
+  "start": 81144,
+  "end": 81152,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "a0173",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 81711,
+  "end": 81726,
+  "en": "GT Fresh 250 ml",
+  "he": "GT Fresh 250 מ״ל"
+ },
+ {
+  "id": "a0174",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 81983,
+  "end": 81998,
+  "en": "GT Fresh poured",
+  "he": "GT Fresh נמזג"
+ },
+ {
+  "id": "t0175",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82262,
+  "end": 82272,
+  "en": "Thai blend",
+  "he": "תערובת תאילנדית"
+ },
+ {
+  "id": "t0176",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82282,
+  "end": 82287,
+  "en": "Fresh",
+  "he": "Fresh"
+ },
+ {
+  "id": "t0177",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82311,
+  "end": 82427,
+  "en": "A red so bold it sells itself. Zero caffeine. Gently tart, endlessly photogenic — the glass that brings guests back.",
+  "he": "אדום כל כך חזק שהוא מוכר את עצמו. אפס קפאין. חמצמץ בעדינות, מצטלם בלי סוף — הכוס שמחזירה אורחים."
+ },
+ {
+  "id": "t0178",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82451,
+  "end": 82474,
+  "en": "Hibiscus flowers · lime",
+  "he": "פרחי היביסקוס · ליים"
+ },
+ {
+  "id": "t0179",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82504,
+  "end": 82516,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0180",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82529,
+  "end": 82538,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0181",
+  "kind": "text",
+  "ctx": "page",
+  "start": 82985,
+  "end": 82993,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "a0182",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 83831,
+  "end": 83849,
+  "en": "GT Desertea poured",
+  "he": "GT Desertea נמזג"
+ },
+ {
+  "id": "t0183",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84113,
+  "end": 84125,
+  "en": "Desert blend",
+  "he": "תערובת מדברית"
+ },
+ {
+  "id": "t0184",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84135,
+  "end": 84143,
+  "en": "Desertea",
+  "he": "Desertea"
+ },
+ {
+  "id": "t0185",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84167,
+  "end": 84264,
+  "en": "Five Israeli wild herbs. Zero rivals. A caffeine-free desert infusion no other supplier can copy.",
+  "he": "חמישה צמחי בר ישראליים. אפס מתחרים. חליטה מדברית נטולת קפאין ששום ספק אחר לא יכול לשכפל."
+ },
+ {
+  "id": "t0186",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84288,
+  "end": 84344,
+  "en": "Verbena · mint · oregano · melissa · sage · white savory",
+  "he": "לואיזה · נענע · אזוב · מליסה · מרווה · זוטה לבנה"
+ },
+ {
+  "id": "t0187",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84374,
+  "end": 84386,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0188",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84399,
+  "end": 84408,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0189",
+  "kind": "text",
+  "ctx": "page",
+  "start": 84851,
+  "end": 84859,
+  "en": "2 drinks",
+  "he": "2 משקאות"
+ },
+ {
+  "id": "a0190",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 85697,
+  "end": 85711,
+  "en": "GT Calm poured",
+  "he": "GT Calm נמזג"
+ },
+ {
+  "id": "t0191",
+  "kind": "text",
+  "ctx": "page",
+  "start": 85975,
+  "end": 85987,
+  "en": "French blend",
+  "he": "תערובת צרפתית"
+ },
+ {
+  "id": "t0192",
+  "kind": "text",
+  "ctx": "page",
+  "start": 85997,
+  "end": 86001,
+  "en": "Calm",
+  "he": "Calm"
+ },
+ {
+  "id": "t0193",
+  "kind": "text",
+  "ctx": "page",
+  "start": 86025,
+  "end": 86142,
+  "en": "The evening glass. Naturally sweet, caffeine-free. Chamomile, apple and clove — elegant at any age, ideal after noon.",
+  "he": "כוס הערב. מתוקה בטבעיות, בלי קפאין. קמומיל, תפוח וציפורן — אלגנטית בכל גיל, מושלמת מאחר הצהריים."
+ },
+ {
+  "id": "t0194",
+  "kind": "text",
+  "ctx": "page",
+  "start": 86166,
+  "end": 86191,
+  "en": "Chamomile · apple · clove",
+  "he": "קמומיל · תפוח · ציפורן"
+ },
+ {
+  "id": "t0195",
+  "kind": "text",
+  "ctx": "page",
+  "start": 86221,
+  "end": 86233,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0196",
+  "kind": "text",
+  "ctx": "page",
+  "start": 86246,
+  "end": 86255,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0197",
+  "kind": "text",
+  "ctx": "page",
+  "start": 86702,
+  "end": 86711,
+  "en": "13 drinks",
+  "he": "13 משקאות"
+ },
+ {
+  "id": "a0198",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 87549,
+  "end": 87567,
+  "en": "GT Namastea poured",
+  "he": "GT Namastea נמזג"
+ },
+ {
+  "id": "t0199",
+  "kind": "text",
+  "ctx": "page",
+  "start": 87831,
+  "end": 87843,
+  "en": "Indian blend",
+  "he": "תערובת הודית"
+ },
+ {
+  "id": "t0200",
+  "kind": "text",
+  "ctx": "page",
+  "start": 87853,
+  "end": 87861,
+  "en": "Namastea",
+  "he": "Namastea"
+ },
+ {
+  "id": "t0201",
+  "kind": "text",
+  "ctx": "page",
+  "start": 87885,
+  "end": 88005,
+  "en": "The best-seller. Iced, latte, or with coconut water. Two black teas and five spices — a huge hit with the Israeli crowd.",
+  "he": "רב המכר. קר, לאטה או עם מי קוקוס. שני תה שחור וחמישה תבלינים — להיט אדיר בקהל הישראלי."
+ },
+ {
+  "id": "t0202",
+  "kind": "text",
+  "ctx": "page",
+  "start": 88029,
+  "end": 88097,
+  "en": "Two black teas · cinnamon · cardamom · ginger · black pepper · clove",
+  "he": "שני סוגי תה שחור · קינמון · הל · ג׳ינג׳ר · פלפל שחור · ציפורן"
+ },
+ {
+  "id": "t0203",
+  "kind": "text",
+  "ctx": "page",
+  "start": 88127,
+  "end": 88139,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0204",
+  "kind": "text",
+  "ctx": "page",
+  "start": 88152,
+  "end": 88161,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0205",
+  "kind": "text",
+  "ctx": "page",
+  "start": 88260,
+  "end": 88280,
+  "en": "Get the full catalog",
+  "he": "לקטלוג המלא"
+ },
+ {
+  "id": "t0206",
+  "kind": "text",
+  "ctx": "page",
+  "start": 88372,
+  "end": 88402,
+  "en": "+ sugar-free Fresh &amp; Detox",
+  "he": "‎+ Fresh ו־Detox ללא סוכר"
+ },
+ {
+  "id": "t0207",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88549,
+  "end": 88567,
+  "en": "Already pouring GT",
+  "he": "כבר מוזגים GT"
+ },
+ {
+  "id": "t0208",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88621,
+  "end": 88626,
+  "en": "Biner",
+  "he": "בינר"
+ },
+ {
+  "id": "t0209",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88651,
+  "end": 88656,
+  "en": "Vista",
+  "he": "ויסטה"
+ },
+ {
+  "id": "t0210",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88681,
+  "end": 88689,
+  "en": "CafeCafe",
+  "he": "קפה קפה"
+ },
+ {
+  "id": "t0211",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88714,
+  "end": 88730,
+  "en": "Emily &amp; Juli",
+  "he": "אמילי וג׳ולי"
+ },
+ {
+  "id": "t0212",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88755,
+  "end": 88762,
+  "en": "B.Bagel",
+  "he": "בי.בייגל"
+ },
+ {
+  "id": "t0213",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88842,
+  "end": 88858,
+  "en": "Summer 2026 menu",
+  "he": "תפריט קיץ 2026"
+ },
+ {
+  "id": "t0214",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88890,
+  "end": 88906,
+  "en": "Ten collections.",
+  "he": "עשר קולקציות."
+ },
+ {
+  "id": "t0215",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88911,
+  "end": 88921,
+  "en": "48 drinks.",
+  "he": "48 משקאות."
+ },
+ {
+  "id": "t0216",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 88939,
+  "end": 89052,
+  "en": "Every recipe costed, tested and photographed — with recommended prices ₪19–28. Drop them straight into your menu.",
+  "he": "כל מתכון מתומחר, נבדק ומצולם — עם מחירים מומלצים ₪19–28. מכניסים ישר לתפריט."
+ },
+ {
+  "id": "a0217",
+  "kind": "attr:alt",
+  "ctx": "partners",
+  "start": 89429,
+  "end": 89443,
+  "en": "GT rainbow mix",
+  "he": "מיקס הצבעים של GT"
+ },
+ {
+  "id": "t0218",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 89580,
+  "end": 89606,
+  "en": "One supplier · zero boring",
+  "he": "ספק אחד · אפס שעמום"
+ },
+ {
+  "id": "t0219",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 89616,
+  "end": 89626,
+  "en": "48 drinks.",
+  "he": "48 משקאות."
+ },
+ {
+  "id": "t0220",
+  "kind": "text",
+  "ctx": "partners",
+  "start": 89634,
+  "end": 89649,
+  "en": "One order away.",
+  "he": "הזמנה אחת משם."
+ },
+ {
+  "id": "t0221",
+  "kind": "text",
+  "ctx": "drinks",
+  "start": 89893,
+  "end": 89917,
+  "en": "One bottle, many glasses",
+  "he": "בקבוק אחד, המון כוסות"
+ },
+ {
+  "id": "t0222",
+  "kind": "text",
+  "ctx": "drinks",
+  "start": 89924,
+  "end": 89988,
+  "en": "See what every product turns into — 51 drinks across 12 products",
+  "he": "מה יוצא מכל מוצר — 51 משקאות מ־12 מוצרים"
+ },
+ {
+  "id": "a0223",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 90444,
+  "end": 90455,
+  "en": "GT Iced Tea",
+  "he": "GT חליטות קרות"
+ },
+ {
+  "id": "t0224",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 90506,
+  "end": 90514,
+  "en": "Iced Tea",
+  "he": "חליטות קרות"
+ },
+ {
+  "id": "t0225",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 90526,
+  "end": 90534,
+  "en": "7 drinks",
+  "he": "7 משקאות"
+ },
+ {
+  "id": "a0226",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 90896,
+  "end": 90907,
+  "en": "GT Lemonade",
+  "he": "GT לימונדות"
+ },
+ {
+  "id": "t0227",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 90958,
+  "end": 90966,
+  "en": "Lemonade",
+  "he": "לימונדות"
+ },
+ {
+  "id": "t0228",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 90978,
+  "end": 90986,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "a0229",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 91348,
+  "end": 91360,
+  "en": "GT Signature",
+  "he": "GT משקאות הדגל"
+ },
+ {
+  "id": "t0230",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 91411,
+  "end": 91420,
+  "en": "Signature",
+  "he": "משקאות הדגל"
+ },
+ {
+  "id": "t0231",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 91432,
+  "end": 91440,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "a0232",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 91801,
+  "end": 91809,
+  "en": "GT Gazoz",
+  "he": "GT גזוז"
+ },
+ {
+  "id": "t0233",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 91860,
+  "end": 91865,
+  "en": "Gazoz",
+  "he": "גזוז"
+ },
+ {
+  "id": "t0234",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 91877,
+  "end": 91885,
+  "en": "3 drinks",
+  "he": "3 משקאות"
+ },
+ {
+  "id": "a0235",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 92247,
+  "end": 92260,
+  "en": "GT Ice Matcha",
+  "he": "GT אייס מאצ׳ה"
+ },
+ {
+  "id": "t0236",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 92311,
+  "end": 92321,
+  "en": "Ice Matcha",
+  "he": "אייס מאצ׳ה"
+ },
+ {
+  "id": "t0237",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 92333,
+  "end": 92341,
+  "en": "6 drinks",
+  "he": "6 משקאות"
+ },
+ {
+  "id": "a0238",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 92697,
+  "end": 92715,
+  "en": "GT Matcha Specials",
+  "he": "GT מאצ׳ה ספיישל"
+ },
+ {
+  "id": "t0239",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 92766,
+  "end": 92781,
+  "en": "Matcha Specials",
+  "he": "מאצ׳ה ספיישל"
+ },
+ {
+  "id": "t0240",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 92793,
+  "end": 92801,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "a0241",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 93163,
+  "end": 93180,
+  "en": "GT Matcha Coconut",
+  "he": "GT מאצ׳ה קוקוס"
+ },
+ {
+  "id": "t0242",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 93231,
+  "end": 93245,
+  "en": "Matcha Coconut",
+  "he": "מאצ׳ה קוקוס"
+ },
+ {
+  "id": "t0243",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 93257,
+  "end": 93265,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "a0244",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 93625,
+  "end": 93640,
+  "en": "GT Chai Massala",
+  "he": "GT צ׳אי מסאלה"
+ },
+ {
+  "id": "t0245",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 93691,
+  "end": 93703,
+  "en": "Chai Massala",
+  "he": "צ׳אי מסאלה"
+ },
+ {
+  "id": "t0246",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 93715,
+  "end": 93723,
+  "en": "6 drinks",
+  "he": "6 משקאות"
+ },
+ {
+  "id": "a0247",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 94079,
+  "end": 94091,
+  "en": "GT Cold Foam",
+  "he": "GT קולד פואם"
+ },
+ {
+  "id": "t0248",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94142,
+  "end": 94151,
+  "en": "Cold Foam",
+  "he": "קולד פואם"
+ },
+ {
+  "id": "t0249",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94163,
+  "end": 94171,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "a0250",
+  "kind": "attr:alt",
+  "ctx": "mx",
+  "start": 94530,
+  "end": 94536,
+  "en": "GT Ube",
+  "he": "GT אובה"
+ },
+ {
+  "id": "t0251",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94587,
+  "end": 94590,
+  "en": "Ube",
+  "he": "אובה"
+ },
+ {
+  "id": "t0252",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94602,
+  "end": 94610,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "t0253",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94777,
+  "end": 94788,
+  "en": "One bottle.",
+  "he": "בקבוק אחד."
+ },
+ {
+  "id": "t0254",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94834,
+  "end": 94842,
+  "en": "Thirteen",
+  "he": "שלושה עשר"
+ },
+ {
+  "id": "t0255",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94848,
+  "end": 94855,
+  "en": "drinks.",
+  "he": "משקאות."
+ },
+ {
+  "id": "t0256",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 94870,
+  "end": 95066,
+  "en": "A single blend builds up to 13 menu items and pours 20–25 cups. Food cost from ₪3.25 a glass, margins up to 85% on top serves — as profitable as your espresso machine, with none of the complexity.",
+  "he": "תערובת אחת בונה עד 13 פריטים בתפריט ומוזגת 20–25 כוסות. עלות חומר גלם מ־₪3.25 לכוס, רווחיות של עד 85% בהגשות העליונות — רווחית כמו מכונת האספרסו, בלי שום סיבוך."
+ },
+ {
+  "id": "t0257",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95138,
+  "end": 95167,
+  "en": "Request the costed price list",
+  "he": "רוצה מחירון מתומחר"
+ },
+ {
+  "id": "t0258",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95286,
+  "end": 95306,
+  "en": "margin on top serves",
+  "he": "רווחיות בהגשות העליונות"
+ },
+ {
+  "id": "t0259",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95374,
+  "end": 95399,
+  "en": "food cost from, per glass",
+  "he": "עלות חומר גלם לכוס, החל מ־"
+ },
+ {
+  "id": "t0260",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95468,
+  "end": 95491,
+  "en": "recommended menu prices",
+  "he": "מחירי תפריט מומלצים"
+ },
+ {
+  "id": "t0261",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95555,
+  "end": 95584,
+  "en": "fridge space for sealed stock",
+  "he": "מקום במקרר למלאי סגור"
+ },
+ {
+  "id": "t0262",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95680,
+  "end": 95687,
+  "en": "TEA 2.0",
+  "he": "TEA 2.0"
+ },
+ {
+  "id": "t0263",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95772,
+  "end": 95789,
+  "en": "Tea 2.0 · Why now",
+  "he": "Tea 2.0 · למה עכשיו"
+ },
+ {
+  "id": "t0264",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95805,
+  "end": 95842,
+  "en": "Your guests drink 20–30% less alcohol",
+  "he": "האורחים שלכם שותים 20–30% פחות אלכוהול"
+ },
+ {
+  "id": "t0265",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95846,
+  "end": 95864,
+  "en": "than a decade ago.",
+  "he": "מאשר לפני עשור."
+ },
+ {
+  "id": "t0266",
+  "kind": "text",
+  "ctx": "mx",
+  "start": 95877,
+  "end": 96041,
+  "en": "They're not chasing a buzz — they're choosing drinks with a story and a function. Tea is the next beverage category, and the venues that move first take the margin.",
+  "he": "הם לא מחפשים ראש — הם בוחרים משקה עם סיפור ועם תפקיד. תה הוא קטגוריית המשקאות הבאה, והמקומות שזזים ראשונים לוקחים את הרווח."
+ },
+ {
+  "id": "t0267",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96125,
+  "end": 96148,
+  "en": "alcohol vs. millennials",
+  "he": "אלכוהול מול דור המילניום"
+ },
+ {
+  "id": "t0268",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96203,
+  "end": 96210,
+  "en": "Tea 2.0",
+  "he": "Tea 2.0"
+ },
+ {
+  "id": "t0269",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96220,
+  "end": 96237,
+  "en": "the next category",
+  "he": "הקטגוריה הבאה"
+ },
+ {
+  "id": "t0270",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96305,
+  "end": 96325,
+  "en": "margin on top serves",
+  "he": "רווחיות בהגשות העליונות"
+ },
+ {
+  "id": "t0271",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96455,
+  "end": 96465,
+  "en": "Operations",
+  "he": "תפעול"
+ },
+ {
+  "id": "t0272",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96497,
+  "end": 96505,
+  "en": "Serve in",
+  "he": "מגישים בארבעה"
+ },
+ {
+  "id": "t0273",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96510,
+  "end": 96521,
+  "en": "four steps.",
+  "he": "צעדים."
+ },
+ {
+  "id": "t0274",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96539,
+  "end": 96621,
+  "en": "No training program, no new machines. Any bartender pours a perfect GT on day one.",
+  "he": "בלי תוכנית הדרכה, בלי מכונות חדשות. כל ברמן מוזג GT מושלם כבר ביום הראשון."
+ },
+ {
+  "id": "t0275",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96695,
+  "end": 96700,
+  "en": "Glass",
+  "he": "כוס"
+ },
+ {
+  "id": "t0276",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96708,
+  "end": 96722,
+  "en": "Fill with ice.",
+  "he": "ממלאים בקרח."
+ },
+ {
+  "id": "t0277",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96770,
+  "end": 96775,
+  "en": "Water",
+  "he": "נוזל"
+ },
+ {
+  "id": "t0278",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96783,
+  "end": 96814,
+  "en": "Cold, sparkling or milk — to ⅔.",
+  "he": "מים, סודה או חלב — עד ⅔."
+ },
+ {
+  "id": "t0279",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96862,
+  "end": 96864,
+  "en": "GT",
+  "he": "GT"
+ },
+ {
+  "id": "t0280",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96872,
+  "end": 96913,
+  "en": "50 ml of concentrate through our measure.",
+  "he": "50 מ״ל תרכיז דרך מכל המדידה שלנו."
+ },
+ {
+  "id": "t0281",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96961,
+  "end": 96966,
+  "en": "Serve",
+  "he": "מגישים"
+ },
+ {
+  "id": "t0282",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 96974,
+  "end": 97000,
+  "en": "Stir, garnish, photograph.",
+  "he": "מערבבים, מקשטים, מצלמים."
+ },
+ {
+  "id": "a0283",
+  "kind": "attr:alt",
+  "ctx": "tea2",
+  "start": 97407,
+  "end": 97457,
+  "en": "GT specials — matcha, hojicha, ube on green marble",
+  "he": "הספיישלים של GT — מאצ׳ה, הוג׳יצ׳ה ואובה על שיש ירוק"
+ },
+ {
+  "id": "t0284",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 97607,
+  "end": 97619,
+  "en": "The specials",
+  "he": "הספיישלים"
+ },
+ {
+  "id": "t0285",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 97629,
+  "end": 97645,
+  "en": "Matcha. Hojicha.",
+  "he": "מאצ׳ה. הוג׳יצ׳ה."
+ },
+ {
+  "id": "t0286",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 97650,
+  "end": 97654,
+  "en": "Ube.",
+  "he": "אובה."
+ },
+ {
+  "id": "t0287",
+  "kind": "text",
+  "ctx": "tea2",
+  "start": 97667,
+  "end": 97775,
+  "en": "Ceremonial Shizuoka matcha flown in directly from the farmers — freshness locked from the moment of picking.",
+  "he": "מאצ׳ה טקסי משיזואוקה, מוטס ישירות מהחקלאים — טריות שננעלת מרגע הקטיף."
+ },
+ {
+  "id": "t0288",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 98248,
+  "end": 98257,
+  "en": "17 drinks",
+  "he": "17 משקאות"
+ },
+ {
+  "id": "a0289",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 98563,
+  "end": 98578,
+  "en": "GT Matcha pouch",
+  "he": "שקית מאצ׳ה של GT"
+ },
+ {
+  "id": "a0290",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 98829,
+  "end": 98845,
+  "en": "GT Matcha drinks",
+  "he": "משקאות מאצ׳ה של GT"
+ },
+ {
+  "id": "t0291",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99109,
+  "end": 99125,
+  "en": "Shizuoka · Japan",
+  "he": "שיזואוקה · יפן"
+ },
+ {
+  "id": "t0292",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99135,
+  "end": 99141,
+  "en": "Matcha",
+  "he": "מאצ׳ה"
+ },
+ {
+  "id": "t0293",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99165,
+  "end": 99278,
+  "en": "Ceremonial Shizuoka matcha, flown in from the farmers the moment it's picked. Not a passing trend — here to stay.",
+  "he": "מאצ׳ה טקסי משיזואוקה, מוטס מהחקלאים ברגע הקטיף. לא טרנד חולף — כאן כדי להישאר."
+ },
+ {
+  "id": "t0294",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99302,
+  "end": 99349,
+  "en": "Ceremonial grade · imported direct from farmers",
+  "he": "דרגה טקסית · מיובא ישירות מהחקלאים"
+ },
+ {
+  "id": "t0295",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99379,
+  "end": 99389,
+  "en": "50 g · ₪65",
+  "he": "50 גרם · ₪65"
+ },
+ {
+  "id": "t0296",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99402,
+  "end": 99414,
+  "en": "500 g · ₪590",
+  "he": "500 גרם · ₪590"
+ },
+ {
+  "id": "t0297",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 99826,
+  "end": 99840,
+  "en": "hot &amp; iced",
+  "he": "חם וקר"
+ },
+ {
+  "id": "a0298",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 100146,
+  "end": 100162,
+  "en": "GT Hojicha pouch",
+  "he": "שקית הוג׳יצ׳ה של GT"
+ },
+ {
+  "id": "a0299",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 100413,
+  "end": 100430,
+  "en": "GT Hojicha lattes",
+  "he": "לאטה הוג׳יצ׳ה של GT"
+ },
+ {
+  "id": "t0300",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 100694,
+  "end": 100718,
+  "en": "Roasted · “black matcha”",
+  "he": "קלוי · ״מאצ׳ה שחור״"
+ },
+ {
+  "id": "t0301",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 100728,
+  "end": 100735,
+  "en": "Hojicha",
+  "he": "הוג׳יצ׳ה"
+ },
+ {
+  "id": "t0302",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 100759,
+  "end": 100854,
+  "en": "The new hit taking over the world. Hazelnut, cocoa and tea in one cup — roasted premium matcha.",
+  "he": "הלהיט החדש שכובש את העולם. אגוזי לוז, קקאו ותה בכוס אחת — מאצ׳ה פרימיום קלוי."
+ },
+ {
+  "id": "t0303",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 100878,
+  "end": 100928,
+  "en": "Roasted select matcha · hazelnut &amp; cocoa notes",
+  "he": "מאצ׳ה מובחר קלוי · נימות אגוז לוז וקקאו"
+ },
+ {
+  "id": "t0304",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 100958,
+  "end": 100970,
+  "en": "500 g · ₪375",
+  "he": "500 גרם · ₪375"
+ },
+ {
+  "id": "t0305",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 101378,
+  "end": 101386,
+  "en": "5 drinks",
+  "he": "5 משקאות"
+ },
+ {
+  "id": "a0306",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 101692,
+  "end": 101704,
+  "en": "GT Ube pouch",
+  "he": "שקית אובה של GT"
+ },
+ {
+  "id": "a0307",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 101955,
+  "end": 101968,
+  "en": "GT Ube drinks",
+  "he": "משקאות אובה של GT"
+ },
+ {
+  "id": "t0308",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 102232,
+  "end": 102247,
+  "en": "Purple yam root",
+  "he": "שורש בטטה סגולה"
+ },
+ {
+  "id": "t0309",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 102257,
+  "end": 102260,
+  "en": "Ube",
+  "he": "אובה"
+ },
+ {
+  "id": "t0310",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 102284,
+  "end": 102425,
+  "en": "The purple that stops the scroll — colour straight from the root itself. Creamy, between vanilla and nut. Perfect in lattes, shakes and soda.",
+  "he": "הסגול שעוצר את הגלילה — צבע ישר מהשורש עצמו. קרמי, בין וניל לאגוז. מושלם בלאטה, בשייק ובסודה."
+ },
+ {
+  "id": "t0311",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 102449,
+  "end": 102483,
+  "en": "Purple yam powder · natural colour",
+  "he": "אבקת בטטה סגולה · צבע טבעי"
+ },
+ {
+  "id": "t0312",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 102513,
+  "end": 102525,
+  "en": "500 g · ₪175",
+  "he": "500 גרם · ₪175"
+ },
+ {
+  "id": "t0313",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 102538,
+  "end": 102549,
+  "en": "1 kg · ₪340",
+  "he": "1 ק״ג · ₪340"
+ },
+ {
+  "id": "a0314",
+  "kind": "attr:alt",
+  "ctx": "matcha",
+  "start": 102973,
+  "end": 102990,
+  "en": "ODK purée podiums",
+  "he": "פירה ODK על פודיומים"
+ },
+ {
+  "id": "t0315",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 103137,
+  "end": 103156,
+  "en": "ODK smoothie purées",
+  "he": "פירה סמוזי ODK"
+ },
+ {
+  "id": "t0316",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 103166,
+  "end": 103179,
+  "en": "Fruit purées.",
+  "he": "פירה פירות."
+ },
+ {
+  "id": "t0317",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 103184,
+  "end": 103199,
+  "en": "50% real fruit.",
+  "he": "50% פרי אמיתי."
+ },
+ {
+  "id": "t0318",
+  "kind": "text",
+  "ctx": "matcha",
+  "start": 103212,
+  "end": 103341,
+  "en": "Three flavours, one job: turn any GT essence, matcha or ube into a signature drink. Click a flavour to see exactly where it goes.",
+  "he": "שלושה טעמים, תפקיד אחד: להפוך כל תרכיז GT, מאצ׳ה או אובה למשקה דגל. לחצו על טעם כדי לראות בדיוק לאן הוא הולך."
+ },
+ {
+  "id": "t0319",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 103846,
+  "end": 103854,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "a0320",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 104152,
+  "end": 104167,
+  "en": "ODK Mango purée",
+  "he": "פירה מנגו ODK"
+ },
+ {
+  "id": "a0321",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 104436,
+  "end": 104448,
+  "en": "Mango drinks",
+  "he": "משקאות מנגו"
+ },
+ {
+  "id": "t0322",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 104712,
+  "end": 104743,
+  "en": "ODK · made in Italy · 50% fruit",
+  "he": "ODK · תוצרת איטליה · 50% פרי"
+ },
+ {
+  "id": "t0323",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 104753,
+  "end": 104758,
+  "en": "Mango",
+  "he": "מנגו"
+ },
+ {
+  "id": "t0324",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 104782,
+  "end": 104877,
+  "en": "Golden Alphonso-style mango purée — the sunshine layer for signatures, matcha, coconut and ube.",
+  "he": "פירה מנגו בסגנון אלפונסו זהוב — שכבת השמש למשקאות הדגל, למאצ׳ה, לקוקוס ולאובה."
+ },
+ {
+  "id": "t0325",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 104901,
+  "end": 104934,
+  "en": "50% fruit content · 1000 ml pouch",
+  "he": "50% תכולת פרי · שקית 1000 מ״ל"
+ },
+ {
+  "id": "t0326",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 104964,
+  "end": 104973,
+  "en": "1 L · ₪60",
+  "he": "1 ליטר · ₪60"
+ },
+ {
+  "id": "t0327",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 105427,
+  "end": 105435,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "a0328",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 105733,
+  "end": 105753,
+  "en": "ODK Strawberry purée",
+  "he": "פירה תות ODK"
+ },
+ {
+  "id": "a0329",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 106027,
+  "end": 106044,
+  "en": "Strawberry drinks",
+  "he": "משקאות תות"
+ },
+ {
+  "id": "t0330",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 106308,
+  "end": 106339,
+  "en": "ODK · made in Italy · 50% fruit",
+  "he": "ODK · תוצרת איטליה · 50% פרי"
+ },
+ {
+  "id": "t0331",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 106349,
+  "end": 106359,
+  "en": "Strawberry",
+  "he": "תות"
+ },
+ {
+  "id": "t0332",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 106383,
+  "end": 106461,
+  "en": "Ripe red strawberry purée — the bestseller layer across the whole summer card.",
+  "he": "פירה תות אדום ובשל — שכבת רב המכר לאורך כל תפריט הקיץ."
+ },
+ {
+  "id": "t0333",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 106485,
+  "end": 106518,
+  "en": "50% fruit content · 1000 ml pouch",
+  "he": "50% תכולת פרי · שקית 1000 מ״ל"
+ },
+ {
+  "id": "t0334",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 106548,
+  "end": 106557,
+  "en": "1 L · ₪60",
+  "he": "1 ליטר · ₪60"
+ },
+ {
+  "id": "t0335",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 107001,
+  "end": 107009,
+  "en": "4 drinks",
+  "he": "4 משקאות"
+ },
+ {
+  "id": "a0336",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 107307,
+  "end": 107322,
+  "en": "ODK Peach purée",
+  "he": "פירה אפרסק ODK"
+ },
+ {
+  "id": "a0337",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 107591,
+  "end": 107603,
+  "en": "Peach drinks",
+  "he": "משקאות אפרסק"
+ },
+ {
+  "id": "t0338",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 107867,
+  "end": 107898,
+  "en": "ODK · made in Italy · 50% fruit",
+  "he": "ODK · תוצרת איטליה · 50% פרי"
+ },
+ {
+  "id": "t0339",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 107908,
+  "end": 107913,
+  "en": "Peach",
+  "he": "אפרסק"
+ },
+ {
+  "id": "t0340",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 107937,
+  "end": 108014,
+  "en": "Velvet peach purée — the desert-peach hero: signature, gazoz, matcha and ube.",
+  "he": "פירה אפרסק קטיפתי — הכוכב של המדברי־אפרסק: משקה דגל, גזוז, מאצ׳ה ואובה."
+ },
+ {
+  "id": "t0341",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 108038,
+  "end": 108071,
+  "en": "50% fruit content · 1000 ml pouch",
+  "he": "50% תכולת פרי · שקית 1000 מ״ל"
+ },
+ {
+  "id": "t0342",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 108101,
+  "end": 108110,
+  "en": "1 L · ₪60",
+  "he": "1 ליטר · ₪60"
+ },
+ {
+  "id": "a0343",
+  "kind": "attr:alt",
+  "ctx": "purees",
+  "start": 108486,
+  "end": 108505,
+  "en": "GT bar tools arches",
+  "he": "קשתות כלי הבר של GT"
+ },
+ {
+  "id": "t0344",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 108605,
+  "end": 108614,
+  "en": "Bar tools",
+  "he": "כלי בר"
+ },
+ {
+  "id": "t0345",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 108624,
+  "end": 108636,
+  "en": "Small tools.",
+  "he": "כלים קטנים."
+ },
+ {
+  "id": "t0346",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 108641,
+  "end": 108656,
+  "en": "Serious serves.",
+  "he": "הגשה רצינית."
+ },
+ {
+  "id": "t0347",
+  "kind": "text",
+  "ctx": "purees",
+  "start": 108669,
+  "end": 108798,
+  "en": "Everything the bar needs to pour GT right — from the bamboo whisk to the measuring glass. Full accessories price list on request.",
+  "he": "כל מה שהבר צריך כדי למזוג GT נכון — ממטרפת הבמבוק ועד מכל המדידה. מחירון אביזרים מלא לפי בקשה."
+ },
+ {
+  "id": "a0348",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 109165,
+  "end": 109180,
+  "en": "Measuring glass",
+  "he": "מכל מדידה"
+ },
+ {
+  "id": "t0349",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 109222,
+  "end": 109237,
+  "en": "Measuring glass",
+  "he": "מכל מדידה"
+ },
+ {
+  "id": "t0350",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 109257,
+  "end": 109266,
+  "en": "מכל מדידה",
+  "he": "Measuring glass"
+ },
+ {
+  "id": "a0351",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 109583,
+  "end": 109597,
+  "en": "Matcha frother",
+  "he": "מקציף מאצ׳ה חשמלי"
+ },
+ {
+  "id": "t0352",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 109639,
+  "end": 109653,
+  "en": "Matcha frother",
+  "he": "מקציף מאצ׳ה חשמלי"
+ },
+ {
+  "id": "t0353",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 109673,
+  "end": 109690,
+  "en": "מקציף מאצ'ה חשמלי",
+  "he": "Matcha frother"
+ },
+ {
+  "id": "a0354",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 110008,
+  "end": 110021,
+  "en": "Matcha bottle",
+  "he": "בקבוק למאצ׳ה"
+ },
+ {
+  "id": "t0355",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 110063,
+  "end": 110076,
+  "en": "Matcha bottle",
+  "he": "בקבוק למאצ׳ה"
+ },
+ {
+  "id": "t0356",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 110096,
+  "end": 110108,
+  "en": "בקבוק למאצ'ה",
+  "he": "Matcha bottle"
+ },
+ {
+  "id": "a0357",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 110425,
+  "end": 110437,
+  "en": "Ceramic bowl",
+  "he": "קערת קרמיקה"
+ },
+ {
+  "id": "t0358",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 110479,
+  "end": 110491,
+  "en": "Ceramic bowl",
+  "he": "קערת קרמיקה"
+ },
+ {
+  "id": "t0359",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 110511,
+  "end": 110522,
+  "en": "קערת קרמיקה",
+  "he": "Ceramic bowl"
+ },
+ {
+  "id": "a0360",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 110840,
+  "end": 110852,
+  "en": "Bamboo whisk",
+  "he": "מטרפת במבוק"
+ },
+ {
+  "id": "t0361",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 110894,
+  "end": 110906,
+  "en": "Bamboo whisk",
+  "he": "מטרפת במבוק"
+ },
+ {
+  "id": "t0362",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 110926,
+  "end": 110937,
+  "en": "מטרפת במבוק",
+  "he": "Bamboo whisk"
+ },
+ {
+  "id": "a0363",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 111254,
+  "end": 111266,
+  "en": "Bamboo scoop",
+  "he": "כף מדידה במבוק"
+ },
+ {
+  "id": "t0364",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 111308,
+  "end": 111320,
+  "en": "Bamboo scoop",
+  "he": "כף מדידה במבוק"
+ },
+ {
+  "id": "t0365",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 111340,
+  "end": 111354,
+  "en": "כף מדידה במבוק",
+  "he": "Bamboo scoop"
+ },
+ {
+  "id": "a0366",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 111671,
+  "end": 111691,
+  "en": "Printed glass 600 ml",
+  "he": "כוס זכוכית מודפסת 600 מ״ל"
+ },
+ {
+  "id": "t0367",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 111733,
+  "end": 111753,
+  "en": "Printed glass 600 ml",
+  "he": "כוס זכוכית 600 מ״ל"
+ },
+ {
+  "id": "t0368",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 111773,
+  "end": 111791,
+  "en": "כוס זכוכית 600 מ\"ל",
+  "he": "Printed glass"
+ },
+ {
+  "id": "a0369",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 112108,
+  "end": 112119,
+  "en": "Whisk stand",
+  "he": "מעמד למטרפה"
+ },
+ {
+  "id": "t0370",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 112161,
+  "end": 112172,
+  "en": "Whisk stand",
+  "he": "מעמד למטרפה"
+ },
+ {
+  "id": "t0371",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 112192,
+  "end": 112203,
+  "en": "מעמד למטרפה",
+  "he": "Whisk stand"
+ },
+ {
+  "id": "a0372",
+  "kind": "attr:alt",
+  "ctx": "tools",
+  "start": 112626,
+  "end": 112667,
+  "en": "GT summer card — seven drinks on lavender",
+  "he": "תפריט הקיץ של GT — שבעה משקאות על רקע לבנדר"
+ },
+ {
+  "id": "t0373",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 112802,
+  "end": 112842,
+  "en": "Summer 2026 · 10 collections · 48 drinks",
+  "he": "קיץ 2026 · 10 קולקציות · 48 משקאות"
+ },
+ {
+  "id": "t0374",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 112852,
+  "end": 112874,
+  "en": "The whole summer card.",
+  "he": "כל תפריט הקיץ."
+ },
+ {
+  "id": "t0375",
+  "kind": "text",
+  "ctx": "tools",
+  "start": 112882,
+  "end": 112892,
+  "en": "One order.",
+  "he": "הזמנה אחת."
+ },
+ {
+  "id": "t0376",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 112983,
+  "end": 113003,
+  "en": "Wholesale price list",
+  "he": "מחירון סיטונאי"
+ },
+ {
+  "id": "t0377",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113028,
+  "end": 113040,
+  "en": "Every price.",
+  "he": "כל המחירים."
+ },
+ {
+  "id": "t0378",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113083,
+  "end": 113096,
+  "en": "On the table.",
+  "he": "על השולחן."
+ },
+ {
+  "id": "t0379",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113127,
+  "end": 113197,
+  "en": "No hidden tiers, no \"contact us for pricing\". All prices in ₪, ex-VAT.",
+  "he": "בלי מדרגות נסתרות, בלי ״צרו קשר לתמחור״. כל המחירים בשקלים, לפני מע״מ."
+ },
+ {
+  "id": "t0380",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113281,
+  "end": 113291,
+  "en": "Expand all",
+  "he": "פתחו הכול"
+ },
+ {
+  "id": "t0381",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113400,
+  "end": 113412,
+  "en": "Tea essences",
+  "he": "תרכיזי תה"
+ },
+ {
+  "id": "t0382",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113451,
+  "end": 113458,
+  "en": "2 items",
+  "he": "2 פריטים"
+ },
+ {
+  "id": "t0383",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113618,
+  "end": 113640,
+  "en": "All 11 blends · 500 ml",
+  "he": "כל 11 התערובות · 500 מ״ל"
+ },
+ {
+  "id": "t0384",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113695,
+  "end": 113714,
+  "en": "All 11 blends · 1 L",
+  "he": "כל 11 התערובות · 1 ליטר"
+ },
+ {
+  "id": "t0385",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113765,
+  "end": 113883,
+  "en": "Detox · Revive · Energy · Consciousness · American · Fresh · Desertea · Calm · Namastea + sugar-free Detox &amp; Fresh",
+  "he": "‏Detox · Revive · Energy · Consciousness · American · Fresh · Desertea · Calm · Namastea, ועוד Detox ו־Fresh ללא סוכר"
+ },
+ {
+  "id": "t0386",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 113988,
+  "end": 114008,
+  "en": "Matcha &amp; powders",
+  "he": "מאצ׳ה ואבקות"
+ },
+ {
+  "id": "t0387",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114047,
+  "end": 114054,
+  "en": "8 items",
+  "he": "8 פריטים"
+ },
+ {
+  "id": "t0388",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114215,
+  "end": 114250,
+  "en": "Ceremonial matcha, Shizuoka · 500 g",
+  "he": "מאצ׳ה טקסי, שיזואוקה · 500 גרם"
+ },
+ {
+  "id": "t0389",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114306,
+  "end": 114333,
+  "en": "Ceremonial matcha · 22×18 g",
+  "he": "מאצ׳ה טקסי · 22×18 גרם"
+ },
+ {
+  "id": "t0390",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114389,
+  "end": 114413,
+  "en": "Ceremonial matcha · 50 g",
+  "he": "מאצ׳ה טקסי · 50 גרם"
+ },
+ {
+  "id": "t0391",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114468,
+  "end": 114494,
+  "en": "GT Elita matcha tin · 30 g",
+  "he": "פחית מאצ׳ה GT Elita · 30 גרם"
+ },
+ {
+  "id": "t0392",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114549,
+  "end": 114581,
+  "en": "Hojicha (roasted matcha) · 500 g",
+  "he": "הוג׳יצ׳ה (מאצ׳ה קלוי) · 500 גרם"
+ },
+ {
+  "id": "t0393",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114637,
+  "end": 114654,
+  "en": "Ube powder · 1 kg",
+  "he": "אבקת אובה · 1 ק״ג"
+ },
+ {
+  "id": "t0394",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114710,
+  "end": 114728,
+  "en": "Ube powder · 500 g",
+  "he": "אבקת אובה · 500 גרם"
+ },
+ {
+  "id": "t0395",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114784,
+  "end": 114799,
+  "en": "Full matcha kit",
+  "he": "ערכת מאצ׳ה מלאה"
+ },
+ {
+  "id": "t0396",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114922,
+  "end": 114937,
+  "en": "Smoothie purées",
+  "he": "פירה סמוזי"
+ },
+ {
+  "id": "t0397",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 114976,
+  "end": 114983,
+  "en": "3 items",
+  "he": "3 פריטים"
+ },
+ {
+  "id": "t0398",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115140,
+  "end": 115155,
+  "en": "ODK Mango · 1 L",
+  "he": "‏ODK מנגו · 1 ליטר"
+ },
+ {
+  "id": "t0399",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115210,
+  "end": 115230,
+  "en": "ODK Strawberry · 1 L",
+  "he": "‏ODK תות · 1 ליטר"
+ },
+ {
+  "id": "t0400",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115285,
+  "end": 115300,
+  "en": "ODK Peach · 1 L",
+  "he": "‏ODK אפרסק · 1 ליטר"
+ },
+ {
+  "id": "t0401",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115351,
+  "end": 115406,
+  "en": "50% fruit. Made for matcha, ube &amp; signature drinks.",
+  "he": "50% פרי. עשוי בשביל מאצ׳ה, אובה ומשקאות דגל."
+ },
+ {
+  "id": "t0402",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115511,
+  "end": 115530,
+  "en": "Barware &amp; tools",
+  "he": "כלי בר ואביזרים"
+ },
+ {
+  "id": "t0403",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115569,
+  "end": 115577,
+  "en": "10 items",
+  "he": "10 פריטים"
+ },
+ {
+  "id": "t0404",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115738,
+  "end": 115757,
+  "en": "Ceramic matcha bowl",
+  "he": "קערת מאצ׳ה מקרמיקה"
+ },
+ {
+  "id": "t0405",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115813,
+  "end": 115836,
+  "en": "Electric matcha frother",
+  "he": "מקציף מאצ׳ה חשמלי"
+ },
+ {
+  "id": "t0406",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115892,
+  "end": 115908,
+  "en": "Cocktail frother",
+  "he": "מקציף לקוקטיילים"
+ },
+ {
+  "id": "t0407",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 115963,
+  "end": 115975,
+  "en": "Bamboo whisk",
+  "he": "מטרפת במבוק"
+ },
+ {
+  "id": "t0408",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 116030,
+  "end": 116050,
+  "en": "Neapolitan glass jug",
+  "he": "קנקן זכוכית נפוליטני"
+ },
+ {
+  "id": "t0409",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 116105,
+  "end": 116123,
+  "en": "Glass pot · 600 ml",
+  "he": "קנקן זכוכית · 600 מ״ל"
+ },
+ {
+  "id": "t0410",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 116178,
+  "end": 116189,
+  "en": "Whisk stand",
+  "he": "מעמד למטרפה"
+ },
+ {
+  "id": "t0411",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 116244,
+  "end": 116257,
+  "en": "Measuring cup",
+  "he": "כוס מדידה"
+ },
+ {
+  "id": "t0412",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 116312,
+  "end": 116324,
+  "en": "Bamboo scoop",
+  "he": "כף במבוק"
+ },
+ {
+  "id": "t0413",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 116379,
+  "end": 116401,
+  "en": "Matcha bottle · 500 ml",
+  "he": "בקבוק למאצ׳ה · 500 מ״ל"
+ },
+ {
+  "id": "a0414",
+  "kind": "attr:alt",
+  "ctx": "pricing",
+  "start": 116851,
+  "end": 116878,
+  "en": "GT hotel bar — tray service",
+  "he": "בר במלון של GT — הגשה על מגש"
+ },
+ {
+  "id": "t0415",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 117020,
+  "end": 117048,
+  "en": "Hotels · restaurants · cafés",
+  "he": "מלונות · מסעדות · בתי קפה"
+ },
+ {
+  "id": "t0416",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 117058,
+  "end": 117067,
+  "en": "Poured by",
+  "he": "מוזגים אצל"
+ },
+ {
+  "id": "t0417",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 117075,
+  "end": 117084,
+  "en": "the pros.",
+  "he": "המקצוענים."
+ },
+ {
+  "id": "t0418",
+  "kind": "text",
+  "ctx": "pricing",
+  "start": 117097,
+  "end": 117184,
+  "en": "One order covers the whole bar — essences, powders, purées and the tools to serve them.",
+  "he": "הזמנה אחת מכסה את כל הבר — תרכיזים, אבקות, פירה והכלים להגיש אותם."
+ },
+ {
+  "id": "t0419",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117278,
+  "end": 117324,
+  "en": "Factory &amp; team photos — coming from client",
+  "he": "תמונות מפעל וצוות — ממתין לחומרים"
+ },
+ {
+  "id": "t0420",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117376,
+  "end": 117384,
+  "en": "About GT",
+  "he": "על GT"
+ },
+ {
+  "id": "t0421",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117400,
+  "end": 117421,
+  "en": "The era of compromise",
+  "he": "עידן הפשרות"
+ },
+ {
+  "id": "t0422",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117425,
+  "end": 117427,
+  "en": "is",
+  "he": "כבר"
+ },
+ {
+  "id": "t0423",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117470,
+  "end": 117475,
+  "en": "over.",
+  "he": "נגמר."
+ },
+ {
+  "id": "t0424",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117493,
+  "end": 117624,
+  "en": "GT was founded to bring something new: a cold wellness drink that's insanely tasty, balanced — and as profitable for you as coffee.",
+  "he": "‏GT הוקמה כדי להביא משהו חדש: משקה וולנס קר שהוא טעים בטירוף, מאוזן — ורווחי לכם כמו קפה."
+ },
+ {
+  "id": "t0425",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117636,
+  "end": 117836,
+  "en": "We are Israeli boutique makers. We hand-pick fine tea leaves and botanicals from around the world and turn them into unique concentrates — no preservatives, no added flavors, no artificial sweeteners.",
+  "he": "אנחנו יצרנים ישראלים בוטיק. בוררים ביד עלי תה מובחרים וצמחי בר מרחבי העולם והופכים אותם לתרכיזים ייחודיים — בלי חומרים משמרים, בלי טעמים מוספים, בלי ממתיקים מלאכותיים."
+ },
+ {
+  "id": "t0426",
+  "kind": "text",
+  "ctx": "about",
+  "start": 117848,
+  "end": 118041,
+  "en": "Sealed, our bottles need no fridge and take zero cold-storage space; once opened they live in the cold — because it’s a fully natural product. Prep is four steps any barista learns in a minute.",
+  "he": "סגור, הבקבוק לא צריך מקרר ולא תופס שטח קירור; אחרי הפתיחה הוא חי בקור — כי זה מוצר טבעי לגמרי. ההכנה היא ארבעה צעדים שכל בריסטה לומד בדקה."
+ },
+ {
+  "id": "t0427",
+  "kind": "text",
+  "ctx": "about",
+  "start": 118053,
+  "end": 118188,
+  "en": "Built for a generation of guests who want drinks with real value: an experience, not just a beverage. Welcome to a new world of drinks.",
+  "he": "בנוי לדור של אורחים שרוצים משקה עם ערך אמיתי: חוויה, לא סתם משהו לשתות. ברוכים הבאים לעולם משקאות חדש."
+ },
+ {
+  "id": "t0428",
+  "kind": "text",
+  "ctx": "about",
+  "start": 118262,
+  "end": 118264,
+  "en": "GT",
+  "he": "GT"
+ },
+ {
+  "id": "t0429",
+  "kind": "text",
+  "ctx": "about",
+  "start": 118303,
+  "end": 118319,
+  "en": "Ready to un-bore",
+  "he": "אפשר להפסיק עם"
+ },
+ {
+  "id": "t0430",
+  "kind": "text",
+  "ctx": "about",
+  "start": 118323,
+  "end": 118333,
+  "en": "your menu?",
+  "he": "התפריט המשעמם?"
+ },
+ {
+  "id": "t0431",
+  "kind": "text",
+  "ctx": "about",
+  "start": 118346,
+  "end": 118427,
+  "en": "Price list, tasting at your venue, and a summer menu your guests will photograph.",
+  "he": "מחירון, טעימה אצלכם במקום, ותפריט קיץ שהאורחים שלכם יצלמו."
+ },
+ {
+  "id": "t0432",
+  "kind": "text",
+  "ctx": "about",
+  "start": 118473,
+  "end": 118489,
+  "en": "Become a partner",
+  "he": "רוצים להתחיל"
+ },
+ {
+  "id": "t0433",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 118627,
+  "end": 118630,
+  "en": "FAQ",
+  "he": "שאלות נפוצות"
+ },
+ {
+  "id": "t0434",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 118655,
+  "end": 118665,
+  "en": "Questions?",
+  "he": "יש שאלות?"
+ },
+ {
+  "id": "t0435",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 118708,
+  "end": 118713,
+  "en": "Good.",
+  "he": "יופי."
+ },
+ {
+  "id": "t0436",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 118755,
+  "end": 118789,
+  "en": "Do the bottles need refrigeration?",
+  "he": "הבקבוקים צריכים קירור?"
+ },
+ {
+  "id": "t0437",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 118802,
+  "end": 118957,
+  "en": "Not until you open them. Sealed bottles live at room temperature and take zero fridge space. Once opened, keep refrigerated — it’s a fully natural product.",
+  "he": "לא עד שפותחים אותם. בקבוק סגור חי בטמפרטורת החדר ולא תופס שום מקום במקרר. אחרי הפתיחה — לשמור בקירור, כי זה מוצר טבעי לגמרי."
+ },
+ {
+  "id": "t0438",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119003,
+  "end": 119042,
+  "en": "How many drinks come out of one bottle?",
+  "he": "כמה משקאות יוצאים מבקבוק אחד?"
+ },
+ {
+  "id": "t0439",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119055,
+  "end": 119175,
+  "en": "One bottle of essence makes 20–25 glasses. At recommended menu prices that’s the margin story your accountant will love.",
+  "he": "בקבוק תרכיז אחד עושה 20–25 כוסות. במחירי התפריט המומלצים זה סיפור הרווחיות שרואה החשבון שלכם יאהב."
+ },
+ {
+  "id": "t0440",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119221,
+  "end": 119244,
+  "en": "What’s actually inside?",
+  "he": "מה בעצם יש בפנים?"
+ },
+ {
+  "id": "t0441",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119257,
+  "end": 119389,
+  "en": "Premium tea leaves and edible botanicals — nothing else. No preservatives, no added flavors or fragrances, no artificial sweeteners.",
+  "he": "עלי תה מובחרים וצמחים אכילים — וזהו. בלי חומרים משמרים, בלי טעמים או ריחות מוספים, בלי ממתיקים מלאכותיים."
+ },
+ {
+  "id": "t0442",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119435,
+  "end": 119463,
+  "en": "How hard is it for my staff?",
+  "he": "כמה זה מסובך לצוות שלי?"
+ },
+ {
+  "id": "t0443",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119476,
+  "end": 119598,
+  "en": "Four steps: glass with water and ice, add essence with our measuring tool, stir, serve. Any barista learns it in a minute.",
+  "he": "ארבעה צעדים: כוס עם מים וקרח, מוסיפים תרכיז עם מכל המדידה שלנו, מערבבים, מגישים. כל בריסטה לומד את זה בדקה."
+ },
+ {
+  "id": "t0444",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119644,
+  "end": 119675,
+  "en": "Do you have sugar-free options?",
+  "he": "יש אפשרויות בלי סוכר?"
+ },
+ {
+  "id": "t0445",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119688,
+  "end": 119769,
+  "en": "Yes — Detox and Fresh come in sugar-free versions, same price, same flavor logic.",
+  "he": "כן — Detox ו־Fresh קיימים בגרסה ללא סוכר, באותו מחיר ובאותה לוגיקת טעם."
+ },
+ {
+  "id": "t0446",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119815,
+  "end": 119833,
+  "en": "Where do we start?",
+  "he": "איפה מתחילים?"
+ },
+ {
+  "id": "t0447",
+  "kind": "text",
+  "ctx": "faq",
+  "start": 119846,
+  "end": 119966,
+  "en": "Leave your details below — we’ll build a starter menu for your venue, with recipes, costing and staff training included.",
+  "he": "משאירים פרטים כאן למטה — ואנחנו נבנה לכם תפריט פתיחה למקום, כולל מתכונים, תמחור והדרכת צוות."
+ },
+ {
+  "id": "t0448",
+  "kind": "text",
+  "ctx": "contact",
+  "start": 120104,
+  "end": 120111,
+  "en": "Contact",
+  "he": "צור קשר"
+ },
+ {
+  "id": "t0449",
+  "kind": "text",
+  "ctx": "contact",
+  "start": 120127,
+  "end": 120138,
+  "en": "Let's talk.",
+  "he": "בואו נדבר."
+ },
+ {
+  "id": "t0450",
+  "kind": "text",
+  "ctx": "contact",
+  "start": 120181,
+  "end": 120252,
+  "en": "Leave your details — we'll send the full price list and book a tasting.",
+  "he": "השאירו פרטים — נשלח את המחירון המלא ונקבע טעימה."
+ },
+ {
+  "id": "t0451",
+  "kind": "text",
+  "ctx": "contact",
+  "start": 120276,
+  "end": 120305,
+  "en": "📍 HaLahav 15, Holon (factory)",
+  "he": "📍 הלהב 15, חולון (המפעל)"
+ },
+ {
+  "id": "t0452",
+  "kind": "text",
+  "ctx": "contact",
+  "start": 120351,
+  "end": 120373,
+  "en": "✉️ info@gteveryday.com",
+  "he": "✉️ info@gteveryday.com"
+ },
+ {
+  "id": "t0453",
+  "kind": "text",
+  "ctx": "contact",
+  "start": 120389,
+  "end": 120402,
+  "en": "📷 @gteveryday",
+  "he": "📷 @gteveryday"
+ },
+ {
+  "id": "t0454",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 120525,
+  "end": 120544,
+  "en": "Partner application",
+  "he": "בקשת שיתוף פעולה"
+ },
+ {
+  "id": "t0455",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 120554,
+  "end": 120584,
+  "en": "Answer within one business day",
+  "he": "עונים תוך יום עסקים אחד"
+ },
+ {
+  "id": "a0456",
+  "kind": "attr:placeholder",
+  "ctx": "pform",
+  "start": 120662,
+  "end": 120673,
+  "en": "Your name *",
+  "he": "השם שלך *"
+ },
+ {
+  "id": "a0457",
+  "kind": "attr:placeholder",
+  "ctx": "pform",
+  "start": 120725,
+  "end": 120742,
+  "en": "Venue / company *",
+  "he": "שם העסק *"
+ },
+ {
+  "id": "a0458",
+  "kind": "attr:placeholder",
+  "ctx": "pform",
+  "start": 120829,
+  "end": 120835,
+  "en": "City *",
+  "he": "עיר *"
+ },
+ {
+  "id": "t0459",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 120900,
+  "end": 120909,
+  "en": "Your role",
+  "he": "התפקיד שלך"
+ },
+ {
+  "id": "t0460",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 120926,
+  "end": 120931,
+  "en": "Owner",
+  "he": "בעלים"
+ },
+ {
+  "id": "t0461",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 120948,
+  "end": 120955,
+  "en": "Manager",
+  "he": "מנהל/ת"
+ },
+ {
+  "id": "t0462",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 120981,
+  "end": 120992,
+  "en": "Bar manager",
+  "he": "אחראי/ת בר"
+ },
+ {
+  "id": "t0463",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121009,
+  "end": 121016,
+  "en": "Barista",
+  "he": "בריסטה"
+ },
+ {
+  "id": "t0464",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121033,
+  "end": 121038,
+  "en": "Other",
+  "he": "אחר"
+ },
+ {
+  "id": "a0465",
+  "kind": "attr:placeholder",
+  "ctx": "pform",
+  "start": 121140,
+  "end": 121147,
+  "en": "Phone *",
+  "he": "טלפון *"
+ },
+ {
+  "id": "a0466",
+  "kind": "attr:placeholder",
+  "ctx": "pform",
+  "start": 121211,
+  "end": 121216,
+  "en": "Email",
+  "he": "אימייל"
+ },
+ {
+  "id": "t0467",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121278,
+  "end": 121296,
+  "en": "I'm interested in…",
+  "he": "מה מעניין אתכם…"
+ },
+ {
+  "id": "t0468",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121313,
+  "end": 121328,
+  "en": "Full price list",
+  "he": "המחירון המלא"
+ },
+ {
+  "id": "t0469",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121345,
+  "end": 121360,
+  "en": "Tasting session",
+  "he": "טעימה במקום"
+ },
+ {
+  "id": "t0470",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121384,
+  "end": 121396,
+  "en": "Tea essences",
+  "he": "תרכיזי תה"
+ },
+ {
+  "id": "t0471",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121413,
+  "end": 121433,
+  "en": "Matcha &amp; powders",
+  "he": "מאצ׳ה ואבקות"
+ },
+ {
+  "id": "t0472",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121450,
+  "end": 121465,
+  "en": "Smoothie purées",
+  "he": "פירה סמוזי"
+ },
+ {
+  "id": "t0473",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121489,
+  "end": 121508,
+  "en": "Barware &amp; tools",
+  "he": "כלי בר ואביזרים"
+ },
+ {
+  "id": "t0474",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121525,
+  "end": 121546,
+  "en": "The whole summer card",
+  "he": "כל תפריט הקיץ"
+ },
+ {
+  "id": "a0475",
+  "kind": "attr:placeholder",
+  "ctx": "pform",
+  "start": 121618,
+  "end": 121653,
+  "en": "Anything we should know? (optional)",
+  "he": "משהו שכדאי שנדע? (לא חובה)"
+ },
+ {
+  "id": "t0476",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121739,
+  "end": 121786,
+  "en": "I agree to be contacted about wholesale supply.",
+  "he": "אני מאשר/ת פנייה בנוגע לאספקה סיטונאית."
+ },
+ {
+  "id": "t0477",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121850,
+  "end": 121862,
+  "en": "Send request",
+  "he": "שליחה"
+ },
+ {
+  "id": "t0478",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 121923,
+  "end": 121934,
+  "en": "or write on",
+  "he": "או שתכתבו לנו ב"
+ },
+ {
+  "id": "t0479",
+  "kind": "text",
+  "ctx": "pform",
+  "start": 122003,
+  "end": 122011,
+  "en": "WhatsApp",
+  "he": "וואטסאפ"
+ },
+ {
+  "id": "t0480",
+  "kind": "text",
+  "ctx": "pf-done",
+  "start": 122110,
+  "end": 122144,
+  "en": "Thank you — request is on its way.",
+  "he": "תודה — הבקשה בדרך אלינו."
+ },
+ {
+  "id": "t0481",
+  "kind": "text",
+  "ctx": "pf-done",
+  "start": 122154,
+  "end": 122246,
+  "en": "Your mail app just opened with the filled letter. If it didn't, write to info@gteveryday.com",
+  "he": "אפליקציית המייל שלכם נפתחה עם המכתב המוכן. אם לא — כתבו ל־info@gteveryday.com"
+ },
+ {
+  "id": "t0482",
+  "kind": "text",
+  "ctx": "pf-done",
+  "start": 122323,
+  "end": 122353,
+  "en": "© 2026 Green Tea Everyday Ltd.",
+  "he": "‎© 2026 גרין טי אוורידיי בע״מ"
+ },
+ {
+  "id": "t0483",
+  "kind": "text",
+  "ctx": "pf-done",
+  "start": 122369,
+  "end": 122399,
+  "en": "Instagram · Facebook · YouTube",
+  "he": "אינסטגרם · פייסבוק · יוטיוב"
+ },
+ {
+  "id": "t0484",
+  "kind": "text",
+  "ctx": "pf-done",
+  "start": 122429,
+  "end": 122448,
+  "en": "Don't Drink Boring.",
+  "he": "Don't Drink Boring."
+ },
+ {
+  "id": "t0485",
+  "kind": "text",
+  "ctx": "cm-desc",
+  "start": 123847,
+  "end": 123858,
+  "en": "How to make",
+  "he": "איך מכינים"
+ },
+ {
+  "id": "t0486",
+  "kind": "text",
+  "ctx": "cm-glass",
+  "start": 123970,
+  "end": 123981,
+  "en": "Ingredients",
+  "he": "רכיבים"
+ },
+ {
+  "id": "t0487",
+  "kind": "text",
+  "ctx": "cm-ing",
+  "start": 124091,
+  "end": 124111,
+  "en": "Food cost · ללא מע״מ",
+  "he": "עלות חומר גלם · ללא מע״מ"
+ },
+ {
+  "id": "t0488",
+  "kind": "text",
+  "ctx": "cm-ing",
+  "start": 124152,
+  "end": 124167,
+  "en": "RRP · כולל מע״מ",
+  "he": "מחיר מומלץ · כולל מע״מ"
+ },
+ {
+  "id": "t0489",
+  "kind": "text",
+  "ctx": "cm-ing",
+  "start": 124207,
+  "end": 124213,
+  "en": "Margin",
+  "he": "רווחיות"
+ },
+ {
+  "id": "t0490",
+  "kind": "text",
+  "ctx": "cm-ing",
+  "start": 124253,
+  "end": 124265,
+  "en": "Profit / cup",
+  "he": "רווח לכוס"
+ },
+ {
+  "id": "t0491",
+  "kind": "text",
+  "ctx": "cm-ing",
+  "start": 124370,
+  "end": 124376,
+  "en": "← Prev",
+  "he": "→ הקודם"
+ },
+ {
+  "id": "t0492",
+  "kind": "text",
+  "ctx": "cm-dots",
+  "start": 124474,
+  "end": 124480,
+  "en": "Next →",
+  "he": "הבא ←"
+ },
+ {
+  "id": "t0493",
+  "kind": "text",
+  "ctx": "fm-comp",
+  "start": 125005,
+  "end": 125029,
+  "en": "1 bottle = 20–25 glasses",
+  "he": "בקבוק אחד = 20–25 כוסות"
+ },
+ {
+  "id": "t0494",
+  "kind": "text",
+  "ctx": "fm-comp",
+  "start": 125042,
+  "end": 125064,
+  "en": "No fridge until opened",
+  "he": "בלי מקרר עד הפתיחה"
+ },
+ {
+  "id": "t0495",
+  "kind": "text",
+  "ctx": "fm-comp",
+  "start": 125077,
+  "end": 125089,
+  "en": "100% natural",
+  "he": "100% טבעי"
+ },
+ {
+  "id": "t0496",
+  "kind": "text",
+  "ctx": "fm-makes",
+  "start": 125171,
+  "end": 125183,
+  "en": "500 ml · ₪33",
+  "he": "500 מ״ל · ₪33"
+ },
+ {
+  "id": "t0497",
+  "kind": "text",
+  "ctx": "fm-makes",
+  "start": 125196,
+  "end": 125205,
+  "en": "1 L · ₪65",
+  "he": "1 ליטר · ₪65"
+ },
+ {
+  "id": "t0498",
+  "kind": "text",
+  "ctx": "fm-makes",
+  "start": 125321,
+  "end": 125339,
+  "en": "Add to your menu →",
+  "he": "הוסיפו לתפריט ←"
+ },
+ {
+  "id": "j0499",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 127830,
+  "end": 128054,
+  "en": "The flagship of the everyday menu. A light, refreshing profile guests of every age understand instantly — a clear, honest health story that needs no explaining. Works beautifully as iced tea, as a lemonade base, or as gazoz.",
+  "he": "הדגל של התפריט היומיומי. פרופיל קליל ומרענן שאורחים בכל גיל מבינים מיד — סיפור בריאות ברור וישר שלא צריך להסביר. עובד מצוין כחליטה קרה, כבסיס ללימונדה או כגזוז."
+ },
+ {
+  "id": "j0500",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 128068,
+  "end": 128250,
+  "en": "Top-grade sencha imported directly from Japan, lifted with tropical passionfruit. A surprising glass with a story your staff will love telling — and a taste guests don\\u2019t forget.",
+  "he": "סנצ׳ה מדרגה גבוהה, מיובא ישירות מיפן, מורם עם פסיפלורה טרופית. כוס מפתיעה עם סיפור שהצוות שלכם יאהב לספר — וטעם שאורחים לא שוכחים."
+ },
+ {
+  "id": "j0501",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 128264,
+  "end": 128434,
+  "en": "Natural caffeine with real presence and aroma: green tea, lemongrass, mint and lemon. The green alternative that widens your menu beyond coffee — bright, aromatic, awake.",
+  "he": "קפאין טבעי עם נוכחות וארומה אמיתיות: תה ירוק, למון גראס, נענע ולימון. האלטרנטיבה הירוקה שמרחיבה את התפריט מעבר לקפה — בהיר, ארומטי, ער."
+ },
+ {
+  "id": "j0502",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 128455,
+  "end": 128602,
+  "en": "Delicate florals with natural lychee — an elegant, precise glass. Built on 70% jasmine tea, with a soft aroma that lingers long after the last sip.",
+  "he": "פרחוניות עדינה עם ליצ׳י טבעי — כוס אלגנטית ומדויקת. בנויה על 70% תה יסמין, עם ארומה רכה שנשארת הרבה אחרי הלגימה האחרונה."
+ },
+ {
+  "id": "j0503",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 128618,
+  "end": 128790,
+  "en": "The American classic with Israeli chutzpah. Deep aged teas lifted by yuzu, bergamot and citrus — and a perfect partner for peach or mango pur\\u00e9e from our smoothie line.",
+  "he": "הקלאסיקה האמריקאית עם חוצפה ישראלית. תה מיושן ועמוק שמורם ביוזו, ברגמוט והדרים — ובן זוג מושלם לפירה אפרסק או מנגו מקו הסמוזי שלנו."
+ },
+ {
+  "id": "j0504",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 128803,
+  "end": 128942,
+  "en": "A caffeine-free wake-up call. A bold, intriguing red that stops the scroll, with a gentle tartness that brings guests back again and again.",
+  "he": "קריאת השכמה בלי קפאין. אדום נועז ומסקרן שעוצר את הגלילה, עם חמיצות עדינה שמחזירה אורחים שוב ושוב."
+ },
+ {
+  "id": "j0505",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 128958,
+  "end": 129156,
+  "en": "A uniquely Israeli product with no rivals: five local wild herbs — lemon verbena, mint, oregano, melissa, sage and white micromeria — in one glass. Caffeine-free, tasting like the desert after rain.",
+  "he": "מוצר ישראלי ייחודי בלי מתחרים: חמישה צמחי בר מקומיים — לואיזה, נענע, אזוב, מליסה, מרווה וזוטה לבנה — בכוס אחת. בלי קפאין, בטעם של מדבר אחרי גשם."
+ },
+ {
+  "id": "j0506",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 129168,
+  "end": 129304,
+  "en": "Delicate and elegant, for every age. Chamomile, apple and clove: naturally sweet, caffeine-free — the ideal afternoon and evening glass.",
+  "he": "עדין ואלגנטי, לכל גיל. קמומיל, תפוח וציפורן: מתוק בטבעיות, בלי קפאין — הכוס המושלמת לאחר הצהריים ולערב."
+ },
+ {
+  "id": "j0507",
+  "kind": "js",
+  "ctx": "FL",
+  "start": 129320,
+  "end": 129482,
+  "en": "A huge best-seller with the Israeli crowd. Two black teas and five spices — brilliant iced or with coconut water, and wonderful hot as a chai latte with any milk.",
+  "he": "רב מכר אדיר בקהל הישראלי. שני סוגי תה שחור וחמישה תבלינים — מבריק קר או עם מי קוקוס, ונהדר חם כצ׳אי לאטה עם כל חלב."
+ },
+ {
+  "id": "j0508",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129505,
+  "end": 129526,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0509",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129529,
+  "end": 129549,
+  "en": "Add 50 ml GT essence",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0510",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129552,
+  "end": 129620,
+  "en": "Top to \\u2154 with cold water \\u2014 or soda for a sparkling version",
+  "he": "משלימים ל־⅔ במים קרים — או בסודה לגרסה מוגזת"
+ },
+ {
+  "id": "j0511",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129623,
+  "end": 129657,
+  "en": "Garnish: lemon slice + fresh herbs",
+  "he": "קישוט: פרוסת לימון + עשבי תיבול טריים"
+ },
+ {
+  "id": "j0512",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129668,
+  "end": 129689,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0513",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129692,
+  "end": 129712,
+  "en": "Add 50 ml GT essence",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0514",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129715,
+  "end": 129744,
+  "en": "Fill to the top with lemonade",
+  "he": "ממלאים עד למעלה בלימונדה"
+ },
+ {
+  "id": "j0515",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129747,
+  "end": 129769,
+  "en": "Stir lightly and serve",
+  "he": "מערבבים קלות ומגישים"
+ },
+ {
+  "id": "j0516",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129785,
+  "end": 129806,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0517",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129809,
+  "end": 129819,
+  "en": "Add 40 ml ",
+  "he": "מוסיפים 40 מ״ל "
+ },
+ {
+  "id": "j0518",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129824,
+  "end": 129844,
+  "en": "Add 40 ml GT essence",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0519",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129847,
+  "end": 129871,
+  "en": "Top to \\u2154 with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0520",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129874,
+  "end": 129890,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0521",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129906,
+  "end": 129927,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0522",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129930,
+  "end": 129940,
+  "en": "Add 40 ml ",
+  "he": "מוסיפים 40 מ״ל "
+ },
+ {
+  "id": "j0523",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129945,
+  "end": 129965,
+  "en": "Add 40 ml GT essence",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0524",
+  "kind": "js",
+  "ctx": "T",
+  "start": 129968,
+  "end": 129991,
+  "en": "Top with soda (~150 ml)",
+  "he": "משלימים בסודה (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0525",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130035,
+  "end": 130075,
+  "en": "Detox iced tea \\u2014 still or sparkling",
+  "he": "חליטת Detox קרה — רגילה או מוגזת"
+ },
+ {
+  "id": "j0526",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130114,
+  "end": 130142,
+  "en": "Strawberry-verbena signature",
+  "he": "משקה דגל תות־לואיזה"
+ },
+ {
+  "id": "j0527",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130174,
+  "end": 130195,
+  "en": "strawberry pur\\u00e9e",
+  "he": "פירה תות"
+ },
+ {
+  "id": "j0528",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130219,
+  "end": 130260,
+  "en": "Revive iced tea \\u2014 still or sparkling",
+  "he": "חליטת Revive קרה — רגילה או מוגזת"
+ },
+ {
+  "id": "j0529",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130299,
+  "end": 130321,
+  "en": "Mango-sencha signature",
+  "he": "משקה דגל מנגו־סנצ׳ה"
+ },
+ {
+  "id": "j0530",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130353,
+  "end": 130369,
+  "en": "mango pur\\u00e9e",
+  "he": "פירה מנגו"
+ },
+ {
+  "id": "j0531",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130393,
+  "end": 130434,
+  "en": "Energy iced tea \\u2014 still or sparkling",
+  "he": "חליטת Energy קרה — רגילה או מוגזת"
+ },
+ {
+  "id": "j0532",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130493,
+  "end": 130516,
+  "en": "Jasmine-lychee iced tea",
+  "he": "חליטת יסמין־ליצ׳י"
+ },
+ {
+  "id": "j0533",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130555,
+  "end": 130567,
+  "en": "Lychee gazoz",
+  "he": "גזוז ליצ׳י"
+ },
+ {
+  "id": "j0534",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130594,
+  "end": 130615,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0535",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130618,
+  "end": 130640,
+  "en": "Add 40 ml lychee water",
+  "he": "מוסיפים 40 מ״ל מי ליצ׳י"
+ },
+ {
+  "id": "j0536",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130643,
+  "end": 130663,
+  "en": "Add 40 ml GT essence",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0537",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130666,
+  "end": 130689,
+  "en": "Top with soda (~150 ml)",
+  "he": "משלימים בסודה (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0538",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130692,
+  "end": 130716,
+  "en": "Garnish: 2 fresh lychees",
+  "he": "קישוט: 2 ליצ׳י טריים"
+ },
+ {
+  "id": "j0539",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130742,
+  "end": 130785,
+  "en": "American iced tea \\u2014 still or sparkling",
+  "he": "חליטת American קרה — רגילה או מוגזת"
+ },
+ {
+  "id": "j0540",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130836,
+  "end": 130850,
+  "en": "Fresh iced tea",
+  "he": "חליטת Fresh"
+ },
+ {
+  "id": "j0541",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130889,
+  "end": 130911,
+  "en": "Hibiscus-lime lemonade",
+  "he": "לימונדת היביסקוס־ליים"
+ },
+ {
+  "id": "j0542",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 130950,
+  "end": 130974,
+  "en": "Apple-hibiscus signature",
+  "he": "משקה דגל תפוח־היביסקוס"
+ },
+ {
+  "id": "j0543",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131006,
+  "end": 131017,
+  "en": "apple juice",
+  "he": "מיץ תפוחים"
+ },
+ {
+  "id": "j0544",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131028,
+  "end": 131048,
+  "en": "Hibiscus-apple gazoz",
+  "he": "גזוז היביסקוס־תפוח"
+ },
+ {
+  "id": "j0545",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131080,
+  "end": 131091,
+  "en": "apple juice",
+  "he": "מיץ תפוחים"
+ },
+ {
+  "id": "j0546",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131117,
+  "end": 131132,
+  "en": "Desert iced tea",
+  "he": "חליטה מדברית"
+ },
+ {
+  "id": "j0547",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131171,
+  "end": 131186,
+  "en": "Desert lemonade",
+  "he": "לימונדה מדברית"
+ },
+ {
+  "id": "j0548",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131225,
+  "end": 131247,
+  "en": "Desert-peach signature",
+  "he": "משקה דגל מדברי־אפרסק"
+ },
+ {
+  "id": "j0549",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131279,
+  "end": 131295,
+  "en": "peach pur\\u00e9e",
+  "he": "פירה אפרסק"
+ },
+ {
+  "id": "j0550",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131306,
+  "end": 131324,
+  "en": "Desert-peach gazoz",
+  "he": "גזוז מדברי־אפרסק"
+ },
+ {
+  "id": "j0551",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131356,
+  "end": 131372,
+  "en": "peach pur\\u00e9e",
+  "he": "פירה אפרסק"
+ },
+ {
+  "id": "j0552",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131394,
+  "end": 131444,
+  "en": "Chamomile-apple iced tea \\u2014 still or sparkling",
+  "he": "חליטת קמומיל־תפוח — רגילה או מוגזת"
+ },
+ {
+  "id": "j0553",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131498,
+  "end": 131522,
+  "en": "Ice chai massala classic",
+  "he": "אייס צ׳אי מסאלה קלאסי"
+ },
+ {
+  "id": "j0554",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131549,
+  "end": 131570,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0555",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131573,
+  "end": 131613,
+  "en": "Top to \\u2154 with milk (any milk works)",
+  "he": "משלימים ל־⅔ בחלב (כל חלב מתאים)"
+ },
+ {
+  "id": "j0556",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131616,
+  "end": 131645,
+  "en": "Pour 50 ml GT massala essence",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0557",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131648,
+  "end": 131668,
+  "en": "Crown with milk foam",
+  "he": "מכתירים בקצף חלב"
+ },
+ {
+  "id": "j0558",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131671,
+  "end": 131689,
+  "en": "Dust with cinnamon",
+  "he": "מפזרים קינמון"
+ },
+ {
+  "id": "j0559",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131700,
+  "end": 131725,
+  "en": "Chai massala on the rocks",
+  "he": "צ׳אי מסאלה על קרח"
+ },
+ {
+  "id": "j0560",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131752,
+  "end": 131773,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0561",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131776,
+  "end": 131800,
+  "en": "Top to \\u2154 with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0562",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131803,
+  "end": 131832,
+  "en": "Pour 50 ml GT massala essence",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0563",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131835,
+  "end": 131865,
+  "en": "Add a generous milk-foam crown",
+  "he": "מכתירים בקצף חלב נדיב"
+ },
+ {
+  "id": "j0564",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131876,
+  "end": 131902,
+  "en": "Dirty chai (with espresso)",
+  "he": "דירטי צ׳אי (עם אספרסו)"
+ },
+ {
+  "id": "j0565",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131929,
+  "end": 131950,
+  "en": "Pull an espresso shot",
+  "he": "מוציאים שוט אספרסו"
+ },
+ {
+  "id": "j0566",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131953,
+  "end": 131974,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0567",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 131977,
+  "end": 132000,
+  "en": "Top to \\u2154 with milk",
+  "he": "משלימים ל־⅔ בחלב"
+ },
+ {
+  "id": "j0568",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132003,
+  "end": 132036,
+  "en": "Pour 50 ml massala + the espresso",
+  "he": "מוזגים 50 מ״ל מסאלה + האספרסו"
+ },
+ {
+  "id": "j0569",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132039,
+  "end": 132059,
+  "en": "Crown with milk foam",
+  "he": "מכתירים בקצף חלב"
+ },
+ {
+  "id": "j0570",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132070,
+  "end": 132093,
+  "en": "Chai & dry-orange tonic",
+  "he": "צ׳אי וטוניק תפוז מיובש"
+ },
+ {
+  "id": "j0571",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132120,
+  "end": 132141,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0572",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132144,
+  "end": 132173,
+  "en": "Pour 50 ml GT massala essence",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0573",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132176,
+  "end": 132201,
+  "en": "Fill with tonic (~150 ml)",
+  "he": "ממלאים בטוניק (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0574",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132204,
+  "end": 132237,
+  "en": "Garnish with a dried orange slice",
+  "he": "מקשטים בפרוסת תפוז מיובש"
+ },
+ {
+  "id": "j0575",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132248,
+  "end": 132263,
+  "en": "Pink tonic rose",
+  "he": "טוניק ורדים ורוד"
+ },
+ {
+  "id": "j0576",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132290,
+  "end": 132311,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0577",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132314,
+  "end": 132343,
+  "en": "Pour 50 ml GT massala essence",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0578",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132346,
+  "end": 132390,
+  "en": "Fill with rose or grapefruit tonic (~150 ml)",
+  "he": "ממלאים בטוניק ורדים או אשכוליות (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0579",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132401,
+  "end": 132423,
+  "en": "Chai cold foam vanilla",
+  "he": "צ׳אי קולד פואם וניל"
+ },
+ {
+  "id": "j0580",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132450,
+  "end": 132471,
+  "en": "Fill a glass with ice",
+  "he": "ממלאים כוס בקרח"
+ },
+ {
+  "id": "j0581",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132474,
+  "end": 132498,
+  "en": "Top to \\u2154 with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0582",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132501,
+  "end": 132530,
+  "en": "Pour 50 ml GT massala essence",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0583",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132533,
+  "end": 132561,
+  "en": "Crown with vanilla cold foam",
+  "he": "מכתירים בקצף קר וניל"
+ },
+ {
+  "id": "j0584",
+  "kind": "js",
+  "ctx": "MK",
+  "start": 132564,
+  "end": 132590,
+  "en": "Garnish with a vanilla pod",
+  "he": "מקשטים במקל וניל"
+ },
+ {
+  "id": "j0585",
+  "kind": "js",
+  "ctx": "MKMORE",
+  "start": 132623,
+  "end": 132735,
+  "en": "Serves both ways \\u2014 hot hojicha latte with any milk, or iced over milk. Roasted notes of hazelnut and cocoa.",
+  "he": "מוגש בשתי הדרכים — הוג׳יצ׳ה לאטה חם עם כל חלב, או קר על חלב. נימות קלויות של אגוזי לוז וקקאו."
+ },
+ {
+  "id": "j0586",
+  "kind": "js",
+  "ctx": "MKMORE",
+  "start": 132749,
+  "end": 132832,
+  "en": "Pairs perfectly with ODK peach & mango pur\\u00e9es \\u2014 the signature-drink base.",
+  "he": "משתלב מושלם עם פירה אפרסק ומנגו של ODK — הבסיס למשקאות הדגל."
+ },
+ {
+  "id": "j0587",
+  "kind": "js",
+  "ctx": "MKMORE",
+  "start": 132844,
+  "end": 132914,
+  "en": "Every iced tea doubles as a gazoz: same recipe, soda instead of water.",
+  "he": "כל חליטה קרה היא גם גזוז: אותו מתכון, סודה במקום מים."
+ },
+ {
+  "id": "j0588",
+  "kind": "js",
+  "ctx": "MKMORE",
+  "start": 132924,
+  "end": 132994,
+  "en": "Every iced tea doubles as a gazoz: same recipe, soda instead of water.",
+  "he": "כל חליטה קרה היא גם גזוז: אותו מתכון, סודה במקום מים."
+ },
+ {
+  "id": "j0589",
+  "kind": "js",
+  "ctx": "POUCHCH",
+  "start": 133068,
+  "end": 133078,
+  "en": "Ice Matcha",
+  "he": "אייס מאצ׳ה"
+ },
+ {
+  "id": "j0590",
+  "kind": "js",
+  "ctx": "ch",
+  "start": 133334,
+  "end": 133345,
+  "en": "+MKMORE[n]+",
+  "he": ""
+ },
+ {
+  "id": "j0591",
+  "kind": "js",
+  "ctx": "h",
+  "start": 133543,
+  "end": 133562,
+  "en": "%</b></i></summary>",
+  "he": ""
+ },
+ {
+  "id": "j0592",
+  "kind": "js",
+  "ctx": "h",
+  "start": 133688,
+  "end": 133727,
+  "en": " ex-VAT \\u00b7 recommended price \\u20aa",
+  "he": ""
+ },
+ {
+  "id": "j0593",
+  "kind": "js",
+  "ctx": "h",
+  "start": 133734,
+  "end": 133759,
+  "en": " incl. VAT \\u00b7 margin ",
+  "he": ""
+ },
+ {
+  "id": "j0594",
+  "kind": "js",
+  "ctx": "h",
+  "start": 133766,
+  "end": 133789,
+  "en": "%</div></div></details>",
+  "he": ""
+ },
+ {
+  "id": "j0595",
+  "kind": "js",
+  "ctx": "h",
+  "start": 134108,
+  "end": 134127,
+  "en": "%</b></i></summary>",
+  "he": ""
+ },
+ {
+  "id": "j0596",
+  "kind": "js",
+  "ctx": "h",
+  "start": 134256,
+  "end": 134295,
+  "en": " ex-VAT \\u00b7 recommended price \\u20aa",
+  "he": ""
+ },
+ {
+  "id": "j0597",
+  "kind": "js",
+  "ctx": "h",
+  "start": 134302,
+  "end": 134327,
+  "en": " incl. VAT \\u00b7 margin ",
+  "he": ""
+ },
+ {
+  "id": "j0598",
+  "kind": "js",
+  "ctx": "h",
+  "start": 134334,
+  "end": 134357,
+  "en": "%</div></div></details>",
+  "he": ""
+ },
+ {
+  "id": "j0599",
+  "kind": "js",
+  "ctx": "h",
+  "start": 134406,
+  "end": 134417,
+  "en": "+MKMORE[n]+",
+  "he": ""
+ },
+ {
+  "id": "j0600",
+  "kind": "js",
+  "ctx": "t",
+  "start": 137357,
+  "end": 137369,
+  "en": "summary span",
+  "he": ""
+ },
+ {
+  "id": "j0601",
+  "kind": "js",
+  "ctx": "d",
+  "start": 138646,
+  "end": 138655,
+  "en": "+pair[0]+",
+  "he": ""
+ },
+ {
+  "id": "j0602",
+  "kind": "js",
+  "ctx": "d",
+  "start": 138657,
+  "end": 138666,
+  "en": " data-di=",
+  "he": ""
+ },
+ {
+  "id": "j0603",
+  "kind": "js",
+  "ctx": "d",
+  "start": 138668,
+  "end": 138677,
+  "en": "+pair[1]+",
+  "he": ""
+ },
+ {
+  "id": "j0604",
+  "kind": "js",
+  "ctx": "d",
+  "start": 138917,
+  "end": 138928,
+  "en": "+MKMORE[n]+",
+  "he": ""
+ },
+ {
+  "id": "j0605",
+  "kind": "js",
+  "ctx": "d",
+  "start": 138979,
+  "end": 138985,
+  "en": "a.mkgo",
+  "he": ""
+ },
+ {
+  "id": "j0606",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141150,
+  "end": 141158,
+  "en": "Iced Tea",
+  "he": "חליטות קרות"
+ },
+ {
+  "id": "j0607",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141168,
+  "end": 141179,
+  "en": "חליטות קרות",
+  "he": ""
+ },
+ {
+  "id": "j0608",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141228,
+  "end": 141248,
+  "en": "חליטת היביסקוס וליים",
+  "he": ""
+ },
+ {
+  "id": "j0609",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141257,
+  "end": 141320,
+  "en": "Hibiscus-lime infusion, still or sparkling, with lemon and mint",
+  "he": "חליטת היביסקוס וליים, רגילה או מוגזת, עם לימון ונענע"
+ },
+ {
+  "id": "j0610",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141331,
+  "end": 141354,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0611",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141358,
+  "end": 141382,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0612",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141386,
+  "end": 141420,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0613",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141424,
+  "end": 141457,
+  "en": "Garnish: lemon slice · fresh mint",
+  "he": "קישוט: פרוסת לימון · נענע טרייה"
+ },
+ {
+  "id": "j0614",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141477,
+  "end": 141497,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0615",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141501,
+  "end": 141512,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0616",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141516,
+  "end": 141529,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0617",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141603,
+  "end": 141621,
+  "en": "חליטת קמומיל ותפוח",
+  "he": ""
+ },
+ {
+  "id": "j0618",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141630,
+  "end": 141684,
+  "en": "Chamomile, apple and clove · caffeine-free and calming",
+  "he": "קמומיל, תפוח וציפורן · בלי קפאין, מרגיע"
+ },
+ {
+  "id": "j0619",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141695,
+  "end": 141718,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0620",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141722,
+  "end": 141746,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0621",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141750,
+  "end": 141784,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0622",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141788,
+  "end": 141826,
+  "en": "Garnish: lemon slice · oregano or mint",
+  "he": "קישוט: פרוסת לימון · אזוב או נענע"
+ },
+ {
+  "id": "j0623",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141846,
+  "end": 141866,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0624",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141870,
+  "end": 141881,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0625",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141885,
+  "end": 141898,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0626",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141976,
+  "end": 141988,
+  "en": "חליטה מדברית",
+  "he": ""
+ },
+ {
+  "id": "j0627",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 141997,
+  "end": 142064,
+  "en": "Lemon verbena, mint, oregano, sage and white savory · caffeine-free",
+  "he": "לואיזה, נענע, אזוב, מרווה וזוטה לבנה · בלי קפאין"
+ },
+ {
+  "id": "j0628",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142075,
+  "end": 142098,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0629",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142102,
+  "end": 142126,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0630",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142130,
+  "end": 142164,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0631",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142168,
+  "end": 142203,
+  "en": "Garnish: lemon slice · mixed spices",
+  "he": "קישוט: פרוסת לימון · תערובת תבלינים"
+ },
+ {
+  "id": "j0632",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142223,
+  "end": 142243,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0633",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142247,
+  "end": 142258,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0634",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142262,
+  "end": 142275,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0635",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142381,
+  "end": 142439,
+  "en": "Japanese sencha and passionfruit · caffeinated, refreshing",
+  "he": "סנצ׳ה יפני ופסיפלורה · עם קפאין, מרענן"
+ },
+ {
+  "id": "j0636",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142450,
+  "end": 142473,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0637",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142477,
+  "end": 142501,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0638",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142505,
+  "end": 142539,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0639",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142543,
+  "end": 142574,
+  "en": "Garnish: lemon slice · rosemary",
+  "he": "קישוט: פרוסת לימון · רוזמרין"
+ },
+ {
+  "id": "j0640",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142594,
+  "end": 142614,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0641",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142618,
+  "end": 142629,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0642",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142633,
+  "end": 142646,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0643",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142721,
+  "end": 142747,
+  "en": "חליטת תה ירוק לואיזה וליים",
+  "he": ""
+ },
+ {
+  "id": "j0644",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142756,
+  "end": 142795,
+  "en": "Green tea, lemon verbena, mint and lime",
+  "he": "תה ירוק, לואיזה, נענע וליים"
+ },
+ {
+  "id": "j0645",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142806,
+  "end": 142829,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0646",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142833,
+  "end": 142857,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0647",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142861,
+  "end": 142895,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0648",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142899,
+  "end": 142932,
+  "en": "Garnish: lemon slice · fresh mint",
+  "he": "קישוט: פרוסת לימון · נענע טרייה"
+ },
+ {
+  "id": "j0649",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142952,
+  "end": 142972,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0650",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142976,
+  "end": 142987,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0651",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 142991,
+  "end": 143004,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0652",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143080,
+  "end": 143104,
+  "en": "חליטת תה ירוק ולמון גראס",
+  "he": ""
+ },
+ {
+  "id": "j0653",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143113,
+  "end": 143150,
+  "en": "Green tea, lemongrass, mint and lemon",
+  "he": "תה ירוק, למון גראס, נענע ולימון"
+ },
+ {
+  "id": "j0654",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143161,
+  "end": 143184,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0655",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143188,
+  "end": 143212,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0656",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143216,
+  "end": 143250,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0657",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143254,
+  "end": 143282,
+  "en": "Garnish: lemon slice · basil",
+  "he": "קישוט: פרוסת לימון · בזיליקום"
+ },
+ {
+  "id": "j0658",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143302,
+  "end": 143322,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0659",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143326,
+  "end": 143337,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0660",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143341,
+  "end": 143354,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0661",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143464,
+  "end": 143530,
+  "en": "Jasmine tea and lychee — still or sparkling, aromatic and delicate",
+  "he": "תה יסמין וליצ׳י — רגיל או מוגז, ארומטי ועדין"
+ },
+ {
+  "id": "j0662",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143541,
+  "end": 143564,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0663",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143568,
+  "end": 143592,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0664",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143596,
+  "end": 143630,
+  "en": "Top to ⅔ with cold water (or soda)",
+  "he": "משלימים ל־⅔ במים קרים (או סודה)"
+ },
+ {
+  "id": "j0665",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143634,
+  "end": 143667,
+  "en": "Garnish: lemon slice · fresh mint",
+  "he": "קישוט: פרוסת לימון · נענע טרייה"
+ },
+ {
+  "id": "j0666",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143687,
+  "end": 143707,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0667",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143711,
+  "end": 143722,
+  "en": "lemon slice",
+  "he": "פרוסת לימון"
+ },
+ {
+  "id": "j0668",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143726,
+  "end": 143739,
+  "en": "garnish herbs",
+  "he": "עשבי קישוט"
+ },
+ {
+  "id": "j0669",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143799,
+  "end": 143811,
+  "en": "var(--terra)",
+  "he": ""
+ },
+ {
+  "id": "j0670",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143893,
+  "end": 143907,
+  "en": "Fresh lemonade",
+  "he": "לימונדת Fresh"
+ },
+ {
+  "id": "j0671",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143917,
+  "end": 143939,
+  "en": "לימונדת היביסקוס וליים",
+  "he": ""
+ },
+ {
+  "id": "j0672",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143948,
+  "end": 143981,
+  "en": "Refreshing hibiscus-lime lemonade",
+  "he": "לימונדת היביסקוס וליים מרעננת"
+ },
+ {
+  "id": "j0673",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 143992,
+  "end": 144015,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0674",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144019,
+  "end": 144043,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0675",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144047,
+  "end": 144076,
+  "en": "Top all the way with lemonade",
+  "he": "משלימים עד למעלה בלימונדה"
+ },
+ {
+  "id": "j0676",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144080,
+  "end": 144101,
+  "en": "Stir gently and serve",
+  "he": "מערבבים בעדינות ומגישים"
+ },
+ {
+  "id": "j0677",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144121,
+  "end": 144141,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0678",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144145,
+  "end": 144161,
+  "en": "~250 ml lemonade",
+  "he": "~250 מ״ל לימונדה"
+ },
+ {
+  "id": "j0679",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144221,
+  "end": 144238,
+  "en": "Desertea lemonade",
+  "he": "לימונדה מדברית"
+ },
+ {
+  "id": "j0680",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144248,
+  "end": 144262,
+  "en": "לימונדה מדברית",
+  "he": ""
+ },
+ {
+  "id": "j0681",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144271,
+  "end": 144301,
+  "en": "Lemonade on Israeli wild herbs",
+  "he": "לימונדה על צמחי בר ישראליים"
+ },
+ {
+  "id": "j0682",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144312,
+  "end": 144335,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0683",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144339,
+  "end": 144363,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0684",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144367,
+  "end": 144396,
+  "en": "Top all the way with lemonade",
+  "he": "משלימים עד למעלה בלימונדה"
+ },
+ {
+  "id": "j0685",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144400,
+  "end": 144421,
+  "en": "Stir gently and serve",
+  "he": "מערבבים בעדינות ומגישים"
+ },
+ {
+  "id": "j0686",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144441,
+  "end": 144461,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0687",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144465,
+  "end": 144481,
+  "en": "~250 ml lemonade",
+  "he": "~250 מ״ל לימונדה"
+ },
+ {
+  "id": "j0688",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144541,
+  "end": 144558,
+  "en": "Namastea lemonade",
+  "he": "לימונדת Namastea"
+ },
+ {
+  "id": "j0689",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144595,
+  "end": 144619,
+  "en": "Lemonade on Chai massala",
+  "he": "לימונדה על צ׳אי מסאלה"
+ },
+ {
+  "id": "j0690",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144630,
+  "end": 144653,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0691",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144657,
+  "end": 144681,
+  "en": "Add 50 ml GT concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0692",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144685,
+  "end": 144714,
+  "en": "Top all the way with lemonade",
+  "he": "משלימים עד למעלה בלימונדה"
+ },
+ {
+  "id": "j0693",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144718,
+  "end": 144739,
+  "en": "Stir gently and serve",
+  "he": "מערבבים בעדינות ומגישים"
+ },
+ {
+  "id": "j0694",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144759,
+  "end": 144779,
+  "en": "50 ml GT concentrate",
+  "he": "50 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0695",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144783,
+  "end": 144799,
+  "en": "~250 ml lemonade",
+  "he": "~250 מ״ל לימונדה"
+ },
+ {
+  "id": "j0696",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144859,
+  "end": 144872,
+  "en": "var(--energy)",
+  "he": ""
+ },
+ {
+  "id": "j0697",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144913,
+  "end": 144924,
+  "en": "משקאות הדגל",
+  "he": ""
+ },
+ {
+  "id": "j0698",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144958,
+  "end": 144970,
+  "en": "Desert peach",
+  "he": "מדברי אפרסק"
+ },
+ {
+  "id": "j0699",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 144980,
+  "end": 144998,
+  "en": "חליטת אפרסק מדברית",
+  "he": ""
+ },
+ {
+  "id": "j0700",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 145007,
+  "end": 145037,
+  "en": "Signature drink on purée peach",
+  "he": "משקה דגל על פירה אפרסק"
+ },
+ {
+  "id": "j0701",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 145048,
+  "end": 145071,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0702",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 145075,
+  "end": 145096,
+  "en": "Add 40 ml peach purée",
+  "he": "מוסיפים 40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0703",
+  "kind": "js",
+  "ctx": "COLS",
+  "start": 145100,
+  "end": 145120,
+  "en": "Add 40 ml GT essence",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0704",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145124,
+  "end": 145133,
+  "en": "Add water",
+  "he": "מוסיפים מים"
+ },
+ {
+  "id": "j0705",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145137,
+  "end": 145153,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0706",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145173,
+  "end": 145190,
+  "en": "40 ml peach purée",
+  "he": "40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0707",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145194,
+  "end": 145214,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0708",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145285,
+  "end": 145301,
+  "en": "Detox strawberry",
+  "he": "Detox תות"
+ },
+ {
+  "id": "j0709",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145311,
+  "end": 145327,
+  "en": "חליטת תות לואיזה",
+  "he": ""
+ },
+ {
+  "id": "j0710",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145336,
+  "end": 145371,
+  "en": "Signature drink on purée strawberry",
+  "he": "משקה דגל על פירה תות"
+ },
+ {
+  "id": "j0711",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145382,
+  "end": 145405,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0712",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145409,
+  "end": 145435,
+  "en": "Add 40 ml strawberry purée",
+  "he": "מוסיפים 40 מ״ל פירה תות"
+ },
+ {
+  "id": "j0713",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145439,
+  "end": 145463,
+  "en": "Add 40 ml GT concentrate",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0714",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145467,
+  "end": 145486,
+  "en": "Top to ⅔ with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0715",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145490,
+  "end": 145506,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0716",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145526,
+  "end": 145548,
+  "en": "40 ml strawberry purée",
+  "he": "40 מ״ל פירה תות"
+ },
+ {
+  "id": "j0717",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145552,
+  "end": 145572,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0718",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145643,
+  "end": 145655,
+  "en": "Revive mango",
+  "he": "Revive מנגו"
+ },
+ {
+  "id": "j0719",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145690,
+  "end": 145714,
+  "en": "Signature drink on mango",
+  "he": "משקה דגל על מנגו"
+ },
+ {
+  "id": "j0720",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145725,
+  "end": 145748,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0721",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145752,
+  "end": 145773,
+  "en": "Add 40 ml mango purée",
+  "he": "מוסיפים 40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j0722",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145777,
+  "end": 145801,
+  "en": "Add 40 ml GT concentrate",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0723",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145805,
+  "end": 145824,
+  "en": "Top to ⅔ with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0724",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145828,
+  "end": 145844,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0725",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145864,
+  "end": 145881,
+  "en": "40 ml mango purée",
+  "he": "40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j0726",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145885,
+  "end": 145905,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0727",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145976,
+  "end": 145987,
+  "en": "Fresh apple",
+  "he": "Fresh תפוח"
+ },
+ {
+  "id": "j0728",
+  "kind": "js",
+  "ctx": "js",
+  "start": 145997,
+  "end": 146016,
+  "en": "חליטת תפוח היביסקוס",
+  "he": ""
+ },
+ {
+  "id": "j0729",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146025,
+  "end": 146055,
+  "en": "Signature drink on apple juice",
+  "he": "משקה דגל על מיץ תפוחים"
+ },
+ {
+  "id": "j0730",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146066,
+  "end": 146089,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0731",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146093,
+  "end": 146114,
+  "en": "Add 40 ml apple juice",
+  "he": "מוסיפים 40 מ״ל מיץ תפוחים"
+ },
+ {
+  "id": "j0732",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146118,
+  "end": 146142,
+  "en": "Add 40 ml GT concentrate",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0733",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146146,
+  "end": 146165,
+  "en": "Top to ⅔ with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0734",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146169,
+  "end": 146185,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0735",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146205,
+  "end": 146222,
+  "en": "40 ml apple juice",
+  "he": "40 מ״ל מיץ תפוחים"
+ },
+ {
+  "id": "j0736",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146226,
+  "end": 146246,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0737",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146317,
+  "end": 146330,
+  "en": "var(--revive)",
+  "he": ""
+ },
+ {
+  "id": "j0738",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146405,
+  "end": 146425,
+  "en": "Consciousness lychee",
+  "he": "Consciousness ליצ׳י"
+ },
+ {
+  "id": "j0739",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146461,
+  "end": 146507,
+  "en": "Tea gazoz jasmine and lychee with lychee fresh",
+  "he": "גזוז תה יסמין וליצ׳י עם ליצ׳י טרי"
+ },
+ {
+  "id": "j0740",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146518,
+  "end": 146541,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0741",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146545,
+  "end": 146567,
+  "en": "Add 40 ml lychee water",
+  "he": "מוסיפים 40 מ״ל מי ליצ׳י"
+ },
+ {
+  "id": "j0742",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146571,
+  "end": 146595,
+  "en": "Add 40 ml GT concentrate",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0743",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146599,
+  "end": 146627,
+  "en": "Top to ⅔ with soda (~150 ml)",
+  "he": "משלימים ל־⅔ בסודה (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0744",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146631,
+  "end": 146649,
+  "en": "Garnish: 2 lychees",
+  "he": "קישוט: 2 ליצ׳י"
+ },
+ {
+  "id": "j0745",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146669,
+  "end": 146687,
+  "en": "40 ml lychee water",
+  "he": "40 מ״ל מי ליצ׳י"
+ },
+ {
+  "id": "j0746",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146691,
+  "end": 146711,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0747",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146715,
+  "end": 146727,
+  "en": "~150 ml soda",
+  "he": "~150 מ״ל סודה"
+ },
+ {
+  "id": "j0748",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146731,
+  "end": 146740,
+  "en": "2 lychees",
+  "he": "2 ליצ׳י"
+ },
+ {
+  "id": "j0749",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146800,
+  "end": 146818,
+  "en": "Desert peach gazoz",
+  "he": "גזוז מדברי אפרסק"
+ },
+ {
+  "id": "j0750",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146828,
+  "end": 146845,
+  "en": "גזוז מדברי ואפרסק",
+  "he": ""
+ },
+ {
+  "id": "j0751",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146854,
+  "end": 146879,
+  "en": "Wild-herb and peach gazoz",
+  "he": "גזוז צמחי בר ואפרסק"
+ },
+ {
+  "id": "j0752",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146890,
+  "end": 146913,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0753",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146917,
+  "end": 146938,
+  "en": "Add 40 ml peach purée",
+  "he": "מוסיפים 40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0754",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146942,
+  "end": 146966,
+  "en": "Add 40 ml GT concentrate",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0755",
+  "kind": "js",
+  "ctx": "js",
+  "start": 146970,
+  "end": 146998,
+  "en": "Top to ⅔ with soda (~150 ml)",
+  "he": "משלימים ל־⅔ בסודה (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0756",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147002,
+  "end": 147018,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0757",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147038,
+  "end": 147055,
+  "en": "40 ml peach purée",
+  "he": "40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0758",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147059,
+  "end": 147079,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0759",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147083,
+  "end": 147095,
+  "en": "~150 ml soda",
+  "he": "~150 מ״ל סודה"
+ },
+ {
+  "id": "j0760",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147155,
+  "end": 147172,
+  "en": "Fresh apple gazoz",
+  "he": "גזוז Fresh תפוח"
+ },
+ {
+  "id": "j0761",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147182,
+  "end": 147201,
+  "en": "גזוז היביסקוס ותפוח",
+  "he": ""
+ },
+ {
+  "id": "j0762",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147210,
+  "end": 147241,
+  "en": "Gazoz hibiscus with apple juice",
+  "he": "גזוז היביסקוס עם מיץ תפוחים"
+ },
+ {
+  "id": "j0763",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147252,
+  "end": 147275,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0764",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147279,
+  "end": 147300,
+  "en": "Add 40 ml apple juice",
+  "he": "מוסיפים 40 מ״ל מיץ תפוחים"
+ },
+ {
+  "id": "j0765",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147304,
+  "end": 147328,
+  "en": "Add 40 ml GT concentrate",
+  "he": "מוסיפים 40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0766",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147332,
+  "end": 147360,
+  "en": "Top to ⅔ with soda (~150 ml)",
+  "he": "משלימים ל־⅔ בסודה (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0767",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147364,
+  "end": 147380,
+  "en": "Garnish to taste",
+  "he": "מקשטים לפי הטעם"
+ },
+ {
+  "id": "j0768",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147400,
+  "end": 147417,
+  "en": "40 ml apple juice",
+  "he": "40 מ״ל מיץ תפוחים"
+ },
+ {
+  "id": "j0769",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147421,
+  "end": 147441,
+  "en": "40 ml GT concentrate",
+  "he": "40 מ״ל תרכיז GT"
+ },
+ {
+  "id": "j0770",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147445,
+  "end": 147457,
+  "en": "~150 ml soda",
+  "he": "~150 מ״ל סודה"
+ },
+ {
+  "id": "j0771",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147546,
+  "end": 147556,
+  "en": "Ice Matcha",
+  "he": "אייס מאצ׳ה"
+ },
+ {
+  "id": "j0772",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147652,
+  "end": 147671,
+  "en": "classic matcha iced",
+  "he": "אייס מאצ׳ה קלאסי"
+ },
+ {
+  "id": "j0773",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147682,
+  "end": 147705,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0774",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147709,
+  "end": 147741,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0775",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147745,
+  "end": 147786,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0776",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147790,
+  "end": 147810,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0777",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147830,
+  "end": 147842,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0778",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147846,
+  "end": 147866,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0779",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147870,
+  "end": 147885,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0780",
+  "kind": "js",
+  "ctx": "js",
+  "start": 147984,
+  "end": 148001,
+  "en": "mango matcha iced",
+  "he": "אייס מאצ׳ה מנגו"
+ },
+ {
+  "id": "j0781",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148012,
+  "end": 148035,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0782",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148039,
+  "end": 148060,
+  "en": "Add 40 ml mango purée",
+  "he": "מוסיפים 40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j0783",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148064,
+  "end": 148096,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0784",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148100,
+  "end": 148141,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0785",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148145,
+  "end": 148165,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0786",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148185,
+  "end": 148202,
+  "en": "40 ml mango purée",
+  "he": "40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j0787",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148206,
+  "end": 148218,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0788",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148222,
+  "end": 148242,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0789",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148246,
+  "end": 148261,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0790",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148364,
+  "end": 148392,
+  "en": "Iced matcha purée strawberry",
+  "he": "אייס מאצ׳ה פירה תות"
+ },
+ {
+  "id": "j0791",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148403,
+  "end": 148426,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0792",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148430,
+  "end": 148456,
+  "en": "Add 40 ml strawberry purée",
+  "he": "מוסיפים 40 מ״ל פירה תות"
+ },
+ {
+  "id": "j0793",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148460,
+  "end": 148492,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0794",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148496,
+  "end": 148537,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0795",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148541,
+  "end": 148561,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0796",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148581,
+  "end": 148603,
+  "en": "40 ml strawberry purée",
+  "he": "40 מ״ל פירה תות"
+ },
+ {
+  "id": "j0797",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148607,
+  "end": 148619,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0798",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148623,
+  "end": 148643,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0799",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148647,
+  "end": 148662,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0800",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148762,
+  "end": 148785,
+  "en": "matcha iced purée peach",
+  "he": "אייס מאצ׳ה פירה אפרסק"
+ },
+ {
+  "id": "j0801",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148796,
+  "end": 148819,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0802",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148823,
+  "end": 148844,
+  "en": "Add 40 ml peach purée",
+  "he": "מוסיפים 40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0803",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148848,
+  "end": 148880,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0804",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148884,
+  "end": 148925,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0805",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148929,
+  "end": 148949,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0806",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148969,
+  "end": 148986,
+  "en": "40 ml peach purée",
+  "he": "40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0807",
+  "kind": "js",
+  "ctx": "js",
+  "start": 148990,
+  "end": 149002,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0808",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149006,
+  "end": 149026,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0809",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149030,
+  "end": 149045,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0810",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149147,
+  "end": 149182,
+  "en": "Iced matcha with GT massala essence",
+  "he": "אייס מאצ׳ה עם תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0811",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149193,
+  "end": 149216,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0812",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149220,
+  "end": 149248,
+  "en": "Add 40 ml GT massala essence",
+  "he": "מוסיפים 40 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0813",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149252,
+  "end": 149284,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0814",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149288,
+  "end": 149329,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0815",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149333,
+  "end": 149353,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0816",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149373,
+  "end": 149397,
+  "en": "40 ml GT massala essence",
+  "he": "40 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0817",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149401,
+  "end": 149413,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0818",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149417,
+  "end": 149437,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0819",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149441,
+  "end": 149456,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0820",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149516,
+  "end": 149534,
+  "en": "Agave on the rocks",
+  "he": "אגבה על קרח"
+ },
+ {
+  "id": "j0821",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149571,
+  "end": 149607,
+  "en": "Light agave iced matcha on the rocks",
+  "he": "אייס מאצ׳ה קליל עם אגבה על קרח"
+ },
+ {
+  "id": "j0822",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149618,
+  "end": 149641,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0823",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149645,
+  "end": 149666,
+  "en": "Add 15 ml agave syrup",
+  "he": "מוסיפים 15 מ״ל סירופ אגבה"
+ },
+ {
+  "id": "j0824",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149670,
+  "end": 149689,
+  "en": "Top to ⅔ with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0825",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149693,
+  "end": 149734,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0826",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149738,
+  "end": 149758,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0827",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149778,
+  "end": 149791,
+  "en": "⅔ glass water",
+  "he": "⅔ כוס מים"
+ },
+ {
+  "id": "j0828",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149795,
+  "end": 149812,
+  "en": "15 ml agave syrup",
+  "he": "15 מ״ל סירופ אגבה"
+ },
+ {
+  "id": "j0829",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149816,
+  "end": 149836,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0830",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149840,
+  "end": 149855,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0831",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149915,
+  "end": 149928,
+  "en": "var(--matcha)",
+  "he": ""
+ },
+ {
+  "id": "j0832",
+  "kind": "js",
+  "ctx": "js",
+  "start": 149950,
+  "end": 149965,
+  "en": "Matcha Specials",
+  "he": "מאצ׳ה ספיישל"
+ },
+ {
+  "id": "j0833",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150071,
+  "end": 150090,
+  "en": "Vanilla iced matcha",
+  "he": "אייס מאצ׳ה וניל"
+ },
+ {
+  "id": "j0834",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150101,
+  "end": 150124,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0835",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150128,
+  "end": 150160,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0836",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150164,
+  "end": 150205,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0837",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150209,
+  "end": 150226,
+  "en": "Add a vanilla pod",
+  "he": "מוסיפים מקל וניל"
+ },
+ {
+  "id": "j0838",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150230,
+  "end": 150250,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0839",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150270,
+  "end": 150282,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0840",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150286,
+  "end": 150306,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0841",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150310,
+  "end": 150323,
+  "en": "stick vanilla",
+  "he": "מקל וניל"
+ },
+ {
+  "id": "j0842",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150327,
+  "end": 150342,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0843",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150447,
+  "end": 150468,
+  "en": "Pistachio iced matcha",
+  "he": "אייס מאצ׳ה פיסטוק"
+ },
+ {
+  "id": "j0844",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150479,
+  "end": 150502,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0845",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150506,
+  "end": 150538,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0846",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150542,
+  "end": 150583,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0847",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150587,
+  "end": 150608,
+  "en": "Add crushed pistachio",
+  "he": "מוסיפים פיסטוק גרוס"
+ },
+ {
+  "id": "j0848",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150612,
+  "end": 150632,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0849",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150652,
+  "end": 150664,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0850",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150668,
+  "end": 150688,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0851",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150692,
+  "end": 150709,
+  "en": "crushed pistachio",
+  "he": "פיסטוק גרוס"
+ },
+ {
+  "id": "j0852",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150713,
+  "end": 150728,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0853",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150788,
+  "end": 150800,
+  "en": "Black sesame",
+  "he": "שומשום שחור"
+ },
+ {
+  "id": "j0854",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150841,
+  "end": 150865,
+  "en": "Black sesame iced matcha",
+  "he": "אייס מאצ׳ה שומשום שחור"
+ },
+ {
+  "id": "j0855",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150876,
+  "end": 150899,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0856",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150903,
+  "end": 150935,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0857",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150939,
+  "end": 150980,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0858",
+  "kind": "js",
+  "ctx": "js",
+  "start": 150984,
+  "end": 151000,
+  "en": "Add black sesame",
+  "he": "מוסיפים שומשום שחור"
+ },
+ {
+  "id": "j0859",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151004,
+  "end": 151024,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0860",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151044,
+  "end": 151056,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0861",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151060,
+  "end": 151080,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0862",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151084,
+  "end": 151096,
+  "en": "black sesame",
+  "he": "שומשום שחור"
+ },
+ {
+  "id": "j0863",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151100,
+  "end": 151115,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0864",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151214,
+  "end": 151232,
+  "en": "Coffee iced matcha",
+  "he": "אייס מאצ׳ה קפה"
+ },
+ {
+  "id": "j0865",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151243,
+  "end": 151266,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0866",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151270,
+  "end": 151302,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0867",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151306,
+  "end": 151347,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0868",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151351,
+  "end": 151371,
+  "en": "Add an espresso shot",
+  "he": "מוסיפים שוט אספרסו"
+ },
+ {
+  "id": "j0869",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151375,
+  "end": 151395,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0870",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151415,
+  "end": 151427,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0871",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151431,
+  "end": 151451,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0872",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151455,
+  "end": 151468,
+  "en": "espresso shot",
+  "he": "שוט אספרסו"
+ },
+ {
+  "id": "j0873",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151472,
+  "end": 151487,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0874",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151587,
+  "end": 151605,
+  "en": "Banana iced matcha",
+  "he": "אייס מאצ׳ה בננה"
+ },
+ {
+  "id": "j0875",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151616,
+  "end": 151639,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0876",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151643,
+  "end": 151675,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0877",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151679,
+  "end": 151720,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0878",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151724,
+  "end": 151740,
+  "en": "Add banana purée",
+  "he": "מוסיפים פירה בננה"
+ },
+ {
+  "id": "j0879",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151744,
+  "end": 151764,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j0880",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151784,
+  "end": 151796,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0881",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151800,
+  "end": 151820,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0882",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151824,
+  "end": 151836,
+  "en": "banana purée",
+  "he": "פירה בננה"
+ },
+ {
+  "id": "j0883",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151840,
+  "end": 151855,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0884",
+  "kind": "js",
+  "ctx": "js",
+  "start": 151944,
+  "end": 151958,
+  "en": "Matcha Coconut",
+  "he": "מאצ׳ה קוקוס"
+ },
+ {
+  "id": "j0885",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152013,
+  "end": 152026,
+  "en": "Classic agave",
+  "he": "אגבה קלאסי"
+ },
+ {
+  "id": "j0886",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152061,
+  "end": 152089,
+  "en": "matcha coconut classic agave",
+  "he": "מאצ׳ה קוקוס אגבה קלאסי"
+ },
+ {
+  "id": "j0887",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152100,
+  "end": 152123,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0888",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152127,
+  "end": 152148,
+  "en": "Add 15 ml agave syrup",
+  "he": "מוסיפים 15 מ״ל סירופ אגבה"
+ },
+ {
+  "id": "j0889",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152152,
+  "end": 152189,
+  "en": "Top to ⅔ with coconut water (~150 ml)",
+  "he": "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0890",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152193,
+  "end": 152218,
+  "en": "Add coconut cream (70 ml)",
+  "he": "מוסיפים קרם קוקוס (70 מ״ל)"
+ },
+ {
+  "id": "j0891",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152222,
+  "end": 152263,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0892",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152283,
+  "end": 152300,
+  "en": "15 ml agave syrup",
+  "he": "15 מ״ל סירופ אגבה"
+ },
+ {
+  "id": "j0893",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152304,
+  "end": 152325,
+  "en": "~150 ml coconut water",
+  "he": "~150 מ״ל מי קוקוס"
+ },
+ {
+  "id": "j0894",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152329,
+  "end": 152348,
+  "en": "70 ml coconut cream",
+  "he": "70 מ״ל קרם קוקוס"
+ },
+ {
+  "id": "j0895",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152352,
+  "end": 152372,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0896",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152474,
+  "end": 152495,
+  "en": "matcha coconut lychee",
+  "he": "מאצ׳ה קוקוס ליצ׳י"
+ },
+ {
+  "id": "j0897",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152506,
+  "end": 152529,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0898",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152533,
+  "end": 152555,
+  "en": "Add 40 ml lychee water",
+  "he": "מוסיפים 40 מ״ל מי ליצ׳י"
+ },
+ {
+  "id": "j0899",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152559,
+  "end": 152596,
+  "en": "Top to ⅔ with coconut water (~150 ml)",
+  "he": "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0900",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152600,
+  "end": 152625,
+  "en": "Add coconut cream (70 ml)",
+  "he": "מוסיפים קרם קוקוס (70 מ״ל)"
+ },
+ {
+  "id": "j0901",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152629,
+  "end": 152670,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0902",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152690,
+  "end": 152708,
+  "en": "40 ml lychee water",
+  "he": "40 מ״ל מי ליצ׳י"
+ },
+ {
+  "id": "j0903",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152712,
+  "end": 152733,
+  "en": "~150 ml coconut water",
+  "he": "~150 מ״ל מי קוקוס"
+ },
+ {
+  "id": "j0904",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152737,
+  "end": 152756,
+  "en": "70 ml coconut cream",
+  "he": "70 מ״ל קרם קוקוס"
+ },
+ {
+  "id": "j0905",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152760,
+  "end": 152780,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0906",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152884,
+  "end": 152909,
+  "en": "matcha coconut strawberry",
+  "he": "מאצ׳ה קוקוס תות"
+ },
+ {
+  "id": "j0907",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152920,
+  "end": 152943,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0908",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152947,
+  "end": 152973,
+  "en": "Add 40 ml strawberry purée",
+  "he": "מוסיפים 40 מ״ל פירה תות"
+ },
+ {
+  "id": "j0909",
+  "kind": "js",
+  "ctx": "js",
+  "start": 152977,
+  "end": 153014,
+  "en": "Top to ⅔ with coconut water (~150 ml)",
+  "he": "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0910",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153018,
+  "end": 153043,
+  "en": "Add coconut cream (70 ml)",
+  "he": "מוסיפים קרם קוקוס (70 מ״ל)"
+ },
+ {
+  "id": "j0911",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153047,
+  "end": 153088,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0912",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153108,
+  "end": 153130,
+  "en": "40 ml strawberry purée",
+  "he": "40 מ״ל פירה תות"
+ },
+ {
+  "id": "j0913",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153134,
+  "end": 153155,
+  "en": "~150 ml coconut water",
+  "he": "~150 מ״ל מי קוקוס"
+ },
+ {
+  "id": "j0914",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153159,
+  "end": 153178,
+  "en": "70 ml coconut cream",
+  "he": "70 מ״ל קרם קוקוס"
+ },
+ {
+  "id": "j0915",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153182,
+  "end": 153202,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0916",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153302,
+  "end": 153322,
+  "en": "matcha coconut mango",
+  "he": "מאצ׳ה קוקוס מנגו"
+ },
+ {
+  "id": "j0917",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153333,
+  "end": 153356,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0918",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153360,
+  "end": 153381,
+  "en": "Add 40 ml mango purée",
+  "he": "מוסיפים 40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j0919",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153385,
+  "end": 153422,
+  "en": "Top to ⅔ with coconut water (~150 ml)",
+  "he": "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0920",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153426,
+  "end": 153451,
+  "en": "Add coconut cream (70 ml)",
+  "he": "מוסיפים קרם קוקוס (70 מ״ל)"
+ },
+ {
+  "id": "j0921",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153455,
+  "end": 153496,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0922",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153516,
+  "end": 153533,
+  "en": "40 ml mango purée",
+  "he": "40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j0923",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153537,
+  "end": 153558,
+  "en": "~150 ml coconut water",
+  "he": "~150 מ״ל מי קוקוס"
+ },
+ {
+  "id": "j0924",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153562,
+  "end": 153581,
+  "en": "70 ml coconut cream",
+  "he": "70 מ״ל קרם קוקוס"
+ },
+ {
+  "id": "j0925",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153585,
+  "end": 153605,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0926",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153706,
+  "end": 153726,
+  "en": "matcha coconut peach",
+  "he": "מאצ׳ה קוקוס אפרסק"
+ },
+ {
+  "id": "j0927",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153737,
+  "end": 153760,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0928",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153764,
+  "end": 153785,
+  "en": "Add 40 ml peach purée",
+  "he": "מוסיפים 40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0929",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153789,
+  "end": 153826,
+  "en": "Top to ⅔ with coconut water (~150 ml)",
+  "he": "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0930",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153830,
+  "end": 153855,
+  "en": "Add coconut cream (70 ml)",
+  "he": "מוסיפים קרם קוקוס (70 מ״ל)"
+ },
+ {
+  "id": "j0931",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153859,
+  "end": 153900,
+  "en": "Pour 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j0932",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153920,
+  "end": 153937,
+  "en": "40 ml peach purée",
+  "he": "40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j0933",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153941,
+  "end": 153962,
+  "en": "~150 ml coconut water",
+  "he": "~150 מ״ל מי קוקוס"
+ },
+ {
+  "id": "j0934",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153966,
+  "end": 153985,
+  "en": "70 ml coconut cream",
+  "he": "70 מ״ל קרם קוקוס"
+ },
+ {
+  "id": "j0935",
+  "kind": "js",
+  "ctx": "js",
+  "start": 153989,
+  "end": 154009,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j0936",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154098,
+  "end": 154110,
+  "en": "Chai Massala",
+  "he": "צ׳אי מסאלה"
+ },
+ {
+  "id": "j0937",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154164,
+  "end": 154183,
+  "en": "Ice massala classic",
+  "he": "אייס מסאלה קלאסי"
+ },
+ {
+  "id": "j0938",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154223,
+  "end": 154268,
+  "en": "Rich chai massala with milk foam and cinnamon",
+  "he": "צ׳אי מסאלה עשיר עם קצף חלב וקינמון"
+ },
+ {
+  "id": "j0939",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154279,
+  "end": 154302,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0940",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154306,
+  "end": 154338,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j0941",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154342,
+  "end": 154375,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0942",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154379,
+  "end": 154392,
+  "en": "Add milk foam",
+  "he": "מוסיפים קצף חלב"
+ },
+ {
+  "id": "j0943",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154396,
+  "end": 154414,
+  "en": "Dust with cinnamon",
+  "he": "מפזרים קינמון"
+ },
+ {
+  "id": "j0944",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154434,
+  "end": 154446,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0945",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154450,
+  "end": 154466,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j0946",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154470,
+  "end": 154485,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0947",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154557,
+  "end": 154569,
+  "en": "On the rocks",
+  "he": "על קרח"
+ },
+ {
+  "id": "j0948",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154606,
+  "end": 154645,
+  "en": "Light, refreshing chai massala on water",
+  "he": "צ׳אי מסאלה קליל ומרענן על מים"
+ },
+ {
+  "id": "j0949",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154656,
+  "end": 154679,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0950",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154683,
+  "end": 154702,
+  "en": "Top to ⅔ with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0951",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154706,
+  "end": 154739,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0952",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154743,
+  "end": 154767,
+  "en": "Add a generous milk foam",
+  "he": "מוסיפים קצף חלב נדיב"
+ },
+ {
+  "id": "j0953",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154787,
+  "end": 154800,
+  "en": "⅔ glass water",
+  "he": "⅔ כוס מים"
+ },
+ {
+  "id": "j0954",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154804,
+  "end": 154820,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j0955",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154824,
+  "end": 154839,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0956",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154899,
+  "end": 154909,
+  "en": "Dirty chai",
+  "he": "דירטי צ׳אי"
+ },
+ {
+  "id": "j0957",
+  "kind": "js",
+  "ctx": "js",
+  "start": 154938,
+  "end": 154991,
+  "en": "Chai massala with an espresso shot and rich milk foam",
+  "he": "צ׳אי מסאלה עם שוט אספרסו וקצף חלב עשיר"
+ },
+ {
+  "id": "j0958",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155002,
+  "end": 155026,
+  "en": "Prepare an espresso shot",
+  "he": "מכינים שוט אספרסו"
+ },
+ {
+  "id": "j0959",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155030,
+  "end": 155053,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0960",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155057,
+  "end": 155075,
+  "en": "Top to ⅔ with milk",
+  "he": "משלימים ל־⅔ בחלב"
+ },
+ {
+  "id": "j0961",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155079,
+  "end": 155115,
+  "en": "Pour 50 ml GT massala + the espresso",
+  "he": "מוזגים 50 מ״ל מסאלה GT + האספרסו"
+ },
+ {
+  "id": "j0962",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155119,
+  "end": 155143,
+  "en": "Add a generous milk foam",
+  "he": "מוסיפים קצף חלב נדיב"
+ },
+ {
+  "id": "j0963",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155163,
+  "end": 155175,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j0964",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155179,
+  "end": 155195,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j0965",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155199,
+  "end": 155212,
+  "en": "espresso shot",
+  "he": "שוט אספרסו"
+ },
+ {
+  "id": "j0966",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155216,
+  "end": 155231,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j0967",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155291,
+  "end": 155307,
+  "en": "Tonic dry orange",
+  "he": "טוניק תפוז מיובש"
+ },
+ {
+  "id": "j0968",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155348,
+  "end": 155398,
+  "en": "Sparkling chai massala with tonic and dried orange",
+  "he": "צ׳אי מסאלה מוגז עם טוניק ותפוז מיובש"
+ },
+ {
+  "id": "j0969",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155409,
+  "end": 155432,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0970",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155436,
+  "end": 155469,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0971",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155473,
+  "end": 155497,
+  "en": "Top with tonic (~150 ml)",
+  "he": "משלימים בטוניק (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0972",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155501,
+  "end": 155534,
+  "en": "Garnish with a dried orange slice",
+  "he": "מקשטים בפרוסת תפוז מיובש"
+ },
+ {
+  "id": "j0973",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155554,
+  "end": 155570,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j0974",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155574,
+  "end": 155587,
+  "en": "~150 ml tonic",
+  "he": "~150 מ״ל טוניק"
+ },
+ {
+  "id": "j0975",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155591,
+  "end": 155603,
+  "en": "dried orange",
+  "he": "תפוז מיובש"
+ },
+ {
+  "id": "j0976",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155663,
+  "end": 155678,
+  "en": "Pink tonic rose",
+  "he": "טוניק ורדים ורוד"
+ },
+ {
+  "id": "j0977",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155718,
+  "end": 155760,
+  "en": "Chai massala with rose or grapefruit tonic",
+  "he": "צ׳אי מסאלה עם טוניק ורדים או אשכוליות"
+ },
+ {
+  "id": "j0978",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155771,
+  "end": 155794,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0979",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155798,
+  "end": 155831,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0980",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155835,
+  "end": 155878,
+  "en": "Top with rose or grapefruit tonic (~150 ml)",
+  "he": "משלימים בטוניק ורדים או אשכוליות (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0981",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155898,
+  "end": 155914,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j0982",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155918,
+  "end": 155936,
+  "en": "~150 ml rose tonic",
+  "he": "~150 מ״ל טוניק ורדים"
+ },
+ {
+  "id": "j0983",
+  "kind": "js",
+  "ctx": "js",
+  "start": 155996,
+  "end": 156008,
+  "en": "Orange juice",
+  "he": "מיץ תפוזים"
+ },
+ {
+  "id": "j0984",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156049,
+  "end": 156085,
+  "en": "Chai massala with fresh orange juice",
+  "he": "צ׳אי מסאלה עם מיץ תפוזים סחוט"
+ },
+ {
+  "id": "j0985",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156096,
+  "end": 156119,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0986",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156123,
+  "end": 156156,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0987",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156160,
+  "end": 156197,
+  "en": "Top with fresh orange juice (~150 ml)",
+  "he": "משלימים במיץ תפוזים סחוט (כ־150 מ״ל)"
+ },
+ {
+  "id": "j0988",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156217,
+  "end": 156233,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j0989",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156237,
+  "end": 156257,
+  "en": "~150 ml orange juice",
+  "he": "~150 מ״ל מיץ תפוזים"
+ },
+ {
+  "id": "j0990",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156317,
+  "end": 156328,
+  "en": "var(--nama)",
+  "he": ""
+ },
+ {
+  "id": "j0991",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156350,
+  "end": 156359,
+  "en": "Cold Foam",
+  "he": "קולד פואם"
+ },
+ {
+  "id": "j0992",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156474,
+  "end": 156509,
+  "en": "Chai massala with vanilla cold foam",
+  "he": "צ׳אי מסאלה עם קצף קר וניל"
+ },
+ {
+  "id": "j0993",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156520,
+  "end": 156543,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j0994",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156547,
+  "end": 156566,
+  "en": "Top to ⅔ with water",
+  "he": "משלימים ל־⅔ במים"
+ },
+ {
+  "id": "j0995",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156570,
+  "end": 156603,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j0996",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156607,
+  "end": 156635,
+  "en": "Crown with vanilla cold foam",
+  "he": "מכתירים בקצף קר וניל"
+ },
+ {
+  "id": "j0997",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156639,
+  "end": 156665,
+  "en": "Garnish with a vanilla pod",
+  "he": "מקשטים במקל וניל"
+ },
+ {
+  "id": "j0998",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156685,
+  "end": 156698,
+  "en": "⅔ glass water",
+  "he": "⅔ כוס מים"
+ },
+ {
+  "id": "j0999",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156702,
+  "end": 156718,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j1000",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156722,
+  "end": 156737,
+  "en": "70 ml cold foam",
+  "he": "70 מ״ל קצף קר"
+ },
+ {
+  "id": "j1001",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156741,
+  "end": 156756,
+  "en": "vanilla essence",
+  "he": "תמצית וניל"
+ },
+ {
+  "id": "j1002",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156871,
+  "end": 156920,
+  "en": "Chai massala with cold foam and crushed pistachio",
+  "he": "צ׳אי מסאלה עם קצף קר ופיסטוק גרוס"
+ },
+ {
+  "id": "j1003",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156931,
+  "end": 156954,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1004",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156958,
+  "end": 156976,
+  "en": "Top to ⅔ with milk",
+  "he": "משלימים ל־⅔ בחלב"
+ },
+ {
+  "id": "j1005",
+  "kind": "js",
+  "ctx": "js",
+  "start": 156980,
+  "end": 157013,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j1006",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157017,
+  "end": 157043,
+  "en": "Crown with milky cold foam",
+  "he": "מכתירים בקצף קר חלבי"
+ },
+ {
+  "id": "j1007",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157047,
+  "end": 157073,
+  "en": "Sprinkle crushed pistachio",
+  "he": "מפזרים פיסטוק גרוס"
+ },
+ {
+  "id": "j1008",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157093,
+  "end": 157105,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1009",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157109,
+  "end": 157125,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j1010",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157129,
+  "end": 157144,
+  "en": "70 ml cold foam",
+  "he": "70 מ״ל קצף קר"
+ },
+ {
+  "id": "j1011",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157148,
+  "end": 157165,
+  "en": "crushed pistachio",
+  "he": "פיסטוק גרוס"
+ },
+ {
+  "id": "j1012",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157225,
+  "end": 157237,
+  "en": "Thai coconut",
+  "he": "קוקוס תאילנדי"
+ },
+ {
+  "id": "j1013",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157284,
+  "end": 157331,
+  "en": "Chai massala with cold foam coconut, Thai style",
+  "he": "צ׳אי מסאלה עם קצף קר קוקוס, בסגנון תאילנדי"
+ },
+ {
+  "id": "j1014",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157342,
+  "end": 157365,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1015",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157369,
+  "end": 157401,
+  "en": "Top with coconut water (~150 ml)",
+  "he": "משלימים במי קוקוס (כ־150 מ״ל)"
+ },
+ {
+  "id": "j1016",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157405,
+  "end": 157438,
+  "en": "Pour 50 ml GT massala concentrate",
+  "he": "מוזגים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j1017",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157442,
+  "end": 157478,
+  "en": "Crown with coconut cold foam (70 ml)",
+  "he": "מכתירים בקצף קר קוקוס (70 מ״ל)"
+ },
+ {
+  "id": "j1018",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157498,
+  "end": 157519,
+  "en": "~150 ml coconut water",
+  "he": "~150 מ״ל מי קוקוס"
+ },
+ {
+  "id": "j1019",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157523,
+  "end": 157539,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j1020",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157543,
+  "end": 157562,
+  "en": "70 ml coconut cream",
+  "he": "70 מ״ל קרם קוקוס"
+ },
+ {
+  "id": "j1021",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157672,
+  "end": 157706,
+  "en": "Chai massala with banana cold foam",
+  "he": "צ׳אי מסאלה עם קצף קר בננה"
+ },
+ {
+  "id": "j1022",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157717,
+  "end": 157740,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1023",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157744,
+  "end": 157762,
+  "en": "Top to ⅔ with milk",
+  "he": "משלימים ל־⅔ בחלב"
+ },
+ {
+  "id": "j1024",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157766,
+  "end": 157802,
+  "en": "Pour 50 ml GT massala + banana purée",
+  "he": "מוזגים 50 מ״ל מסאלה GT + פירה בננה"
+ },
+ {
+  "id": "j1025",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157806,
+  "end": 157832,
+  "en": "Crown with milky cold foam",
+  "he": "מכתירים בקצף קר חלבי"
+ },
+ {
+  "id": "j1026",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157852,
+  "end": 157864,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1027",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157868,
+  "end": 157884,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j1028",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157888,
+  "end": 157900,
+  "en": "banana purée",
+  "he": "פירה בננה"
+ },
+ {
+  "id": "j1029",
+  "kind": "js",
+  "ctx": "js",
+  "start": 157904,
+  "end": 157919,
+  "en": "70 ml cold foam",
+  "he": "70 מ״ל קצף קר"
+ },
+ {
+  "id": "j1030",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158079,
+  "end": 158092,
+  "en": "אייס אובה תות",
+  "he": ""
+ },
+ {
+  "id": "j1031",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158101,
+  "end": 158120,
+  "en": "Iced ube strawberry",
+  "he": "אייס אובה תות"
+ },
+ {
+  "id": "j1032",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158131,
+  "end": 158154,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1033",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158158,
+  "end": 158184,
+  "en": "Add 40 ml strawberry purée",
+  "he": "מוסיפים 40 מ״ל פירה תות"
+ },
+ {
+  "id": "j1034",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158188,
+  "end": 158220,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j1035",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158224,
+  "end": 158260,
+  "en": "Pour 50 ml prepared ube (2 g powder)",
+  "he": "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)"
+ },
+ {
+  "id": "j1036",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158264,
+  "end": 158284,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j1037",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158304,
+  "end": 158326,
+  "en": "40 ml strawberry purée",
+  "he": "40 מ״ל פירה תות"
+ },
+ {
+  "id": "j1038",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158330,
+  "end": 158342,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1039",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158346,
+  "end": 158361,
+  "en": "50 ml ube (2 g)",
+  "he": "50 מ״ל אובה (2 גרם)"
+ },
+ {
+  "id": "j1040",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158365,
+  "end": 158380,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j1041",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158455,
+  "end": 158469,
+  "en": "אייס אובה מנגו",
+  "he": ""
+ },
+ {
+  "id": "j1042",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158478,
+  "end": 158492,
+  "en": "mango ube iced",
+  "he": "אייס אובה מנגו"
+ },
+ {
+  "id": "j1043",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158503,
+  "end": 158526,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1044",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158530,
+  "end": 158551,
+  "en": "Add 40 ml mango purée",
+  "he": "מוסיפים 40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j1045",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158555,
+  "end": 158587,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j1046",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158591,
+  "end": 158627,
+  "en": "Pour 50 ml prepared ube (2 g powder)",
+  "he": "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)"
+ },
+ {
+  "id": "j1047",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158631,
+  "end": 158651,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j1048",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158671,
+  "end": 158688,
+  "en": "40 ml mango purée",
+  "he": "40 מ״ל פירה מנגו"
+ },
+ {
+  "id": "j1049",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158692,
+  "end": 158704,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1050",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158708,
+  "end": 158723,
+  "en": "50 ml ube (2 g)",
+  "he": "50 מ״ל אובה (2 גרם)"
+ },
+ {
+  "id": "j1051",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158727,
+  "end": 158742,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j1052",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158817,
+  "end": 158832,
+  "en": "אייס אובה אפרסק",
+  "he": ""
+ },
+ {
+  "id": "j1053",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158841,
+  "end": 158855,
+  "en": "peach ube iced",
+  "he": "אייס אובה אפרסק"
+ },
+ {
+  "id": "j1054",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158866,
+  "end": 158889,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1055",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158893,
+  "end": 158914,
+  "en": "Add 40 ml peach purée",
+  "he": "מוסיפים 40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j1056",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158918,
+  "end": 158950,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j1057",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158954,
+  "end": 158990,
+  "en": "Pour 50 ml prepared ube (2 g powder)",
+  "he": "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)"
+ },
+ {
+  "id": "j1058",
+  "kind": "js",
+  "ctx": "js",
+  "start": 158994,
+  "end": 159014,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j1059",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159034,
+  "end": 159051,
+  "en": "40 ml peach purée",
+  "he": "40 מ״ל פירה אפרסק"
+ },
+ {
+  "id": "j1060",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159055,
+  "end": 159067,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1061",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159071,
+  "end": 159086,
+  "en": "50 ml ube (2 g)",
+  "he": "50 מ״ל אובה (2 גרם)"
+ },
+ {
+  "id": "j1062",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159090,
+  "end": 159105,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j1063",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159182,
+  "end": 159197,
+  "en": "אייס אובה מסאלה",
+  "he": ""
+ },
+ {
+  "id": "j1064",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159206,
+  "end": 159222,
+  "en": "Iced ube massala",
+  "he": "אייס אובה מסאלה"
+ },
+ {
+  "id": "j1065",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159233,
+  "end": 159256,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1066",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159260,
+  "end": 159292,
+  "en": "Add 50 ml GT massala concentrate",
+  "he": "מוסיפים 50 מ״ל תרכיז מסאלה GT"
+ },
+ {
+  "id": "j1067",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159296,
+  "end": 159328,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j1068",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159332,
+  "end": 159368,
+  "en": "Pour 50 ml prepared ube (2 g powder)",
+  "he": "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)"
+ },
+ {
+  "id": "j1069",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159372,
+  "end": 159392,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j1070",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159412,
+  "end": 159428,
+  "en": "50 ml GT massala",
+  "he": "50 מ״ל מסאלה GT"
+ },
+ {
+  "id": "j1071",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159432,
+  "end": 159444,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1072",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159448,
+  "end": 159463,
+  "en": "50 ml ube (2 g)",
+  "he": "50 מ״ל אובה (2 גרם)"
+ },
+ {
+  "id": "j1073",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159467,
+  "end": 159482,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j1074",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159582,
+  "end": 159597,
+  "en": "Iced ube matcha",
+  "he": "אייס אובה מאצ׳ה"
+ },
+ {
+  "id": "j1075",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159608,
+  "end": 159631,
+  "en": "Fill the glass with ice",
+  "he": "ממלאים את הכוס בקרח"
+ },
+ {
+  "id": "j1076",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159635,
+  "end": 159675,
+  "en": "Add 50 ml prepared matcha (1.8 g powder)",
+  "he": "מוסיפים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"
+ },
+ {
+  "id": "j1077",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159679,
+  "end": 159711,
+  "en": "Top to ⅔ with milk (or alt milk)",
+  "he": "משלימים ל־⅔ בחלב (או חלב צמחי)"
+ },
+ {
+  "id": "j1078",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159715,
+  "end": 159751,
+  "en": "Pour 50 ml prepared ube (2 g powder)",
+  "he": "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)"
+ },
+ {
+  "id": "j1079",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159755,
+  "end": 159775,
+  "en": "Add milk foam on top",
+  "he": "מוסיפים קצף חלב מלמעלה"
+ },
+ {
+  "id": "j1080",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159795,
+  "end": 159815,
+  "en": "50 ml matcha (1.8 g)",
+  "he": "50 מ״ל מאצ׳ה (1.8 גרם)"
+ },
+ {
+  "id": "j1081",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159819,
+  "end": 159831,
+  "en": "⅔ glass milk",
+  "he": "⅔ כוס חלב"
+ },
+ {
+  "id": "j1082",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159835,
+  "end": 159850,
+  "en": "50 ml ube (2 g)",
+  "he": "50 מ״ל אובה (2 גרם)"
+ },
+ {
+  "id": "j1083",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159854,
+  "end": 159869,
+  "en": "70 ml milk foam",
+  "he": "70 מ״ל קצף חלב"
+ },
+ {
+  "id": "j1084",
+  "kind": "js",
+  "ctx": "js",
+  "start": 159929,
+  "end": 159939,
+  "en": "var(--ube)",
+  "he": ""
+ },
+ {
+  "id": "j1085",
+  "kind": "js",
+  "ctx": "NOTE",
+  "start": 160343,
+  "end": 160406,
+  "en": "Signature base \\u2014 pairs with ODK peach & mango pur\\u00e9es.",
+  "he": "בסיס למשקה דגל — משתלב עם פירה אפרסק ומנגו של ODK."
+ },
+ {
+  "id": "j1086",
+  "kind": "js",
+  "ctx": "NOTE",
+  "start": 160431,
+  "end": 160482,
+  "en": "Serves hot or iced as a latte. No menu recipes yet.",
+  "he": "מוגש חם או קר כלאטה. עדיין בלי מתכוני תפריט."
+ },
+ {
+  "id": "j1087",
+  "kind": "js",
+  "ctx": "muted",
+  "start": 160594,
+  "end": 160600,
+  "en": " muted",
+  "he": ""
+ },
+ {
+  "id": "j1088",
+  "kind": "js",
+  "ctx": "muted",
+  "start": 160684,
+  "end": 160696,
+  "en": "+(DFCOL[p]||",
+  "he": ""
+ },
+ {
+  "id": "j1089",
+  "kind": "js",
+  "ctx": "muted",
+  "start": 160766,
+  "end": 160812,
+  "en": "+(pairs.length?pairs.length+(pairs.length===1?",
+  "he": ""
+ },
+ {
+  "id": "j1090",
+  "kind": "js",
+  "ctx": "muted",
+  "start": 160822,
+  "end": 160829,
+  "en": " drinks",
+  "he": ""
+ },
+ {
+  "id": "j1091",
+  "kind": "js",
+  "ctx": "muted",
+  "start": 160903,
+  "end": 160914,
+  "en": "+(NOTE[p]||",
+  "he": ""
+ },
+ {
+  "id": "j1092",
+  "kind": "js",
+  "ctx": "byCh",
+  "start": 161170,
+  "end": 161182,
+  "en": "+COLS[ci].t+",
+  "he": ""
+ },
+ {
+  "id": "j1093",
+  "kind": "js",
+  "ctx": "byCh",
+  "start": 161290,
+  "end": 161299,
+  "en": " data-di=",
+  "he": ""
+ },
+ {
+  "id": "j1094",
+  "kind": "js",
+  "ctx": "byCh",
+  "start": 161309,
+  "end": 161333,
+  "en": "+COLS[ci].drinks[di].en+",
+  "he": ""
+ },
+ {
+  "id": "j1095",
+  "kind": "js",
+  "ctx": "y",
+  "start": 164668,
+  "end": 164683,
+  "en": "${y.toFixed(1)}",
+  "he": ""
+ },
+ {
+  "id": "j1096",
+  "kind": "js",
+  "ctx": "y",
+  "start": 164708,
+  "end": 164730,
+  "en": "${(lh+0.6).toFixed(1)}",
+  "he": ""
+ },
+ {
+  "id": "j1097",
+  "kind": "js",
+  "ctx": "y",
+  "start": 164738,
+  "end": 164748,
+  "en": "${l.color}",
+  "he": ""
+ },
+ {
+  "id": "j1098",
+  "kind": "js",
+  "ctx": "y",
+  "start": 164809,
+  "end": 164816,
+  "en": "${TOPY}",
+  "he": ""
+ },
+ {
+  "id": "j1099",
+  "kind": "js",
+  "ctx": "y",
+  "start": 164853,
+  "end": 164862,
+  "en": "${accent}",
+  "he": ""
+ },
+ {
+  "id": "j1100",
+  "kind": "js",
+  "ctx": "y",
+  "start": 164911,
+  "end": 165008,
+  "en": "M${X+3} ${TOPY+6} Q${X+13} ${TOPY-8} ${X+W/2} ${TOPY-2} Q${X+W-13} ${TOPY-9} ${X+W-3} ${TOPY+6} Z",
+  "he": ""
+ },
+ {
+  "id": "j1101",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165016,
+  "end": 165029,
+  "en": "${foam.color}",
+  "he": ""
+ },
+ {
+  "id": "j1102",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165103,
+  "end": 165123,
+  "en": "rgba(255,255,255,.5)",
+  "he": ""
+ },
+ {
+  "id": "j1103",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165133,
+  "end": 165154,
+  "en": "rgba(255,255,255,.85)",
+  "he": ""
+ },
+ {
+  "id": "j1104",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165197,
+  "end": 165207,
+  "en": "${TOPY+14}",
+  "he": ""
+ },
+ {
+  "id": "j1105",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165250,
+  "end": 165280,
+  "en": "rotate(-12 ${X+16} ${TOPY+21})",
+  "he": ""
+ },
+ {
+  "id": "j1106",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165306,
+  "end": 165316,
+  "en": "${TOPY+30}",
+  "he": ""
+ },
+ {
+  "id": "j1107",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165359,
+  "end": 165387,
+  "en": "rotate(9 ${X+39} ${TOPY+37})",
+  "he": ""
+ },
+ {
+  "id": "j1108",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165413,
+  "end": 165423,
+  "en": "${TOPY+52}",
+  "he": ""
+ },
+ {
+  "id": "j1109",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165466,
+  "end": 165495,
+  "en": "rotate(-6 ${X+22} ${TOPY+59})",
+  "he": ""
+ },
+ {
+  "id": "j1110",
+  "kind": "js",
+  "ctx": "y",
+  "start": 165547,
+  "end": 165672,
+  "en": "M${X} ${TOPY-10} L${X} ${BOT-6} Q${X} ${BOT} ${X+6} ${BOT} L${X+W-6} ${BOT} Q${X+W} ${BOT} ${X+W} ${BOT-6} L${X+W} ${TOPY-10}",
+  "he": ""
+ },
+ {
+  "id": "j1111",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 176956,
+  "end": 176968,
+  "en": "\\ud83e\\uddca",
+  "he": ""
+ },
+ {
+  "id": "j1112",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 176991,
+  "end": 177003,
+  "en": "\\ud83c\\udf75",
+  "he": ""
+ },
+ {
+  "id": "j1113",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177026,
+  "end": 177038,
+  "en": "\\ud83c\\udf60",
+  "he": ""
+ },
+ {
+  "id": "j1114",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177101,
+  "end": 177113,
+  "en": "\\ud83e\\uddc9",
+  "he": ""
+ },
+ {
+  "id": "j1115",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177158,
+  "end": 177170,
+  "en": "\\u2601\\ufe0f",
+  "he": ""
+ },
+ {
+  "id": "j1116",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177192,
+  "end": 177204,
+  "en": "\\ud83e\\udd5b",
+  "he": ""
+ },
+ {
+  "id": "j1117",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177239,
+  "end": 177251,
+  "en": "\\ud83e\\udd64",
+  "he": ""
+ },
+ {
+  "id": "j1118",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177274,
+  "end": 177286,
+  "en": "\\ud83d\\udca7",
+  "he": ""
+ },
+ {
+  "id": "j1119",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177353,
+  "end": 177365,
+  "en": "\\ud83c\\udf6f",
+  "he": ""
+ },
+ {
+  "id": "j1120",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177459,
+  "end": 177471,
+  "en": "\\ud83c\\udf53",
+  "he": ""
+ },
+ {
+  "id": "j1121",
+  "kind": "js",
+  "ctx": "STEP_ICONS",
+  "start": 177534,
+  "end": 177546,
+  "en": "\\ud83c\\udf3f",
+  "he": ""
+ },
+ {
+  "id": "j1122",
+  "kind": "js",
+  "ctx": "parts",
+  "start": 177780,
+  "end": 177801,
+  "en": "+parts.map((p,i)=>(i?",
+  "he": ""
+ },
+ {
+  "id": "j1123",
+  "kind": "js",
+  "ctx": "parts",
+  "start": 177906,
+  "end": 177913,
+  "en": ").join(",
+  "he": ""
+ },
+ {
+  "id": "j1124",
+  "kind": "js",
+  "ctx": "srcs",
+  "start": 178945,
+  "end": 178958,
+  "en": "+(FLCARD[n]||",
+  "he": ""
+ },
+ {
+  "id": "j1125",
+  "kind": "js",
+  "ctx": "srcs",
+  "start": 178982,
+  "end": 178992,
+  "en": "; }).join(",
+  "he": ""
+ },
+ {
+  "id": "j1126",
+  "kind": "js",
+  "ctx": "st",
+  "start": 181067,
+  "end": 181098,
+  "en": ".cm-steps li:before{background:",
+  "he": ""
+ },
+ {
+  "id": "j1127",
+  "kind": "js",
+  "ctx": "vis",
+  "start": 181239,
+  "end": 181252,
+  "en": "+DPHOTO[key]+",
+  "he": ""
+ },
+ {
+  "id": "j1128",
+  "kind": "js",
+  "ctx": "vis",
+  "start": 181254,
+  "end": 181259,
+  "en": " alt=",
+  "he": ""
+ },
+ {
+  "id": "a1129",
+  "kind": "attr:alt",
+  "ctx": "page",
+  "start": 181260,
+  "end": 181268,
+  "en": "'+d.en+'",
+  "he": ""
+ },
+ {
+  "id": "j1130",
+  "kind": "js",
+  "ctx": "pos",
+  "start": 181392,
+  "end": 181403,
+  "en": "+scene.url+",
+  "he": ""
+ },
+ {
+  "id": "j1131",
+  "kind": "js",
+  "ctx": "pos",
+  "start": 181429,
+  "end": 181434,
+  "en": "+pos+",
+  "he": ""
+ },
+ {
+  "id": "j1132",
+  "kind": "js",
+  "ctx": "vurl",
+  "start": 181639,
+  "end": 181645,
+  "en": "+vurl+",
+  "he": ""
+ },
+ {
+  "id": "j1133",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 183658,
+  "end": 183753,
+  "en": "Golden Alphonso-style mango purée — the sunshine layer for signatures, matcha, coconut and ube.",
+  "he": "פירה מנגו בסגנון אלפונסו זהוב — שכבת השמש למשקאות הדגל, למאצ׳ה, לקוקוס ולאובה."
+ },
+ {
+  "id": "j1134",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 183769,
+  "end": 183791,
+  "en": "Revive mango signature",
+  "he": "משקה דגל Revive מנגו"
+ },
+ {
+  "id": "j1135",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 183803,
+  "end": 183820,
+  "en": "Iced mango matcha",
+  "he": "אייס מאצ׳ה מנגו"
+ },
+ {
+  "id": "j1136",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 183832,
+  "end": 183852,
+  "en": "Mango matcha coconut",
+  "he": "מאצ׳ה קוקוס מנגו"
+ },
+ {
+  "id": "j1137",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 183864,
+  "end": 183878,
+  "en": "Iced ube mango",
+  "he": "אייס אובה מנגו"
+ },
+ {
+  "id": "j1138",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 183930,
+  "end": 184008,
+  "en": "Ripe red strawberry purée — the bestseller layer across the whole summer card.",
+  "he": "פירה תות אדום ובשל — שכבת רב המכר לאורך כל תפריט הקיץ."
+ },
+ {
+  "id": "j1139",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184024,
+  "end": 184050,
+  "en": "Detox strawberry signature",
+  "he": "משקה דגל Detox תות"
+ },
+ {
+  "id": "j1140",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184062,
+  "end": 184084,
+  "en": "Iced strawberry matcha",
+  "he": "אייס מאצ׳ה תות"
+ },
+ {
+  "id": "j1141",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184096,
+  "end": 184121,
+  "en": "Strawberry matcha coconut",
+  "he": "מאצ׳ה קוקוס תות"
+ },
+ {
+  "id": "j1142",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184133,
+  "end": 184152,
+  "en": "Iced ube strawberry",
+  "he": "אייס אובה תות"
+ },
+ {
+  "id": "j1143",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184194,
+  "end": 184271,
+  "en": "Velvet peach purée — the desert-peach hero: signature, gazoz, matcha and ube.",
+  "he": "פירה אפרסק קטיפתי — הכוכב של המדברי־אפרסק: משקה דגל, גזוז, מאצ׳ה ואובה."
+ },
+ {
+  "id": "j1144",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184287,
+  "end": 184309,
+  "en": "Desert peach signature",
+  "he": "משקה דגל מדברי אפרסק"
+ },
+ {
+  "id": "j1145",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184321,
+  "end": 184339,
+  "en": "Desert peach gazoz",
+  "he": "גזוז מדברי אפרסק"
+ },
+ {
+  "id": "j1146",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184351,
+  "end": 184368,
+  "en": "Iced peach matcha",
+  "he": "אייס מאצ׳ה אפרסק"
+ },
+ {
+  "id": "j1147",
+  "kind": "js",
+  "ctx": "PUREES",
+  "start": 184380,
+  "end": 184394,
+  "en": "Iced ube peach",
+  "he": "אייס אובה אפרסק"
+ },
+ {
+  "id": "j1148",
+  "kind": "js",
+  "ctx": "pim",
+  "start": 185809,
+  "end": 185890,
+  "en": "position:static;inset:auto;width:100%;height:auto;max-width:none;max-height:none;",
+  "he": ""
+ },
+ {
+  "id": "j1149",
+  "kind": "js",
+  "ctx": "pim",
+  "start": 185897,
+  "end": 185961,
+  "en": "aspect-ratio:auto;object-fit:fill;display:block;border-radius:0;",
+  "he": ""
+ },
+ {
+  "id": "j1150",
+  "kind": "js",
+  "ctx": "pg",
+  "start": 186062,
+  "end": 186076,
+  "en": "+pmShots[pmI]+",
+  "he": ""
+ },
+ {
+  "id": "j1151",
+  "kind": "js",
+  "ctx": "p",
+  "start": 186577,
+  "end": 186609,
+  "en": " pur\\u00e9e \\u00b7 where it goes",
+  "he": " פירה · לאן זה הולך"
+ },
+ {
+  "id": "j1152",
+  "kind": "js",
+  "ctx": "a",
+  "start": 186868,
+  "end": 186880,
+  "en": "+COLS[ci].n+",
+  "he": ""
+ },
+ {
+  "id": "j1153",
+  "kind": "js",
+  "ctx": "a",
+  "start": 186890,
+  "end": 186902,
+  "en": "+COLS[ci].t+",
+  "he": ""
+ },
+ {
+  "id": "j1154",
+  "kind": "js",
+  "ctx": "a",
+  "start": 186941,
+  "end": 186976,
+  "en": "color:#20241F;text-decoration:none;",
+  "he": ""
+ },
+ {
+  "id": "j1155",
+  "kind": "js",
+  "ctx": "a",
+  "start": 187010,
+  "end": 187109,
+  "en": "font-family:Assistant,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;",
+  "he": ""
+ },
+ {
+  "id": "j1156",
+  "kind": "js",
+  "ctx": "a",
+  "start": 187142,
+  "end": 187275,
+  "en": "font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93;text-decoration:none;white-space:nowrap;",
+  "he": ""
+ },
+ {
+  "id": "j1157",
+  "kind": "js",
+  "ctx": "el",
+  "start": 187805,
+  "end": 187822,
+  "en": "+el.dataset.hsbg+",
+  "he": ""
+ },
+ {
+  "id": "j1158",
+  "kind": "js",
+  "ctx": "N",
+  "start": 188031,
+  "end": 188043,
+  "en": "translateX(-",
+  "he": ""
+ },
+ {
+  "id": "j1159",
+  "kind": "js",
+  "ctx": "box",
+  "start": 200791,
+  "end": 200873,
+  "en": "position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;opacity:0;",
+  "he": ""
+ },
+ {
+  "id": "j1160",
+  "kind": "js",
+  "ctx": "im",
+  "start": 201024,
+  "end": 201090,
+  "en": "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;",
+  "he": ""
+ },
+ {
+  "id": "j1161",
+  "kind": "js",
+  "ctx": "im",
+  "start": 201104,
+  "end": 201139,
+  "en": "object-position:50% 100%;opacity:0;",
+  "he": ""
+ },
+ {
+  "id": "j1162",
+  "kind": "js",
+  "ctx": "tag",
+  "start": 201367,
+  "end": 201382,
+  "en": " recipes \\u2192",
+  "he": " מתכונים ←"
+ },
+ {
+  "id": "j1163",
+  "kind": "js",
+  "ctx": "tag",
+  "start": 201491,
+  "end": 201551,
+  "en": "position:absolute;top:14px;right:14px;left:auto;bottom:auto;",
+  "he": ""
+ },
+ {
+  "id": "j1164",
+  "kind": "js",
+  "ctx": "tag",
+  "start": 201563,
+  "end": 201623,
+  "en": "max-width:calc(100% - 28px);box-sizing:border-box;z-index:6;",
+  "he": ""
+ },
+ {
+  "id": "j1165",
+  "kind": "js",
+  "ctx": "dots",
+  "start": 201726,
+  "end": 201796,
+  "en": "position:absolute;top:52px;right:16px;left:auto;bottom:auto;z-index:6;",
+  "he": ""
+ },
+ {
+  "id": "j1166",
+  "kind": "js",
+  "ctx": "warmed",
+  "start": 203353,
+  "end": 203357,
+  "en": "cyc:",
+  "he": ""
+ },
+ {
+  "id": "j1167",
+  "kind": "js",
+  "ctx": "open",
+  "start": 203591,
+  "end": 203603,
+  "en": "Collapse all",
+  "he": "סגרו הכול"
+ },
+ {
+  "id": "j1168",
+  "kind": "js",
+  "ctx": "L",
+  "start": 203864,
+  "end": 203881,
+  "en": "Venue / company: ",
+  "he": "שם העסק: "
+ },
+ {
+  "id": "j1169",
+  "kind": "js",
+  "ctx": "L",
+  "start": 203898,
+  "end": 203904,
+  "en": "Name: ",
+  "he": "שם: "
+ },
+ {
+  "id": "j1170",
+  "kind": "js",
+  "ctx": "L",
+  "start": 203920,
+  "end": 203926,
+  "en": "Role: ",
+  "he": "תפקיד: "
+ },
+ {
+  "id": "j1171",
+  "kind": "js",
+  "ctx": "L",
+  "start": 203958,
+  "end": 203964,
+  "en": "City: ",
+  "he": "עיר: "
+ },
+ {
+  "id": "j1172",
+  "kind": "js",
+  "ctx": "L",
+  "start": 203980,
+  "end": 203987,
+  "en": "Phone: ",
+  "he": "טלפון: "
+ },
+ {
+  "id": "j1173",
+  "kind": "js",
+  "ctx": "L",
+  "start": 204004,
+  "end": 204011,
+  "en": "Email: ",
+  "he": "אימייל: "
+ },
+ {
+  "id": "j1174",
+  "kind": "js",
+  "ctx": "L",
+  "start": 204043,
+  "end": 204058,
+  "en": "Interested in: ",
+  "he": "מתעניין ב: "
+ },
+ {
+  "id": "j1175",
+  "kind": "js",
+  "ctx": "L",
+  "start": 204083,
+  "end": 204091,
+  "en": "Message:",
+  "he": "הודעה:"
+ },
+ {
+  "id": "j1176",
+  "kind": "js",
+  "ctx": "subj",
+  "start": 204123,
+  "end": 204159,
+  "en": "GT Everyday — partner application — ",
+  "he": "GT Everyday — בקשת שיתוף פעולה — "
+ },
+ {
+  "id": "j1177",
+  "kind": "js",
+  "ctx": "subj",
+  "start": 204215,
+  "end": 204250,
+  "en": "mailto:info@gteveryday.com?subject=",
+  "he": ""
+ }
+]
