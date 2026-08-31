@@ -173,12 +173,15 @@ SECTION = f"""{{%- comment -%}}
 {{% endschema %}}
 """
 
+# On the index template Shopify's `page_title` is just the shop name, which
+# drops the page's own title; the brand-site title is emitted directly and
+# every other template keeps Shopify's.
 LAYOUT = f"""<!doctype html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{{{ page_title }}}}</title>
+<title>{{% if request.page_type == 'index' %}}{title}{{% else %}}{{{{ page_title }}}}{{% endif %}}</title>
 {preconnect}
 {fonts}
 {metas}
