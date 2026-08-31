@@ -1,0 +1,87 @@
+name: build
+
+# The Hebrew page is generated, and every generator in tools/ asserts its own
+# anchors. That safety only helps if something runs it: before this workflow the
+# build and the validator were run by hand, so a moved anchor or a figure that
+# drifted from the record could sit in a commit unnoticed.
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rebuild the Hebrew page from the English source
+        # Fails loudly if any patch anchor moved. The brain repo is not checked
+        # out here, so sync_figures falls back to the vendored record and says so.
+        run: ./tools/build.sh
+
+      - name: Every figure matches the figures of record
+        run: python3 tools/verify_figures.py
+
+      - name: The vendored record is a faithful copy
+        run: python3 tools/sync_figures.py --check
+
+      - name: The committed build is the build
+        # src/index.html is generated but committed, so the two must agree. If
+        # this fails someone edited the built page by hand instead of its source.
+        run: |
+          if ! git diff --quiet -- src/index.html; then
+            echo "::error::src/index.html differs from a clean build."
+            echo "Edit i18n/parts/ or tools/, then run ./tools/build.sh and commit the result."
+            git diff --stat -- src/index.html
+            exit 1
+          fi
+
+      - name: Regenerate the theme
+        run: python3 tools/build_theme.py
+
+      - name: The committed theme is the theme
+        run: |
+          if ! git diff --quiet -- theme/; then
+            echo "::error::theme/ differs from a clean build — run python3 tools/build_theme.py and commit."
+            git diff --stat -- theme/
+            exit 1
+          fi
+
+      - name: No placeholder copy reaches the page
+        # Field hints on the enquiry form are real content; unfinished copy is not.
+        run: |
+          if grep -n 'ממתין לחומרים\|TODO\|FIXME\|lorem ipsum' src/index.html; then
+            echo "::error::placeholder copy found in the built page"
+            exit 1
+          fi
+
+      - name: Liquid section stays under Shopify's limit
+        run: |
+          size=$(wc -c < theme/sections/gt-home.liquid)
+          echo "gt-home.liquid: $size bytes (limit 262144)"
+          [ "$size" -lt 262144 ] || { echo "::error::section exceeds Shopify's 256 KB limit"; exit 1; }
+
+      - name: No remote image URL survives into the theme
+        # src/index.html keeps its remote URLs on purpose — it is the browser
+        # preview. build_theme.py rewrites them, and theme/ must carry none.
+        run: |
+          if grep -rn 'wsrv\.nl\|cloudfront\.net' theme/sections theme/assets; then
+            echo "::error::theme still references a remote image host"
+            exit 1
+          fi
+
+      - name: Nothing is hidden by pushing it off-screen
+        # The page is RTL, so a large negative offset extends the scrollable
+        # area instead of falling outside it. A honeypot at left:-9999px widened
+        # the document to 11,310px and scrolled the whole page sideways into
+        # empty paper — with a correct DOM, so only a render showed it. Hide
+        # things by clipping.
+        run: |
+          if grep -nE '(left|right|top|margin-left|margin-right|text-indent): *-[0-9]{4,}' src/index.html; then
+            echo "::error::off-screen offset found — hide with clip-path/clip instead"
+            exit 1
+          fi
