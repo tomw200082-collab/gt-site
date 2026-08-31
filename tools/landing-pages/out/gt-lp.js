@@ -6,16 +6,20 @@
 (function () {
   'use strict';
 
-  var reveal = document.querySelectorAll('.lp .rv');
+  var reveal = document.querySelectorAll('.g-lp .g-drink');
   if (window.IntersectionObserver && reveal.length) {
+    // Only arm the hidden start state once we know the observer will undo it.
+    Array.prototype.forEach.call(document.querySelectorAll('.g-lp .g-grid'), function (g) {
+      g.classList.add('g-reveal');
+    });
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('g-on'); io.unobserve(e.target); }
       });
     }, { threshold: 0.12 });
     Array.prototype.forEach.call(reveal, function (el) { io.observe(el); });
   } else {
-    Array.prototype.forEach.call(reveal, function (el) { el.classList.add('on'); });
+    Array.prototype.forEach.call(reveal, function (el) { el.classList.add('g-on'); });
   }
 
   function waFallback(f, payload) {
@@ -30,8 +34,8 @@
     window.open('https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines), '_blank', 'noopener');
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('.lp-form'), function (f) {
-    var msg = f.querySelector('.lp-f-msg');
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp form'), function (f) {
+    var msg = f.querySelector('.g-msg');
     var btn = f.querySelector('button[type=submit]');
 
     function say(text, isError) {

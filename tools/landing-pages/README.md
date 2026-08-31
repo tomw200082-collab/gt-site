@@ -42,3 +42,25 @@ The per-page discriminator is `source` (`site-chai`, `site-matcha`,
 
 With no webhook set the form falls back to WhatsApp with the details prefilled,
 so a submission is never silently lost.
+
+## Namespacing (why every class starts with `g-`)
+
+`gt-site.css` carries unscoped single-class rules — `.glass`, `.hero`, `.btn`,
+`.wrap`, `.eyebrow`, `.logo`, `.serif`. A `.lp .x` selector outranks a bare `.x`
+only for properties it actually declares; everything it leaves unset still comes
+from the theme. `.glass` was the expensive one: `position:absolute;opacity:0`
+pulled every drink's glass out of its card grid, collapsing the column to 0px and
+hiding the pages' signature element on all four pages while everything else looked
+fine.
+
+So every class the sections emit is `g-` prefixed, and `gen.py`'s output is gated
+on a collision audit against the theme's stylesheets returning zero. Adding a new
+class means re-running that audit, not eyeballing the render.
+
+## Preview without publishing
+
+`out/index.<slug>.json` are alternate index templates. Shopify's `?view=<suffix>`
+renders them on the index route with no page record involved, so the four pages are
+reviewable inside the theme preview while `/pages/<slug>` stays 404 on the live
+storefront. `out/page.<slug>.json` are the real templates for launch day, and need
+the page records flipped to published.
