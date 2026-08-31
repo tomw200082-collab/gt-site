@@ -36,15 +36,20 @@ DEAD = (
     "hf_20260722_195431", "hf_20260727_092900",
 )
 
-survey = {}
-for line in (Path("/tmp/imgs/survey.tsv")).read_text().splitlines():
-    idx, code, size, mime = line.split("\t")
-    survey[idx] = mime
-indexed = {}
-for line in (Path("/tmp/imgs/indexed.tsv")).read_text().splitlines():
-    idx, url = line.split("\t", 1)
-    indexed[idx] = url
-MIME = {url: survey[i] for i, url in indexed.items()}
+# Each asset is named `gt-<sha1(canonical url)[:10]>.<ext>`, and the extension
+# records what the origin actually served — the one thing the URL alone does
+# not tell us. `theme/assets.manifest.json` maps every asset back to its URL,
+# so it carries that fact durably; the content-type survey it was first built
+# from was a scratch file and is long gone.
+MANIFEST = THEME / "assets.manifest.json"
+MIME = {}
+if MANIFEST.exists():
+    for name, url in json.loads(MANIFEST.read_text(encoding="utf-8")).items():
+        want = f"gt-{hashlib.sha1(url.encode()).hexdigest()[:10]}{Path(name).suffix}"
+        if want != name:
+            sys.exit(f"FAIL: manifest entry {name} does not hash from its own URL "
+                     f"(expected {want}) — the manifest and the naming rule disagree")
+        MIME[url] = "image/png" if name.endswith(".png") else "image/webp"
 
 text = SRC.read_text(encoding="utf-8")
 

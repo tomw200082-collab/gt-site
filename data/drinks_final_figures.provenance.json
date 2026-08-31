@@ -1,0 +1,10 @@
+{
+  "source_repo": "gt-factory-os-production-brain",
+  "source_path": ".claude/skills/drinks-pricelist/drinks_final_figures.json",
+  "sha256": "5d38f621eda8e1d009e4875cdc4d83fbdcd3c97ec85d30940e56712d78b2732d",
+  "record_date": "2026-08-27",
+  "pages_total": 48,
+  "brain_head_at_sync": "b0871c6d4e663815471b6fa8d16de6ba40df7882",
+  "last_commit_touching_record": "b31b65694169aabdff9fbfba96572e524fc4b690 2026-08-27",
+  "synced": "2026-08-31"
+}
