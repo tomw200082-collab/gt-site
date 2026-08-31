@@ -72,3 +72,40 @@ kicker, the same pairing the collection cards use.
 - A mobile menu. Under 980px the old page hid `.nav-links` and put nothing in
   its place, so every phone had no navigation at all.
 - One `<h1>` for the document; the ten slide headings become `<h2>`.
+
+## Where it runs
+
+The Hebrew page is live as an **unpublished** Shopify theme on
+`greenteaeveryday.myshopify.com`. Nothing is published — `HE-RU Vodoma 2024`
+is still the live theme.
+
+| | |
+|---|---|
+| Theme | `GT Site v5 — Hebrew (do not publish)` · id `162206646513` |
+| Preview | `https://gteveryday.com/?preview_theme_id=162206646513` |
+| Old homepage | kept as `templates/index.vodoma.json` → `?view=vodoma` |
+
+Open the full preview URL in a browser: Shopify sets a cookie and redirects, so
+a client that drops cookies gets the live theme back instead. The preview then
+sticks to that browser until it is closed — seeing the new site at a bare
+`gteveryday.com` does **not** mean it was published.
+
+The theme is a duplicate of the live one, so product, collection, cart and
+account routes all still render from Vodoma underneath; only the homepage is
+ours.
+
+### Deploying a change
+
+```sh
+./tools/build.sh        # regenerate src/index.html
+python3 tools/build_theme.py   # regenerate theme/
+git commit && git push
+```
+
+then `themeFilesUpsert` the changed files, pointing `body.type: URL` at the
+raw.githubusercontent.com URLs for the pushed commit — Shopify fetches them
+itself. `theme/assets.manifest.json` maps each image asset to the URL it was
+fetched from.
+
+Details and the traps worth knowing:
+`gt-factory-os-production-brain/.claude/skills/shopify-theme/SKILL.md`.
