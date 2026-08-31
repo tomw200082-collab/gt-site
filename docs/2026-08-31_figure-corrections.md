@@ -5,8 +5,14 @@ The figures of record are `.claude/skills/drinks-pricelist/drinks_final_figures.
 (`2026-08-27`, sha256 `5d38f621eda8e1d0`), named as such by
 `docs/pricing/2026-08-27_COST_MODEL.md:78`. Every figure on the page now comes from it.
 
-**261 values rewritten** across four surfaces: 48 drinks x 4 fields, 10 collection
-headline prices, 23 flavour-card rows x 3 fields, 10 static collection cards.
+**277 values rewritten** across five surfaces: 48 drinks x 4 fields, 10 collection
+headline prices, 23 flavour-card rows x 3 fields, 10 static collection cards, and
+16 labels in the scrolling ticker under the hero.
+
+The ticker was the fifth surface and the last one found — not by reading the
+source, but by looking at a render and noticing the strip still said ₪19 while
+the hero chip directly above it said ₪20. `tools/verify_figures.py` now checks
+all five.
 
 **36 of 48 recommended prices moved — every one of them upward.** The superseded
 set was recommending less than GT prices at.

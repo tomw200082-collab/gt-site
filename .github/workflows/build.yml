@@ -73,3 +73,15 @@ jobs:
             echo "::error::theme still references a remote image host"
             exit 1
           fi
+
+      - name: Nothing is hidden by pushing it off-screen
+        # The page is RTL, so a large negative offset extends the scrollable
+        # area instead of falling outside it. A honeypot at left:-9999px widened
+        # the document to 11,310px and scrolled the whole page sideways into
+        # empty paper — with a correct DOM, so only a render showed it. Hide
+        # things by clipping.
+        run: |
+          if grep -nE '(left|right|top|margin-left|margin-right|text-indent): *-[0-9]{4,}' src/index.html; then
+            echo "::error::off-screen offset found — hide with clip-path/clip instead"
+            exit 1
+          fi

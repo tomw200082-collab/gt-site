@@ -61,14 +61,20 @@ def main() -> None:
     )
 
     # ── honeypot + status region ────────────────────────────────────────
-    # The honeypot is off-screen rather than display:none — some bots skip
-    # hidden inputs but fill positioned ones — and is hidden from assistive
-    # technology and the tab order so no person can reach it by accident.
+    # Hidden by clipping, not by display:none — some bots skip a field they can
+    # see is hidden, and fill one that merely looks positioned — and hidden from
+    # assistive technology and the tab order so no person reaches it by accident.
+    #
+    # It must not be pushed off-screen with a large negative offset. That is the
+    # usual recipe for this, and here it silently widened the document to
+    # 11,310px: the page is RTL, so an element at left:-9999px extends the
+    # scrollable area rather than falling outside it, and the whole page scrolled
+    # sideways into empty paper. Clipping costs nothing and moves nothing.
     text = sub(
         "honeypot + status",
         '    <label class="pf-ok"><input type="checkbox" id="pf-agree" required>',
-        '    <div aria-hidden="true" style="position:absolute;left:-9999px;'
-        'width:1px;height:1px;overflow:hidden">\n'
+        '    <div aria-hidden="true" style="position:absolute;width:1px;height:1px;'
+        'overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">\n'
         '      <label for="pf-cw">אל תמלאו שדה זה</label>\n'
         '      <input id="pf-cw" name="company_website" type="text"'
         ' tabindex="-1" autocomplete="off">\n'

@@ -117,6 +117,25 @@ def rewrite_js(s):
                           '(GT_ASSET_BASE+' + quote + name + quote + ')')
     return s
 
+# ── 3b. two things Tom can switch without a deploy ──────────────────────
+#
+# Only settings the generator does NOT own may go in the theme editor. The page
+# copy is built from i18n/parts/, so exposing it here would create a second
+# source: an edit made in the editor is silently overwritten by the next
+# build_theme.py. These two are safe because nothing in the build writes them.
+#
+# show_pricing is the switch for the open question in PUBLISH.md B3 — whether
+# 116 wholesale figures belong on a public URL. It makes that a click rather
+# than a rebuild, and it is reversible in both directions.
+_pricing_open = markup.index('<section id="pricing"')
+_pricing_end = markup.rindex('</section>', _pricing_open, markup.index('<section id="about"')) + len('</section>')
+markup = (markup[:_pricing_open]
+          + '{% if section.settings.show_pricing %}'
+          + markup[_pricing_open:_pricing_end]
+          + '{% endif %}'
+          + markup[_pricing_end:])
+
+
 markup = rewrite_markup(markup)
 js = rewrite_js(js)
 
@@ -148,6 +167,18 @@ if not body:
     sys.exit("no <body> found")
 body_html = body.group(1).strip()
 
+# GA4, when Tom puts an id in the theme editor. Appended to the body rather than
+# the markup because the assembly above takes only what is inside <body>.
+body_html += """
+{%- if section.settings.analytics_id != blank -%}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ section.settings.analytics_id }}"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','{{ section.settings.analytics_id }}');
+</script>
+{%- endif -%}
+"""
+
 head = re.search(r"<head>(.*)</head>", markup, re.S).group(1)
 metas = "\n".join(m.group(0) for m in re.finditer(r'<meta [^>]*>', head)
                   if 'charset' not in m.group(0) and 'viewport' not in m.group(0))
@@ -172,7 +203,13 @@ SECTION = f"""{{%- comment -%}}
 {{% schema %}}
 {{
   "name": "GT brand site",
-  "settings": [],
+  "settings": [
+    {{ "type": "checkbox", "id": "show_pricing", "default": true,
+      "label": "\u05d4\u05e6\u05d2\u05ea \u05de\u05d7\u05d9\u05e8\u05d5\u05df \u05e1\u05d9\u05d8\u05d5\u05e0\u05d0\u05d9",
+      "info": "\u05db\u05d9\u05d1\u05d5\u05d9 \u05de\u05e1\u05ea\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05e8\u05e9\u05d9\u05de\u05ea \u05d4\u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05de\u05d4\u05e2\u05de\u05d5\u05d3. \u05d4\u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05e2\u05e6\u05de\u05dd \u05dc\u05d0 \u05de\u05e9\u05ea\u05e0\u05d9\u05dd." }},
+    {{ "type": "text", "id": "analytics_id", "label": "GA4 Measurement ID",
+      "info": "G-XXXXXXXXXX. \u05e8\u05d9\u05e7 = \u05dc\u05dc\u05d0 \u05de\u05d3\u05d9\u05d3\u05d4 \u05e0\u05d5\u05e1\u05e4\u05ea; \u05d4\u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05e1 \u05e9\u05dc \u05e9\u05d5\u05e4\u05d9\u05e4\u05d9\u05d9 \u05e2\u05d5\u05d1\u05d3 \u05d1\u05dc\u05d9 \u05d6\u05d4." }}
+  ],
   "presets": [{{ "name": "GT brand site" }}]
 }}
 {{% endschema %}}

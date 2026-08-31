@@ -4,10 +4,10 @@
 `docs/pricing/2026-08-27_COST_MODEL.md` names
 `.claude/skills/drinks-pricelist/drinks_final_figures.json` as the figures of
 record. This step makes that file the only place a drink price, food cost or
-margin is written down: the page states 71 sets of figures across four separate
-surfaces, and before this step all four carried the superseded 2026-08-05 set.
+margin is written down: the page states its figures across five separate
+surfaces, and before this step all five carried the superseded 2026-08-05 set.
 
-The four surfaces:
+The five surfaces:
 
   1. `COLS[].drinks[]`  — `fc` food cost, `p` price, `m` margin, `pr` profit/cup.
                           Rendered in the drink modal and the collection lists.
@@ -21,6 +21,10 @@ The four surfaces:
                           `p` / `m` / `fc`.
   4. The static collection cards in the markup, which repeat `COLS[].p` in
      hand-written HTML.
+  5. The scrolling ticker under the hero, which repeats eight of them again,
+     twice each, under its own shortened labels. It was the last one found, and
+     only by looking at a render — the DOM was correct and the figures were a
+     month old.
 
 Nothing here computes a figure. Every number is copied from the record, and
 anything the record does not cover halts the build rather than being guessed.
@@ -121,6 +125,22 @@ MK_MAP = {
 CARD_ANCHORS = [
     "Iced Tea", "Lemonade", "Signature", "Gazoz", "Ice Matcha",
     "Matcha Specials", "Matcha Coconut", "Chai Massala", "Cold Foam", "Ube",
+]
+
+# The scrolling ticker under the hero: eight of the ten collections, in its own
+# order, under shortened labels, and written out twice so the strip can loop.
+# Its labels are not the collection names — `קולד פואם` is the chai cold-foam
+# collection, and it spells the geresh differently — so the mapping is by
+# position in COLS rather than by matching the text.
+TICKER = [
+    ("חליטות קרות", 0),
+    ("לימונדות", 1),
+    ("גזוז", 3),
+    ("משקאות הדגל", 2),
+    ("אייס מאצ׳ה", 4),
+    ("צ׳אי מסאלה", 7),
+    ("קולד פואם", 8),
+    ("אובה", 9),
 ]
 
 changes: list[tuple[str, str, str, str]] = []
@@ -233,12 +253,24 @@ def main() -> None:
             changes.append((f"card/{anchor}", "price", found[0][1], new_p))
         text = pat.sub(lambda mm: mm.group(1) + new_p + mm.group(3), text, count=1)
 
+    # ── 5. the ticker under the hero ────────────────────────────────────
+    for label, idx in TICKER:
+        want = headline[idx]
+        pat = re.compile(r"(<span>" + re.escape(label) + r" <b>)(₪[\d–]+)(</b></span>)")
+        found = pat.findall(text)
+        if len(found) != 2:
+            die(f"ticker {label!r}: expected 2 copies, found {len(found)}")
+        for _, old, _ in found:
+            if old != want:
+                changes.append((f"ticker/{label}", "price", old, want))
+        text = pat.sub(lambda mm: mm.group(1) + want + mm.group(3), text)
+
     SRC.write_text(text, encoding="utf-8")
 
     drink_prices = [c for c in changes if c[1] == "p" and c[0].count("/") == 1
                     and c[0].split("/")[1] not in {col["he"] for col in cols}]
     print(f"figures: record {record['_meta']['date']} · "
-          f"{len(changes)} values rewritten across 4 surfaces "
+          f"{len(changes)} values rewritten across 5 surfaces "
           f"({len(drink_prices)} drink prices moved)")
 
 

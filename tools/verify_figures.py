@@ -21,7 +21,7 @@ SRC = ROOT / "src" / "index.html"
 RECORD = ROOT / "data" / "drinks_final_figures.json"
 
 sys.path.insert(0, str(ROOT / "tools"))
-from patch_figures import ALIAS, CARD_ANCHORS, COLD_INFUSIONS, MK_MAP  # noqa: E402
+from patch_figures import ALIAS, CARD_ANCHORS, COLD_INFUSIONS, MK_MAP, TICKER  # noqa: E402
 
 fails: list[str] = []
 
@@ -112,6 +112,18 @@ def main() -> None:
     if cards != 10:
         fails.append(f"cards: {cards} found, expected 10")
 
+    # ── 5. the ticker ───────────────────────────────────────────────────
+    ticks = 0
+    for label, idx in TICKER:
+        found = re.findall(r"<span>" + re.escape(label) + r" <b>(₪[\d–]+)</b></span>", text)
+        if len(found) != 2:
+            fails.append(f"ticker/{label}: expected 2 copies, found {len(found)}")
+            continue
+        ticks += len(found)
+        for got in found:
+            if got != cols[idx]["p"]:
+                fails.append(f"ticker/{label}: {got!r} != COLS {cols[idx]['p']!r}")
+
     # ── no stale figure may survive anywhere on the page ────────────────
     superseded = ROOT.parent / "gt-factory-os-production-brain" / "docs" / "pricing" / "2026-08-05_drinks_final_figures.json"
     if superseded.exists():
@@ -134,7 +146,8 @@ def main() -> None:
     print(
         f"figures verified against the record ({record['_meta']['date']}): "
         f"{drinks} drinks x 4 fields · {len(cols)} collection prices · "
-        f"{rows} MK rows x 3 fields · {cards} static cards — 0 disagreements"
+        f"{rows} MK rows x 3 fields · {cards} static cards · {ticks} ticker "
+        f"labels — 0 disagreements"
     )
 
 
