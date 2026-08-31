@@ -11,4 +11,5 @@ python3 tools/apply_translation.py
 python3 tools/patch_hebrew_build.py
 python3 tools/patch_rtl_shell.py
 python3 tools/patch_figures.py
+python3 tools/patch_claims.py
 node    tools/validate.js

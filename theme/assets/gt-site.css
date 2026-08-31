@@ -166,7 +166,7 @@ section{padding:100px 0}
 
 /* ABOUT */
 .about{background:var(--card)}
-.about .in{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about .in{display:grid;grid-template-columns:1fr;gap:60px;align-items:center;max-width:760px}
 .about .ph{border-radius:28px;height:430px;background:linear-gradient(160deg,#E7DCC6,#CBB astronomical894);background:linear-gradient(160deg,#E7DCC6,#CBB894);display:flex;align-items:center;justify-content:center;color:#8A7A56;font-weight:700;text-align:center;padding:24px;box-shadow:0 40px 80px -35px rgba(32,36,31,.3)}
 .about h2{font-family:'Bellefair';font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.03;margin:10px 0 18px}
 .about p{margin-bottom:14px;color:#3A4034;font-size:17px}
