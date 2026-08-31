@@ -3,6 +3,8 @@
    section sets window.GT_ASSET_BASE before this script loads. */
 var GT_ASSET_BASE = (typeof window !== 'undefined' && window.GT_ASSET_BASE) || '';
 
+
+document.addEventListener('keydown',function(e){var t=e.target;if(!t||!t.matches||!t.matches('[role="button"][onclick]'))return;if(e.key!=='Enter'&&e.key!==' ')return;e.preventDefault();t.click();});
 function navToggle(b){var n=b.closest('nav');var open=n.classList.toggle('open');
  b.setAttribute('aria-expanded',open?'true':'false');
  document.body.style.overflow=open?'hidden':'';}
