@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% if request.page_type == 'index' %}GT Everyday · סיטונאות למסעדנות{% else %}{{ page_title }}{% endif %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet">
+<meta name="description" content="GT Everyday — יצרנית בוטיק ישראלית של תרכיזי תה, מאצ׳ה ופירה פירות לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.">
+<meta name="theme-color" content="#3E6E34">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="GT Everyday">
+<meta property="og:title" content="GT Everyday · סיטונאות למסעדנות">
+<meta property="og:description" content="48 משקאות. ספק אחד. מחירון גלוי.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{{ canonical_url }}">
+{{ content_for_header }}
+<link rel="stylesheet" href="{{ 'gt-site.css' | asset_url }}">
+</head>
+<body>
+{{ content_for_layout }}
+</body>
+</html>

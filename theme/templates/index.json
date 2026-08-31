@@ -1,0 +1,12 @@
+{
+  "layout": "gt",
+  "sections": {
+    "main": {
+      "type": "gt-home",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
