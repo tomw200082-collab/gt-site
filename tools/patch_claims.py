@@ -11,7 +11,7 @@ next time a price moves or a drink is added.
 
 Two claims were checked and left exactly as written, because they are true:
 
-  `תערובת אחת בונה עד 13 פריטים בתפריט` — the NAMASTEA masala blend appears in
+  `תמצית אחת בונה עד 13 פריטים בתפריט` — the NAMASTEA masala blend appears in
   precisely 13 of the 48 menu drinks (verified against COLS).
   `ומוזגת 20–25 כוסות` — a 1 l bottle at the recipes' 40–50 ml dose.
 
