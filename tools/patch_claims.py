@@ -58,7 +58,7 @@ def main() -> None:
     # Both were the superseded set's min/max: ₪3.25 was the old cheapest cup
     # and 85% the old best margin. The record's are ₪2.85 and 87%, both from
     # מאצ'ה אגבה על הקרח.
-    text = sub("cheapest cup", "עלות חומר גלם מ־₪9.99 לכוס",
+    text = sub("cheapest cup", "עלות חומר גלם מ־₪3.25 לכוס",
                f"עלות חומר גלם מ־₪{min_cost:.2f} לכוס", text)
     text = sub("best margin", "רווחיות של עד 85% בהגשות העליונות",
                f"רווחיות של עד {max_marg}% בהגשות העליונות", text)
