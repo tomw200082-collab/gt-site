@@ -811,6 +811,20 @@ body{font-size:17.5px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
   overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
+/* --- hero photographs are mirrored so their negative space falls under the
+       copy. ::before is free here: a later rule in the original stylesheet
+       sets its gradient to `none`, and the dark panel behind the copy comes
+       from .hs-copy instead. --- */
+.hs-slide{background-image:none!important}
+.hs-slide:before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background-image:var(--hsbg,none);
+  background-size:cover;background-position:center bottom;
+  transform:scaleX(-1);
+}
+@media(max-width:760px){ .hs-slide:before{background-size:auto 185%} }
+.hs-slide>.in{position:relative;z-index:1}
+
 /* --- transform-driven tracks stay LTR; their content goes back to RTL ---
    Both animate with a negative translateX over a duplicated/flex row, which
    only lands correctly while the box itself lays out left-to-right. */

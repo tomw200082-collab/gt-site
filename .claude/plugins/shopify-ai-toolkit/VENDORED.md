@@ -25,13 +25,27 @@ From the toolkit's own `plugin.json`:
 That includes code. Set `OPT_OUT_INSTRUMENTATION=true` in the environment if
 GT's theme source should not leave the machine.
 
-## What is actually relevant here
+## Pruned to four skills
 
-`gt-site` is a Liquid brand site. Of the 21 skills, the ones that bear on it
-are `shopify-liquid` (Liquid validation), `shopify-dev` (docs search),
-`shopify-admin` (Admin API schema) and `shopify-use-shopify-cli`. The rest
-cover Hydrogen, POS UI, Polaris extensions, Functions and payments apps — about
-66 MB of the 85 MB here is TypeScript type definitions for those surfaces.
+`gt-site` is a Liquid brand site, so only the skills that bear on one were
+kept:
+
+| skill | what it does here |
+|---|---|
+| `shopify-liquid` | Liquid syntax and theme-architecture validation |
+| `shopify-dev` | shopify.dev documentation search |
+| `shopify-admin` | Admin API schema access |
+| `shopify-use-shopify-cli` | store and theme management via the CLI |
+
+The other seventeen — Hydrogen, POS UI, the four Polaris extension surfaces,
+Functions, payments apps, partner, app-store review, onboarding, ShopifyQL,
+storefront GraphQL, custom data, customer, ucp — were removed. They were
+mostly TypeScript definitions for surfaces this repo does not touch: **85 MB
+and 13,245 files became 6.5 MB and 66.**
+
+Nothing dangles: no manifest in this plugin enumerates skill directories, they
+are discovered from `skills/`. To restore one, copy it back from upstream at
+the pinned commit.
 
 ## Updating
 

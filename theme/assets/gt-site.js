@@ -490,7 +490,7 @@ document.getElementById('pmodal').addEventListener('click',e=>{if(e.target.id===
 
 
 let hsI=0,hsTimer=null;
-function hsLoad(j){const sl=document.querySelectorAll('.hs-slide');const el=sl[(j+sl.length)%sl.length];if(el&&el.dataset.hsbg){el.style.backgroundImage="url('"+el.dataset.hsbg+"')";delete el.dataset.hsbg;}}
+function hsLoad(j){const sl=document.querySelectorAll('.hs-slide');const el=sl[(j+sl.length)%sl.length];if(el&&el.dataset.hsbg){el.style.setProperty("--hsbg","url('"+el.dataset.hsbg+"')");delete el.dataset.hsbg;}}
 function hsGo(i){const N=document.querySelectorAll('.hs-slide').length;hsI=(i+N)%N;hsLoad(hsI);hsLoad(hsI+1);hsLoad(hsI-1);
  document.getElementById('hs-track').style.transform='translateX(-'+(hsI*100)+'%)';
  document.getElementById('hs').style.background=document.querySelectorAll('.hs-slide')[hsI].dataset.bg;

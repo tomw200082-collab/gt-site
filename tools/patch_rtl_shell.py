@@ -39,6 +39,16 @@ sub(
     'לבתי קפה, מסעדות ומלונות</h1>\n<div class="ticker">',
 )
 
+# ── hero art: mirror the photograph, not the slide ──────────────────────
+# All ten hero photographs put the drinks right of centre (measured: 59–66% of
+# the frame) with clear wall on the left — composed for the English build,
+# where the copy sat on the left. Under RTL the copy moved right, on top of the
+# glasses. Mirroring the whole slide would carry the copy along with it, so the
+# image is handed to CSS as a custom property and flipped on ::before alone.
+sub("slide bg to custom property",
+    'el.style.backgroundImage="url(\'"+el.dataset.hsbg+"\')"',
+    'el.style.setProperty("--hsbg","url(\'"+el.dataset.hsbg+"\')")')
+
 # ── mobile navigation (there was none under 980px) ──────────────────────
 sub(
     "burger button",
@@ -82,6 +92,20 @@ RTL_CSS = """
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
   overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* --- hero photographs are mirrored so their negative space falls under the
+       copy. ::before is free here: a later rule in the original stylesheet
+       sets its gradient to `none`, and the dark panel behind the copy comes
+       from .hs-copy instead. --- */
+.hs-slide{background-image:none!important}
+.hs-slide:before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background-image:var(--hsbg,none);
+  background-size:cover;background-position:center bottom;
+  transform:scaleX(-1);
+}
+@media(max-width:760px){ .hs-slide:before{background-size:auto 185%} }
+.hs-slide>.in{position:relative;z-index:1}
 
 /* --- transform-driven tracks stay LTR; their content goes back to RTL ---
    Both animate with a negative translateX over a duplicated/flex row, which
