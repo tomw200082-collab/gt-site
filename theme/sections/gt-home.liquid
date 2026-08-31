@@ -297,7 +297,8 @@
       <li>📷 @gteveryday</li>
     </ul>
   </div>
-  <form class="rv partner" id="pform" onsubmit="return pSend(event)">
+  <form class="rv partner" id="pform" method="post" enctype="text/plain"
+      action="mailto:info@gteveryday.com?subject=GT%20Everyday%20%E2%80%94%20בקשת%20שיתוף%20פעולה" onsubmit="return pSend(event)">
     <div class="pf-head"><b>בקשת שיתוף פעולה</b><span>עונים תוך יום עסקים אחד</span></div>
     <div class="pf-row">
       <input id="pf-name" placeholder="השם שלך *" required>
@@ -320,10 +321,15 @@
       <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
     </select>
     <textarea id="pf-msg" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+      <label for="pf-cw">אל תמלאו שדה זה</label>
+      <input id="pf-cw" name="company_website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="pf-err" id="pf-err" role="alert" hidden></div>
     <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
     <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
     <div class="pf-alt">או שתכתבו לנו ב <a href="https://wa.me/972543982444" target="_blank" rel="noopener">וואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
-    <div class="pf-done" id="pf-done"><b>תודה — הבקשה בדרך אלינו.</b><span>אפליקציית המייל שלכם נפתחה עם המכתב המוכן. אם לא — כתבו ל־info@gteveryday.com</span></div>
+    <div class="pf-done" id="pf-done"><b>תודה — הבקשה בדרך אלינו.</b><span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. אם דחוף — 054-398-2444.</span></div>
   </form>
 </div></section>
 

@@ -193,6 +193,9 @@ section{padding:100px 0}
 .partner .pf-ok input{width:16px;height:16px;flex:none;margin-top:2px;accent-color:#20241F}
 .partner .pf-alt{font-size:13px;color:#8a8577;text-align:center}
 .partner .pf-alt a{color:var(--gt);font-weight:700}
+.partner .pf-err{background:#FBEAE7;border:1px solid #E5B4AB;border-radius:14px;padding:12px 15px;font-size:13.5px;line-height:1.5;color:#7A2E1E}
+.partner .pf-err a{color:#7A2E1E;font-weight:700}
+.partner button[disabled]{opacity:.6;cursor:progress}
 .partner .pf-done{display:none;background:#EEF4EA;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5;color:#3a4a34}
 .partner .pf-done b{display:block;margin-bottom:3px}
 .partner.sent .pf-done{display:block}

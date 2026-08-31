@@ -590,14 +590,36 @@ function pAll(b){var ds=document.querySelectorAll('#pricing .ptable');
 
 ;
 
+var PF_LABEL='שליחה <span class="arr">\u2190</span>';
+var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: <a href="https://wa.me/972543982444">וואטסאפ</a> \u00b7 <a href="tel:+972543982444">054-398-2444</a>.';
+var PF_ENDPOINT="https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake";
+var PF_SHOWN=Date.now();
 function pSend(e){e.preventDefault();
  var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
  var f=document.getElementById('pform');
+ var err=document.getElementById('pf-err');
+ var btn=f.querySelector('button');
  if(!document.getElementById('pf-agree').checked)return false;
- var L=['שם העסק:'+g('pf-venue'),'שם:'+g('pf-name'),'תפקיד:'+(g('pf-role')||'—'),
-        'עיר:'+g('pf-city'),'טלפון:'+g('pf-phone'),'אימייל:'+(g('pf-mail')||'—'),
-        'מתעניין ב:'+(g('pf-int')||'—'),'','הודעה:',g('pf-msg')||'—'];
- var subj='GT Everyday — בקשת שיתוף פעולה —'+(g('pf-venue')||g('pf-name'));
- window.location.href='mailto:info@gteveryday.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(L.join('\n'));
- f.classList.add('sent');
+ var fail=function(msg){err.innerHTML=msg;err.hidden=false;
+  btn.disabled=false;btn.innerHTML=PF_LABEL;
+  err.scrollIntoView({block:'nearest',behavior:'smooth'});};
+ err.hidden=true;
+ btn.disabled=true;btn.innerHTML='שולח\u2026';
+ var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
+  role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int'),
+  message:g('pf-msg'),company_website:g('pf-cw'),
+  elapsed_ms:Date.now()-PF_SHOWN,page:location.href,referrer:document.referrer};
+ var to=setTimeout(function(){fail(PF_ERR);},15000);
+ fetch(PF_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},
+  body:JSON.stringify(body)})
+  .then(function(r){return r.json().catch(function(){return {};})
+   .then(function(j){return {ok:r.ok,j:j};});})
+  .then(function(res){clearTimeout(to);
+   if(res.ok&&res.j&&res.j.ok){f.classList.add('sent');
+    document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
+   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
+   if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
+   if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}
+   fail(PF_ERR);})
+  .catch(function(){clearTimeout(to);fail(PF_ERR);});
  return false;}
