@@ -35,7 +35,7 @@ sub("slide heading css", ".hs-copy h1", ".hs-copy .hs-h", 2)
 sub(
     "document h1",
     '<div class="ticker">',
-    '<h1 class="sr-only">GT Everyday — תרכיזי תה, מאצ׳ה ופירה פירות '
+    '<h1 class="sr-only">GT Everyday — תמציות תה, מאצ׳ה ופירה פירות '
     'לבתי קפה, מסעדות ומלונות</h1>\n<div class="ticker">',
 )
 
