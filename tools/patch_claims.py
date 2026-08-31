@@ -15,10 +15,12 @@ Two claims were checked and left exactly as written, because they are true:
   precisely 13 of the 48 menu drinks (verified against COLS).
   `ומוזגת 20–25 כוסות` — a 1 l bottle at the recipes' 40–50 ml dose.
 
-One claim cannot be settled here and is Tom's:
+One claim was put to Tom and decided, so it is deliberately untouched:
 
-  `20–30% פחות אלכוהול מאשר לפני עשור` — no source anywhere in the repo. It
-  needs a citation or it comes off the page.
+  `20–30% פחות אלכוהול מאשר לפני עשור` — no source exists anywhere in the repo.
+  Raised on 2026-08-31; Tom's answer was to leave it exactly as written, so it
+  is `user_confirmed` rather than unsourced (`docs/2026-08-31_decisions.md`
+  D-1). Do not re-open it as a finding and do not rewrite the sentence.
 """
 import json
 import re

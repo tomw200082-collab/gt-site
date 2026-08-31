@@ -17,15 +17,19 @@ must be able to quote the instruction it is acting on.
 
 ## 1. Blockers — the site must not go live while any of these stands
 
-| # | Blocker | Who clears it |
-|---|---|---|
-| B1 | `20–30% פחות אלכוהול מאשר לפני עשור` has no source anywhere in the repo. Publishing it breaks the second of the three prohibitions this build works under. | Tom: give a citation, or say to cut the sentence |
-| B2 | Tom has not opened the preview in a real browser. No Claude session can render the live store, so nobody has seen this page on Shopify. | Tom |
-| B3 | The wholesale price list is public: 23 SKU prices, 48 drink prices and the per-cup margin, visible to competitors. `U-003` in Sales-Machine is still open. | Tom: public / behind the B2B app / removed |
-| B4 | The About section has no photographs. The placeholder is gone and the section reads as one column; it is not wrong, but it is thinner than the design intended. | Tom: supply factory and team photos, or accept it as is |
-| B5 | `Don't Drink Boring.` is the only English left on the page, in the footer. | Tom: deliberate or not |
+Tom answered four of these on 2026-08-31. His answers are recorded in
+`docs/2026-08-31_decisions.md` with an authority grade, per truth rule 1.
 
-B1 is the only one that is a correctness failure. B2–B5 are judgement.
+| # | Blocker | State |
+|---|---|---|
+| B1 | `20–30% פחות אלכוהול מאשר לפני עשור` | **Cleared.** The concern was raised — no source exists in any repo — and Tom's decision was to leave the sentence exactly as written. It is now `user_confirmed` rather than unsourced, which is a grade the constitution recognises. Do not re-open it as a finding |
+| B2 | Tom has not opened the preview in a real browser. No Claude session can render the live store | **Open — Tom** |
+| B3 | The wholesale price list is public: 23 SKU prices, 48 drink prices and the per-cup margin | **Pending.** Tom is deciding. `show_pricing` in the theme editor turns the whole section off in one click, reversible both ways, without touching a figure. Default is on. `U-003` stays open until he answers |
+| B4 | The About section has no photographs | **Open — Tom** |
+| B5 | `Don't Drink Boring.` in the footer | **Settled.** Deliberate; stays in English |
+
+None of the remaining three is a correctness failure. B2 and B4 are Tom's to
+supply; B3 is a commercial posture with the mechanism already built.
 
 ---
 

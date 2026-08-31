@@ -63,8 +63,10 @@ set was recommending less than GT prices at.
 The page calls one cold infusion `חליטת תה ירוק לואיזה וליים`; the record calls it
 `חליטת תה ירוק וליים`. Both sides list exactly seven cold infusions and six names match
 exactly, so the pairing is forced rather than guessed — and the record gives all seven
-identical figures, so it takes the same numbers either way. **Which name should the page
-carry?** That is a copy decision, not a figures one.
+identical figures, so it takes the same numbers either way.
+
+**Answered 2026-08-31: the page keeps its own name**, lemon verbena included
+(`2026-08-31_decisions.md` D-3).
 
 ## AMERICAN
 

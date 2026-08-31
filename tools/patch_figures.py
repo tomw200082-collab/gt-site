@@ -51,8 +51,10 @@ RECORD = ROOT / "data" / "drinks_final_figures.json"
 #   cold infusions identical cost, price and margin, so this drink takes the
 #   same numbers whichever of the two names it is filed under.
 #
-# The wording difference itself (the page names the lemon verbena, the record
-# does not) is a copy question for Tom, not a figures question.
+# The wording difference itself — the page names the lemon verbena, the record
+# does not — was put to Tom on 2026-08-31 and settled: the page keeps its name
+# (`docs/2026-08-31_decisions.md` D-3). This ALIAS is that decision written
+# down, not a mismatch waiting to be tidied away.
 ALIAS = {
     "חליטת תה ירוק לואיזה וליים": "חליטת תה ירוק וליים",
 }
