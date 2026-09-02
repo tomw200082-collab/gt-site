@@ -53,11 +53,15 @@
   # replacing a sentence that actually says what GT sells.
   assign meta_title = 'GT Everyday · סיטונאות למסעדנות'
   assign meta_desc = 'GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ופירה פירות לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.'
+  # The home page's share line has always been shorter and punchier than its meta
+  # description -- a card is read at a glance, a search result is not. Keep both.
+  assign og_desc = '48 משקאות. ספק אחד. מחירון גלוי.'
   unless request.page_type == 'index'
     assign meta_title = page_title
     if page_description != blank
       assign meta_desc = page_description
     endif
+    assign og_desc = meta_desc
   endunless
 -%}
 <title>{{ meta_title }}</title>
@@ -75,7 +79,7 @@
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="GT Everyday">
 <meta property="og:title" content="{{ meta_title | escape }}">
-<meta property="og:description" content="{{ meta_desc | escape }}">
+<meta property="og:description" content="{{ og_desc | escape }}">
 <meta property="og:url" content="{{ canonical_url }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https:{{ og_img | asset_url }}">
