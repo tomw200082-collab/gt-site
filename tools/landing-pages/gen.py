@@ -12,6 +12,17 @@ import json, html, os
 
 D = json.load(open('drinks.json'))
 P = json.load(open('photos.json'))
+A = json.load(open('assets.json'))['size']
+
+def dim(asset):
+    """width/height attributes for a theme asset, measured not guessed.
+
+    These exist so the browser can reserve the right box before the bytes land. All
+    thirteen were wrong by hand -- the plate shot claimed 720x720 against a real
+    700x1585, so the page reserved a square and jumped 567px when the file arrived.
+    measure_assets.py refreshes assets.json whenever an asset is replaced."""
+    w, h = A[asset]
+    return f'width="{w}" height="{h}"'
 esc = lambda s: html.escape(s, quote=True)
 WA = "972543982444"
 
@@ -133,7 +144,7 @@ def build(slug, cfg):
         extra = f"""
     <div class="g-wrap">
       <aside class="g-alt">
-        <img src="{{{{ '{e['img']}' | asset_url }}}}" alt="{esc(e['name'])}" loading="lazy" decoding="async" width="360" height="360">
+        <img src="{{{{ '{e['img']}' | asset_url }}}}" alt="{esc(e['name'])}" loading="lazy" decoding="async" {dim(e['img'])}>
         <div>
           <span class="g-eyebrow">{esc(e['tagline'])}</span>
           <h3>{esc(e['name'])}</h3>
@@ -156,9 +167,9 @@ def build(slug, cfg):
 <div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--at:{cfg['atext']};--tint:{cfg['tint']};--deep:{cfg['deep']}">
 
   <header class="g-hero">
-    <img class="g-hero-img" src="{{{{ '{cfg['hero']}' | asset_url }}}}" alt="" width="1600" height="1000" fetchpriority="high" decoding="async">
+    <img class="g-hero-img" src="{{{{ '{cfg['hero']}' | asset_url }}}}" alt="" {dim(cfg['hero'])} fetchpriority="high" decoding="async">
     <div class="g-hero-in">
-      <img class="g-logo" src="{{{{ 'gt-71e14890dd.png' | asset_url }}}}" alt="GT Everyday" width="132" height="38" decoding="async">
+      <img class="g-logo" src="{{{{ 'gt-71e14890dd.png' | asset_url }}}}" alt="GT Everyday" {dim('gt-71e14890dd.png')} decoding="async">
       <span class="g-eyebrow">{esc(cfg['eyebrow'])}</span>
       <h1 class="g-display">{esc(cfg['h1'][0])}<em>{esc(cfg['h1'][1])}</em></h1>
       <p class="g-promise">{esc(cfg['promise'])}</p>
@@ -188,7 +199,7 @@ def build(slug, cfg):
 
   <section class="g-plate">
     <div class="g-wrap g-plate-in">
-      <figure><img src="{{{{ '{p['img']}' | asset_url }}}}" alt="{esc(p['name'])}" loading="lazy" decoding="async" width="720" height="720"></figure>
+      <figure><img src="{{{{ '{p['img']}' | asset_url }}}}" alt="{esc(p['name'])}" loading="lazy" decoding="async" {dim(p['img'])}></figure>
       <div>
         <span class="g-eyebrow">{esc(p['origin'])}</span>
         <h2 class="g-display">{esc(p['name'])}</h2>

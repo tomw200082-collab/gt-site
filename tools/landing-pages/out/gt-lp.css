@@ -48,7 +48,12 @@
 .g-lp .g-hero-in{
   position:relative;max-width:1240px;margin:0 auto;padding:0 28px 54px;color:var(--paper);
 }
-.g-lp .g-logo{height:30px;width:auto;opacity:.94;margin-bottom:26px}
+/* The lockup is 600x738 -- a stacked mark with EVERYDAY set across its bottom 8.1%.
+   At the old height:30px that band rendered 2.4px tall and the whole logo was 24x30,
+   smaller than a favicon. 56px puts the mark at 46x56 and the wordmark at 4.5px:
+   still small, but reading as a brand mark instead of a smudge. A horizontal wordmark
+   would serve this slot better if one exists. */
+.g-lp .g-logo{height:56px;width:auto;opacity:.94;margin-bottom:22px}
 .g-lp .g-hero-in .g-eyebrow{color:var(--white);opacity:.85}
 .g-lp .g-hero-in .g-display{margin-top:12px;color:var(--paper);max-width:13ch}
 .g-lp .g-hero-in .g-display em{color:var(--white);text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:.09em;text-underline-offset:.12em}
@@ -157,6 +162,10 @@
 .g-lp .g-plate{background:var(--tint);padding:82px 0 88px}
 .g-lp .g-plate-in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:56px;align-items:center}
 .g-lp .g-plate figure{background:var(--white);padding:34px;border:1px solid rgba(0,0,0,.05);border-radius:0}
+/* The bottle shots are ~1:2.26. Left to fill the column they rendered 1015px tall beside
+   ~400px of copy, so the row was mostly dead space and the product read as a poster.
+   Capping the height keeps the bottle a product and lets the two columns balance. */
+.g-lp .g-plate figure img{max-height:560px;width:auto;margin-inline:auto}
 .g-lp .g-plate .g-display{margin-top:10px}
 .g-lp .g-liner{margin-top:16px;font-size:18px;font-weight:300;line-height:1.55;max-width:50ch}
 .g-lp .g-comp{margin-top:14px;font-size:13px;color:var(--ink-soft)}
