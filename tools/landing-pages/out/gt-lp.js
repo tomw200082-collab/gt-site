@@ -22,6 +22,16 @@
     Array.prototype.forEach.call(reveal, function (el) { el.classList.add('g-on'); });
   }
 
+  /* The sticky bar is a second copy of the hero's call to action, so it should not
+     appear while the first one is still on screen -- there it just covers content. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp'), function (lp) {
+    var hero = lp.querySelector('.g-hero');
+    if (!hero || !window.IntersectionObserver) { lp.classList.add('g-sticky-on'); return; }
+    new IntersectionObserver(function (es) {
+      lp.classList.toggle('g-sticky-on', !es[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  });
+
   function waFallback(f, payload) {
     var lines = [
       'היי, הגעתי מהאתר ואשמח לקבל את המחירון.',

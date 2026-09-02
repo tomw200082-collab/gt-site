@@ -258,3 +258,43 @@
   .g-lp .g-btn:hover .g-arr{transform:none}
   .g-lp .g-drink:hover .g-shot{transform:none}
 }
+
+/* The concentrate line. The section names nine concentrates and used to illustrate
+   them with one bottle; these are the actual bottles, cut out of the studio shots
+   that were already in Shopify Files. Four across so the label on each stays
+   readable -- eight across at this container width puts the wordmark under 10px. */
+.g-lp .g-line{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+  margin-top:38px;padding-top:32px;border-top:1px solid var(--rule);
+}
+.g-lp .g-line img{width:100%;height:auto;max-height:300px;object-fit:contain;object-position:center bottom}
+
+/* Four sibling pages that never linked to each other. A café buying chai very
+   likely pours iced tea as well. */
+.g-lp .g-siblings{
+  max-width:1240px;margin:0 auto;padding:30px 28px;
+  display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);font-size:14px;
+}
+.g-lp .g-siblings span{color:var(--ink-soft);letter-spacing:.08em;font-size:12px}
+.g-lp .g-siblings a{color:var(--at);text-decoration:none;border-bottom:1px solid transparent;font-weight:600}
+.g-lp .g-siblings a:hover{border-bottom-color:currentColor}
+
+/* On a phone the only CTA is a full screen away once you are in the menu. */
+.g-lp .g-sticky{display:none}
+@media(max-width:760px){
+  /* gt-lp.js adds g-sticky-on to the page root once the hero has scrolled away, so
+     the bar never sits on top of the same call to action it repeats. */
+  .g-lp.g-sticky-on .g-sticky{
+    position:fixed;inset-inline:14px;bottom:14px;z-index:40;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px 22px;border-radius:999px;
+    background:var(--ink);color:var(--paper);text-decoration:none;
+    font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(15,17,12,.28);
+  }
+  .g-lp .g-line{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-lp .g-foot{padding-bottom:86px}
+}
+@media(prefers-reduced-motion:reduce){
+  .g-lp .g-sticky{transition:none}
+}

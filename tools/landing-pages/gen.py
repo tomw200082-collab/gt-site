@@ -61,6 +61,11 @@ PAGES = {
    h1=("שש־עשרה כוסות. ", "בלי מכונה אחת."),
    promise="תרכיזי תה מוכנים למזיגה. חמישים מיליליטר, קרח, ומים או סודה — והמשקה על הבר. בקבוק סגור לא צריך מקום במקרר.",
    need=("צריך רק מה שכבר יש לכם", "קרח, מים או סודה, וכוס. בקבוק סגור לא צריך קירור."),
+   # Fresh last: it is also the bottle photographed in the plate above, and first
+   # place in an RTL grid puts it directly beneath that photograph.
+   line=[("detox","Detox"),("revive","Revive"),("energy","Energy"),
+         ("consciousness","Consciousness"),("calm","Calm"),("desertea","Desertea"),
+         ("namastea","Namastea"),("fresh","Fresh")],
    prod=dict(name="אחד עשר תרכיזים", origin="הקו",
      comp="Fresh · Detox · Revive · Energy · Consciousness · Calm · Desertea · Namastea · American",
      liner="אחד עשר תרכיזים מכל עולם התה, כל אחד עם פרופיל משלו. בקבוק סגור לא צריך מקרר, ופתוח מחזיק בקירור.",
@@ -138,6 +143,25 @@ def build(slug, cfg):
         ys = " · ".join(f"{esc(g)} ≈ {esc(n)} כוסות" for g, n in p['yields'])
         yield_line = f'<p class="g-yield">{ys} — לפי המנה שבמתכונים ({esc(p["dose"])}).</p>'
 
+    # The nine concentrate names are printed on this page, but until now the section
+    # illustrated them with a single FRESH bottle. These are the line, cut out of the
+    # studio shots that were already in Shopify Files and unused.
+    line = ""
+    if cfg.get('line'):
+        shots = "".join(
+            f'<img src="{{{{ \'gt-bot-{k}.webp\' | asset_url }}}}" alt="{esc(n)}"'
+            f' loading="lazy" decoding="async" {dim(f"gt-bot-{k}.webp")}>'
+            for k, n in cfg['line'])
+        line = f"""
+    <div class="g-wrap">
+      <div class="g-line">{shots}</div>
+    </div>
+"""
+
+    siblings = "".join(
+        f'<a href="/pages/{o}">{esc(PAGES[o]["key"])}</a>'
+        for o in PAGES if o != slug)
+
     extra = ""
     if cfg['extra']:
         e = cfg['extra']
@@ -174,7 +198,7 @@ def build(slug, cfg):
       <h1 class="g-display">{esc(cfg['h1'][0])}<em>{esc(cfg['h1'][1])}</em></h1>
       <p class="g-promise">{esc(cfg['promise'])}</p>
       <div class="g-ctas">
-        <a class="g-btn" href="#g-lp-form">שלחו לי את המחירון <span class="g-arr" aria-hidden="true">←</span></a>
+        <a class="g-btn" href="#g-lp-form">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></a>
         <a class="g-btn g-ghost" href="{wa}" target="_blank" rel="noopener">וואטסאפ <span class="g-arr" aria-hidden="true">←</span></a>
       </div>
     </div>
@@ -213,7 +237,7 @@ def build(slug, cfg):
         </div>
       </div>
     </div>
-{extra}  </section>
+{extra}{line}  </section>
 
   <section class="g-story">
     <span class="g-ghostword" aria-hidden="true">{esc(cfg['key'])}</span>
@@ -238,7 +262,7 @@ def build(slug, cfg):
     <div class="g-wrap g-capture-in">
       <div>
         <span class="g-eyebrow">נדבר</span>
-        <h2 class="g-display">נשלח לכם את <em>המחירון המלא.</em></h2>
+        <h2 class="g-display">בואו נהיה <em>שותפים.</em></h2>
         <p>המחירון הסיטונאי, המתכונים המתומחרים, והתאמה לתפריט שלכם. חוזרים תוך יום עסקים אחד.</p>
         <ul class="g-contact">
           <li><a href="{wa}" target="_blank" rel="noopener">וואטסאפ · 054-398-2444</a></li>
@@ -257,11 +281,18 @@ def build(slug, cfg):
         </div>
         <label><span>אימייל · לא חובה</span><input name="email" type="email" autocomplete="email"></label>
         <label class="g-ok"><input type="checkbox" name="consent" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
-        <button type="submit" class="g-btn g-solid">שלחו לי את המחירון <span class="g-arr" aria-hidden="true">←</span></button>
+        <button type="submit" class="g-btn g-solid">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></button>
         <p class="g-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
+
+  <nav class="g-siblings" aria-label="קווים נוספים">
+    <span>עוד קווים</span>
+    {siblings}
+  </nav>
+
+  <a class="g-sticky" href="#g-lp-form">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></a>
 
   <footer class="g-foot">
     <div class="g-wrap">
