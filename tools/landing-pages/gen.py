@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """One generator, four sections. If a page needs a hand edit, this file is wrong.
 
-Design note — the signature is the build.
-Every GT drink is the same gesture: ice, fifty millilitres of concentrate, top up.
-What separates 48 drinks is proportion, so each card draws its own glass with the
-bands sized by the millilitres the recipe actually states, and the concentrate band
-carries the page's accent. That is the product's argument, drawn rather than argued.
-It also replaces a numbered badge that was pretending 16 drinks were a sequence.
+Design note — the drink is the signature.
+Each card carries the photograph of the drink it names: 48 cut-out glasses shot for
+GT, one per drink, all trimmed to the same 520px height so the whole grid reads as
+one set. They replaced a CSS-drawn glass that sized its bands from the millilitres
+in the recipe — an honest diagram, but a diagram, on a page whose job is to make a
+buyer want the cup. `photos.json` holds the drink-to-photo map and its provenance.
 """
 import json, html, os
-from build_stack import pours
 
 D = json.load(open('drinks.json'))
+P = json.load(open('photos.json'))
 esc = lambda s: html.escape(s, quote=True)
 WA = "972543982444"
 
@@ -71,24 +71,19 @@ PAGES = {
    extra=None),
 }
 
-def glass(d):
-    ps = pours(d['steps'])
-    body = [p for p in ps if p['role'] != 'garnish']
-    total = sum(p['ml'] for p in body) or 1
-    bands = []
-    for p in body:
-        h = max(7, round(p['ml'] / total * 100))
-        ml = f'<em>{p["ml"]}</em>' if p['role'] == 'base' else ''
-        bands.append(f'<i class="g-pr g-pr-{p["role"]}" style="--h:{h}">{ml}</i>')
-    cap = '<u class="g-pr-garnish"></u>' if any(p['role'] == 'garnish' for p in ps) else ''
-    return f'<div class="g-glass" aria-hidden="true">{cap}<div class="g-glass-in">{"".join(bands)}</div></div>'
+def shot(d):
+    """The drink's own photograph. alt is empty on purpose: the h3 beside it already
+    names the drink, so a duplicate would only make a screen reader say it twice."""
+    did = P['map'][d['he']]
+    return (f'<img class="g-shot" src="{P["cdn"]}gt-{did}.webp?v={P["v"]}" alt=""'
+            f' width="{P["w"][did]}" height="520" loading="lazy" decoding="async">')
 
 def card(d):
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])
     note = f'<p class="g-note">{esc(d["note"])}</p>' if d['note'] else ""
     return f"""
       <article class="g-drink">
-        {glass(d)}
+        {shot(d)}
         <div class="g-drink-tx">
           <h3>{esc(d['he'])}</h3>
           <span class="g-en">{esc(d['en'])}</span>
