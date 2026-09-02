@@ -1,6 +1,11 @@
 # MASTERPROMPT — the four GT category landing pages stop being a parallel design system and become the site
 
-**STATUS: LIVE — not yet executed**
+**STATUS: SHIPPED 2026-09-02** — executed in-session, not handed to a fresh executor.
+Evidence: commit `e16ba51` (`tools/landing-pages/gen.py`, `out/gt-lp.css`, four rebuilt
+sections) · all five changed files deployed to theme `162206646513` and verified
+byte-identical by `checksumMd5` against the local build (D6) · D1/D2/D3/D4/D7 closed
+in that commit. Open, and only these: the per-page `og:*` branch in `layout/gt.liquid`
+(W4, optional) and Tom's §6 items.
 
 > **Usage:** paste this entire file as the first message of a fresh session with the
 > `tomw200082-collab/gt-site` repo and the Shopify MCP attached. It takes the four
