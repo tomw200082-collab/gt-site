@@ -135,6 +135,25 @@ markup = (markup[:_pricing_open]
           + '{% endif %}'
           + markup[_pricing_end:])
 
+# Four links pointed into that section, so switching it off left the nav item
+# "מחירון" and three product cards jumping to an anchor that is no longer on the
+# page. The nav item goes with the section; the cards fall back to the enquiry
+# form, which is where a reader who wanted a price should land anyway.
+_nav = '<a href="#pricing">מחירון</a>'
+assert markup.count(_nav) == 1, f"pricing nav item: {markup.count(_nav)} found"
+# Parked behind a sentinel so the card pass below does not also rewrite this
+# href — inside the {% if %} it can only ever render while the section is shown.
+markup = markup.replace(
+    _nav, '{% if section.settings.show_pricing %}'
+          '<a href="#PRICING-NAV">מחירון</a>{% endif %}')
+
+_card_href = 'href="#pricing"'
+assert markup.count(_card_href) == 3, f"pricing card links: {markup.count(_card_href)} found"
+markup = markup.replace(
+    _card_href,
+    'href="{% if section.settings.show_pricing %}#pricing'
+    '{% else %}#contact{% endif %}"').replace('#PRICING-NAV', '#pricing')
+
 
 # ── 3c. width and height on every image ─────────────────────────────────
 #
