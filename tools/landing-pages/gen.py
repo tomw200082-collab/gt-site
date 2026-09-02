@@ -17,7 +17,7 @@ WA = "972543982444"
 
 PAGES = {
  "chai": dict(
-   key="צ'אי", unit="מבקבוק אחד", accent="#B5731F", tint="#F2E5CE", deep="#5E3A0C",
+   key="צ'אי", unit="מבקבוק אחד", accent="#D96B3F", atext="#B85B36", tint="#F6E4D9", deep="#412013",
    hero="gt-74108519a7.webp", eyebrow="צ׳אי מסאלה · NAMASTEA",
    h1=("בקבוק אחד. ", "אחת־עשרה כוסות."),
    promise="שני סוגי תה שחור וחמישה תבלינים, מוכנים למזיגה. אחד־עשר משקאות שהבר שלכם יודע להכין כבר עכשיו — בלי ציוד, בלי הכשרה, בלי פריט חדש במקרר.",
@@ -29,7 +29,7 @@ PAGES = {
      img="gt-0ae37a139e.webp"),
    extra=None),
  "matcha": dict(
-   key="מאצ'ה", unit="מאבקה אחת", accent="#3F7A2E", tint="#E3EDD6", deep="#22401A",
+   key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#4C823D", tint="#E5ECDB", deep="#1C3117",
    hero="gt-7e97065cdf.webp", eyebrow="מאצ׳ה · שיזואוקה",
    h1=("המאצ׳ה היפנית ", "האיכותית בישראל."),
    promise="להכנת מגוון משקאות שכל אחד מהם הוא חוויה מסעירה. בסיס אחד נבנה בתחילת המשמרת ומשרת את כל שש־עשרה הכוסות.",
@@ -45,7 +45,7 @@ PAGES = {
      comp="מאצ׳ה מובחר קלוי · נימות אגוז לוז וקקאו",
      sizes=[("500 גרם","₪375")], img="gt-a06eb940fc.webp")),
  "iced-tea": dict(
-   key="תה קר", unit="מאותו קו תרכיזים", accent="#A31F34", tint="#F5DCE0", deep="#5E1020",
+   key="תה קר", unit="מאותו קו תרכיזים", accent="#E63950", atext="#DA364C", tint="#F8DDDB", deep="#451118",
    hero="gt-d3abd65414.webp", eyebrow="חליטות קרות · אחד עשר תרכיזים",
    h1=("שש־עשרה כוסות. ", "בלי מכונה אחת."),
    promise="תרכיזי תה מוכנים למזיגה. חמישים מיליליטר, קרח, ומים או סודה — והמשקה על הבר. בקבוק סגור לא צריך מקום במקרר.",
@@ -57,7 +57,7 @@ PAGES = {
      img="gt-682cbb70f5.webp"),
    extra=None),
  "ube": dict(
-   key="אובה", unit="מאבקה אחת", accent="#6B47BE", tint="#E9E2F7", deep="#382468",
+   key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7B5CC6", tint="#E9E2EC", deep="#251C3B",
    hero="gt-868e993bce.webp", eyebrow="אובה · שורש בטטה סגולה",
    h1=("הטרנד הסגול ", "שכובש את העולם."),
    promise="אבקת שורש יאם באיכות מעולה — מרקם קרמי ומתיקות עדינה בין וניל לאגוז. הצבע מגיע מהשורש עצמו, וזה בדיוק מה שמצלם.",
@@ -148,7 +148,7 @@ def build(slug, cfg):
   re-derived 0/48 mismatches. The glass on each card is drawn from the millilitres
   in that drink's own recipe.
 {{%- endcomment -%}}
-<div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--tint:{cfg['tint']};--deep:{cfg['deep']}">
+<div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--at:{cfg['atext']};--tint:{cfg['tint']};--deep:{cfg['deep']}">
 
   <header class="g-hero">
     <img class="g-hero-img" src="{{{{ '{cfg['hero']}' | asset_url }}}}" alt="" width="1600" height="1000" fetchpriority="high" decoding="async">
@@ -158,8 +158,8 @@ def build(slug, cfg):
       <h1 class="g-display">{esc(cfg['h1'][0])}<em>{esc(cfg['h1'][1])}</em></h1>
       <p class="g-promise">{esc(cfg['promise'])}</p>
       <div class="g-ctas">
-        <a class="g-btn" href="#g-lp-form">שלחו לי את המחירון <span aria-hidden="true">←</span></a>
-        <a class="g-btn g-ghost" href="{wa}" target="_blank" rel="noopener">וואטסאפ <span aria-hidden="true">←</span></a>
+        <a class="g-btn" href="#g-lp-form">שלחו לי את המחירון <span class="g-arr" aria-hidden="true">←</span></a>
+        <a class="g-btn g-ghost" href="{wa}" target="_blank" rel="noopener">וואטסאפ <span class="g-arr" aria-hidden="true">←</span></a>
       </div>
     </div>
     <div class="g-ledger">
@@ -200,6 +200,7 @@ def build(slug, cfg):
 {extra}  </section>
 
   <section class="g-story">
+    <span class="g-ghostword" aria-hidden="true">{esc(cfg['key'])}</span>
     <div class="g-wrap g-story-in">
       <div>
         <span class="g-eyebrow">מי אנחנו</span>
@@ -240,7 +241,7 @@ def build(slug, cfg):
         </div>
         <label><span>אימייל · לא חובה</span><input name="email" type="email" autocomplete="email"></label>
         <label class="g-ok"><input type="checkbox" name="consent" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
-        <button type="submit" class="g-btn g-solid">שלחו לי את המחירון <span aria-hidden="true">←</span></button>
+        <button type="submit" class="g-btn g-solid">שלחו לי את המחירון <span class="g-arr" aria-hidden="true">←</span></button>
         <p class="g-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
