@@ -4,11 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{% if request.page_type == 'index' %}GT Everyday · סיטונאות למסעדנות{% else %}{{ page_title }}{% endif %}</title>
+{%- if settings.favicon != blank -%}
+<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+<link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+{%- endif -%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet"></noscript>
 <meta name="description" content="GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ופירה פירות לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.">
 <meta name="theme-color" content="#3E6E34">
 <meta property="og:type" content="website">
@@ -17,6 +20,12 @@
 <meta property="og:title" content="GT Everyday · סיטונאות למסעדנות">
 <meta property="og:description" content="48 משקאות. ספק אחד. מחירון גלוי.">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https:{{ 'gt-cd7b9d4764.webp' | asset_url }}">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="893">
+<meta property="og:image:alt" content="GT Everyday — חליטות קרות בהגשה">
+<meta name="twitter:image" content="https:{{ 'gt-cd7b9d4764.webp' | asset_url }}">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{{ canonical_url }}">
 {{ content_for_header }}
 <link rel="stylesheet" href="{{ 'gt-site.css' | asset_url }}">
