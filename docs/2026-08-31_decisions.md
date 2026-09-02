@@ -25,18 +25,31 @@ being that someone accountable has now put their name to it. It is no longer a
 publication blocker, and **a later session should not re-open it as a finding.**
 If a citation ever turns up, add it here; it does not change the copy.
 
-## D-2 · Wholesale price visibility — pending, mechanism ready
+## D-2 · Wholesale price visibility — scope settled, flip deferred
 
-**Tom:** *"אחזיר לך תשובה על זה עוד מעט — זה שיש אופציה לכבות ברגע זה מעולה!"*
+**Tom, 2026-08-31:** *"אחזיר לך תשובה על זה עוד מעט — זה שיש אופציה לכבות ברגע זה מעולה!"*
+**Tom, 2026-09-02:** *"התכוונתי מחירון בלבד. אל תכבה עדיין אבל זה מעולה שאפשר בקלות."*
 
-**State.** Undecided. The list stays public in the meantime, which is the
-design's own intent (`כל המחירים. על השולחן.`), and `U-003` in
-`Sales-Machine/doctrine/pricing-logic.md` stays open.
+**State.** The *scope* is decided and the *flip* is not. Asked how hard it would
+be to take the prices off the site, Tom named one of the three kinds the page
+carries: **the wholesale list — what GT charges.** The recommended per-cup price
+and the margin beside it stay, which is the right call: they are the page's
+argument to a café owner, not a disclosure. The list stays public for now, which
+is also the design's own intent (`כל המחירים. על השולחן.`), and `U-003` in
+`Sales-Machine/doctrine/pricing-logic.md` stays open until he flips it.
 
 **What was built for it.** `show_pricing` in the theme editor hides the entire
-wholesale section in one click and restores it in one click. It changes no
-figure and needs no deploy, so the decision is cheap in both directions and can
-be made after the site is live.
+wholesale section in one click and restores it in one click. It changes no figure
+and needs no deploy, so the decision is cheap in both directions and can be made
+after the site is live.
+
+Because the scope is now the price list alone, **nothing further needs building**
+— the existing switch is exactly the right size. What did need fixing was the
+switch itself: it hid `#pricing` but not the four links into it, so turning it off
+left the nav item `מחירון` and three `#matcha` product cards pointing at an anchor
+that was no longer on the page. The nav item now goes with the section and the
+cards fall back to `#contact`. Both states were rendered and every in-page link
+walked: no dead anchor either way (105 prices on, 78 off).
 
 ## D-3 · Two copy items stay as they are
 

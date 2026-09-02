@@ -24,12 +24,13 @@ Tom answered four of these on 2026-08-31. His answers are recorded in
 |---|---|---|
 | B1 | `20–30% פחות אלכוהול מאשר לפני עשור` | **Cleared.** The concern was raised — no source exists in any repo — and Tom's decision was to leave the sentence exactly as written. It is now `user_confirmed` rather than unsourced, which is a grade the constitution recognises. Do not re-open it as a finding |
 | B2 | Tom has not opened the preview in a real browser. No Claude session can render the live store | **Open — Tom** |
-| B3 | The wholesale price list is public: 23 SKU prices, 48 drink prices and the per-cup margin | **Pending.** Tom is deciding. `show_pricing` in the theme editor turns the whole section off in one click, reversible both ways, without touching a figure. Default is on. `U-003` stays open until he answers |
+| B3 | The wholesale price list is public: the `#pricing` section, 27 of the page's 105 prices | **Scope settled, flip deferred.** Tom 2026-09-02: the switch covers *the price list only* — the recommended per-cup prices and margins stay. He asked that it not be turned off yet, so the default stays on. `show_pricing` in the theme editor does it in one click, both ways, without touching a figure. `U-003` stays open until he flips it |
 | B4 | The About section has no photographs | **Open — Tom** |
 | B5 | `Don't Drink Boring.` in the footer | **Settled.** Deliberate; stays in English |
 
 None of the remaining three is a correctness failure. B2 and B4 are Tom's to
-supply; B3 is a commercial posture with the mechanism already built.
+supply; B3 is a commercial posture whose mechanism is built, scoped and
+proven in both states — it is now a click Tom makes when he wants it.
 
 ---
 
