@@ -85,3 +85,63 @@ jobs:
             echo "::error::off-screen offset found — hide with clip-path/clip instead"
             exit 1
           fi
+
+      - name: The share card and structured data survive the build
+        # og:image and the JSON-LD are easy to drop silently, and a blank
+        # WhatsApp preview is invisible from the repo.
+        #
+        # They live in two places on purpose. Organization is site-wide, so it is
+        # emitted once by the layout; the FAQ belongs to the home page, so
+        # build_theme.py reads it out of that page's own <details> and emits it in
+        # the section. Two Organization nodes on one page is the failure this
+        # guards, alongside zero.
+        run: |
+          python3 - <<'EOF'
+          import json, re, sys
+          head = open('theme/layout/gt.liquid', encoding='utf-8').read()
+          sec = open('theme/sections/gt-home.liquid', encoding='utf-8').read()
+          fail = []
+          for tag in ('og:image', 'og:image:width', 'twitter:image', 'rel="icon"'):
+              if tag not in head:
+                  fail.append(f'layout is missing {tag}')
+          n_pre = head.count('rel="preconnect"')
+          if n_pre != 2:
+              fail.append(f'expected 2 preconnect hints, found {n_pre}')
+
+          # The layout is hand-maintained (build_theme.py used to generate it and
+          # silently reverted this). Per-page title and share card are the reason.
+          for needed in ('template.suffix', 'page_description', '{{ og_img'):
+              if needed not in head:
+                  fail.append(f'layout lost its per-page SEO: no {needed}')
+
+          def ld(html_, where):
+              out = []
+              for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>',
+                                   html_, re.S):
+                  try:
+                      d = json.loads(m.group(1))
+                  except json.JSONDecodeError as e:
+                      fail.append(f'{where}: JSON-LD does not parse ({e})')
+                      continue
+                  out += d['@graph'] if '@graph' in d else [d]
+              return out
+
+          nodes = ld(head, 'layout') + ld(sec, 'section')
+          types = [n.get('@type') for n in nodes]
+          if types.count('Organization') != 1:
+              fail.append(f'expected exactly 1 Organization on the home page, found '
+                          f'{types.count("Organization")} — types: {types}')
+          if 'FAQPage' not in types:
+              fail.append(f'no FAQPage in the home page schema — types: {types}')
+          for n in nodes:
+              if n.get('@type') == 'FAQPage' and len(n.get('mainEntity', [])) < 3:
+                  fail.append('FAQPage carries fewer than 3 questions — the <details>'
+                              ' reader in build_theme.py probably stopped matching')
+
+          n = len(re.findall(r'<img\b[^>]*width="\d+"[^>]*>', sec))
+          if n < 60:
+              fail.append(f'only {n} images carry width/height — expected 60+')
+          for f in fail:
+              print(f'::error::{f}')
+          sys.exit(1 if fail else 0)
+          EOF

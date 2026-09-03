@@ -24,19 +24,24 @@
   assign og_img = 'gt-cd7b9d4764.webp'
   assign og_w = '1600'
   assign og_h = '893'
+  assign og_alt = 'GT Everyday — חליטות קרות בהגשה'
   assign lp = false
   case template.suffix
     when 'chai'
       assign og_img = 'gt-og-chai.webp'
+      assign og_alt = 'צ׳אי מסאלה בהגשה — GT Everyday'
       assign lp = true
     when 'matcha'
       assign og_img = 'gt-og-matcha.webp'
+      assign og_alt = 'מאצ׳ה לאטה בהגשה — GT Everyday'
       assign lp = true
     when 'iced-tea'
       assign og_img = 'gt-og-iced-tea.webp'
+      assign og_alt = 'תה קר בהגשה — GT Everyday'
       assign lp = true
     when 'ube'
       assign og_img = 'gt-og-ube.webp'
+      assign og_alt = 'אובה לאטה בהגשה — GT Everyday'
       assign lp = true
   endcase
   if lp
@@ -85,7 +90,7 @@
 <meta property="og:image" content="https:{{ og_img | asset_url }}">
 <meta property="og:image:width" content="{{ og_w }}">
 <meta property="og:image:height" content="{{ og_h }}">
-<meta property="og:image:alt" content="{{ meta_title | escape }}">
+<meta property="og:image:alt" content="{{ og_alt | escape }}">
 <meta name="twitter:image" content="https:{{ og_img | asset_url }}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{{ canonical_url }}">
