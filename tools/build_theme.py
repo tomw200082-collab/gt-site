@@ -319,7 +319,7 @@ _faq = faq_pairs(body_html)
 _graph = [{
     "@type": "Organization",
     "name": "GT Everyday",
-    "alternateName": "גרין טי אוורידיי",
+    "alternateName": "גרינטי אוירי די",
     "url": "https://gteveryday.com/",
     "logo": "https:{{ '" + OG_IMAGE + "' | asset_url }}",
     "description": re.search(r'name="description" content="([^"]+)"', metas).group(1),
