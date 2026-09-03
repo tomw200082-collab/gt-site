@@ -27,7 +27,7 @@ if the fourth needs an edit the first three did not, the template is wrong.
 re-derived from `price/1.18 − cost` with 0/48 mismatches.
 
 `drinks.py` adds the preparation steps and assigns each drink to exactly one page
-(16 / 11 / 16 / 5 = 48), asserting row-by-row against `catalog.py` so the two
+(11 / 16 / 16 / 5 = 48), asserting row-by-row against `catalog.py` so the two
 cannot drift apart silently.
 
 Never type a figure into a section by hand. Change the catalog, re-verify, regenerate.

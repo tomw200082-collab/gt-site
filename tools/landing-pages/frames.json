@@ -1,0 +1,28 @@
+{
+ "chai": {
+  "ground": "#A05802",
+  "on": "#F1ECE0",
+  "contrast": 4.58,
+  "darkened_pct": 15
+ },
+ "matcha": {
+  "ground": "#9DC53D",
+  "on": "#191B14",
+  "contrast": 8.68,
+  "darkened_pct": 0
+ },
+ "iced-tea": {
+  "ground": "#101010",
+  "on": "#F1ECE0",
+  "contrast": 16.14,
+  "darkened_pct": 0
+ },
+ "ube": {
+  "ground": "#342158",
+  "on": "#F1ECE0",
+  "contrast": 11.84,
+  "darkened_pct": 0
+ },
+ "_": "Ornamental frame per landing page, from Canva folder FAHUC3u8Qvw (Tom, 2026-09-03), cut by tools/landing-pages/frames.py. 'ground' is measured from the centre of the frame, 'on' is the text colour that clears 4.5:1 on it, and 'darkened_pct' is how far the ground had to move for that -- 0 on three of the four.",
+ "band": 0.26
+}

@@ -22,6 +22,53 @@
     Array.prototype.forEach.call(reveal, function (el) { el.classList.add('g-on'); });
   }
 
+  /* The concentrate line arrives when it is scrolled to. Same contract as the cards:
+     arm the hidden state only once the observer that undoes it is known to exist. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp .g-line'), function (row) {
+    if (!window.IntersectionObserver) return;
+    row.classList.add('g-armed');
+    var ro = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { row.classList.add('g-on'); ro.disconnect(); }
+    }, { threshold: 0.25 });
+    ro.observe(row);
+  });
+
+  /* The product is set down when it is scrolled to. Same contract as the cards and
+     the bottle line: arm the hidden state only once the observer that undoes it is
+     known to exist, so the bottle can never be left invisible. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp .g-plate'), function (sec) {
+    if (!window.IntersectionObserver) return;
+    sec.classList.add('g-armed');
+    var po = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { sec.classList.add('g-on'); po.disconnect(); }
+    }, { threshold: 0.2 });
+    po.observe(sec);
+  });
+
+  /* Everything that isn't a drink card, the bottle line or the plate, but still
+     wants the same "arrive when scrolled to" feel: the menu heading, both halves
+     of the story section, both halves of the capture section. Same contract as
+     .g-line/.g-plate above -- armed only where the observer that undoes it is
+     known to exist, so a fade-up can never be a permanently blank block. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp .g-fade-up'), function (el) {
+    if (!window.IntersectionObserver) return;
+    el.classList.add('g-armed');
+    var fo = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { el.classList.add('g-on'); fo.disconnect(); }
+    }, { threshold: 0.15 });
+    fo.observe(el);
+  });
+
+  /* The sticky bar is a second copy of the hero's call to action, so it should not
+     appear while the first one is still on screen -- there it just covers content. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp'), function (lp) {
+    var hero = lp.querySelector('.g-hero');
+    if (!hero || !window.IntersectionObserver) { lp.classList.add('g-sticky-on'); return; }
+    new IntersectionObserver(function (es) {
+      lp.classList.toggle('g-sticky-on', !es[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  });
+
   function waFallback(f, payload) {
     var lines = [
       'היי, הגעתי מהאתר ואשמח לקבל את המחירון.',

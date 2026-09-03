@@ -3,15 +3,20 @@
 
 The page is one self-contained file; a theme wants it in pieces:
 
-    theme/layout/gt.liquid        minimal shell (the design brings its own
-                                  header and footer, so Vodoma's chrome is
-                                  deliberately not wrapped around it)
+    (theme/layout/gt.liquid is NOT generated -- see the note below)
     theme/sections/gt-home.liquid the markup, plus a schema so it can be
                                   placed from the theme editor
     theme/templates/index.json    orders that one section
     theme/assets/gt-site.css      the stylesheet
     theme/assets/gt-site.js       the scripts
     theme/assets.manifest.json    image name -> source URL, for themeFilesUpsert
+
+The layout used to be generated here too, assembled from the <head> of the source
+page. It is now hand-maintained, because it carries per-page Liquid -- the share card
+and SEO description each landing page needs -- that cannot be derived from a static
+page. Generating it meant that anyone running this script silently reverted that.
+Edit theme/layout/gt.liquid directly, and keep its tags in step with the record in
+docs/2026-09-02_analytics.md.
 
 Images: the page pulls 152 remote images through a third-party resizing proxy.
 Five of them are gone — their origin now answers 403 — and those entries are
@@ -236,73 +241,17 @@ gtag('js',new Date());gtag('config','{{ section.settings.analytics_id }}');
 {%- endif -%}
 """
 
-head = re.search(r"<head>(.*)</head>", markup, re.S).group(1)
-metas = "\n".join(m.group(0) for m in re.finditer(r'<meta [^>]*>', head)
-                  if 'charset' not in m.group(0) and 'viewport' not in m.group(0))
-
-# ── the share card ──────────────────────────────────────────────────────
-#
-# The head declared `twitter:card: summary_large_image` and then shipped no
-# image, so every share of this link — and the link is mostly shared by hand,
-# into WhatsApp, which is how a café owner first sees it — rendered a blank
-# card. The first hero slide is the right picture for it: 1600x893, close to
-# the 1.91:1 these previews crop to, and comfortably over the 1200x630 floor.
 OG_IMAGE = "gt-cd7b9d4764.webp"
 if OG_IMAGE not in manifest:
-    sys.exit(f"FAIL: og:image asset {OG_IMAGE} is not in the manifest — pick another hero frame")
-_og_w, _og_h = DIMENSIONS.get(OG_IMAGE, (1600, 893))
-metas += (
-    # asset_url is protocol-relative; a share crawler needs an absolute URL.
-    f"\n<meta property=\"og:image\" content=\"https:{{{{ '{OG_IMAGE}' | asset_url }}}}\">"
-    f"\n<meta property=\"og:image:width\" content=\"{_og_w}\">"
-    f"\n<meta property=\"og:image:height\" content=\"{_og_h}\">"
-    "\n<meta property=\"og:image:alt\" content=\"GT Everyday — חליטות קרות בהגשה\">"
-    "\n<meta name=\"twitter:image\" content=\"https:{{ '" + OG_IMAGE + "' | asset_url }}\">"
-    "\n<meta name=\"robots\" content=\"index, follow, max-image-preview:large\">"
-)
-
-# That same photograph is the page's largest paint, and the script sets it as
-# a CSS background only once it runs — so the browser discovers the request
-# last. Preloading it puts it first in line (2026-09-03 UX review).
-metas += f"\n<link rel=\"preload\" as=\"image\" href=\"{{{{ '{OG_IMAGE}' | asset_url }}}}\" fetchpriority=\"high\">"
-
-# ── the favicon ─────────────────────────────────────────────────────────
-#
-# The store has one configured (config/settings_data.json -> settings.favicon),
-# and Vodoma's layout renders it — but this layout did not, so the homepage was
-# the one page on the store with no icon in the tab. Guarded, so an unset
-# favicon renders nothing rather than a broken link.
-FAVICON = """{%- if settings.favicon != blank -%}
-<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
-<link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
-{%- endif -%}"""
-title = re.search(r"<title>(.*?)</title>", head, re.S).group(1).strip()
-fonts = "\n".join(m.group(0) for m in re.finditer(r'<link [^>]*fonts\.[^>]*>', head))
-# The source emits each preconnect twice; dedupe while keeping document order.
-preconnect = "\n".join(dict.fromkeys(
-    m.group(0) for m in re.finditer(r'<link rel="preconnect"[^>]*>', head)))
-
-# The Google Fonts stylesheet is a render-blocking request to a third party.
-# Loading it as `print` and flipping to `all` on load takes it off the critical
-# path; the <noscript> copy keeps it working with scripting disabled. The faces
-# already carry `display=swap`, so text paints either way.
-#
-# `fonts` above also matches the two preconnect links — their href contains
-# "fonts." — which is why the head carried each of them twice. Keep only the
-# stylesheet here; `preconnect` already emits the hints, once each.
-_font_css = [m for m in fonts.split("\n") if 'rel="stylesheet"' in m]
-if len(_font_css) != 1:
-    sys.exit(f"expected 1 font stylesheet link, found {len(_font_css)}")
-_sheet = _font_css[0]
-_async = _sheet.replace(
-    'rel="stylesheet"', "rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\"")
-fonts = _async + "\n<noscript>" + _sheet + "</noscript>"
+    sys.exit(f"FAIL: og:image asset {OG_IMAGE} is not in the manifest — "
+             "theme/layout/gt.liquid names it as the default share card")
 
 # ── structured data ─────────────────────────────────────────────────────
 #
-# Organization, plus the FAQ the page already answers. The questions are read
-# out of the built markup rather than retyped, so the schema cannot drift from
-# what a reader sees — the same rule the figures follow.
+# The FAQ this page already answers. The questions are read out of the built
+# markup rather than retyped, so the schema cannot drift from what a reader sees
+# — the same rule the figures follow. Organization lives in the layout, once, on
+# every page rather than only this one.
 def faq_pairs(html_: str):
     out = []
     for m in re.finditer(r"<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>",
@@ -316,93 +265,27 @@ def faq_pairs(html_: str):
     return out
 
 _faq = faq_pairs(body_html)
-_graph = [{
-    "@type": "Organization",
-    "name": "GT Everyday",
-    "alternateName": "גרינטי אוירי די",
-    "url": "https://gteveryday.com/",
-    "logo": "https:{{ '" + OG_IMAGE + "' | asset_url }}",
-    "description": re.search(r'name="description" content="([^"]+)"', metas).group(1),
-    "areaServed": "IL",
-    "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+972-54-398-2444",
-        "email": "info@gteveryday.com",
-        "contactType": "sales",
-        "availableLanguage": ["he", "en"],
-    }],
-}]
-if _faq:
-    _graph.append({
+STRUCTURED_DATA = "" if not _faq else (
+    '<script type="application/ld+json">'
+    + json.dumps({
+        "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
             {"@type": "Question", "name": q,
              "acceptedAnswer": {"@type": "Answer", "text": a}}
             for q, a in _faq
         ],
-    })
-STRUCTURED_DATA = (
-    '<script type="application/ld+json">'
-    + json.dumps({"@context": "https://schema.org", "@graph": _graph},
-                 ensure_ascii=False, separators=(",", ":"))
+      }, ensure_ascii=False, separators=(",", ":"))
     + "</script>"
 )
 
-# ── 3f. the tags the live homepage carries and ours would drop ──────────
+# ── 3f. the third-party pixels ──────────────────────────────────────────
 #
-# Measured, not assumed. Fetching the store's own homepage and this theme's
-# preview and diffing what each loads:
+# The tag manager the live homepage carries lives in theme/layout/gt.liquid,
+# which is hand-maintained — this script no longer writes that file. What the
+# live homepage loads, and why GA4 needs no ID pasted anywhere, is measured in
+# docs/2026-09-02_analytics.md.
 #
-#   already on both, via content_for_header  GA4 G-QCNXYQR1TR · Google Ads
-#                                            AW-331942645 · Shopify's own
-#                                            analytics (web-pixels-manager,
-#                                            trekkie) · the Meta domain
-#                                            verification meta
-#   on the live homepage only                GTM-TFH9M99 · Taboola 1547330 ·
-#                                            Retention Rocket ym6nRgm7 ·
-#                                            HubSpot 40143933
-#
-# GA4 therefore needs no Measurement ID pasted anywhere: the Google & YouTube
-# channel already delivers it to every storefront page including this one, and
-# a second gtag would double-count every view. What does need restoring is the
-# tag manager. Our layout replaces the Vodoma layout on the homepage *only*, so
-# publishing without this would stop GTM on exactly the page being published
-# while every other route kept it. Same container, same dataLayer shape, same
-# position as layout/theme.liquid.
-#
-# HubSpot is deliberately not here: Tom 2026-08-31, leads go to sales_core.
-GTM_HEAD = """
-<script>
-window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({
-{% if customer %}
-userType: "member",
-customer: {
-id: {{ customer.id }},
-lastOrder: "{{ customer.orders.first.created_at | date: '%B %d, %Y %I:%M%p' }}",
-orderCount: {{ customer.orders.size }},
-totalSpent: {% assign total_spent = 0 %}{% for item in customer.orders %}{% assign total_spent = total_spent | plus: item.total_net_amount %}{% endfor %}{{ total_spent | money_without_currency | remove:"," }},
-tags: {{- customer.tags | json -}}
-},
-{% else %}
-userType: "visitor",
-customer: { id: "", lastOrder: "", orderCount: "", totalSpent: "", tags: "" },
-{% endif %}
-});
-</script>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-TFH9M99');</script>
-<!-- End Google Tag Manager -->"""
-
-GTM_BODY = """<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFH9M99"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->"""
-
 # The two vendor pixels the live homepage also carries. Behind a switch because
 # they are marketing tooling rather than measurement, and a page aimed at cafe
 # owners may not want either — the default matches the live page so publishing
@@ -466,31 +349,6 @@ SECTION = f"""{{%- comment -%}}
 {{% endschema %}}
 """
 
-# On the index template Shopify's `page_title` is just the shop name, which
-# drops the page's own title; the brand-site title is emitted directly and
-# every other template keeps Shopify's.
-LAYOUT = f"""<!doctype html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{% if request.page_type == 'index' %}}{title}{{% else %}}{{{{ page_title }}}}{{% endif %}}</title>
-{FAVICON}
-{preconnect}
-{fonts}
-{metas}
-<link rel="canonical" href="{{{{ canonical_url }}}}">
-{GTM_HEAD}
-{{{{ content_for_header }}}}
-<link rel="stylesheet" href="{{{{ 'gt-site.css' | asset_url }}}}">
-</head>
-<body>
-{GTM_BODY}
-{{{{ content_for_layout }}}}
-</body>
-</html>
-"""
-
 INDEX = {
     "layout": "gt",
     "sections": {"main": {"type": "gt-home", "settings": {}}},
@@ -501,7 +359,6 @@ THEME.mkdir(exist_ok=True)
 for sub in ("layout", "sections", "templates", "assets"):
     (THEME / sub).mkdir(exist_ok=True)
 
-(THEME / "layout" / "gt.liquid").write_text(LAYOUT, encoding="utf-8")
 (THEME / "sections" / "gt-home.liquid").write_text(SECTION, encoding="utf-8")
 (THEME / "templates" / "index.json").write_text(
     json.dumps(INDEX, indent=2) + "\n", encoding="utf-8")
@@ -511,7 +368,6 @@ for sub in ("layout", "sections", "templates", "assets"):
     json.dumps(manifest, indent=1, ensure_ascii=False), encoding="utf-8")
 
 b = lambda p: len((THEME / p).read_text(encoding="utf-8").encode())
-print(f"  layout/gt.liquid        {b('layout/gt.liquid'):>8,} bytes")
 print(f"  sections/gt-home.liquid {b('sections/gt-home.liquid'):>8,} bytes  (limit 256 KB)")
 print(f"  templates/index.json    {b('templates/index.json'):>8,} bytes")
 print(f"  assets/gt-site.css      {b('assets/gt-site.css'):>8,} bytes")

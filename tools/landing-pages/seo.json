@@ -1,0 +1,25 @@
+{
+ "_": "Per-page SEO and share metadata for the four landing pages. Lives here rather than only in Shopify so it is reviewable in a diff; push_seo.py writes it to the page records' global.title_tag / global.description_tag metafields, which is where Liquid's page_title and page_description read from. Every claim below already appears in the page body -- nothing here is a new assertion. Written 2026-09-02.",
+ "pages": {
+  "chai": {
+   "page_id": "gid://shopify/Page/143638855921",
+   "title": "תרכיז צ׳אי מסאלה לבתי קפה ומסעדות | GT Everyday",
+   "description": "בקבוק אחד, אחת־עשרה כוסות. שני סוגי תה שחור וחמישה תבלינים, מוכנים למזיגה — בלי ציוד, בלי הכשרה, בלי פריט חדש במקרר."
+  },
+  "matcha": {
+   "page_id": "gid://shopify/Page/143638724849",
+   "title": "מאצ׳ה יפנית לבתי קפה ומסעדות · שיזואוקה | GT Everyday",
+   "description": "אבקת מאצ׳ה טקסית ממחוז שיזואוקה, בהטסה ישירה מהחקלאים. בסיס אחד נבנה בתחילת המשמרת ומשרת שש־עשרה כוסות."
+  },
+  "iced-tea": {
+   "page_id": "gid://shopify/Page/143638888689",
+   "title": "תרכיזי תה קר לבתי קפה ומסעדות | GT Everyday",
+   "description": "שש־עשרה כוסות בלי מכונה אחת. תרכיזי תה מוכנים למזיגה — חמישים מיליליטר, קרח, ומים או סודה. בקבוק סגור לא צריך מקום במקרר."
+  },
+  "ube": {
+   "page_id": "gid://shopify/Page/143638298865",
+   "title": "אבקת אובה לבתי קפה ומסעדות | GT Everyday",
+   "description": "אבקת שורש יאם באיכות מעולה — מרקם קרמי ומתיקות עדינה בין וניל לאגוז. הצבע מגיע מהשורש עצמו."
+  }
+ }
+}
