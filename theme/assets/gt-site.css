@@ -99,26 +99,31 @@ section{padding:100px 0}
 .center-cta{text-align:center;margin-top:44px}
 
 /* PARTNERS */
-.partners{background:var(--card);padding:78px 0 84px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.psub{margin:12px auto 0;max-width:46ch;color:#6E7568;font-size:16.5px;line-height:1.6}
-/* The strip is one CSS animation on one element: two identical sets of tiles in a
-   track that travels exactly one set's width, so the loop has no seam. The gap
-   between the two sets is why the travel is -50% minus half a gap. */
-.pmarquee{margin-top:38px;overflow:hidden;perspective:1200px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
-.ptrack{display:flex;gap:48px;width:max-content;padding:10px 28px;transform-style:preserve-3d;animation:pslide 44s linear infinite}
-.pmarquee:hover .ptrack,.pmarquee:focus-within .ptrack{animation-play-state:paused}
+.partners{background:var(--card);padding:86px 0 94px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pintro{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:15px;align-items:center}
+.pintro h2{margin:0}
+/* One soft band instead of thirteen little cards: the container is the strip,
+   and the logos stay bare inside it. The capsule and the fade are separate
+   elements on purpose — a mask on the capsule would eat its own rounded ends. */
+.pband{position:relative;margin:46px auto 0;max-width:1240px;border-radius:56px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.74) 0,rgba(255,255,255,.30) 100%);border:1px solid rgba(255,255,255,.82);box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 30px 58px -44px rgba(28,33,24,.42)}
+.pband:before{content:"";position:absolute;inset:0;background:radial-gradient(58% 120% at 50% 46%,rgba(255,255,255,.85) 0,rgba(255,255,255,0) 72%);pointer-events:none}
+@media(max-width:900px){.pband{border-radius:38px;margin-inline:18px}}
+.pmarquee{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%)}
+/* Never pauses. A logo leaving on the left is already re-entering on the right,
+   because the track carries two identical sets and travels exactly one of them. */
+.ptrack{display:flex;gap:48px;width:max-content;padding:50px 24px;animation:pslide 44s linear infinite}
 @keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 24px),0,0)}}
 .pset{display:flex;align-items:center;gap:48px;margin:0;padding:0;list-style:none}
 .plogo{flex:0 0 auto;height:112px;display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
-.plogo img{height:112px;width:auto;max-width:none;display:block;opacity:.94;filter:drop-shadow(0 2px 3px rgba(28,33,24,.10)) drop-shadow(0 9px 16px rgba(28,33,24,.11));transition:opacity .3s,filter .45s;animation:pfloat calc(6.4s + var(--i,0)*.38s) ease-in-out infinite;animation-delay:calc(var(--i,0) * -.6s)}
-.plogo:hover{transform:translateY(-9px) scale(1.07)}
-.plogo:hover img{opacity:1;filter:drop-shadow(0 4px 6px rgba(28,33,24,.14)) drop-shadow(0 20px 30px rgba(28,33,24,.24));animation-play-state:paused}
-@keyframes pfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-/* The rise is additive: without the reveal class the logos simply sit there, so
-   a blocked script costs the entrance and never the content. */
+.plogo img{height:112px;width:auto;max-width:none;display:block;opacity:.94;filter:drop-shadow(0 2px 3px rgba(28,33,24,.10)) drop-shadow(0 9px 16px rgba(28,33,24,.12));transition:opacity .3s,filter .45s;animation:pfloat calc(6.4s + var(--i,0)*.38s) ease-in-out infinite;animation-delay:calc(var(--i,0) * -.6s)}
+/* The lift and its shadow have to fit inside the band, or hovering clips them
+   against its edge. That is what the 42px of track padding is buying. */
+.plogo:hover{transform:translateY(-8px) scale(1.06)}
+.plogo:hover img{opacity:1;filter:drop-shadow(0 4px 6px rgba(28,33,24,.15)) drop-shadow(0 18px 28px rgba(28,33,24,.26))}
+@keyframes pfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .partners.in .plogo img{animation:prise .8s cubic-bezier(.2,.8,.25,1) backwards,pfloat calc(6.4s + var(--i,0)*.38s) ease-in-out infinite;animation-delay:calc(var(--i,0) * 55ms),calc(800ms + var(--i,0) * 55ms)}
 @keyframes prise{from{opacity:0;transform:translateY(18px) scale(.92)}to{opacity:.94;transform:none}}
-@media(max-width:640px){.plogo,.plogo img{height:84px}.ptrack,.pset{gap:36px}@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 18px),0,0)}}}
+@media(max-width:640px){.plogo,.plogo img{height:82px}.ptrack{gap:34px;padding:30px 18px}.pset{gap:34px}@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 17px),0,0)}}}
 @media(prefers-reduced-motion:reduce){.plogo img,.partners.in .plogo img{animation:none;opacity:.94}.plogo:hover{transform:none}.ptrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.pset{flex-wrap:wrap;justify-content:center}.pset[aria-hidden]{display:none}.pmarquee{-webkit-mask-image:none;mask-image:none}}
 
 /* COLLECTIONS */
