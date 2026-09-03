@@ -36,15 +36,43 @@ DEAD = (
     "hf_20260722_195431", "hf_20260727_092900",
 )
 
-survey = {}
-for line in (Path("/tmp/imgs/survey.tsv")).read_text().splitlines():
-    idx, code, size, mime = line.split("\t")
-    survey[idx] = mime
-indexed = {}
-for line in (Path("/tmp/imgs/indexed.tsv")).read_text().splitlines():
-    idx, url = line.split("\t", 1)
-    indexed[idx] = url
-MIME = {url: survey[i] for i, url in indexed.items()}
+# MIME per source URL, used below for one decision only: .png or .webp.
+#
+# It came from two TSVs written to /tmp by the image survey that ran once, on
+# one machine, and was never part of this repo. Every later checkout — CI, a
+# fresh clone, any other session — died on FileNotFoundError before doing any
+# work, which made the theme layer unbuildable everywhere except where it had
+# already been built.
+#
+# The answer was already committed. theme/assets.manifest.json maps
+# `gt-<sha1(url)[:10]>.<ext>` to that url, and the extension IS the decision,
+# so inverting the manifest reproduces it exactly. The survey stays preferred
+# when it is present — it is the primary source, and a NEW image has no
+# manifest entry yet — and this is the fallback for everyone else.
+MIME: dict[str, str] = {}
+_survey_tsv = Path("/tmp/imgs/survey.tsv")
+_indexed_tsv = Path("/tmp/imgs/indexed.tsv")
+if _survey_tsv.exists() and _indexed_tsv.exists():
+    survey = {}
+    for line in _survey_tsv.read_text().splitlines():
+        idx, code, size, mime = line.split("\t")
+        survey[idx] = mime
+    indexed = {}
+    for line in _indexed_tsv.read_text().splitlines():
+        idx, url = line.split("\t", 1)
+        indexed[idx] = url
+    MIME = {url: survey[i] for i, url in indexed.items()}
+    print(f"  · image types from the survey ({len(MIME)})")
+else:
+    prior = THEME / "assets.manifest.json"
+    if not prior.exists():
+        sys.exit(
+            "FAIL: no /tmp/imgs survey and no theme/assets.manifest.json — "
+            "nothing says which images are png. Re-run the image survey."
+        )
+    for name, url in json.loads(prior.read_text(encoding="utf-8")).items():
+        MIME[url] = "image/png" if name.endswith(".png") else "image/webp"
+    print(f"  · image types from theme/assets.manifest.json ({len(MIME)})")
 
 text = SRC.read_text(encoding="utf-8")
 

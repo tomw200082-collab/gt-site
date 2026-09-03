@@ -9,4 +9,5 @@ python3 tools/build_catalogue.py
 python3 tools/apply_translation.py
 python3 tools/patch_hebrew_build.py
 python3 tools/patch_rtl_shell.py
+python3 tools/patch_form_intake.py
 node    tools/validate.js
