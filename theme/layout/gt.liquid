@@ -3,7 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if request.page_type == 'index' %}GT Everyday · סיטונאות למסעדנות{% else %}{{ page_title }}{% endif %}</title>
+{%- liquid
+  # ---------------------------------------------------------------------------
+  # Per-page metadata.
+  #
+  # Until 2026-09-02 every page on this theme emitted one hardcoded description and
+  # one hardcoded share card, so the four landing pages were indistinguishable to a
+  # search engine and a WhatsApp share of the chai page showed an iced-tea photo with
+  # "48 משקאות. ספק אחד.". In an Israeli B2B market where a page travels by being
+  # forwarded, that is the share doing nothing.
+  #
+  # Title and description now come from each page record's global.title_tag /
+  # global.description_tag metafields, which is what page_title and page_description
+  # read. They are kept in tools/landing-pages/seo.json so they are reviewable in a
+  # diff, and Tom can edit them in Shopify admin without a deploy.
+  #
+  # The share card is a landscape crop -- the landing-page heroes are 1100x1473
+  # portrait, which every scraper crops badly.
+  # ---------------------------------------------------------------------------
+  assign og_img = 'gt-cd7b9d4764.webp'
+  assign og_w = '1600'
+  assign og_h = '893'
+  assign og_alt = 'GT Everyday — חליטות קרות בהגשה'
+  assign lp = false
+  case template.suffix
+    when 'chai'
+      assign og_img = 'gt-og-chai.webp'
+      assign og_alt = 'צ׳אי מסאלה בהגשה — GT Everyday'
+      assign lp = true
+    when 'matcha'
+      assign og_img = 'gt-og-matcha.webp'
+      assign og_alt = 'מאצ׳ה לאטה בהגשה — GT Everyday'
+      assign lp = true
+    when 'iced-tea'
+      assign og_img = 'gt-og-iced-tea.webp'
+      assign og_alt = 'תה קר בהגשה — GT Everyday'
+      assign lp = true
+    when 'ube'
+      assign og_img = 'gt-og-ube.webp'
+      assign og_alt = 'אובה לאטה בהגשה — GT Everyday'
+      assign lp = true
+  endcase
+  if lp
+    assign og_w = '1100'
+    assign og_h = '577'
+  endif
+
+  # The home page keeps GT's curated pair. Everywhere else prefers the resource's own
+  # SEO fields and falls back to the same curated description.
+  #
+  # The index is excluded deliberately: there page_description resolves to the shop's
+  # own SEO description, which is the two words "Green Tea everyday" -- so an earlier
+  # cut of this file shipped that as the home page's description and og:description,
+  # replacing a sentence that actually says what GT sells.
+  assign meta_title = 'GT Everyday · סיטונאות למסעדנות'
+  assign meta_desc = 'GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ופירה פירות לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.'
+  # The home page's share line has always been shorter and punchier than its meta
+  # description -- a card is read at a glance, a search result is not. Keep both.
+  assign og_desc = '48 משקאות. ספק אחד. מחירון גלוי.'
+  unless request.page_type == 'index'
+    assign meta_title = page_title
+    if page_description != blank
+      assign meta_desc = page_description
+    endif
+    assign og_desc = meta_desc
+  endunless
+-%}
+<title>{{ meta_title }}</title>
 {%- if settings.favicon != blank -%}
 <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
 <link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
@@ -12,23 +78,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet"></noscript>
-<meta name="description" content="GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.">
+<meta name="description" content="{{ meta_desc | escape }}">
 <meta name="theme-color" content="#3E6E34">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="GT Everyday">
-<meta property="og:title" content="GT Everyday · סיטונאות למסעדנות">
-<meta property="og:description" content="48 משקאות. ספק אחד. מחירון גלוי.">
+<meta property="og:title" content="{{ meta_title | escape }}">
+<meta property="og:description" content="{{ og_desc | escape }}">
+<meta property="og:url" content="{{ canonical_url }}">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https:{{ 'gt-cd7b9d4764.webp' | asset_url }}">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="893">
-<meta property="og:image:alt" content="GT Everyday — חליטות קרות בהגשה">
-<meta name="twitter:image" content="https:{{ 'gt-cd7b9d4764.webp' | asset_url }}">
+<meta property="og:image" content="https:{{ og_img | asset_url }}">
+<meta property="og:image:width" content="{{ og_w }}">
+<meta property="og:image:height" content="{{ og_h }}">
+<meta property="og:image:alt" content="{{ og_alt | escape }}">
+<meta name="twitter:image" content="https:{{ og_img | asset_url }}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="preload" as="image" href="{{ 'gt-cd7b9d4764.webp' | asset_url }}" fetchpriority="high">
 <link rel="canonical" href="{{ canonical_url }}">
+{%- comment -%}
+  Organization only. Every field below is already stated on the pages themselves.
+  No Product/Offer markup: that would need availability and validity terms nobody has
+  approved, and inventing them to win a rich result is not a trade worth making.
+{%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "GT Everyday",
+  "legalName": "גרין טי אוורידיי בע״מ",
+  "url": "{{ shop.url }}",
+  "logo": "https:{{ 'gt-71e14890dd.png' | asset_url }}",
+  "email": "info@gteveryday.com",
+  "telephone": "+972-54-398-2444",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "הלהב 15",
+    "addressLocality": "חולון",
+    "addressCountry": "IL"
+  }
+}
+</script>
+{%- comment -%}
+  The tag manager below is not authored here. It was live on the theme file and
+  had never existed in this repo, so every deploy of this file from git removed
+  the site's analytics -- and the deploy that put it back took this file's
+  per-page SEO with it. Recorded so the repo is a superset of the theme and a
+  deploy stops being destructive. Why it is needed at all, and what else the
+  live homepage carries, is measured in docs/2026-09-02_analytics.md.
 
+  The dataLayer push already carries customer identity. Do not add fields to it.
+{%- endcomment -%}
 <script>
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
