@@ -1,0 +1,55 @@
+{
+ "_": "The eleven concentrate bottles, from Canva folder FAHUB2UNItA (Tom, 2026-09-03). These are the current 1L 'gt EVERYDAY' packaging and they arrive already cut out on transparency -- the earlier strip used a different, older label photographed on studio grey. Canva's API only serves a signed 149x200 thumbnail and the size is inside the signature, so each was trimmed to its alpha box and scaled to a common 240px bottle height; the source bottle was 124-171px tall, so this is a mild upscale. A real export from Canva would allow a larger treatment. 'color' is sampled from the printed strip under the wordmark on each label -- not chosen -- which is why the two Detox and the two Fresh variants share theirs. Order follows the page's own comp line, with each no-sugar variant beside its parent. 'glow' is that colour with its hue kept but lightness lifted to 0.62 and saturation floored at 0.55, because the section's ground is a pale tint and a dark label colour cannot glow on it.",
+ "order": [
+  "fresh",
+  "fresh-no-sugar",
+  "detox",
+  "detox-no-sugar",
+  "revive",
+  "energy",
+  "consciousness",
+  "calm",
+  "desertea",
+  "namastea",
+  "american"
+ ],
+ "name": {
+  "fresh": "Fresh",
+  "fresh-no-sugar": "Fresh No Sugar",
+  "detox": "Detox",
+  "detox-no-sugar": "Detox No Sugar",
+  "revive": "Revive",
+  "energy": "Energy",
+  "consciousness": "Consciousness",
+  "calm": "Calm",
+  "desertea": "Desertea",
+  "namastea": "Namastea",
+  "american": "American"
+ },
+ "color": {
+  "fresh": "#03616A",
+  "fresh-no-sugar": "#00666D",
+  "detox": "#E97D4B",
+  "detox-no-sugar": "#ED8043",
+  "revive": "#98D8E4",
+  "energy": "#3E2E4A",
+  "consciousness": "#F8B2BC",
+  "calm": "#A09DC9",
+  "desertea": "#EE9AB4",
+  "namastea": "#A65A09",
+  "american": "#EE898B"
+ },
+ "glow": {
+  "fresh": "#43EAFA",
+  "fresh-no-sugar": "#3DF3FF",
+  "detox": "#EA8252",
+  "detox-no-sugar": "#EE884E",
+  "revive": "#65C5D7",
+  "energy": "#A669D3",
+  "consciousness": "#EF4D64",
+  "calm": "#7069D3",
+  "desertea": "#E35984",
+  "namastea": "#F5A147",
+  "american": "#E75658"
+ }
+}
