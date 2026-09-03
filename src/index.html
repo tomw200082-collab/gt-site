@@ -211,6 +211,14 @@ section{padding:100px 0}
 .partner .pf-done{display:none;background:#EEF4EA;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5;color:#3a4a34}
 .partner .pf-done b{display:block;margin-bottom:3px}
 .partner.sent .pf-done{display:block}
+.partner.sent .pf-row,.partner.sent textarea,.partner.sent select,.partner.sent .pf-ok,.partner.sent button{display:none}
+.partner .pf-err{display:none;background:#FAEDEA;border:1px solid #EBCEC6;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5;color:#7A3B2C}
+.partner .pf-err b{display:block;margin-bottom:3px}
+.partner.failed .pf-err{display:block}
+.partner button[disabled]{opacity:.55;cursor:default}
+/* Never shown to a person, never focusable, never autofilled. A bot fills every
+   input it finds, and that is the whole point of this one. */
+.partner .pf-hp{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media(max-width:640px){.partner .pf-row{grid-template-columns:1fr}}
 form{background:var(--white);border:1px solid var(--line);border-radius:26px;padding:38px;display:grid;gap:15px;box-shadow:0 30px 60px -30px rgba(32,36,31,.18)}
 input,select{font-family:'Assistant';font-size:16px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;width:100%;background:var(--paper);transition:border .2s}
@@ -1245,9 +1253,11 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
     </select>
     <textarea id="pf-msg" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
     <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
+    <div class="pf-hp" aria-hidden="true"><label for="pf-web">אתר</label><input id="pf-web" name="company_website" type="text" tabindex="-1" autocomplete="off"></div>
     <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
     <div class="pf-alt">או שתכתבו לנו ב <a href="https://wa.me/972543982444" target="_blank" rel="noopener">וואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
-    <div class="pf-done" id="pf-done"><b>תודה — הבקשה בדרך אלינו.</b><span>אפליקציית המייל שלכם נפתחה עם המכתב המוכן. אם לא — כתבו ל־info@gteveryday.com</span></div>
+    <div class="pf-done" id="pf-done"><b>תודה — הפנייה נקלטה.</b><span>נחזור אליכם תוך יום עסקים אחד, לרוב מוקדם יותר.</span></div>
+    <div class="pf-err" id="pf-err"><b>הפנייה לא נשלחה.</b><span>משהו אצלנו לא הגיב. נסו שוב, או פנו ישירות ב<a href="https://wa.me/972543982444" target="_blank" rel="noopener">וואטסאפ</a> או בטלפון <a href="tel:+972543982444">054-398-2444</a>.</span></div>
   </form>
 </div></section>
 
@@ -1904,16 +1914,63 @@ function pAll(b){var ds=document.querySelectorAll('#pricing .ptable');
  b.textContent=open?'Expand all':'סגרו הכול';}
 </script>
 <script>
+/* The enquiry form.
+ *
+ * This used to open a `mailto:` and then add the "sent" class unconditionally.
+ * On a phone with no mail client configured — which is most phones — the
+ * visitor read "תודה, הבקשה בדרך אלינו" and nothing had left the device. Every
+ * one of those enquiries is gone, and there is no record that they existed.
+ *
+ * So the success message is now shown ONLY when the server says it stored the
+ * lead. A failure says so, and points at WhatsApp, which works.
+ *
+ * The endpoint is the `website_lead_intake` Edge Function. It is public on
+ * purpose: a browser cannot be trusted with the ingest token, so the token
+ * lives there and this page holds nothing secret. That function validates,
+ * limits one lead per phone per day, and hands the enquiry to sales-leads-poll
+ * /ingest, which alerts the desk.
+ */
+var PF_ENDPOINT='https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake';
+var PF_LOADED=Date.now();
+
 function pSend(e){e.preventDefault();
  var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
  var f=document.getElementById('pform');
+ var btn=f.querySelector('button');
  if(!document.getElementById('pf-agree').checked)return false;
- var L=['שם העסק:'+g('pf-venue'),'שם:'+g('pf-name'),'תפקיד:'+(g('pf-role')||'—'),
-        'עיר:'+g('pf-city'),'טלפון:'+g('pf-phone'),'אימייל:'+(g('pf-mail')||'—'),
-        'מתעניין ב:'+(g('pf-int')||'—'),'','הודעה:',g('pf-msg')||'—'];
- var subj='GT Everyday — בקשת שיתוף פעולה —'+(g('pf-venue')||g('pf-name'));
- window.location.href='mailto:info@gteveryday.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(L.join('\n'));
- f.classList.add('sent');
+ if(f.classList.contains('sending')||f.classList.contains('sent'))return false;
+
+ f.classList.remove('failed');
+ f.classList.add('sending');
+ var label=btn?btn.innerHTML:'';
+ if(btn){btn.disabled=true;btn.textContent='שולח…';}
+
+ var settled=false;
+ var give=function(ok){
+  if(settled)return; settled=true;
+  f.classList.remove('sending');
+  if(ok){f.classList.add('sent');return;}
+  f.classList.add('failed');
+  if(btn){btn.disabled=false;btn.innerHTML=label;}
+ };
+ /* A request that never comes back must not leave the button spinning for
+    ever — after 15s we say so, rather than let it look like it worked. */
+ setTimeout(function(){give(false);},15000);
+
+ fetch(PF_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},
+  body:JSON.stringify({
+   contact_name:g('pf-name'), venue:g('pf-venue'), city:g('pf-city'),
+   role:g('pf-role'), phone:g('pf-phone'), email:g('pf-mail'),
+   interest:g('pf-int'), message:g('pf-msg'),
+   company_website:g('pf-web'),        /* honeypot — a person leaves it empty */
+   elapsed_ms:Date.now()-PF_LOADED,    /* a person cannot fill nine fields in 3s */
+   page:location.href, referrer:document.referrer})})
+ .then(function(r){return r.json().then(
+    function(j){return {ok:r.ok,body:j};},
+    function(){return {ok:false,body:{}};});})
+ .then(function(res){give(res.ok&&res.body&&res.body.ok===true);})
+ .catch(function(){give(false);});
+
  return false;}
 </script>
 </body></html>
