@@ -85,3 +85,33 @@ jobs:
             echo "::error::off-screen offset found — hide with clip-path/clip instead"
             exit 1
           fi
+
+      - name: The share card and structured data survive the build
+        # og:image and the JSON-LD are generated, so a change to build_theme.py
+        # can drop them silently — and a blank WhatsApp preview is invisible
+        # from the repo.
+        run: |
+          python3 - <<'EOF'
+          import json, re, sys
+          head = open('theme/layout/gt.liquid', encoding='utf-8').read()
+          sec = open('theme/sections/gt-home.liquid', encoding='utf-8').read()
+          fail = []
+          for tag in ('og:image', 'og:image:width', 'twitter:image', 'rel="icon"'):
+              if tag not in head:
+                  fail.append(f'layout is missing {tag}')
+          if head.count('rel="preconnect"') != 2:
+              fail.append(f'expected 2 preconnect hints, found {head.count(chr(34).join(["rel=", "preconnect", ""]))}')
+          m = re.search(r'<script type="application/ld\+json">(.*?)</script>', sec, re.S)
+          if not m:
+              fail.append('no JSON-LD in the section')
+          else:
+              types = {n['@type'] for n in json.loads(m.group(1))['@graph']}
+              if not {'Organization', 'FAQPage'} <= types:
+                  fail.append(f'JSON-LD @graph has {types}, expected Organization + FAQPage')
+          n = len(re.findall(r'<img\b[^>]*width="\d+"[^>]*>', sec))
+          if n < 60:
+              fail.append(f'only {n} images carry width/height — expected 60+')
+          for f in fail:
+              print(f'::error::{f}')
+          sys.exit(1 if fail else 0)
+          EOF

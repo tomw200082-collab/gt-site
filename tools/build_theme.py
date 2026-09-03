@@ -135,6 +135,57 @@ markup = (markup[:_pricing_open]
           + '{% endif %}'
           + markup[_pricing_end:])
 
+# Four links pointed into that section, so switching it off left the nav item
+# "מחירון" and three product cards jumping to an anchor that is no longer on the
+# page. The nav item goes with the section; the cards fall back to the enquiry
+# form, which is where a reader who wanted a price should land anyway.
+_nav = '<a href="#pricing">מחירון</a>'
+assert markup.count(_nav) == 1, f"pricing nav item: {markup.count(_nav)} found"
+# Parked behind a sentinel so the card pass below does not also rewrite this
+# href — inside the {% if %} it can only ever render while the section is shown.
+markup = markup.replace(
+    _nav, '{% if section.settings.show_pricing %}'
+          '<a href="#PRICING-NAV">מחירון</a>{% endif %}')
+
+_card_href = 'href="#pricing"'
+assert markup.count(_card_href) == 3, f"pricing card links: {markup.count(_card_href)} found"
+markup = markup.replace(
+    _card_href,
+    'href="{% if section.settings.show_pricing %}#pricing'
+    '{% else %}#contact{% endif %}"').replace('#PRICING-NAV', '#pricing')
+
+
+# ── 3c. width and height on every image ─────────────────────────────────
+#
+# Not one of the 67 <img> tags carried them, so the browser could not reserve
+# space and the layout jumped as each image arrived — the page's one real Core
+# Web Vitals problem. The intrinsic sizes come from theme/assets.dimensions.json,
+# probed once by tools/probe_dimensions.py; nothing is fetched at build time.
+# An asset with no recorded size is left alone rather than guessed at.
+DIMENSIONS = json.loads((THEME / "assets.dimensions.json").read_text(encoding="utf-8")) \
+    if (THEME / "assets.dimensions.json").exists() else {}
+
+def stamp_dimensions(s: str) -> tuple[str, int]:
+    stamped = 0
+
+    def one(m):
+        nonlocal stamped
+        tag = m.group(0)
+        if "width=" in tag or "height=" in tag:
+            return tag
+        src = re.search(r'src="([^"]+)"', tag)
+        if not src:
+            return tag
+        name = asset_name.get(src.group(1)) or asset_name.get(htmllib.unescape(src.group(1)))
+        size = DIMENSIONS.get(name) if name else None
+        if not size:
+            return tag
+        stamped += 1
+        return tag[:-1].rstrip() + f' width="{size[0]}" height="{size[1]}">'
+
+    return re.sub(r"<img\b[^>]*>", one, s), stamped
+
+markup, stamped_imgs = stamp_dimensions(markup)
 
 markup = rewrite_markup(markup)
 js = rewrite_js(js)
@@ -182,9 +233,109 @@ gtag('js',new Date());gtag('config','{{ section.settings.analytics_id }}');
 head = re.search(r"<head>(.*)</head>", markup, re.S).group(1)
 metas = "\n".join(m.group(0) for m in re.finditer(r'<meta [^>]*>', head)
                   if 'charset' not in m.group(0) and 'viewport' not in m.group(0))
+
+# ── the share card ──────────────────────────────────────────────────────
+#
+# The head declared `twitter:card: summary_large_image` and then shipped no
+# image, so every share of this link — and the link is mostly shared by hand,
+# into WhatsApp, which is how a café owner first sees it — rendered a blank
+# card. The first hero slide is the right picture for it: 1600x893, close to
+# the 1.91:1 these previews crop to, and comfortably over the 1200x630 floor.
+OG_IMAGE = "gt-cd7b9d4764.webp"
+if OG_IMAGE not in manifest:
+    sys.exit(f"FAIL: og:image asset {OG_IMAGE} is not in the manifest — pick another hero frame")
+_og_w, _og_h = DIMENSIONS.get(OG_IMAGE, (1600, 893))
+metas += (
+    # asset_url is protocol-relative; a share crawler needs an absolute URL.
+    f"\n<meta property=\"og:image\" content=\"https:{{{{ '{OG_IMAGE}' | asset_url }}}}\">"
+    f"\n<meta property=\"og:image:width\" content=\"{_og_w}\">"
+    f"\n<meta property=\"og:image:height\" content=\"{_og_h}\">"
+    "\n<meta property=\"og:image:alt\" content=\"GT Everyday — חליטות קרות בהגשה\">"
+    "\n<meta name=\"twitter:image\" content=\"https:{{ '" + OG_IMAGE + "' | asset_url }}\">"
+    "\n<meta name=\"robots\" content=\"index, follow, max-image-preview:large\">"
+)
+
+# ── the favicon ─────────────────────────────────────────────────────────
+#
+# The store has one configured (config/settings_data.json -> settings.favicon),
+# and Vodoma's layout renders it — but this layout did not, so the homepage was
+# the one page on the store with no icon in the tab. Guarded, so an unset
+# favicon renders nothing rather than a broken link.
+FAVICON = """{%- if settings.favicon != blank -%}
+<link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+<link rel="apple-touch-icon" href="{{ settings.favicon | image_url: width: 180, height: 180 }}">
+{%- endif -%}"""
 title = re.search(r"<title>(.*?)</title>", head, re.S).group(1).strip()
 fonts = "\n".join(m.group(0) for m in re.finditer(r'<link [^>]*fonts\.[^>]*>', head))
-preconnect = "\n".join(m.group(0) for m in re.finditer(r'<link rel="preconnect"[^>]*>', head))
+# The source emits each preconnect twice; dedupe while keeping document order.
+preconnect = "\n".join(dict.fromkeys(
+    m.group(0) for m in re.finditer(r'<link rel="preconnect"[^>]*>', head)))
+
+# The Google Fonts stylesheet is a render-blocking request to a third party.
+# Loading it as `print` and flipping to `all` on load takes it off the critical
+# path; the <noscript> copy keeps it working with scripting disabled. The faces
+# already carry `display=swap`, so text paints either way.
+#
+# `fonts` above also matches the two preconnect links — their href contains
+# "fonts." — which is why the head carried each of them twice. Keep only the
+# stylesheet here; `preconnect` already emits the hints, once each.
+_font_css = [m for m in fonts.split("\n") if 'rel="stylesheet"' in m]
+if len(_font_css) != 1:
+    sys.exit(f"expected 1 font stylesheet link, found {len(_font_css)}")
+_sheet = _font_css[0]
+_async = _sheet.replace(
+    'rel="stylesheet"', "rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\"")
+fonts = _async + "\n<noscript>" + _sheet + "</noscript>"
+
+# ── structured data ─────────────────────────────────────────────────────
+#
+# Organization, plus the FAQ the page already answers. The questions are read
+# out of the built markup rather than retyped, so the schema cannot drift from
+# what a reader sees — the same rule the figures follow.
+def faq_pairs(html_: str):
+    out = []
+    for m in re.finditer(r"<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>",
+                         html_, re.S):
+        q = re.sub(r"<[^>]+>", " ", m.group(1))
+        a = re.sub(r"<[^>]+>", " ", m.group(2))
+        q, a = " ".join(q.split()), " ".join(a.split())
+        # The drink modal uses <details> too; only real prose Q&A qualifies.
+        if q.endswith("?") and 20 <= len(a) <= 900:
+            out.append((q, a))
+    return out
+
+_faq = faq_pairs(body_html)
+_graph = [{
+    "@type": "Organization",
+    "name": "GT Everyday",
+    "alternateName": "גרין טי אוורידיי",
+    "url": "https://gteveryday.com/",
+    "logo": "https:{{ '" + OG_IMAGE + "' | asset_url }}",
+    "description": re.search(r'name="description" content="([^"]+)"', metas).group(1),
+    "areaServed": "IL",
+    "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+972-54-398-2444",
+        "email": "info@gteveryday.com",
+        "contactType": "sales",
+        "availableLanguage": ["he", "en"],
+    }],
+}]
+if _faq:
+    _graph.append({
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": a}}
+            for q, a in _faq
+        ],
+    })
+STRUCTURED_DATA = (
+    '<script type="application/ld+json">'
+    + json.dumps({"@context": "https://schema.org", "@graph": _graph},
+                 ensure_ascii=False, separators=(",", ":"))
+    + "</script>"
+)
 
 SECTION = f"""{{%- comment -%}}
   GT Everyday brand site — the whole v5 R124 page as one section.
@@ -197,6 +348,8 @@ SECTION = f"""{{%- comment -%}}
 </script>
 
 {body_html}
+
+{STRUCTURED_DATA}
 
 <script src="{{{{ 'gt-site.js' | asset_url }}}}" defer></script>
 
@@ -224,6 +377,7 @@ LAYOUT = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{% if request.page_type == 'index' %}}{title}{{% else %}}{{{{ page_title }}}}{{% endif %}}</title>
+{FAVICON}
 {preconnect}
 {fonts}
 {metas}
@@ -263,6 +417,8 @@ print(f"  templates/index.json    {b('templates/index.json'):>8,} bytes")
 print(f"  assets/gt-site.css      {b('assets/gt-site.css'):>8,} bytes")
 print(f"  assets/gt-site.js       {b('assets/gt-site.js'):>8,} bytes")
 print(f"  images in manifest      {len(manifest):>8,}")
+print(f"  images sized              {stamped_imgs:>8,}  (width/height stamped)")
+print(f"  FAQ entries in schema     {len(_faq):>8,}")
 print(f"  dead images dropped     {len(skipped):>8,}  ({removed} data entries removed)")
 lo = [n for n in (b('sections/gt-home.liquid'),) if n > 256*1024]
 if lo:
