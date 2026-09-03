@@ -233,6 +233,8 @@ section{padding:100px 0}
 .partner .pf-err{background:#FBEAE7;border:1px solid #E5B4AB;border-radius:14px;padding:12px 15px;font-size:13.5px;line-height:1.5;color:#7A2E1E}
 .partner .pf-err a{color:#7A2E1E;font-weight:700}
 .partner button[disabled]{opacity:.6;cursor:progress}
+.partner.sent button[disabled]{opacity:1;cursor:default;background:var(--gt)}
+.partner .pf-done a{color:inherit;font-weight:700}
 .partner .pf-done{display:none;background:#EEF4EA;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5;color:#3a4a34}
 .partner .pf-done b{display:block;margin-bottom:3px}
 .partner.sent .pf-done{display:block}
@@ -952,6 +954,47 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media(max-width:640px){
   .nav-links{inset:80px 0 0}
 }
+
+/* ====================================================================
+   Pre-launch UX review (tools/patch_ux.py). Appended last so it wins.
+   ==================================================================== */
+
+/* the sticky call-to-action never wraps */
+nav .btn{white-space:nowrap;flex:0 0 auto}
+@media(max-width:640px){nav .btn{padding:12px 18px;font-size:13px;gap:8px}}
+@media(max-width:360px){nav .btn{padding:11px 14px;font-size:12px}}
+
+/* a phone number is one word, whatever direction the sentence runs */
+a[href^="tel:"],a[href^="https://wa.me"]{white-space:nowrap;unicode-bidi:isolate}
+
+/* contact rows are tappable end to end and keep their look */
+.contact li a{display:block;margin:-12px 0;padding:12px 0;color:inherit;text-decoration:none}
+.contact li a:hover{color:var(--gt)}
+
+/* tap targets: 44px, or as close as the design allows */
+.sub-cta{display:inline-block;padding:10px 0 6px}
+.pall{padding:12px 20px;font-size:13px}
+#faq details{padding:0 22px}
+#faq summary{padding:18px 0 18px 28px}
+#faq summary::after{top:16px}
+#faq details p{padding-bottom:18px}
+.partner .pf-ok input{width:20px;height:20px;margin-top:0}
+.partner .pf-alt a{display:inline-block;padding:10px 0}
+.partner .pf-err a,.partner .pf-done a{display:inline-block;padding:6px 2px}
+
+/* keyboard focus is visible on everything that acts */
+.btn{transition:background-color .2s,color .2s,box-shadow .2s}
+.btn:focus-visible,.sub-cta:focus-visible,.ccard:focus-visible,.mxtog:focus-visible,
+.pall:focus-visible,.hs-arr:focus-visible,.nav-burger:focus-visible,
+.nav-links a:focus-visible,#faq summary:focus-visible{outline:3px solid var(--gt);outline-offset:3px}
+input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline:2px solid var(--gt);outline-offset:0}
+
+/* the recipe modal: a readable source label, and "1 / 6" that reads 1 / 6 */
+.cm-src .lbl{color:#6B7065;letter-spacing:.06em}
+.cm-num{direction:ltr;unicode-bidi:isolate}
+
+/* motion respects the visitor's setting (the hero is handled in script) */
+@media(prefers-reduced-motion:reduce){.ticker .track{animation:none}}
 </style>
 </head>
 <body>
@@ -1055,8 +1098,8 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
       <a class="btn light" style="margin-top:24px" href="#contact">רוצה מחירון מתומחר <span class="arr">←</span></a>
     </div>
     <div class="stats">
-      <div class="stat"><b class="num">85%</b><span>רווחיות בהגשות העליונות</span></div>
-      <div class="stat"><b class="num">₪3.25</b><span>עלות חומר גלם לכוס, החל מ־</span></div>
+      <div class="stat"><b class="num">87%</b><span>רווחיות בהגשות העליונות</span></div>
+      <div class="stat"><b class="num">₪2.85</b><span>עלות חומר גלם לכוס, החל מ־</span></div>
       <div class="stat"><b class="num">₪19–28</b><span>מחירי תפריט מומלצים</span></div>
       <div class="stat"><b class="num">0</b><span>מקום במקרר למלאי סגור</span></div>
     </div>
@@ -1072,7 +1115,7 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
     <div class="nums">
       <div><b style="color:var(--energy)">−25%</b><span>אלכוהול מול דור המילניום</span></div>
       <div><b style="color:var(--consc)">Tea 2.0</b><span>הקטגוריה הבאה</span></div>
-      <div><b style="color:var(--fresh)">85%</b><span>רווחיות בהגשות העליונות</span></div>
+      <div><b style="color:var(--fresh)">87%</b><span>רווחיות בהגשות העליונות</span></div>
     </div>
   </div>
 </section>
@@ -1248,35 +1291,35 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
     <p style="color:var(--ink-soft)">השאירו פרטים — נשלח את המחירון המלא ונקבע טעימה.</p>
     <ul>
       <li>📍 הלהב 15, חולון (המפעל)</li>
-      <li>📞 054-398-2444</li>
-      <li>✉️ info@gteveryday.com</li>
-      <li>📷 @gteveryday</li>
+      <li><a href="tel:+972543982444">📞 054-398-2444</a></li>
+      <li><a href="mailto:info@gteveryday.com">✉️ info@gteveryday.com</a></li>
+      <li><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">📷 @gteveryday</a></li>
     </ul>
   </div>
   <form class="rv partner" id="pform" method="post" enctype="text/plain"
       action="mailto:info@gteveryday.com?subject=GT%20Everyday%20%E2%80%94%20בקשת%20שיתוף%20פעולה" onsubmit="return pSend(event)">
     <div class="pf-head"><b>בקשת שיתוף פעולה</b><span>עונים תוך יום עסקים אחד</span></div>
     <div class="pf-row">
-      <input id="pf-name" placeholder="השם שלך *" required>
-      <input id="pf-venue" placeholder="שם העסק *" required>
+      <input id="pf-name" name="name" autocomplete="name" placeholder="השם שלך *" required>
+      <input id="pf-venue" name="venue" autocomplete="organization" placeholder="שם העסק *" required>
     </div>
     <div class="pf-row">
-      <input id="pf-city" placeholder="עיר *" required>
-      <select id="pf-role" aria-label="התפקיד שלך">
+      <input id="pf-city" name="city" autocomplete="address-level2" placeholder="עיר *" required>
+      <select id="pf-role" name="role" aria-label="התפקיד שלך">
         <option value="">התפקיד שלך</option><option>בעלים</option><option>מנהל/ת</option>
         <option>אחראי/ת בר</option><option>בריסטה</option><option>אחר</option>
       </select>
     </div>
     <div class="pf-row">
-      <input id="pf-phone" placeholder="טלפון *" required>
-      <input id="pf-mail" type="email" placeholder="אימייל">
+      <input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="טלפון *" required>
+      <input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="אימייל">
     </div>
-    <select id="pf-int" aria-label="מה מעניין אתכם">
+    <select id="pf-int" name="interest" aria-label="מה מעניין אתכם">
       <option value="">מה מעניין אתכם…</option><option>המחירון המלא</option><option>טעימה במקום</option>
       <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>פירה סמוזי</option>
       <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
     </select>
-    <textarea id="pf-msg" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
+    <textarea id="pf-msg" name="message" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
     <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
       <label for="pf-cw">אל תמלאו שדה זה</label>
       <input id="pf-cw" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -1285,7 +1328,7 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
     <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
     <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
     <div class="pf-alt">או שתכתבו לנו ב <a href="https://wa.me/972543982444" target="_blank" rel="noopener">וואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
-    <div class="pf-done" id="pf-done"><b>תודה — הבקשה בדרך אלינו.</b><span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. אם דחוף — 054-398-2444.</span></div>
+    <div class="pf-done" id="pf-done" role="status"><b>תודה — הבקשה בדרך אלינו.</b><span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
   </form>
 </div></section>
 
@@ -1721,8 +1764,8 @@ function cmSrcRender(ci,di){
  var srcs=cmSources(ci,di);
  if(!srcs.length){host.innerHTML='';host.style.display='none';return;}
  host.style.display='flex';
- host.innerHTML='<span class="lbl">Made with</span>'+srcs.map(function(n){
-   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+n+' \u2192</a>'; }).join('');
+ host.innerHTML='<span class="lbl">על בסיס</span>'+srcs.map(function(n){
+   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+n+' \u2190</a>'; }).join('');
  host.querySelectorAll('a').forEach(function(a){
   a.addEventListener('click',function(e){e.preventDefault();
    var el=document.getElementById(a.getAttribute('data-card')); if(!el)return;
@@ -1853,7 +1896,7 @@ function hsGo(i){const N=document.querySelectorAll('.hs-slide').length;hsI=(i+N)
  
  document.querySelectorAll('#hs-dots span').forEach((d,j)=>d.classList.toggle('on',j===hsI));
  hsRestart();}
-function hsRestart(){clearInterval(hsTimer);hsTimer=setInterval(()=>hsGo(hsI+1),5000);}
+function hsRestart(){clearInterval(hsTimer);if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;hsTimer=setInterval(()=>hsGo(hsI+1),5000);}
 (function(){const dd=document.getElementById('hs-dots');
  document.querySelectorAll('.hs-slide').forEach((_,i)=>{const sp=document.createElement('span');sp.onclick=()=>hsGo(i);dd.appendChild(sp);});
  const hs=document.getElementById('hs');
@@ -1976,7 +2019,7 @@ function pSend(e){e.preventDefault();
    .then(function(j){return {ok:r.ok,j:j};});})
   .then(function(res){clearTimeout(to);
    if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));
-    f.classList.add('sent');
+    f.classList.add('sent');btn.innerHTML='נשלח \u2713';
     document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
    if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}

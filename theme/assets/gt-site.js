@@ -367,8 +367,8 @@ function cmSrcRender(ci,di){
  var srcs=cmSources(ci,di);
  if(!srcs.length){host.innerHTML='';host.style.display='none';return;}
  host.style.display='flex';
- host.innerHTML='<span class="lbl">Made with</span>'+srcs.map(function(n){
-   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+n+' \u2192</a>'; }).join('');
+ host.innerHTML='<span class="lbl">על בסיס</span>'+srcs.map(function(n){
+   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+n+' \u2190</a>'; }).join('');
  host.querySelectorAll('a').forEach(function(a){
   a.addEventListener('click',function(e){e.preventDefault();
    var el=document.getElementById(a.getAttribute('data-card')); if(!el)return;
@@ -499,7 +499,7 @@ function hsGo(i){const N=document.querySelectorAll('.hs-slide').length;hsI=(i+N)
  
  document.querySelectorAll('#hs-dots span').forEach((d,j)=>d.classList.toggle('on',j===hsI));
  hsRestart();}
-function hsRestart(){clearInterval(hsTimer);hsTimer=setInterval(()=>hsGo(hsI+1),5000);}
+function hsRestart(){clearInterval(hsTimer);if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;hsTimer=setInterval(()=>hsGo(hsI+1),5000);}
 (function(){const dd=document.getElementById('hs-dots');
  document.querySelectorAll('.hs-slide').forEach((_,i)=>{const sp=document.createElement('span');sp.onclick=()=>hsGo(i);dd.appendChild(sp);});
  const hs=document.getElementById('hs');
@@ -624,7 +624,7 @@ function pSend(e){e.preventDefault();
    .then(function(j){return {ok:r.ok,j:j};});})
   .then(function(res){clearTimeout(to);
    if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));
-    f.classList.add('sent');
+    f.classList.add('sent');btn.innerHTML='נשלח \u2713';
     document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
    if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}

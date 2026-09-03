@@ -65,6 +65,17 @@ def main() -> None:
     text = sub("best margin", "רווחיות של עד 85% בהגשות העליונות",
                f"רווחיות של עד {max_marg}% בהגשות העליונות", text)
 
+    # The same two figures again, as the stat cards beside that paragraph and
+    # in the Tea 2.0 band. The superseded values had survived there, so the
+    # page argued ₪2.85 / 87% in one sentence and ₪3.25 / 85% three lines
+    # below it (found by the 2026-09-03 UX review).
+    text = sub("stat margin", '<b class="num">85%</b>',
+               f'<b class="num">{max_marg}%</b>', text)
+    text = sub("band margin", '<b style="color:var(--fresh)">85%</b>',
+               f'<b style="color:var(--fresh)">{max_marg}%</b>', text)
+    text = sub("stat cost", '<b class="num">₪3.25</b>',
+               f'<b class="num">₪{min_cost:.2f}</b>', text)
+
     # ── what the flavour cards actually hold ────────────────────────────
     # The cards render from MK, except the three pouch flavours, which render
     # their matching COLS collection. Count both the way the page does.

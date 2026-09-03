@@ -107,8 +107,8 @@
       <a class="btn light" style="margin-top:24px" href="#contact">רוצה מחירון מתומחר <span class="arr">←</span></a>
     </div>
     <div class="stats">
-      <div class="stat"><b class="num">85%</b><span>רווחיות בהגשות העליונות</span></div>
-      <div class="stat"><b class="num">₪3.25</b><span>עלות חומר גלם לכוס, החל מ־</span></div>
+      <div class="stat"><b class="num">87%</b><span>רווחיות בהגשות העליונות</span></div>
+      <div class="stat"><b class="num">₪2.85</b><span>עלות חומר גלם לכוס, החל מ־</span></div>
       <div class="stat"><b class="num">₪19–28</b><span>מחירי תפריט מומלצים</span></div>
       <div class="stat"><b class="num">0</b><span>מקום במקרר למלאי סגור</span></div>
     </div>
@@ -124,7 +124,7 @@
     <div class="nums">
       <div><b style="color:var(--energy)">−25%</b><span>אלכוהול מול דור המילניום</span></div>
       <div><b style="color:var(--consc)">Tea 2.0</b><span>הקטגוריה הבאה</span></div>
-      <div><b style="color:var(--fresh)">85%</b><span>רווחיות בהגשות העליונות</span></div>
+      <div><b style="color:var(--fresh)">87%</b><span>רווחיות בהגשות העליונות</span></div>
     </div>
   </div>
 </section>
@@ -300,35 +300,35 @@
     <p style="color:var(--ink-soft)">השאירו פרטים — נשלח את המחירון המלא ונקבע טעימה.</p>
     <ul>
       <li>📍 הלהב 15, חולון (המפעל)</li>
-      <li>📞 054-398-2444</li>
-      <li>✉️ info@gteveryday.com</li>
-      <li>📷 @gteveryday</li>
+      <li><a href="tel:+972543982444">📞 054-398-2444</a></li>
+      <li><a href="mailto:info@gteveryday.com">✉️ info@gteveryday.com</a></li>
+      <li><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">📷 @gteveryday</a></li>
     </ul>
   </div>
   <form class="rv partner" id="pform" method="post" enctype="text/plain"
       action="mailto:info@gteveryday.com?subject=GT%20Everyday%20%E2%80%94%20בקשת%20שיתוף%20פעולה" onsubmit="return pSend(event)">
     <div class="pf-head"><b>בקשת שיתוף פעולה</b><span>עונים תוך יום עסקים אחד</span></div>
     <div class="pf-row">
-      <input id="pf-name" placeholder="השם שלך *" required>
-      <input id="pf-venue" placeholder="שם העסק *" required>
+      <input id="pf-name" name="name" autocomplete="name" placeholder="השם שלך *" required>
+      <input id="pf-venue" name="venue" autocomplete="organization" placeholder="שם העסק *" required>
     </div>
     <div class="pf-row">
-      <input id="pf-city" placeholder="עיר *" required>
-      <select id="pf-role" aria-label="התפקיד שלך">
+      <input id="pf-city" name="city" autocomplete="address-level2" placeholder="עיר *" required>
+      <select id="pf-role" name="role" aria-label="התפקיד שלך">
         <option value="">התפקיד שלך</option><option>בעלים</option><option>מנהל/ת</option>
         <option>אחראי/ת בר</option><option>בריסטה</option><option>אחר</option>
       </select>
     </div>
     <div class="pf-row">
-      <input id="pf-phone" placeholder="טלפון *" required>
-      <input id="pf-mail" type="email" placeholder="אימייל">
+      <input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="טלפון *" required>
+      <input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="אימייל">
     </div>
-    <select id="pf-int" aria-label="מה מעניין אתכם">
+    <select id="pf-int" name="interest" aria-label="מה מעניין אתכם">
       <option value="">מה מעניין אתכם…</option><option>המחירון המלא</option><option>טעימה במקום</option>
       <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>פירה סמוזי</option>
       <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
     </select>
-    <textarea id="pf-msg" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
+    <textarea id="pf-msg" name="message" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
     <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
       <label for="pf-cw">אל תמלאו שדה זה</label>
       <input id="pf-cw" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -337,7 +337,7 @@
     <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
     <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
     <div class="pf-alt">או שתכתבו לנו ב <a href="https://wa.me/972543982444" target="_blank" rel="noopener">וואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
-    <div class="pf-done" id="pf-done"><b>תודה — הבקשה בדרך אלינו.</b><span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. אם דחוף — 054-398-2444.</span></div>
+    <div class="pf-done" id="pf-done" role="status"><b>תודה — הבקשה בדרך אלינו.</b><span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
   </form>
 </div></section>
 

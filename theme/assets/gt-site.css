@@ -218,6 +218,8 @@ section{padding:100px 0}
 .partner .pf-err{background:#FBEAE7;border:1px solid #E5B4AB;border-radius:14px;padding:12px 15px;font-size:13.5px;line-height:1.5;color:#7A2E1E}
 .partner .pf-err a{color:#7A2E1E;font-weight:700}
 .partner button[disabled]{opacity:.6;cursor:progress}
+.partner.sent button[disabled]{opacity:1;cursor:default;background:var(--gt)}
+.partner .pf-done a{color:inherit;font-weight:700}
 .partner .pf-done{display:none;background:#EEF4EA;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.5;color:#3a4a34}
 .partner .pf-done b{display:block;margin-bottom:3px}
 .partner.sent .pf-done{display:block}
@@ -937,3 +939,44 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media(max-width:640px){
   .nav-links{inset:80px 0 0}
 }
+
+/* ====================================================================
+   Pre-launch UX review (tools/patch_ux.py). Appended last so it wins.
+   ==================================================================== */
+
+/* the sticky call-to-action never wraps */
+nav .btn{white-space:nowrap;flex:0 0 auto}
+@media(max-width:640px){nav .btn{padding:12px 18px;font-size:13px;gap:8px}}
+@media(max-width:360px){nav .btn{padding:11px 14px;font-size:12px}}
+
+/* a phone number is one word, whatever direction the sentence runs */
+a[href^="tel:"],a[href^="https://wa.me"]{white-space:nowrap;unicode-bidi:isolate}
+
+/* contact rows are tappable end to end and keep their look */
+.contact li a{display:block;margin:-12px 0;padding:12px 0;color:inherit;text-decoration:none}
+.contact li a:hover{color:var(--gt)}
+
+/* tap targets: 44px, or as close as the design allows */
+.sub-cta{display:inline-block;padding:10px 0 6px}
+.pall{padding:12px 20px;font-size:13px}
+#faq details{padding:0 22px}
+#faq summary{padding:18px 0 18px 28px}
+#faq summary::after{top:16px}
+#faq details p{padding-bottom:18px}
+.partner .pf-ok input{width:20px;height:20px;margin-top:0}
+.partner .pf-alt a{display:inline-block;padding:10px 0}
+.partner .pf-err a,.partner .pf-done a{display:inline-block;padding:6px 2px}
+
+/* keyboard focus is visible on everything that acts */
+.btn{transition:background-color .2s,color .2s,box-shadow .2s}
+.btn:focus-visible,.sub-cta:focus-visible,.ccard:focus-visible,.mxtog:focus-visible,
+.pall:focus-visible,.hs-arr:focus-visible,.nav-burger:focus-visible,
+.nav-links a:focus-visible,#faq summary:focus-visible{outline:3px solid var(--gt);outline-offset:3px}
+input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline:2px solid var(--gt);outline-offset:0}
+
+/* the recipe modal: a readable source label, and "1 / 6" that reads 1 / 6 */
+.cm-src .lbl{color:#6B7065;letter-spacing:.06em}
+.cm-num{direction:ltr;unicode-bidi:isolate}
+
+/* motion respects the visitor's setting (the hero is handled in script) */
+@media(prefers-reduced-motion:reduce){.ticker .track{animation:none}}

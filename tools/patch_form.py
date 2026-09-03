@@ -21,7 +21,9 @@ What this patch adds beyond the request itself:
   script is blocked still reaches a working mail draft rather than a dead
   button. That was the old behaviour for everyone; it is now the fallback only.
 - **A honeypot** and the time the form was on screen, both read by the endpoint.
-- **The button says what it is doing** and cannot be double-submitted.
+- **The button says what it is doing** — sending, then sent — and cannot be
+  double-submitted. Before this it stayed on "שולח…" after a success, which read
+  as stuck.
 - **A `generate_lead` event**, pushed once the endpoint confirms the lead —
   category fields only, never the enquirer's details.
 """
@@ -94,6 +96,8 @@ def main() -> None:
         "padding:12px 15px;font-size:13.5px;line-height:1.5;color:#7A2E1E}\n"
         ".partner .pf-err a{color:#7A2E1E;font-weight:700}\n"
         ".partner button[disabled]{opacity:.6;cursor:progress}\n"
+        ".partner.sent button[disabled]{opacity:1;cursor:default;background:var(--gt)}\n"
+        ".partner .pf-done a{color:inherit;font-weight:700}\n"
         ".partner .pf-done{display:none;",
         text,
     )
@@ -104,7 +108,7 @@ def main() -> None:
         "<span>אפליקציית המייל שלכם נפתחה עם המכתב המוכן. "
         "אם לא — כתבו ל־info@gteveryday.com</span>",
         "<span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. "
-        "אם דחוף — 054-398-2444.</span>",
+        "אם דחוף — <a href=\"tel:+972543982444\">054-398-2444</a>.</span>",
         text,
     )
 
@@ -140,7 +144,7 @@ def main() -> None:
         "   .then(function(j){return {ok:r.ok,j:j};});})\n"
         "  .then(function(res){clearTimeout(to);\n"
         "   if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));\n"
-        "    f.classList.add('sent');\n"
+        "    f.classList.add('sent');btn.innerHTML='נשלח \\u2713';\n"
         "    document.getElementById('pf-done').scrollIntoView("
         "{block:'nearest',behavior:'smooth'});return;}\n"
         "   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. "

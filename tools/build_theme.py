@@ -261,6 +261,11 @@ metas += (
     "\n<meta name=\"robots\" content=\"index, follow, max-image-preview:large\">"
 )
 
+# That same photograph is the page's largest paint, and the script sets it as
+# a CSS background only once it runs — so the browser discovers the request
+# last. Preloading it puts it first in line (2026-09-03 UX review).
+metas += f"\n<link rel=\"preload\" as=\"image\" href=\"{{{{ '{OG_IMAGE}' | asset_url }}}}\" fetchpriority=\"high\">"
+
 # ── the favicon ─────────────────────────────────────────────────────────
 #
 # The store has one configured (config/settings_data.json -> settings.favicon),
