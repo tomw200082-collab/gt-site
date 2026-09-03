@@ -481,7 +481,7 @@ function pmOpen(id){
    const a=document.createElement('a');a.href='#!';
    a.innerHTML='<span>'+name+'</span><span class="tag">'+COLS[ci].n+' \u00b7 '+COLS[ci].t+' \u2192</span>';
    a.style.cssText+='color:#20241F;text-decoration:none;';
-   a.firstChild.style.cssText='font-family:Assistant,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;';
+   a.firstChild.style.cssText='font-family:Roca One,Heebo,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;';
    a.lastChild.style.cssText='font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93;text-decoration:none;white-space:nowrap;';
    a.onclick=(e)=>{e.preventDefault();document.getElementById('pmodal').classList.remove('open');cmOpen(ci);cmI=si;cmRender();};
    L.appendChild(a);
