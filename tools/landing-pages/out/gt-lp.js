@@ -45,6 +45,20 @@
     po.observe(sec);
   });
 
+  /* Everything that isn't a drink card, the bottle line or the plate, but still
+     wants the same "arrive when scrolled to" feel: the menu heading, both halves
+     of the story section, both halves of the capture section. Same contract as
+     .g-line/.g-plate above -- armed only where the observer that undoes it is
+     known to exist, so a fade-up can never be a permanently blank block. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp .g-fade-up'), function (el) {
+    if (!window.IntersectionObserver) return;
+    el.classList.add('g-armed');
+    var fo = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { el.classList.add('g-on'); fo.disconnect(); }
+    }, { threshold: 0.15 });
+    fo.observe(el);
+  });
+
   /* The sticky bar is a second copy of the hero's call to action, so it should not
      appear while the first one is still on screen -- there it just covers content. */
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp'), function (lp) {

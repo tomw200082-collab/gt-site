@@ -59,6 +59,19 @@
 .g-lp .g-hero-in .g-display em{color:var(--white);text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:.09em;text-underline-offset:.12em}
 .g-lp .g-promise{margin-top:18px;max-width:48ch;font-size:17px;font-weight:300;color:var(--on-dark-soft)}
 .g-lp .g-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+/* The hero is the one section that never scrolls into view -- it is already
+   on screen at load, so this is a plain CSS animation, not an IntersectionObserver
+   target: fill-mode both supplies the pre-paint hidden state, so there is no
+   flash of the finished layout before the animation starts. */
+.g-lp .g-hero-in .g-logo,.g-lp .g-hero-in .g-eyebrow,.g-lp .g-hero-in .g-display,
+.g-lp .g-hero-in .g-promise,.g-lp .g-hero-in .g-ctas{
+  animation:g-rise-in .7s cubic-bezier(.16,.84,.28,1) both;
+}
+.g-lp .g-hero-in .g-eyebrow{animation-delay:.08s}
+.g-lp .g-hero-in .g-display{animation-delay:.16s}
+.g-lp .g-hero-in .g-promise{animation-delay:.27s}
+.g-lp .g-hero-in .g-ctas{animation-delay:.38s}
+@keyframes g-rise-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .g-lp .g-btn{
   display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);
   font:800 14px/1 Assistant,sans-serif;letter-spacing:.06em;text-transform:uppercase;
@@ -190,6 +203,14 @@
 .g-lp .g-drink:hover{border-color:var(--a);transform:translateY(-8px);box-shadow:0 30px 60px -18px rgba(32,36,31,.22)}
 .g-lp .g-reveal .g-drink{opacity:0;transform:translateY(26px)}
 .g-lp .g-reveal .g-drink.g-on{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
+
+/* One reveal for everything that isn't a drink card or already handled by its
+   own arrival (.g-line, .g-plate): the menu's own heading, both halves of the
+   story section, both halves of the capture section. Same armed/on contract as
+   .g-line and .g-plate below -- gt-lp.js only ever hides one of these once the
+   observer that undoes it exists. */
+.g-lp .g-fade-up.g-armed{opacity:0;transform:translateY(22px)}
+.g-lp .g-fade-up.g-armed.g-on{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .g-lp .g-drink-tx{
   grid-column:1;grid-row:1;min-width:0;display:flex;flex-direction:column;
   padding-block:20px 16px;padding-inline-start:18px;padding-inline-end:0;
@@ -252,6 +273,14 @@
 .g-lp .g-drink details[open] summary:after{content:" −"}
 .g-lp .g-drink ol{margin-top:10px;padding-inline-start:18px;display:grid;gap:6px;font-size:13.5px;color:var(--ink-soft)}
 .g-lp .g-note{margin-top:10px;font-size:11.5px;color:var(--ink-soft);border-top:1px dotted var(--rule);padding-top:8px}
+/* Opening only: the browser's own display:none<->block on <details> is instant
+   either direction, and animating that transition needs a JS-timed height, which
+   48 cards x 4 pages does not earn. A fade+settle on the content that just
+   became visible gets most of the feel for none of that risk; closing keeps its
+   native snap, which is the expected, unremarkable half of this interaction. */
+.g-lp .g-drink details[open] ol{animation:g-details-in .3s ease both}
+.g-lp .g-drink details[open] .g-note{animation:g-details-in .3s ease both .05s}
+@keyframes g-details-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 .g-lp .g-fine{margin-top:30px;font-size:12px;color:var(--ink-soft)}
 
 /* ---- the plate ------------------------------------------------------- */
@@ -397,6 +426,10 @@
   .g-lp .g-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
+  .g-lp .g-hero-in .g-logo,.g-lp .g-hero-in .g-eyebrow,.g-lp .g-hero-in .g-display,
+  .g-lp .g-hero-in .g-promise,.g-lp .g-hero-in .g-ctas{animation:none}
+  .g-lp .g-fade-up.g-armed{opacity:1;transform:none}
+  .g-lp .g-drink details[open] ol,.g-lp .g-drink details[open] .g-note{animation:none}
   .g-lp .g-reveal .g-drink{opacity:1;transform:none}
   .g-lp .g-drink:hover{transform:none;box-shadow:none}
   .g-lp .g-btn:hover .g-arr{transform:none}
@@ -471,14 +504,20 @@
 .g-lp .g-sticky{display:none}
 @media(max-width:760px){
   /* gt-lp.js adds g-sticky-on to the page root once the hero has scrolled away, so
-     the bar never sits on top of the same call to action it repeats. */
-  .g-lp.g-sticky-on .g-sticky{
-    position:fixed;inset-inline:14px;bottom:14px;z-index:40;
-    display:flex;align-items:center;justify-content:center;gap:8px;
+     the bar never sits on top of the same call to action it repeats. Always laid
+     out (position:fixed, never display:none) below 760px so opacity/transform can
+     transition it in and out instead of popping; pointer-events keeps it
+     unclickable while hidden. */
+  .g-lp .g-sticky{
+    display:flex;position:fixed;inset-inline:14px;bottom:14px;z-index:40;
+    align-items:center;justify-content:center;gap:8px;
     padding:15px 22px;border-radius:999px;
     background:var(--ink);color:var(--paper);text-decoration:none;
     font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(15,17,12,.28);
+    opacity:0;transform:translateY(14px);pointer-events:none;
+    transition:opacity .25s ease,transform .25s ease;
   }
+  .g-lp.g-sticky-on .g-sticky{opacity:1;transform:none;pointer-events:auto}
   .g-lp .g-line{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
   .g-lp .g-foot{padding-bottom:86px}
 }
