@@ -68,8 +68,12 @@ jobs:
       - name: No remote image URL survives into the theme
         # src/index.html keeps its remote URLs on purpose — it is the browser
         # preview. build_theme.py rewrites them, and theme/ must carry none.
+        # The Retention Rocket tracker is served from cloudfront and is a script,
+        # not an image (docs/2026-09-02_analytics.md). It is allowed by name, so
+        # every other cloudfront or wsrv URL still fails this check.
         run: |
-          if grep -rn 'wsrv\.nl\|cloudfront\.net' theme/sections theme/assets; then
+          if grep -rn 'wsrv\.nl\|cloudfront\.net' theme/sections theme/assets \
+             | grep -v 'd3ryumxhbd2uw7\.cloudfront\.net/webtracking/'; then
             echo "::error::theme still references a remote image host"
             exit 1
           fi
