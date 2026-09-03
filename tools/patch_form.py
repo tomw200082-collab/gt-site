@@ -22,6 +22,8 @@ What this patch adds beyond the request itself:
   button. That was the old behaviour for everyone; it is now the fallback only.
 - **A honeypot** and the time the form was on screen, both read by the endpoint.
 - **The button says what it is doing** and cannot be double-submitted.
+- **A `generate_lead` event**, pushed once the endpoint confirms the lead —
+  category fields only, never the enquirer's details.
 """
 import re
 import sys
@@ -137,7 +139,8 @@ def main() -> None:
         "  .then(function(r){return r.json().catch(function(){return {};})\n"
         "   .then(function(j){return {ok:r.ok,j:j};});})\n"
         "  .then(function(res){clearTimeout(to);\n"
-        "   if(res.ok&&res.j&&res.j.ok){f.classList.add('sent');\n"
+        "   if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));\n"
+        "    f.classList.add('sent');\n"
         "    document.getElementById('pf-done').scrollIntoView("
         "{block:'nearest',behavior:'smooth'});return;}\n"
         "   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. "
@@ -151,6 +154,22 @@ def main() -> None:
         " return false;}"
     )
     header = (
+        # The page's one job is this form, and until now nothing measured it:
+        # a submitted enquiry left no trace in GTM, GA4 or anywhere else. The
+        # event fires only after the endpoint confirms the lead, so it counts
+        # leads rather than clicks.
+        #
+        # It carries the two category fields and nothing else. Name, business,
+        # city, phone, email and the message stay out of the dataLayer: they
+        # are the lead, they belong in sales_core, and a marketing tag has no
+        # business with them.
+        "function pfTrack(interest,role){try{\n"
+        " window.dataLayer=window.dataLayer||[];\n"
+        " window.dataLayer.push({event:'generate_lead',form:'partner_enquiry',\n"
+        "  lead_interest:interest||'',lead_role:role||''});\n"
+        " if(typeof gtag==='function')"
+        "gtag('event','generate_lead',{form:'partner_enquiry'});\n"
+        "}catch(e){}}\n"
         "var PF_LABEL='שליחה <span class=\"arr\">\\u2190</span>';\n"
         "var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: "
         "<a href=\"https://wa.me/972543982444\">וואטסאפ</a> \\u00b7 "

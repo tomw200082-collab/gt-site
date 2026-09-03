@@ -27,10 +27,40 @@
 <meta name="twitter:image" content="https:{{ 'gt-cd7b9d4764.webp' | asset_url }}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{{ canonical_url }}">
+
+<script>
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+{% if customer %}
+userType: "member",
+customer: {
+id: {{ customer.id }},
+lastOrder: "{{ customer.orders.first.created_at | date: '%B %d, %Y %I:%M%p' }}",
+orderCount: {{ customer.orders.size }},
+totalSpent: {% assign total_spent = 0 %}{% for item in customer.orders %}{% assign total_spent = total_spent | plus: item.total_net_amount %}{% endfor %}{{ total_spent | money_without_currency | remove:"," }},
+tags: {{- customer.tags | json -}}
+},
+{% else %}
+userType: "visitor",
+customer: { id: "", lastOrder: "", orderCount: "", totalSpent: "", tags: "" },
+{% endif %}
+});
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TFH9M99');</script>
+<!-- End Google Tag Manager -->
 {{ content_for_header }}
 <link rel="stylesheet" href="{{ 'gt-site.css' | asset_url }}">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TFH9M99"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 {{ content_for_layout }}
 </body>
 </html>
