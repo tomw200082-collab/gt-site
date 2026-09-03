@@ -25,7 +25,7 @@ def sub(label, old, new, count=1):
 
 
 # ── CTA arrows point the way the reader reads ───────────────────────────
-sub("cta arrows", 'class="arr">→</span>', 'class="arr">←</span>', 15)
+sub("cta arrows", 'class="arr">→</span>', 'class="arr">←</span>', 16)
 
 # ── hero slides: one h1 for the document, h2 for the ten slides ─────────
 sub("slide headings", "<h1>", "<h2 class=\"hs-h\">", 10)
@@ -35,8 +35,7 @@ sub("slide heading css", ".hs-copy h1", ".hs-copy .hs-h", 2)
 sub(
     "document h1",
     '<div class="ticker">',
-    '<h1 class="sr-only">GT Everyday — תמציות תה, מאצ׳ה ופירה פירות '
-    'לבתי קפה, מסעדות ומלונות</h1>\n<div class="ticker">',
+    '<h1 class="sr-only">עידן חדש של משקאות. בבית העסק שלכם.</h1>\n<div class="ticker">',
 )
 
 # ── hero art: mirror the photograph, not the slide ──────────────────────
@@ -113,6 +112,11 @@ RTL_CSS = """
 .hs-track{direction:ltr}
 .hs-slide{direction:rtl}
 .ticker{direction:ltr}
+/* the partner logos travel the same way. The switch goes on the marquee, not
+   the track: an over-wide child of an RTL box hugs the right edge and overflows
+   left, so the leftward slide emptied the band for most of every cycle
+   (Tom, 2026-09-03). The logos carry no text, so nothing else changes. */
+.pmarquee{direction:ltr}
 .ticker span{direction:rtl;display:inline-block}
 .ticker span{margin-right:0;margin-left:56px}
 

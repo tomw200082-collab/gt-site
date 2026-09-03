@@ -35,7 +35,7 @@ sub(
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
     '<meta name="description" content="GT Everyday — יצרנית בוטיק ישראלית של '
-    'תמציות תה, מאצ׳ה ופירה פירות לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים '
+    'תמציות תה, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים '
     'מתומחרים ומחירון סיטונאי גלוי.">\n'
     '<meta name="theme-color" content="#3E6E34">\n'
     '<meta property="og:type" content="website">\n'

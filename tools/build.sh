@@ -14,4 +14,5 @@ python3 tools/patch_figures.py
 python3 tools/patch_claims.py
 python3 tools/patch_form.py
 python3 tools/patch_a11y.py
+python3 tools/patch_ux.py
 node    tools/validate.js
