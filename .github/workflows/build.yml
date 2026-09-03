@@ -185,3 +185,36 @@ jobs:
               print(f'::error::{f}')
           sys.exit(1 if fail else 0)
           EOF
+
+      - name: A recoloured section never leaks its ink into a white card
+        # The landing-page menu sits on the frame's own ground, so .g-menu sets
+        # color to --on-frame. The drink cards inside it are white. Twice now the
+        # card inherited the section's colour and every Hebrew title, label and
+        # price rendered cream-on-white — and it was invisible on three pages out
+        # of four, staying legible only on matcha, whose ground is light enough
+        # that --on-frame *is* --ink. Rendering matcha proves nothing about the
+        # other three, so the invariant is asserted here instead: a light-ground
+        # block inside a recoloured section must set its own colour.
+        run: |
+          python3 - <<'EOF'
+          import re, sys
+          css = open('tools/landing-pages/out/gt-lp.css', encoding='utf-8').read()
+          fail = []
+          def rule(sel):
+              m = re.search(re.escape(sel) + r'\s*\{([^}]*)\}', css)
+              return m.group(1) if m else None
+          if 'color:var(--on-frame)' not in re.sub(r'\s+', '', rule('.g-lp .g-menu') or ''):
+              print('note: .g-menu no longer recolours itself — this guard can go')
+          else:
+              body = rule('.g-lp .g-menu .g-drink')
+              if body is None:
+                  fail.append('.g-lp .g-menu .g-drink has no rule to reset the '
+                              'inherited colour on the white card')
+              elif not re.search(r'(^|;)\s*color\s*:', body):
+                  fail.append('.g-lp .g-menu .g-drink does not set color — the card '
+                              'inherits --on-frame and its text disappears on the '
+                              'three pages with a dark ground')
+          for f in fail:
+              print(f'::error::{f}')
+          sys.exit(1 if fail else 0)
+          EOF

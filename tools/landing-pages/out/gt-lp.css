@@ -159,7 +159,16 @@
 }
 .g-lp .g-menu .g-fine{color:var(--on-frame);
   border-top-color:color-mix(in srgb, var(--on-frame) 28%, transparent)}
-.g-lp .g-menu .g-drink{border-color:transparent;box-shadow:0 10px 26px -14px rgba(0,0,0,.45)}
+/* The card is white and it is inside a section whose colour is the frame's ink.
+   Without this it inherits that: on chai, iced tea and ube --on-frame is the cream,
+   and every drink name, label and price rendered cream-on-white -- invisible. It
+   was invisible on three pages out of four, and legible on the fourth for the one
+   reason it should never have been checked on: matcha's ground is light, so its
+   --on-frame IS --ink and the bug cannot show there. */
+.g-lp .g-menu .g-drink{
+  color:var(--ink);
+  border-color:transparent;box-shadow:0 10px 26px -14px rgba(0,0,0,.45);
+}
 .g-lp .g-menu .g-drink:hover{box-shadow:0 34px 66px -18px rgba(0,0,0,.55)}
 /* The frame is ink on paper already; printing it a second time is not a kindness. */
 @media print{.g-lp .g-band{display:none}}
