@@ -88,18 +88,21 @@ def shot(d):
     """The drink's own photograph. alt is empty on purpose: the h3 beside it already
     names the drink, so a duplicate would only make a screen reader say it twice.
 
-    Delivered at the height the card actually paints (188 CSS px), not the 520 the
+    All 48 sit on one shared canvas, so one width/height serves every card and the
+    glasses align without the CSS doing any work — see photos.json and cut_shots.py.
+
+    Delivered at the height the card actually paints (200 CSS px), not the 1052 the
     master is stored at. Shopify keeps a transparent master as PNG and only hands
     back WebP when the browser asks for it in Accept, so the numbers that matter are
-    the WebP ones: 24.8 KB at 520, 20.4 KB at 376, 9.1 KB at 188 (measured on
-    gt-DAHUBw84B8I, 2026-09-02). Across 48 cards that is the difference between
-    ~1.2 MB and ~0.44 MB on a 1x screen. width/height stay the master's so the
-    aspect ratio is known before the CSS lands."""
+    the WebP ones; at 200 a shot is an order of magnitude smaller than its master.
+    width/height stay the master's so the aspect ratio is known before the CSS
+    lands."""
     did = P['map'][d['he']]
-    u = f'{P["cdn"]}gt-{did}.webp?v={P["v"]}&amp;height='   # &amp; — these sit in attributes
-    return (f'<img class="g-shot" src="{u}376"'
-            f' srcset="{u}188 1x, {u}376 2x" alt=""'
-            f' width="{P["w"][did]}" height="520" loading="lazy" decoding="async">')
+    w, h = P['size']
+    u = f'{P["cdn"]}gtd-{did}.webp?height='
+    return (f'<img class="g-shot" src="{u}400"'
+            f' srcset="{u}200 1x, {u}400 2x" alt=""'
+            f' width="{w}" height="{h}" loading="lazy" decoding="async">')
 
 def card(d):
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])

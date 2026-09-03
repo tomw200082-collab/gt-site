@@ -102,7 +102,7 @@
   grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
 }
 .g-lp .g-drink{
-  display:grid;grid-template-columns:1fr auto;gap:18px;
+  display:grid;grid-template-columns:1fr auto;gap:14px;
   background:var(--white);border:1px solid var(--line);padding:0;border-radius:18px;
   overflow:hidden;transition:border-color .2s ease,transform .22s ease,box-shadow .22s ease;
 }
@@ -111,23 +111,32 @@
 .g-lp .g-reveal .g-drink.g-on{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .g-lp .g-drink-tx{
   grid-column:1;grid-row:1;min-width:0;display:flex;flex-direction:column;
-  padding-block:20px 16px;padding-inline-start:22px;padding-inline-end:0;
+  padding-block:20px 16px;padding-inline-start:18px;padding-inline-end:0;
 }
 .g-lp .g-drink h3{font-size:19px;font-weight:800;line-height:1.25;letter-spacing:-.01em}
 .g-lp .g-en{
-  display:block;font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;
+  display:block;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
   color:var(--ink-soft);margin-top:5px;direction:ltr;text-align:start;
 }
 
-/* the drink — a photograph of the cup this card names.
-   Every shot is delivered at the same 520px height and none is wider than 388px,
-   so a box at 140x188 (aspect .745, a hair above the widest shot's .746) plus
-   object-fit:contain renders all 48 at exactly the same height. Nothing is
-   letterboxed and nothing is cropped; a wide garnish simply uses more width. */
+/* the drink — a photograph of the cup this card names, standing on its own shadow.
+
+   All 48 are cut onto one 925x1052 canvas by tools/landing-pages/cut_shots.py: the
+   glass is scaled to the same height on every shot and set on the same baseline,
+   and the rest of the canvas is room for the drop shadow. The cut before it trimmed
+   each photograph to its alpha box at alpha>=160 — above the glass's own translucent
+   wall — so 45 of the 48 shipped with the drink or its shadow sliced flat against an
+   edge. Nothing is cut now: the strongest alpha touching any canvas edge is 7/255.
+
+   Because the canvas is identical everywhere, this box only has to match its aspect
+   ratio (925/1052 = .879); object-fit has nothing left to do and the 48 glasses line
+   up by construction. The glass fills 72% of the canvas height rather than all of
+   it, which is what the shadow costs, so the box is larger than the one it replaces
+   and its margins are tighter to pay for the width. */
 .g-lp .g-shot{
   grid-column:2;grid-row:1;align-self:center;
-  width:140px;height:188px;object-fit:contain;object-position:center bottom;
-  margin-block:22px;margin-inline-end:16px;
+  width:170px;height:193px;object-fit:contain;object-position:center bottom;
+  margin-block:16px;margin-inline-end:8px;
   display:block;transition:transform .3s ease;
 }
 .g-lp .g-drink:hover .g-shot{transform:scale(1.045)}
