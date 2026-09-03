@@ -109,11 +109,17 @@ section{padding:100px 0}
 .pmarquee:hover .ptrack,.pmarquee:focus-within .ptrack{animation-play-state:paused}
 @keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 24px),0,0)}}
 .pset{display:flex;align-items:center;gap:48px;margin:0;padding:0;list-style:none}
-.plogo{flex:0 0 auto;height:112px;display:grid;place-items:center;opacity:.94;transition:transform .4s cubic-bezier(.2,.7,.3,1),opacity .3s}
-.plogo img{height:112px;width:auto;max-width:none;display:block}
-.plogo:hover{opacity:1;transform:translateY(-4px) scale(1.06)}
+.plogo{flex:0 0 auto;height:112px;display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
+.plogo img{height:112px;width:auto;max-width:none;display:block;opacity:.94;filter:drop-shadow(0 2px 3px rgba(28,33,24,.10)) drop-shadow(0 9px 16px rgba(28,33,24,.11));transition:opacity .3s,filter .45s;animation:pfloat calc(6.4s + var(--i,0)*.38s) ease-in-out infinite;animation-delay:calc(var(--i,0) * -.6s)}
+.plogo:hover{transform:translateY(-9px) scale(1.07)}
+.plogo:hover img{opacity:1;filter:drop-shadow(0 4px 6px rgba(28,33,24,.14)) drop-shadow(0 20px 30px rgba(28,33,24,.24));animation-play-state:paused}
+@keyframes pfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+/* The rise is additive: without the reveal class the logos simply sit there, so
+   a blocked script costs the entrance and never the content. */
+.partners.in .plogo img{animation:prise .8s cubic-bezier(.2,.8,.25,1) backwards,pfloat calc(6.4s + var(--i,0)*.38s) ease-in-out infinite;animation-delay:calc(var(--i,0) * 55ms),calc(800ms + var(--i,0) * 55ms)}
+@keyframes prise{from{opacity:0;transform:translateY(18px) scale(.92)}to{opacity:.94;transform:none}}
 @media(max-width:640px){.plogo,.plogo img{height:84px}.ptrack,.pset{gap:36px}@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 18px),0,0)}}}
-@media(prefers-reduced-motion:reduce){.ptrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.pset{flex-wrap:wrap;justify-content:center}.pset[aria-hidden]{display:none}.pmarquee{-webkit-mask-image:none;mask-image:none}}
+@media(prefers-reduced-motion:reduce){.plogo img,.partners.in .plogo img{animation:none;opacity:.94}.plogo:hover{transform:none}.ptrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.pset{flex-wrap:wrap;justify-content:center}.pset[aria-hidden]{display:none}.pmarquee{-webkit-mask-image:none;mask-image:none}}
 
 /* COLLECTIONS */
 .colgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
