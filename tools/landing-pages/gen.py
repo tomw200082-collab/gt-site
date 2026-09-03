@@ -13,6 +13,7 @@ import json, html, os
 D = json.load(open('drinks.json'))
 P = json.load(open('photos.json'))
 A = json.load(open('assets.json'))['size']
+B = json.load(open('bottles.json'))
 
 def dim(asset):
     """width/height attributes for a theme asset, measured not guessed.
@@ -61,11 +62,7 @@ PAGES = {
    h1=("שש־עשרה כוסות. ", "בלי מכונה אחת."),
    promise="תרכיזי תה מוכנים למזיגה. חמישים מיליליטר, קרח, ומים או סודה — והמשקה על הבר. בקבוק סגור לא צריך מקום במקרר.",
    need=("צריך רק מה שכבר יש לכם", "קרח, מים או סודה, וכוס. בקבוק סגור לא צריך קירור."),
-   # Fresh last: it is also the bottle photographed in the plate above, and first
-   # place in an RTL grid puts it directly beneath that photograph.
-   line=[("detox","Detox"),("revive","Revive"),("energy","Energy"),
-         ("consciousness","Consciousness"),("calm","Calm"),("desertea","Desertea"),
-         ("namastea","Namastea"),("fresh","Fresh")],
+   line=True,
    prod=dict(name="אחד עשר תרכיזים", origin="הקו",
      comp="Fresh · Detox · Revive · Energy · Consciousness · Calm · Desertea · Namastea · American",
      liner="אחד עשר תרכיזים מכל עולם התה, כל אחד עם פרופיל משלו. בקבוק סגור לא צריך מקרר, ופתוח מחזיק בקירור.",
@@ -143,18 +140,19 @@ def build(slug, cfg):
         ys = " · ".join(f"{esc(g)} ≈ {esc(n)} כוסות" for g, n in p['yields'])
         yield_line = f'<p class="g-yield">{ys} — לפי המנה שבמתכונים ({esc(p["dose"])}).</p>'
 
-    # The nine concentrate names are printed on this page, but until now the section
-    # illustrated them with a single FRESH bottle. These are the line, cut out of the
-    # studio shots that were already in Shopify Files and unused.
+    # The whole concentrate line, eleven bottles, which is exactly the number this
+    # section's heading claims. Each carries its index for the arrival stagger and its
+    # own label colour for the glow behind it; gt-lp.js arms and triggers the arrival.
     line = ""
     if cfg.get('line'):
-        shots = "".join(
-            f'<img src="{{{{ \'gt-bot-{k}.webp\' | asset_url }}}}" alt="{esc(n)}"'
-            f' loading="lazy" decoding="async" {dim(f"gt-bot-{k}.webp")}>'
-            for k, n in cfg['line'])
+        items = "".join(
+            f'<li class="g-btl" style="--i:{i};--c:{B["glow"][k]}">'
+            f'<img src="{{{{ \'gt-btl-{k}.webp\' | asset_url }}}}" alt="{esc(B["name"][k])}"'
+            f' loading="lazy" decoding="async" {dim(f"gt-btl-{k}.webp")}></li>'
+            for i, k in enumerate(B['order']))
         line = f"""
     <div class="g-wrap">
-      <div class="g-line">{shots}</div>
+      <ul class="g-line">{items}</ul>
     </div>
 """
 

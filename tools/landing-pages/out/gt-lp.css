@@ -256,18 +256,58 @@
   .g-lp .g-reveal .g-drink{opacity:1;transform:none}
   .g-lp .g-drink:hover{transform:none;box-shadow:none}
   .g-lp .g-btn:hover .g-arr{transform:none}
+  .g-lp .g-line.g-armed .g-btl,.g-lp .g-line.g-armed.g-on .g-btl{opacity:1;animation:none}
+  .g-lp .g-btl:hover img{transform:none}
+  .g-lp .g-btl:hover:before{opacity:.3;transform:scale(1);transition:none}
   .g-lp .g-drink:hover .g-shot{transform:none}
 }
 
-/* The concentrate line. The section names nine concentrates and used to illustrate
-   them with one bottle; these are the actual bottles, cut out of the studio shots
-   that were already in Shopify Files. Four across so the label on each stays
-   readable -- eight across at this container width puts the wordmark under 10px. */
+/* The concentrate line -- eleven bottles, which is what this section's heading claims.
+
+   The whole line arriving is the one thing this page should be remembered by, so the
+   boldness is spent here and nowhere else: the bottles rise into place in a fast
+   stagger when the section comes into view, like a shelf being stocked, and each one
+   answers a hover with a lift and a glow in its own label colour. Everything around it
+   stays still.
+
+   --i is the bottle's index and --c the glow colour for that concentrate -- its own
+   label's hue, lifted in lightness so it can read on this section's pale ground. Both
+   are set inline by gen.py. gt-lp.js arms the row (see the note on .g-armed below). */
 .g-lp .g-line{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
-  margin-top:38px;padding-top:32px;border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px;align-items:end;
+  margin-top:38px;padding-top:34px;border-top:1px solid var(--rule);
+  list-style:none;
 }
-.g-lp .g-line img{width:100%;height:auto;max-height:300px;object-fit:contain;object-position:center bottom}
+.g-lp .g-btl{position:relative;display:block}
+/* The halo has to be wider than the bottle or it does not exist: at inset -16% the
+   gradient's closest-side radius came out smaller than the bottle's half-width, so the
+   whole thing painted behind an opaque image. It now extends well past both edges. */
+.g-lp .g-btl:before{
+  content:"";position:absolute;inset:-12% -62% -8%;border-radius:50%;z-index:0;
+  background:radial-gradient(closest-side,var(--c) 0%,transparent 75%);
+  opacity:0;transform:scale(.72);
+  transition:opacity .45s ease,transform .45s ease;
+}
+.g-lp .g-btl img{
+  position:relative;z-index:1;display:block;
+  width:100%;height:auto;aspect-ratio:114/240;object-fit:contain;object-position:center bottom;
+  transition:transform .45s cubic-bezier(.2,.8,.25,1);
+}
+.g-lp .g-btl:hover:before{opacity:.55;transform:scale(1)}
+.g-lp .g-btl:hover img{transform:translateY(-10px) scale(1.045)}
+
+/* g-armed is added by gt-lp.js, so the hidden start state only ever exists when
+   something is guaranteed to undo it. Without JS the row simply renders. */
+.g-lp .g-line.g-armed .g-btl{opacity:0}
+.g-lp .g-line.g-armed.g-on .g-btl{
+  animation:g-rise .62s cubic-bezier(.2,.9,.3,1) both;
+  animation-delay:calc(var(--i) * 52ms);
+}
+@keyframes g-rise{
+  from{opacity:0;transform:translateY(32px) scale(.94)}
+  60%{opacity:1}
+  to{opacity:1;transform:none}
+}
 
 /* Four sibling pages that never linked to each other. A café buying chai very
    likely pours iced tea as well. */
@@ -292,7 +332,7 @@
     background:var(--ink);color:var(--paper);text-decoration:none;
     font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(15,17,12,.28);
   }
-  .g-lp .g-line{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-lp .g-line{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
   .g-lp .g-foot{padding-bottom:86px}
 }
 @media(prefers-reduced-motion:reduce){

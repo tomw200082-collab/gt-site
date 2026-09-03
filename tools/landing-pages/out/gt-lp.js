@@ -22,6 +22,17 @@
     Array.prototype.forEach.call(reveal, function (el) { el.classList.add('g-on'); });
   }
 
+  /* The concentrate line arrives when it is scrolled to. Same contract as the cards:
+     arm the hidden state only once the observer that undoes it is known to exist. */
+  Array.prototype.forEach.call(document.querySelectorAll('.g-lp .g-line'), function (row) {
+    if (!window.IntersectionObserver) return;
+    row.classList.add('g-armed');
+    var ro = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { row.classList.add('g-on'); ro.disconnect(); }
+    }, { threshold: 0.25 });
+    ro.observe(row);
+  });
+
   /* The sticky bar is a second copy of the hero's call to action, so it should not
      appear while the first one is still on screen -- there it just covers content. */
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp'), function (lp) {

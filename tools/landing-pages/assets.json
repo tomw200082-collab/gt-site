@@ -34,38 +34,6 @@
    760,
    1448
   ],
-  "gt-bot-calm.webp": [
-   243,
-   560
-  ],
-  "gt-bot-consciousness.webp": [
-   246,
-   560
-  ],
-  "gt-bot-desertea.webp": [
-   243,
-   560
-  ],
-  "gt-bot-detox.webp": [
-   245,
-   560
-  ],
-  "gt-bot-energy.webp": [
-   244,
-   560
-  ],
-  "gt-bot-fresh.webp": [
-   245,
-   560
-  ],
-  "gt-bot-namastea.webp": [
-   246,
-   560
-  ],
-  "gt-bot-revive.webp": [
-   245,
-   560
-  ],
   "gt-cda710c642.webp": [
    760,
    1445
@@ -73,6 +41,50 @@
   "gt-d3abd65414.webp": [
    1100,
    1473
+  ],
+  "gt-btl-fresh.webp": [
+   112,
+   240
+  ],
+  "gt-btl-fresh-no-sugar.webp": [
+   110,
+   240
+  ],
+  "gt-btl-detox.webp": [
+   110,
+   240
+  ],
+  "gt-btl-detox-no-sugar.webp": [
+   112,
+   240
+  ],
+  "gt-btl-revive.webp": [
+   112,
+   240
+  ],
+  "gt-btl-energy.webp": [
+   111,
+   240
+  ],
+  "gt-btl-consciousness.webp": [
+   112,
+   240
+  ],
+  "gt-btl-calm.webp": [
+   112,
+   240
+  ],
+  "gt-btl-desertea.webp": [
+   114,
+   240
+  ],
+  "gt-btl-namastea.webp": [
+   111,
+   240
+  ],
+  "gt-btl-american.webp": [
+   111,
+   240
   ]
  }
 }
