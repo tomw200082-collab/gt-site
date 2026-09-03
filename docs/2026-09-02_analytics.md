@@ -78,18 +78,73 @@ carrying `lead_interest: "המחירון המלא"`, `lead_role: "בעלים"`; 
 rejection (`bad_phone`) pushes **nothing**, shows the error, re-enables the
 button and keeps every field filled.
 
-## What Tom still has to do in GTM
+## The container, read — 2026-09-03
 
-Nothing is required for the page to work, but two things are worth a look when
-convenient, and neither can be checked from here — the container is not readable
-through any credential this repo has:
+A published GTM container serves its own configuration to every visitor, so it
+*is* readable without credentials:
 
-1. **Does the container also configure `G-QCNXYQR1TR`?** If so it fires twice on
-   the live site today, and our page now matches that. Parity, not a new bug —
-   but worth fixing at the source.
-2. **A trigger on `generate_lead`** turns the new event into a conversion in GA4
-   and Google Ads. Until one exists the event is recorded but not counted as a
-   conversion.
+```sh
+curl -sS "https://www.googletagmanager.com/gtm.js?id=GTM-TFH9M99"   # 364 KB
+```
+
+Parsed, `GTM-TFH9M99` ships exactly **two tags**:
+
+| tag | type | property | fires on |
+|---|---|---|---|
+| 0 | Google Tag (`__googtag`) | `G-YFDQ5P8EM3` | All Pages (`event == gtm.js`) |
+| 1 | GA4 Event (`__gaawe`) | `G-YFDQ5P8EM3` | `view_item` **or** `purchase`, only |
+
+and reads eight dataLayer variables: `customer.id`, `customer.lastOrder`,
+`customer.orderCount`, `customer.totalSpent`, `customer.userType`,
+`customer.tags`, `user_id`, `event`.
+
+**Two things follow.**
+
+**There is no double-count.** The container does not configure `G-QCNXYQR1TR`
+anywhere — that id does not appear in it. The caution above was hypothetical and
+does not apply; nothing needs pausing.
+
+**There are two GA4 properties, and neither sees the whole site.** Shopify's
+Google & YouTube channel feeds `G-QCNXYQR1TR` the full ecommerce set —
+page_view, view_item, add_to_cart, begin_checkout, search, purchase — and the
+Google Ads conversions. GTM feeds `G-YFDQ5P8EM3` every page view plus
+`view_item` and `purchase`, enriched with the customer properties. Not
+duplication within one property: a split across two, so which report you open
+decides what you see.
+
+**The dataLayer bootstrap was not optional.** Five of the eight variables the
+container reads are `customer.*`, written by the bootstrap this repo restored to
+`layout/gt.liquid`. Without it the All Pages tag on our homepage would have
+reported those as undefined.
+
+## What still needs Tom, and why it cannot be done from here
+
+**A trigger on `generate_lead`.** The container has three trigger conditions in
+total — `gtm.js`, `view_item`, `purchase` — so nothing picks the new event up.
+Recorded, not counted.
+
+Creating it needs write access to the container, and this environment has no
+Google credentials at all. Verified rather than assumed: no `gcloud` binary, and
+both APIs reject the injected token —
+
+```console
+$ curl -H "Authorization: Bearer $CLOUDSDK_AUTH_ACCESS_TOKEN" \
+       https://tagmanager.googleapis.com/tagmanager/v2/accounts
+HTTP 401  "Request had invalid authentication credentials."
+$ curl … https://analyticsadmin.googleapis.com/v1beta/accounts
+HTTP 401  UNAUTHENTICATED
+```
+
+A browser check of the live hits is also unavailable: Chromium in this container
+cannot reach the store (`ERR_CONNECTION_RESET`), though `curl` can. Reading the
+published container is the stronger check anyway — it is the code the browser
+runs, not one sample of it running.
+
+**Which property the conversion belongs in is a decision, not a detail.**
+`G-QCNXYQR1TR` is the one Google Ads imports conversions from and the one with
+the full funnel, so a GA4 Event tag with `measurementIdOverride: G-QCNXYQR1TR`
+puts the lead where the rest of the money is measured, and leaves the existing
+two tags untouched.
 
 ## Checks
 
