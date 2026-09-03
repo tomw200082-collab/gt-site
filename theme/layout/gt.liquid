@@ -118,15 +118,14 @@
 }
 </script>
 {%- comment -%}
-  Google Tag Manager, copied verbatim off the live theme file on 2026-09-03.
+  The tag manager below is not authored here. It was live on the theme file and
+  had never existed in this repo, so every deploy of this file from git removed
+  the site's analytics -- and the deploy that put it back took this file's
+  per-page SEO with it. Recorded so the repo is a superset of the theme and a
+  deploy stops being destructive. Why it is needed at all, and what else the
+  live homepage carries, is measured in docs/2026-09-02_analytics.md.
 
-  It was added there by hand and had never existed in this repo, so every deploy
-  of this file from git silently removed the site's analytics -- and the deploy
-  that restored it took this file's per-page SEO with it. Recorded here so the
-  repo is a superset of the theme and a deploy stops being destructive.
-
-  Not authored here. Container GTM-TFH9M99, and the dataLayer push already
-  carries customer identity -- do not add fields to it.
+  The dataLayer push already carries customer identity. Do not add fields to it.
 {%- endcomment -%}
 <script>
 window.dataLayer = window.dataLayer || [];

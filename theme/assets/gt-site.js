@@ -592,6 +592,12 @@ function pAll(b){var ds=document.querySelectorAll('#pricing .ptable');
 
 ;
 
+function pfTrack(interest,role){try{
+ window.dataLayer=window.dataLayer||[];
+ window.dataLayer.push({event:'generate_lead',form:'partner_enquiry',
+  lead_interest:interest||'',lead_role:role||''});
+ if(typeof gtag==='function')gtag('event','generate_lead',{form:'partner_enquiry'});
+}catch(e){}}
 var PF_LABEL='שליחה <span class="arr">\u2190</span>';
 var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: <a href="https://wa.me/972543982444">וואטסאפ</a> \u00b7 <a href="tel:+972543982444">054-398-2444</a>.';
 var PF_ENDPOINT="https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake";
@@ -617,7 +623,8 @@ function pSend(e){e.preventDefault();
   .then(function(r){return r.json().catch(function(){return {};})
    .then(function(j){return {ok:r.ok,j:j};});})
   .then(function(res){clearTimeout(to);
-   if(res.ok&&res.j&&res.j.ok){f.classList.add('sent');
+   if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));
+    f.classList.add('sent');
     document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
    if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
