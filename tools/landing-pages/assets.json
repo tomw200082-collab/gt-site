@@ -1,0 +1,90 @@
+{
+ "_": "Intrinsic size of every theme asset the pages reference, measured from https://cdn.shopify.com/s/files/1/0484/4319/5552/t/124/assets/ . Regenerate with measure_assets.py after replacing an asset.",
+ "cdn": "https://cdn.shopify.com/s/files/1/0484/4319/5552/t/124/assets/",
+ "size": {
+  "gt-0ae37a139e.webp": [
+   700,
+   1585
+  ],
+  "gt-682cbb70f5.webp": [
+   700,
+   1584
+  ],
+  "gt-71e14890dd.png": [
+   600,
+   738
+  ],
+  "gt-74108519a7.webp": [
+   1100,
+   1473
+  ],
+  "gt-7e97065cdf.webp": [
+   1100,
+   1473
+  ],
+  "gt-868e993bce.webp": [
+   1100,
+   1473
+  ],
+  "gt-a06eb940fc.webp": [
+   760,
+   1456
+  ],
+  "gt-b701af91e0.webp": [
+   760,
+   1448
+  ],
+  "gt-cda710c642.webp": [
+   760,
+   1445
+  ],
+  "gt-d3abd65414.webp": [
+   1100,
+   1473
+  ],
+  "gt-btl-fresh.webp": [
+   112,
+   240
+  ],
+  "gt-btl-fresh-no-sugar.webp": [
+   110,
+   240
+  ],
+  "gt-btl-detox.webp": [
+   110,
+   240
+  ],
+  "gt-btl-detox-no-sugar.webp": [
+   112,
+   240
+  ],
+  "gt-btl-revive.webp": [
+   112,
+   240
+  ],
+  "gt-btl-energy.webp": [
+   111,
+   240
+  ],
+  "gt-btl-consciousness.webp": [
+   112,
+   240
+  ],
+  "gt-btl-calm.webp": [
+   112,
+   240
+  ],
+  "gt-btl-desertea.webp": [
+   114,
+   240
+  ],
+  "gt-btl-namastea.webp": [
+   111,
+   240
+  ],
+  "gt-btl-american.webp": [
+   111,
+   240
+  ]
+ }
+}

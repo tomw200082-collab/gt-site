@@ -1,22 +1,30 @@
 /* gt-lp.css — GT category landing pages.
    Rides the faces and palette layout/gt.liquid + gt-site.css already load.
-   Per-page identity is three custom properties on .g-lp: --a --tint --deep.
+   Per-page identity is four custom properties on .g-lp, set inline by gen.py:
+   --a (the site's own concentrate colour) · --at (that colour darkened until it
+   clears 4.5:1 both as text on white and as a ground under white) · --tint · --deep.
+   Use --at for anything small and --a for everything else.
+
+   Greys, paper, ink and white are NOT declared here — they resolve from
+   gt-site.css :root, so the pages and the site cannot drift apart again.
+
    Every class is g- prefixed on purpose: gt-site.css carries unscoped rules
    (.glass, .hero, .btn, .wrap, .eyebrow, .logo, .serif) that otherwise reach
    in and set properties this file does not declare. .glass was the costly one
-   — position:absolute;opacity:0 pulled every drink's glass out of its card. */
+   — position:absolute;opacity:0 pulled every drink's glass out of its card.
+   The prefix stays; only the values were reconciled. */
 
 .g-lp{
-  --paper:#FBF8F2; --ink:#191B14;
-  --soft:#57604E; --line:#E5DECE; --rule:#D5CAB2; --white:#fff;
-  --ice:#D8E8EE; --water:#C9DFE8; --soda:#B4D6E3; --milk:#F2E8D2;
-  --foam:#FCF6E9; --fruit:#E9B47E; --coffee:#6B4A32; --syrup:#E9C965; --leaf:#8FA870;
+  /* --paper --ink --ink-soft --line --white all resolve from gt-site.css :root.
+     Declared here only where the site has no equivalent. */
+  --rule:#D5CAB2;                       /* mid rule on tinted grounds; no site token */
+  --on-dark:#F1ECE0; --on-dark-soft:#D9D3C4; --on-dark-faint:#9C9585;
   background:var(--paper); color:var(--ink);
   font-family:Assistant,"Segoe UI",system-ui,sans-serif; line-height:1.6;
 }
 .g-lp *{margin:0;padding:0;box-sizing:border-box}
 .g-lp img{max-width:100%;height:auto;display:block}
-.g-lp .g-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.g-lp .g-wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 .g-lp .g-display{
   font-family:Bellefair,Georgia,serif;font-weight:400;
   font-size:clamp(34px,5.2vw,64px);line-height:1.02;letter-spacing:.005em;text-wrap:balance;
@@ -24,9 +32,10 @@
 .g-lp .g-display em{font-style:italic;font-family:"Playfair Display",Georgia,serif;font-weight:700;color:var(--a)}
 .g-lp .g-serif{font-family:Bellefair,Georgia,serif}
 .g-lp .g-eyebrow{
-  display:inline-block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--a);font-weight:800;
+  display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--at);font-weight:800;
 }
+.g-lp .g-eyebrow:before{content:"";width:34px;height:1px;background:currentColor;flex:none}
 .g-lp a{color:inherit}
 
 /* ---- hero ------------------------------------------------------------ */
@@ -37,31 +46,41 @@
   background:linear-gradient(180deg,rgba(15,17,12,.30) 0%,rgba(15,17,12,.72) 46%,rgba(15,17,12,.96) 82%,var(--deep) 100%);
 }
 .g-lp .g-hero-in{
-  position:relative;max-width:1200px;margin:0 auto;padding:0 28px 54px;color:#FBF8F2;
+  position:relative;max-width:1240px;margin:0 auto;padding:0 28px 54px;color:var(--paper);
 }
-.g-lp .g-logo{height:30px;width:auto;opacity:.94;margin-bottom:26px}
-.g-lp .g-hero-in .g-eyebrow{color:#fff;opacity:.85}
-.g-lp .g-hero-in .g-display{margin-top:12px;color:#FBF8F2;max-width:13ch}
-.g-lp .g-hero-in .g-display em{color:#fff;text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:.09em;text-underline-offset:.12em}
-.g-lp .g-promise{margin-top:18px;max-width:48ch;font-size:17px;font-weight:300;color:#E7E2D6}
+/* The lockup is 600x738 -- a stacked mark with EVERYDAY set across its bottom 8.1%.
+   At the old height:30px that band rendered 2.4px tall and the whole logo was 24x30,
+   smaller than a favicon. 56px puts the mark at 46x56 and the wordmark at 4.5px:
+   still small, but reading as a brand mark instead of a smudge. A horizontal wordmark
+   would serve this slot better if one exists. */
+.g-lp .g-logo{height:56px;width:auto;opacity:.94;margin-bottom:22px}
+.g-lp .g-hero-in .g-eyebrow{color:var(--white);opacity:.85}
+.g-lp .g-hero-in .g-display{margin-top:12px;color:var(--paper);max-width:13ch}
+.g-lp .g-hero-in .g-display em{color:var(--white);text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:.09em;text-underline-offset:.12em}
+.g-lp .g-promise{margin-top:18px;max-width:48ch;font-size:17px;font-weight:300;color:var(--on-dark-soft)}
 .g-lp .g-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .g-lp .g-btn{
-  display:inline-flex;align-items:center;gap:10px;background:#FBF8F2;color:#191B14;
-  font:800 14px/1 Assistant,sans-serif;padding:15px 30px;border-radius:2px;
-  text-decoration:none;border:0;cursor:pointer;transition:transform .18s,background .18s;
+  display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);
+  font:800 14px/1 Assistant,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  padding:14px 30px;border-radius:999px;
+  text-decoration:none;border:0;cursor:pointer;transition:background .2s,box-shadow .2s;
 }
-.g-lp .g-btn:hover{transform:translateY(-2px)}
-.g-lp .g-btn.g-ghost{background:transparent;color:#FBF8F2;box-shadow:inset 0 0 0 1px rgba(251,248,242,.5)}
+.g-lp .g-btn:hover{background:var(--gt-d)}
+.g-lp .g-btn .g-arr{display:inline-block;transition:transform .2s}
+.g-lp .g-btn:hover .g-arr{transform:translateX(-4px)}   /* RTL: the arrow points ← */
+.g-lp .g-btn:focus-visible{outline:2px solid var(--a);outline-offset:3px}
+.g-lp .g-contact a:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.g-lp .g-btn.g-ghost{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 1px rgba(251,248,242,.5)}
 .g-lp .g-btn.g-ghost:hover{background:rgba(251,248,242,.1)}
-.g-lp .g-btn.g-solid{background:var(--a);color:#fff;justify-content:center;width:100%;padding:16px}
+.g-lp .g-btn.g-solid{background:var(--at);color:var(--white);justify-content:center;width:100%;padding:16px}
 
 /* the ledger sits on the seam between photo and paper */
 .g-lp .g-ledger{
-  position:relative;max-width:1200px;margin:0 auto;padding:0 28px;
+  position:relative;max-width:1240px;margin:0 auto;padding:0 28px;
   display:grid;grid-template-columns:repeat(3,1fr);
 }
 .g-lp .g-ledger div{
-  background:var(--deep);color:#FBF8F2;padding:22px 24px;
+  background:var(--deep);color:var(--paper);padding:22px 24px;
   border-inline-start:1px solid rgba(251,248,242,.16);
 }
 .g-lp .g-ledger div:first-child{border-inline-start:0}
@@ -74,62 +93,137 @@
 /* ---- shared section head --------------------------------------------- */
 .g-lp .g-head{max-width:64ch}
 .g-lp .g-head .g-display{margin-top:10px}
-.g-lp .g-head p{margin-top:14px;color:var(--soft);max-width:58ch}
+.g-lp .g-head p{margin-top:14px;color:var(--ink-soft);max-width:58ch}
 
 /* ---- the menu — the signature ---------------------------------------- */
-.g-lp .g-menu{padding:82px 0 90px}
+/* The drinks menu sits inside the page's own ornamental border — a square
+   illustrated frame from Canva folder FAHUC3u8Qvw, one per page, picked so its
+   centre colour is the page's: amber for chai, green for matcha, near-black for
+   iced tea, deep purple for ube.
+
+   A square frame and a menu six rows tall do not fit each other. Tiling the border
+   would repeat a pheasant every 200px and stretching it would smear one, so the
+   square is not wrapped around the section: tools/landing-pages/frames.py cuts its
+   top and bottom quarter, those two bands are anchored to the two ends, and the
+   ground between them is the frame's own centre colour. Each band's inner edge is
+   masked away, so the illustration dissolves into that ground rather than stopping
+   at a line — which is also what lets the ground be darkened for contrast (chai's
+   amber needed 15%) without a seam.
+
+   --frame and --on-frame are set inline per page by gen.py: the ground measured
+   from the middle of the frame, and whichever of --ink and the --on-dark cream
+   clears 4.5:1 on it. This is the page's one saturated section by design — the
+   drinks are white cut-outs and they have nothing to sit against on paper. */
+.g-lp .g-menu{
+  /* The band is 2048x532, so at any width it wants to be 26% of it. --band stays
+     just under that, which keeps the whole ornament on screen -- at half this the
+     mask cut the pheasant off at the neck. */
+  --band:clamp(128px,25.5vw,420px);
+  position:relative;overflow:hidden;isolation:isolate;
+  background:var(--frame);color:var(--on-frame);
+  padding-block:calc(var(--band) * .84 + 40px) calc(var(--band) * .84 + 52px);
+}
+.g-lp .g-band{
+  position:absolute;inset-inline:0;width:100%;height:var(--band);
+  object-fit:cover;z-index:0;pointer-events:none;user-select:none;
+  /* mask-size and mask-repeat are not optional here. Left at their initial
+     auto/repeat, the gradient mask resolved to nothing on the bottom band and it
+     painted as bare ground -- the ornament was in the file, in the DOM and the
+     right size, and still invisible. */
+  -webkit-mask-size:100% 100%;         mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;       mask-repeat:no-repeat;
+}
+.g-lp .g-band-t{
+  top:0;object-position:center top;
+  -webkit-mask-image:linear-gradient(#000 84%,transparent);
+          mask-image:linear-gradient(#000 84%,transparent);
+}
+.g-lp .g-band-b{
+  bottom:0;object-position:center bottom;
+  -webkit-mask-image:linear-gradient(transparent,#000 15%);
+          mask-image:linear-gradient(transparent,#000 15%);
+}
+.g-lp .g-menu > .g-wrap{position:relative;z-index:1}
+/* No opacity on any of this. --on-frame clears 4.5:1 on the ground and nothing
+   more: chai's amber lands at 4.58, so dimming the eyebrow to .72 for hierarchy --
+   which is what this rule did first -- took it to 2.8 and failed the whole section.
+   The hierarchy is already in the sizes and the letterspacing. */
+.g-lp .g-menu .g-eyebrow{color:var(--on-frame)}
+.g-lp .g-menu .g-head p{color:var(--on-frame)}
+/* The accent is a mid-tone; on the frame's ground it is neither text nor absent.
+   Same treatment the hero already gives it: the word in the ground's own ink, the
+   colour carried by the underline. */
+.g-lp .g-menu .g-display em{
+  color:var(--on-frame);text-decoration:underline;text-decoration-color:var(--a);
+  text-decoration-thickness:.09em;text-underline-offset:.12em;
+}
+.g-lp .g-menu .g-fine{color:var(--on-frame);
+  border-top-color:color-mix(in srgb, var(--on-frame) 28%, transparent)}
+/* The card is white and it is inside a section whose colour is the frame's ink.
+   Without this it inherits that: on chai, iced tea and ube --on-frame is the cream,
+   and every drink name, label and price rendered cream-on-white -- invisible. It
+   was invisible on three pages out of four, and legible on the fourth for the one
+   reason it should never have been checked on: matcha's ground is light, so its
+   --on-frame IS --ink and the bug cannot show there. */
+.g-lp .g-menu .g-drink{
+  color:var(--ink);
+  border-color:transparent;box-shadow:0 10px 26px -14px rgba(0,0,0,.45);
+}
+.g-lp .g-menu .g-drink:hover{box-shadow:0 34px 66px -18px rgba(0,0,0,.55)}
+/* The frame is ink on paper already; printing it a second time is not a kindness. */
+@media print{.g-lp .g-band{display:none}}
 .g-lp .g-grid{
-  display:grid;gap:14px;margin-top:44px;align-items:start;
-  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  display:grid;gap:14px;margin-top:44px;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  grid-auto-rows:1fr;
+  /* No align-items:start. With it every card sized to its own content, so a row
+     read 244/244/284 wherever a drink's name wrapped to two lines and the grid
+     came out ragged along the bottom. Stretch is the default and it is the right
+     one here: the cards in a row are one height, and `details` already pins to the
+     bottom of each with margin-top:auto. */
 }
 .g-lp .g-drink{
-  display:grid;grid-template-columns:1fr auto;gap:18px;
-  background:var(--white);border:1px solid var(--line);padding:0;border-radius:0;
-  transition:border-color .2s ease;
+  display:grid;grid-template-columns:1fr auto;gap:14px;
+  background:var(--white);border:1px solid var(--line);padding:0;border-radius:18px;
+  overflow:hidden;transition:border-color .2s ease,transform .22s ease,box-shadow .22s ease;
 }
-.g-lp .g-drink:hover{border-color:var(--a)}
-.g-lp .g-reveal .g-drink{opacity:0;transform:translateY(14px)}
-.g-lp .g-reveal .g-drink.g-on{opacity:1;transform:none;transition:opacity .55s ease,transform .55s ease}
+.g-lp .g-drink:hover{border-color:var(--a);transform:translateY(-8px);box-shadow:0 30px 60px -18px rgba(32,36,31,.22)}
+.g-lp .g-reveal .g-drink{opacity:0;transform:translateY(26px)}
+.g-lp .g-reveal .g-drink.g-on{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .g-lp .g-drink-tx{
   grid-column:1;grid-row:1;min-width:0;display:flex;flex-direction:column;
-  padding-block:20px 16px;padding-inline-start:22px;padding-inline-end:0;
+  padding-block:20px 16px;padding-inline-start:18px;padding-inline-end:0;
 }
 .g-lp .g-drink h3{font-size:19px;font-weight:800;line-height:1.25;letter-spacing:-.01em}
 .g-lp .g-en{
-  display:block;font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;
-  color:var(--soft);margin-top:5px;direction:ltr;text-align:start;
+  /* Was 10.5px, .13em, --ink-soft. Legible by the numbers -- 8.3:1 -- and still
+     too faint to read: uppercase Latin that small, tracked that wide, in a grey,
+     is a texture rather than a word. Bigger, heavier, and in the full ink. */
+  display:block;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  font-weight:600;color:var(--ink);margin-top:5px;direction:ltr;text-align:start;
 }
 
-/* the glass */
-.g-lp .g-glass{
-  grid-column:2;grid-row:1;align-self:stretch;width:88px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;background:var(--tint);padding:20px 0;
-  position:static;opacity:1;transform:none;box-shadow:none;border-radius:0;height:auto;
+/* the drink — a photograph of the cup this card names, standing on its own shadow.
+
+   All 48 are cut onto one 925x1052 canvas by tools/landing-pages/cut_shots.py: the
+   glass is scaled to the same height on every shot and set on the same baseline,
+   and the rest of the canvas is room for the drop shadow. The cut before it trimmed
+   each photograph to its alpha box at alpha>=160 — above the glass's own translucent
+   wall — so 45 of the 48 shipped with the drink or its shadow sliced flat against an
+   edge. Nothing is cut now: the strongest alpha touching any canvas edge is 7/255.
+
+   Because the canvas is identical everywhere, this box only has to match its aspect
+   ratio (925/1052 = .879); object-fit has nothing left to do and the 48 glasses line
+   up by construction. The glass fills 72% of the canvas height rather than all of
+   it, which is what the shadow costs, so the box is larger than the one it replaces
+   and its margins are tighter to pay for the width. */
+.g-lp .g-shot{
+  grid-column:2;grid-row:1;align-self:center;
+  width:170px;height:193px;object-fit:contain;object-position:center bottom;
+  margin-block:16px;margin-inline-end:8px;
+  display:block;transition:transform .3s ease;
 }
-.g-lp .g-glass u{
-  display:block;width:30px;height:3px;background:var(--leaf);
-  margin-bottom:7px;text-decoration:none;
-}
-.g-lp .g-glass-in{
-  width:54px;height:188px;display:flex;flex-direction:column-reverse;
-  border:1.5px solid var(--ink);border-top:0;
-  border-radius:1px 1px 10px 10px;overflow:hidden;background:var(--white);
-}
-.g-lp .g-pr{height:calc(var(--h) * 1%);display:block;position:relative;font-style:normal}
-.g-lp .g-pr-ice{background:var(--ice)}
-.g-lp .g-pr-water{background:var(--water)}
-.g-lp .g-pr-soda{background:var(--soda);background-image:radial-gradient(circle at 30% 40%,rgba(255,255,255,.9) 1px,transparent 1.6px),radial-gradient(circle at 70% 70%,rgba(255,255,255,.9) 1px,transparent 1.6px)}
-.g-lp .g-pr-milk{background:var(--milk)}
-.g-lp .g-pr-foam{background:var(--foam);box-shadow:inset 0 1px 0 var(--rule)}
-.g-lp .g-pr-fruit{background:var(--fruit)}
-.g-lp .g-pr-coffee{background:var(--coffee)}
-.g-lp .g-pr-syrup{background:var(--syrup)}
-.g-lp .g-pr-base{background:var(--a)}
-.g-lp .g-pr-base em{
-  position:absolute;inset:0;display:grid;place-items:center;font-style:normal;
-  font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:12px;
-  color:#fff;direction:ltr;
-}
+.g-lp .g-drink:hover .g-shot{transform:scale(1.045)}
 
 /* figures */
 .g-lp .g-fig{
@@ -137,33 +231,78 @@
   border-top:1px solid var(--line);padding-top:12px;
 }
 .g-lp .g-fig>div{display:flex;flex-direction:column;gap:2px}
-.g-lp .g-fig dt{font-size:10px;letter-spacing:.06em;color:var(--soft);font-weight:700}
+.g-lp .g-fig dt{font-size:10px;letter-spacing:.06em;color:var(--ink-soft);font-weight:700}
 .g-lp .g-fig dd{
   font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:21px;line-height:1;
   direction:ltr;unicode-bidi:embed;font-variant-numeric:tabular-nums;
 }
-.g-lp .g-fig .g-keep dd{color:var(--a)}
-.g-lp .g-fig .g-keep dt{color:var(--a);opacity:.85}
+.g-lp .g-fig .g-keep dd{color:var(--at)}
+.g-lp .g-fig .g-keep dt{color:var(--at)}
 
 .g-lp .g-drink details{margin-top:auto;padding-top:14px}
 .g-lp .g-drink summary{
-  cursor:pointer;font-weight:800;font-size:12px;color:var(--a);list-style:none;
+  cursor:pointer;font-weight:800;font-size:12px;color:var(--at);list-style:none;
   letter-spacing:.02em;
 }
 .g-lp .g-drink summary::-webkit-details-marker{display:none}
 .g-lp .g-drink summary:after{content:" +"}
 .g-lp .g-drink details[open] summary:after{content:" −"}
-.g-lp .g-drink ol{margin-top:10px;padding-inline-start:18px;display:grid;gap:6px;font-size:13.5px;color:var(--soft)}
-.g-lp .g-note{margin-top:10px;font-size:11.5px;color:var(--soft);border-top:1px dotted var(--rule);padding-top:8px}
-.g-lp .g-fine{margin-top:30px;font-size:12px;color:var(--soft)}
+.g-lp .g-drink ol{margin-top:10px;padding-inline-start:18px;display:grid;gap:6px;font-size:13.5px;color:var(--ink-soft)}
+.g-lp .g-note{margin-top:10px;font-size:11.5px;color:var(--ink-soft);border-top:1px dotted var(--rule);padding-top:8px}
+.g-lp .g-fine{margin-top:30px;font-size:12px;color:var(--ink-soft)}
 
 /* ---- the plate ------------------------------------------------------- */
 .g-lp .g-plate{background:var(--tint);padding:82px 0 88px}
 .g-lp .g-plate-in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:56px;align-items:center}
-.g-lp .g-plate figure{background:var(--white);padding:34px;border:1px solid rgba(0,0,0,.05);border-radius:0}
+/* The product, not a photograph of a product.
+
+   Every bottle and pouch is already cut out on transparency, so the white card
+   this figure drew was a box around something that has no box. Gone. What stands
+   in for it is a shadow the object actually casts: drop-shadow follows the alpha,
+   so it is the silhouette's shadow and not a rectangle's, and an ellipse on the
+   ground carries the weight. Hovering lifts the bottle; the ground shadow widens
+   and softens the way a shadow does when its object rises. */
+.g-lp .g-plate figure{
+  position:relative;background:none;padding:0;border:0;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.g-lp .g-plate figure:before{
+  content:"";position:absolute;bottom:-12px;left:52%;translate:-50% 0;
+  width:74%;height:46px;border-radius:50%;z-index:0;
+  background:radial-gradient(closest-side,rgba(32,36,31,.40),transparent 72%);
+  transition:width .6s cubic-bezier(.2,.8,.25,1),opacity .6s ease;
+}
+.g-lp .g-plate figure:hover img{transform:translateY(-16px) scale(1.022);
+  filter:drop-shadow(22px 40px 38px rgba(32,36,31,.3))}
+.g-lp .g-plate figure:hover:before{width:86%;opacity:.5}
+
+/* Arrival: the bottle is set down, and its shadow spreads as it lands. */
+.g-lp .g-plate.g-armed figure img,.g-lp .g-plate.g-armed figure:before{opacity:0}
+.g-lp .g-plate.g-armed.g-on figure img{animation:g-set .95s cubic-bezier(.16,.84,.28,1) both}
+.g-lp .g-plate.g-armed.g-on figure:before{animation:g-set-shadow .95s cubic-bezier(.16,.84,.28,1) both}
+@keyframes g-set{
+  from{opacity:0;transform:translateY(-52px) scale(1.045)}
+  65%{opacity:1}
+  to{opacity:1;transform:none}
+}
+@keyframes g-set-shadow{
+  from{opacity:0;width:30%}
+  to{opacity:1;width:74%}
+}
+/* The bottle shots are ~1:2.26. Left to fill the column they rendered 1015px tall beside
+   ~400px of copy, so the row was mostly dead space and the product read as a poster.
+   Capping the height keeps the bottle a product and lets the two columns balance. */
+.g-lp .g-plate figure img{
+  position:relative;z-index:1;max-height:560px;width:auto;margin-inline:auto;
+  /* Offset, not centred. A shadow straight under a dark bottle on a pale ground is
+     a shadow behind the bottle -- invisible. This falls right and down, the same
+     direction the 48 drink photographs carry their own. */
+  filter:drop-shadow(16px 24px 28px rgba(32,36,31,.26));
+  transition:transform .6s cubic-bezier(.2,.8,.25,1),filter .6s ease;
+}
 .g-lp .g-plate .g-display{margin-top:10px}
 .g-lp .g-liner{margin-top:16px;font-size:18px;font-weight:300;line-height:1.55;max-width:50ch}
-.g-lp .g-comp{margin-top:14px;font-size:13px;color:var(--soft)}
+.g-lp .g-comp{margin-top:14px;font-size:13px;color:var(--ink-soft)}
 .g-lp .g-sizes{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
 .g-lp .g-sizes span{
   display:inline-flex;align-items:baseline;gap:9px;background:var(--white);
@@ -173,46 +312,57 @@
   font-family:"Playfair Display",Georgia,serif;font-size:16px;color:var(--deep);
   direction:ltr;unicode-bidi:isolate;
 }
-.g-lp .g-yield{margin-top:12px;font-size:12.5px;color:var(--soft)}
+.g-lp .g-yield{margin-top:12px;font-size:12.5px;color:var(--ink-soft)}
 .g-lp .g-need{margin-top:26px;border-top:2px solid var(--a);padding-top:14px;max-width:46ch}
 .g-lp .g-need b{display:block;font-size:15px}
-.g-lp .g-need span{display:block;font-size:14px;color:var(--soft);margin-top:4px}
+.g-lp .g-need span{display:block;font-size:14px;color:var(--ink-soft);margin-top:4px}
 
 .g-lp .g-alt{
   display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:28px;
   align-items:center;margin-top:56px;padding-top:34px;border-top:1px solid var(--rule);
 }
-.g-lp .g-alt img{background:var(--white);padding:18px;border:1px solid rgba(0,0,0,.05)}
+.g-lp .g-alt img{
+  background:none;padding:0;border:0;
+  filter:drop-shadow(12px 18px 22px rgba(32,36,31,.24));
+  transition:transform .55s cubic-bezier(.2,.8,.25,1),filter .55s ease;
+}
+.g-lp .g-alt:hover img{transform:translateY(-10px) scale(1.03);
+  filter:drop-shadow(18px 30px 30px rgba(32,36,31,.28))}
 .g-lp .g-alt h3{font-family:Bellefair,Georgia,serif;font-weight:400;font-size:34px;margin-top:6px}
-.g-lp .g-alt p{margin-top:10px;color:var(--soft);max-width:56ch;font-size:15px}
+.g-lp .g-alt p{margin-top:10px;color:var(--ink-soft);max-width:56ch;font-size:15px}
 
 /* ---- story ----------------------------------------------------------- */
-.g-lp .g-story{background:var(--ink);color:#F1ECE0;padding:76px 0}
+.g-lp .g-story{background:var(--ink);color:var(--on-dark);padding:76px 0;position:relative;isolation:isolate;overflow:hidden}
+.g-lp .g-ghostword{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:-1;
+  font-family:Bellefair,Georgia,serif;font-size:clamp(180px,30vw,420px);line-height:1;
+  opacity:.045;white-space:nowrap;pointer-events:none;user-select:none;
+}
 .g-lp .g-story-in{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.g-lp .g-story .g-display{margin-top:10px;color:#FBF8F2}
-.g-lp .g-story p{margin-top:16px;font-size:17px;font-weight:300;line-height:1.62;max-width:50ch;color:#D9D3C4}
+.g-lp .g-story .g-display{margin-top:10px;color:var(--paper)}
+.g-lp .g-story p{margin-top:16px;font-size:17px;font-weight:300;line-height:1.62;max-width:50ch;color:var(--on-dark-soft)}
 .g-lp .g-punch{
   font-family:Bellefair,Georgia,serif;font-size:clamp(26px,3.4vw,40px);line-height:1.15;
-  color:#FBF8F2!important;margin-top:0!important;font-weight:400;
+  color:var(--paper)!important;margin-top:0!important;font-weight:400;
 }
 .g-lp .g-story ul{list-style:none;margin-top:26px;display:grid;gap:13px}
-.g-lp .g-story li{padding-inline-start:22px;position:relative;font-size:15.5px;color:#D9D3C4}
+.g-lp .g-story li{padding-inline-start:22px;position:relative;font-size:15.5px;color:var(--on-dark-soft)}
 .g-lp .g-story li:before{
   content:"";position:absolute;inset-inline-start:0;top:.62em;width:7px;height:7px;
   background:var(--a);
 }
 
 /* ---- capture --------------------------------------------------------- */
-.g-lp .g-capture{background:var(--deep);color:#FBF8F2;padding:76px 0 82px}
-.g-lp .g-capture .g-eyebrow{color:#fff;opacity:.8}
-.g-lp .g-capture .g-display{margin-top:10px;color:#FBF8F2}
-.g-lp .g-capture .g-display em{color:#fff;text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:.08em;text-underline-offset:.12em}
-.g-lp .g-capture>.g-wrap>div>p{margin-top:14px;color:#DBD5C7;max-width:42ch}
+.g-lp .g-capture{background:var(--deep);color:var(--paper);padding:76px 0 82px}
+.g-lp .g-capture .g-eyebrow{color:var(--white);opacity:.8}
+.g-lp .g-capture .g-display{margin-top:10px;color:var(--paper)}
+.g-lp .g-capture .g-display em{color:var(--white);text-decoration:underline;text-decoration-color:var(--a);text-decoration-thickness:.08em;text-underline-offset:.12em}
+.g-lp .g-capture>.g-wrap>div>p{margin-top:14px;color:var(--on-dark-soft);max-width:42ch}
 .g-lp .g-capture-in{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
 .g-lp .g-contact{list-style:none;margin-top:28px;display:grid;gap:9px;font-size:15px}
 .g-lp .g-capture form{background:var(--paper);color:var(--ink);padding:26px;display:grid;gap:13px;border-radius:0}
 .g-lp .g-f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.g-lp .g-capture label{display:grid;gap:5px;font-size:12px;font-weight:700;color:var(--soft)}
+.g-lp .g-capture label{display:grid;gap:5px;font-size:12px;font-weight:700;color:var(--ink-soft)}
 .g-lp .g-capture input:not([type=checkbox]){
   font:400 15px/1.4 Assistant,sans-serif;color:var(--ink);background:var(--white);
   border:1px solid var(--rule);padding:12px 13px;width:100%;border-radius:0;
@@ -224,9 +374,9 @@
 .g-lp .g-msg{font-size:13.5px;font-weight:700;color:var(--deep);background:var(--tint);padding:11px 13px;line-height:1.5}
 .g-lp .g-msg[data-err]{color:#8E2417;background:#F7E7E3}
 
-.g-lp .g-foot{background:var(--ink);color:#9C9585;padding:24px 0;font-size:13px;border-top:1px solid rgba(251,248,242,.1)}
+.g-lp .g-foot{background:var(--ink);color:var(--on-dark-faint);padding:24px 0;font-size:13px;border-top:1px solid rgba(251,248,242,.1)}
 .g-lp .g-foot .g-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.g-lp .g-foot .g-serif{font-size:16px;color:#FBF8F2}
+.g-lp .g-foot .g-serif{font-size:16px;color:var(--paper)}
 
 @media(max-width:940px){
   .g-lp .g-plate-in,.g-lp .g-story-in,.g-lp .g-capture-in{grid-template-columns:1fr}
@@ -237,12 +387,98 @@
   .g-lp .g-ledger div:first-child{border-top:0}
 }
 @media(max-width:560px){
-  .g-lp .g-menu,.g-lp .g-plate,.g-lp .g-story,.g-lp .g-capture{padding-block:52px}
+  .g-lp .g-plate,.g-lp .g-story,.g-lp .g-capture{padding-block:52px}
+  .g-lp .g-menu{padding-block:calc(var(--band) * .84 + 22px) calc(var(--band) * .84 + 26px)}
   .g-lp .g-hero{padding-top:min(46vh,340px)}
   .g-lp .g-f-row{grid-template-columns:1fr}
   .g-lp .g-grid{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
   .g-lp .g-reveal .g-drink{opacity:1;transform:none}
-  .g-lp .g-btn:hover{transform:none}
+  .g-lp .g-drink:hover{transform:none;box-shadow:none}
+  .g-lp .g-btn:hover .g-arr{transform:none}
+  .g-lp .g-line.g-armed .g-btl,.g-lp .g-line.g-armed.g-on .g-btl{opacity:1;animation:none}
+  .g-lp .g-btl:hover img{transform:none}
+  .g-lp .g-plate.g-armed figure img,.g-lp .g-plate.g-armed figure:before{opacity:1}
+  .g-lp .g-plate.g-armed.g-on figure img,.g-lp .g-plate.g-armed.g-on figure:before{animation:none}
+  .g-lp .g-plate figure:hover img,.g-lp .g-alt:hover img{transform:none}
+  .g-lp .g-btl:hover:before{opacity:.3;transform:scale(1);transition:none}
+  .g-lp .g-drink:hover .g-shot{transform:none}
+}
+
+/* The concentrate line -- eleven bottles, which is what this section's heading claims.
+
+   The whole line arriving is the one thing this page should be remembered by, so the
+   boldness is spent here and nowhere else: the bottles rise into place in a fast
+   stagger when the section comes into view, like a shelf being stocked, and each one
+   answers a hover with a lift and a glow in its own label colour. Everything around it
+   stays still.
+
+   --i is the bottle's index and --c the glow colour for that concentrate -- its own
+   label's hue, lifted in lightness so it can read on this section's pale ground. Both
+   are set inline by gen.py. gt-lp.js arms the row (see the note on .g-armed below). */
+.g-lp .g-line{
+  display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:6px;align-items:end;
+  margin-top:38px;padding-top:34px;border-top:1px solid var(--rule);
+  list-style:none;
+}
+.g-lp .g-btl{position:relative;display:block}
+/* The halo has to be wider than the bottle or it does not exist: at inset -16% the
+   gradient's closest-side radius came out smaller than the bottle's half-width, so the
+   whole thing painted behind an opaque image. It now extends well past both edges. */
+.g-lp .g-btl:before{
+  content:"";position:absolute;inset:-12% -62% -8%;border-radius:50%;z-index:0;
+  background:radial-gradient(closest-side,var(--c) 0%,transparent 75%);
+  opacity:0;transform:scale(.72);
+  transition:opacity .45s ease,transform .45s ease;
+}
+.g-lp .g-btl img{
+  position:relative;z-index:1;display:block;
+  width:100%;height:auto;aspect-ratio:114/240;object-fit:contain;object-position:center bottom;
+  transition:transform .45s cubic-bezier(.2,.8,.25,1);
+}
+.g-lp .g-btl:hover:before{opacity:.55;transform:scale(1)}
+.g-lp .g-btl:hover img{transform:translateY(-10px) scale(1.045)}
+
+/* g-armed is added by gt-lp.js, so the hidden start state only ever exists when
+   something is guaranteed to undo it. Without JS the row simply renders. */
+.g-lp .g-line.g-armed .g-btl{opacity:0}
+.g-lp .g-line.g-armed.g-on .g-btl{
+  animation:g-rise .62s cubic-bezier(.2,.9,.3,1) both;
+  animation-delay:calc(var(--i) * 52ms);
+}
+@keyframes g-rise{
+  from{opacity:0;transform:translateY(32px) scale(.94)}
+  60%{opacity:1}
+  to{opacity:1;transform:none}
+}
+
+/* Four sibling pages that never linked to each other. A café buying chai very
+   likely pours iced tea as well. */
+.g-lp .g-siblings{
+  max-width:1240px;margin:0 auto;padding:30px 28px;
+  display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);font-size:14px;
+}
+.g-lp .g-siblings span{color:var(--ink-soft);letter-spacing:.08em;font-size:12px}
+.g-lp .g-siblings a{color:var(--at);text-decoration:none;border-bottom:1px solid transparent;font-weight:600}
+.g-lp .g-siblings a:hover{border-bottom-color:currentColor}
+
+/* On a phone the only CTA is a full screen away once you are in the menu. */
+.g-lp .g-sticky{display:none}
+@media(max-width:760px){
+  /* gt-lp.js adds g-sticky-on to the page root once the hero has scrolled away, so
+     the bar never sits on top of the same call to action it repeats. */
+  .g-lp.g-sticky-on .g-sticky{
+    position:fixed;inset-inline:14px;bottom:14px;z-index:40;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:15px 22px;border-radius:999px;
+    background:var(--ink);color:var(--paper);text-decoration:none;
+    font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(15,17,12,.28);
+  }
+  .g-lp .g-line{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  .g-lp .g-foot{padding-bottom:86px}
+}
+@media(prefers-reduced-motion:reduce){
+  .g-lp .g-sticky{transition:none}
 }
