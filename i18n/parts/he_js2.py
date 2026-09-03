@@ -26,8 +26,8 @@ EN2HE = {
 "Refreshing hibiscus-lime lemonade": "לימונדת היביסקוס וליים מרעננת",
 "Lemonade on Israeli wild herbs": "לימונדה על צמחי בר ישראליים",
 "Lemonade on Chai massala": "לימונדה על צ׳אי מסאלה",
-"Signature drink on purée peach": "משקה דגל על פירה אפרסק",
-"Signature drink on purée strawberry": "משקה דגל על פירה תות",
+"Signature drink on purée peach": "משקה דגל על מחית אפרסק",
+"Signature drink on purée strawberry": "משקה דגל על מחית תות",
 "Signature drink on mango": "משקה דגל על מנגו",
 "Signature drink on apple juice": "משקה דגל על מיץ תפוחים",
 "Tea gazoz jasmine and lychee with lychee fresh": "גזוז תה יסמין וליצ׳י עם ליצ׳י טרי",
@@ -61,8 +61,8 @@ EN2HE = {
 "Fresh apple gazoz": "גזוז Fresh תפוח",
 "classic matcha iced": "אייס מאצ׳ה קלאסי",
 "mango matcha iced": "אייס מאצ׳ה מנגו",
-"Iced matcha purée strawberry": "אייס מאצ׳ה פירה תות",
-"matcha iced purée peach": "אייס מאצ׳ה פירה אפרסק",
+"Iced matcha purée strawberry": "אייס מאצ׳ה מחית תות",
+"matcha iced purée peach": "אייס מאצ׳ה מחית אפרסק",
 "Iced matcha with GT massala essence": "אייס מאצ׳ה עם תרכיז מסאלה GT",
 "Agave on the rocks": "אגבה על קרח",
 "Vanilla iced matcha": "אייס מאצ׳ה וניל",
@@ -125,7 +125,7 @@ EN2HE = {
 "Delicate florals with natural lychee — an elegant, precise glass. Built on 70% jasmine tea, with a soft aroma that lingers long after the last sip.":
     "פרחוניות עדינה עם ליצ׳י טבעי — כוס אלגנטית ומדויקת. בנויה על 70% תה יסמין, עם ארומה רכה שנשארת הרבה אחרי הלגימה האחרונה.",
 "The American classic with Israeli chutzpah. Deep aged teas lifted by yuzu, bergamot and citrus — and a perfect partner for peach or mango pur\\u00e9e from our smoothie line.":
-    "הקלאסיקה האמריקאית עם חוצפה ישראלית. תה מיושן ועמוק שמורם ביוזו, ברגמוט והדרים — ובן זוג מושלם לפירה אפרסק או מנגו מקו הסמוזי שלנו.",
+    "הקלאסיקה האמריקאית עם חוצפה ישראלית. תה מיושן ועמוק שמורם ביוזו, ברגמוט והדרים — ובן זוג מושלם למחית אפרסק או מנגו מקו הסמוזי שלנו.",
 "A caffeine-free wake-up call. A bold, intriguing red that stops the scroll, with a gentle tartness that brings guests back again and again.":
     "קריאת השכמה בלי קפאין. אדום נועז ומסקרן שעוצר את הגלילה, עם חמיצות עדינה שמחזירה אורחים שוב ושוב.",
 "A uniquely Israeli product with no rivals: five local wild herbs — lemon verbena, mint, oregano, melissa, sage and white micromeria — in one glass. Caffeine-free, tasting like the desert after rain.":
@@ -141,19 +141,19 @@ EN2HE = {
 "Serves both ways \\u2014 hot hojicha latte with any milk, or iced over milk. Roasted notes of hazelnut and cocoa.":
     "מוגש בשתי הדרכים — הוג׳יצ׳ה לאטה חם עם כל חלב, או קר על חלב. נימות קלויות של אגוזי לוז וקקאו.",
 "Pairs perfectly with ODK peach & mango pur\\u00e9es \\u2014 the signature-drink base.":
-    "משתלב מושלם עם פירה אפרסק ומנגו של ODK — הבסיס למשקאות הדגל.",
+    "משתלב מושלם עם מחיות אפרסק ומנגו של ODK — הבסיס למשקאות הדגל.",
 "Signature base \\u2014 pairs with ODK peach & mango pur\\u00e9es.":
-    "בסיס למשקה דגל — משתלב עם פירה אפרסק ומנגו של ODK.",
+    "בסיס למשקה דגל — משתלב עם מחיות אפרסק ומנגו של ODK.",
 "Serves hot or iced as a latte. No menu recipes yet.":
     "מוגש חם או קר כלאטה. עדיין בלי מתכוני תפריט.",
 
 # ── PUREES panel ────────────────────────────────────────────────────────
 "Golden Alphonso-style mango purée — the sunshine layer for signatures, matcha, coconut and ube.":
-    "פירה מנגו בסגנון אלפונסו זהוב — שכבת השמש למשקאות הדגל, למאצ׳ה, לקוקוס ולאובה.",
+    "מחית מנגו בסגנון אלפונסו זהוב — שכבת השמש למשקאות הדגל, למאצ׳ה, לקוקוס ולאובה.",
 "Ripe red strawberry purée — the bestseller layer across the whole summer card.":
-    "פירה תות אדום ובשל — שכבת רב המכר לאורך כל תפריט הקיץ.",
+    "מחית תות אדום ובשל — שכבת רב המכר לאורך כל תפריט הקיץ.",
 "Velvet peach purée — the desert-peach hero: signature, gazoz, matcha and ube.":
-    "פירה אפרסק קטיפתי — הכוכב של המדברי־אפרסק: משקה דגל, גזוז, מאצ׳ה ואובה.",
+    "מחית אפרסק קטיפתי — הכוכב של המדברי־אפרסק: משקה דגל, גזוז, מאצ׳ה ואובה.",
 "Revive mango signature": "משקה דגל Revive מנגו",
 "Iced mango matcha": "אייס מאצ׳ה מנגו",
 "Mango matcha coconut": "מאצ׳ה קוקוס מנגו",
@@ -164,7 +164,7 @@ EN2HE = {
 "Desert peach signature": "משקה דגל מדברי אפרסק",
 "Iced peach matcha": "אייס מאצ׳ה אפרסק",
 "Iced ube peach": "אייס אובה אפרסק",
-" pur\\u00e9e \\u00b7 where it goes": " פירה · לאן זה הולך",
+" pur\\u00e9e \\u00b7 where it goes": " מחית · לאן זה הולך",
 
 # ── STEP_ICONS labels ───────────────────────────────────────────────────
 "Matcha": "מאצ׳ה", "Ube": "אובה", "GT 50ml": "‏GT 50 מ״ל",
