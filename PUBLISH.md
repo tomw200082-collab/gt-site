@@ -112,9 +112,24 @@ In this order, because the later ones matter less if an earlier one fails.
    wrong before — but check, because customers use them.
 4. **Prices on the page match the record.** Spot-check three: מאצ'ה קוקוס תות
    ₪44, אייס מאצ'ה מנגו ₪39, דירטי צ'אי ₪32.
-5. **Shopify analytics is recording sessions.** The layout carries
-   `content_for_header`, so the store's own analytics and any app pixels are
-   live automatically.
+5. **Measurement is reporting.** Load the homepage and check all four; the
+   inventory and the reasoning behind each are in
+   `docs/2026-09-02_analytics.md`.
+
+   ```sh
+   curl -sS https://gteveryday.com/ | grep -oE 'G-[A-Z0-9]+|GTM-[A-Z0-9]+|gtag/js' | sort | uniq -c
+   ```
+
+   - `G-QCNXYQR1TR` **once** — it rides the Google & YouTube channel through
+     `content_for_header`. Twice, or any `gtag/js` loader, means someone filled
+     in the `analytics_id` field and every view is being counted twice.
+   - `GTM-TFH9M99` **twice** — the head script and the body `<noscript>`. Our
+     layout replaces the Vodoma one on this page only, so this is the tag that
+     would go missing here and nowhere else.
+   - Submit the enquiry form and watch `window.dataLayer` in the console: a
+     confirmed lead pushes one `generate_lead`. A rejected one pushes nothing.
+   - Shopify's own analytics (`trekkie`) and the store's app pixels come with
+     `content_for_header` and need no check.
 
 ---
 
