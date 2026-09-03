@@ -96,7 +96,73 @@
 .g-lp .g-head p{margin-top:14px;color:var(--ink-soft);max-width:58ch}
 
 /* ---- the menu — the signature ---------------------------------------- */
-.g-lp .g-menu{padding:82px 0 90px}
+/* The drinks menu sits inside the page's own ornamental border — a square
+   illustrated frame from Canva folder FAHUC3u8Qvw, one per page, picked so its
+   centre colour is the page's: amber for chai, green for matcha, near-black for
+   iced tea, deep purple for ube.
+
+   A square frame and a menu six rows tall do not fit each other. Tiling the border
+   would repeat a pheasant every 200px and stretching it would smear one, so the
+   square is not wrapped around the section: tools/landing-pages/frames.py cuts its
+   top and bottom quarter, those two bands are anchored to the two ends, and the
+   ground between them is the frame's own centre colour. Each band's inner edge is
+   masked away, so the illustration dissolves into that ground rather than stopping
+   at a line — which is also what lets the ground be darkened for contrast (chai's
+   amber needed 15%) without a seam.
+
+   --frame and --on-frame are set inline per page by gen.py: the ground measured
+   from the middle of the frame, and whichever of --ink and the --on-dark cream
+   clears 4.5:1 on it. This is the page's one saturated section by design — the
+   drinks are white cut-outs and they have nothing to sit against on paper. */
+.g-lp .g-menu{
+  /* The band is 2048x532, so at any width it wants to be 26% of it. --band stays
+     just under that, which keeps the whole ornament on screen -- at half this the
+     mask cut the pheasant off at the neck. */
+  --band:clamp(128px,25.5vw,420px);
+  position:relative;overflow:hidden;isolation:isolate;
+  background:var(--frame);color:var(--on-frame);
+  padding-block:calc(var(--band) * .84 + 40px) calc(var(--band) * .84 + 52px);
+}
+.g-lp .g-band{
+  position:absolute;inset-inline:0;width:100%;height:var(--band);
+  object-fit:cover;z-index:0;pointer-events:none;user-select:none;
+  /* mask-size and mask-repeat are not optional here. Left at their initial
+     auto/repeat, the gradient mask resolved to nothing on the bottom band and it
+     painted as bare ground -- the ornament was in the file, in the DOM and the
+     right size, and still invisible. */
+  -webkit-mask-size:100% 100%;         mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;       mask-repeat:no-repeat;
+}
+.g-lp .g-band-t{
+  top:0;object-position:center top;
+  -webkit-mask-image:linear-gradient(#000 84%,transparent);
+          mask-image:linear-gradient(#000 84%,transparent);
+}
+.g-lp .g-band-b{
+  bottom:0;object-position:center bottom;
+  -webkit-mask-image:linear-gradient(transparent,#000 15%);
+          mask-image:linear-gradient(transparent,#000 15%);
+}
+.g-lp .g-menu > .g-wrap{position:relative;z-index:1}
+/* No opacity on any of this. --on-frame clears 4.5:1 on the ground and nothing
+   more: chai's amber lands at 4.58, so dimming the eyebrow to .72 for hierarchy --
+   which is what this rule did first -- took it to 2.8 and failed the whole section.
+   The hierarchy is already in the sizes and the letterspacing. */
+.g-lp .g-menu .g-eyebrow{color:var(--on-frame)}
+.g-lp .g-menu .g-head p{color:var(--on-frame)}
+/* The accent is a mid-tone; on the frame's ground it is neither text nor absent.
+   Same treatment the hero already gives it: the word in the ground's own ink, the
+   colour carried by the underline. */
+.g-lp .g-menu .g-display em{
+  color:var(--on-frame);text-decoration:underline;text-decoration-color:var(--a);
+  text-decoration-thickness:.09em;text-underline-offset:.12em;
+}
+.g-lp .g-menu .g-fine{color:var(--on-frame);
+  border-top-color:color-mix(in srgb, var(--on-frame) 28%, transparent)}
+.g-lp .g-menu .g-drink{border-color:transparent;box-shadow:0 10px 26px -14px rgba(0,0,0,.45)}
+.g-lp .g-menu .g-drink:hover{box-shadow:0 34px 66px -18px rgba(0,0,0,.55)}
+/* The frame is ink on paper already; printing it a second time is not a kindness. */
+@media print{.g-lp .g-band{display:none}}
 .g-lp .g-grid{
   display:grid;gap:14px;margin-top:44px;align-items:start;
   grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
@@ -256,7 +322,8 @@
   .g-lp .g-ledger div:first-child{border-top:0}
 }
 @media(max-width:560px){
-  .g-lp .g-menu,.g-lp .g-plate,.g-lp .g-story,.g-lp .g-capture{padding-block:52px}
+  .g-lp .g-plate,.g-lp .g-story,.g-lp .g-capture{padding-block:52px}
+  .g-lp .g-menu{padding-block:calc(var(--band) * .84 + 22px) calc(var(--band) * .84 + 26px)}
   .g-lp .g-hero{padding-top:min(46vh,340px)}
   .g-lp .g-f-row{grid-template-columns:1fr}
   .g-lp .g-grid{grid-template-columns:1fr}

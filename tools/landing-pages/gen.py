@@ -14,6 +14,7 @@ D = json.load(open('drinks.json'))
 P = json.load(open('photos.json'))
 A = json.load(open('assets.json'))['size']
 B = json.load(open('bottles.json'))
+F = json.load(open('frames.json'))
 
 def dim(asset):
     """width/height attributes for a theme asset, measured not guessed.
@@ -104,6 +105,22 @@ def shot(d):
             f' srcset="{u}200 1x, {u}400 2x" alt=""'
             f' width="{w}" height="{h}" loading="lazy" decoding="async">')
 
+def band(slug, end):
+    """One end of the page's ornamental frame.
+
+    An <img> rather than a CSS background so it can be lazy and so the browser can
+    pick a width: the master is 2048 wide and nothing but the top or bottom quarter
+    of the square is ever painted, so a phone pulls 640 of it. alt is empty and the
+    element is hidden from the accessibility tree — it is a border, and a border that
+    announces a pheasant is a border in the way."""
+    n = 'top' if end == 't' else 'bot'
+    u = f'{P["cdn"]}gtf-{slug}-{n}.webp?width='
+    srcs = ", ".join(f"{u}{w} {w}w" for w in (640, 1024, 1440, 2048))
+    return (f'    <img class="g-band g-band-{end}" src="{u}1440"'
+            f' srcset="{srcs}" sizes="100vw" alt="" aria-hidden="true"'
+            f' width="2048" height="532" loading="lazy" decoding="async">\n')
+
+
 def card(d):
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])
     note = f'<p class="g-note">{esc(d["note"])}</p>' if d['note'] else ""
@@ -189,7 +206,7 @@ def build(slug, cfg):
   re-derived 0/48 mismatches. Each card carries the photograph of the drink it names,
   cut out and trimmed by tools/landing-pages/photos.json.
 {{%- endcomment -%}}
-<div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--at:{cfg['atext']};--tint:{cfg['tint']};--deep:{cfg['deep']}">
+<div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--at:{cfg['atext']};--tint:{cfg['tint']};--deep:{cfg['deep']};--frame:{F[slug]['ground']};--on-frame:{F[slug]['on']}">
 
   <header class="g-hero">
     <img class="g-hero-img" src="{{{{ '{cfg['hero']}' | asset_url }}}}" alt="" {dim(cfg['hero'])} fetchpriority="high" decoding="async">
@@ -211,6 +228,7 @@ def build(slug, cfg):
   </header>
 
   <section class="g-menu">
+{band(slug, 't')}{band(slug, 'b')}
     <div class="g-wrap">
       <div class="g-head">
         <span class="g-eyebrow">התפריט</span>
