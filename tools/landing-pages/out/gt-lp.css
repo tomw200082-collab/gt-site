@@ -161,7 +161,7 @@
   border-top-color:color-mix(in srgb, var(--on-frame) 28%, transparent)}
 /* The card is white and it is inside a section whose colour is the frame's ink.
    Without this it inherits that: on chai, iced tea and ube --on-frame is the cream,
-   and every drink name, label and price rendered cream-on-white -- invisible. It
+   and every drink name, label and price rendered cream-on-white — invisible. It
    was invisible on three pages out of four, and legible on the fourth for the one
    reason it should never have been checked on: matcha's ground is light, so its
    --on-frame IS --ink and the bug cannot show there. */
@@ -243,6 +243,9 @@
 .g-lp .g-drink summary{
   cursor:pointer;font-weight:800;font-size:12px;color:var(--at);list-style:none;
   letter-spacing:.02em;
+  /* 48 of these per site, the single most-repeated tap target on the pages.
+     Text alone is ~19px tall -- well under the 44px touch-target minimum. */
+  padding-block:10px;
 }
 .g-lp .g-drink summary::-webkit-details-marker{display:none}
 .g-lp .g-drink summary:after{content:" +"}

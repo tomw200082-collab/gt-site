@@ -1,5 +1,5 @@
 {
- "_": "Intrinsic size of every theme asset the pages reference, measured from https://cdn.shopify.com/s/files/1/0484/4319/5552/t/124/assets/ . Regenerate with measure_assets.py after replacing an asset.",
+ "_": "Intrinsic size of every theme asset the pages reference, measured from https://cdn.shopify.com/s/files/1/0484/4319/5552/t/124/assets/ . Regenerate with measure_assets.py after replacing an asset. The four gt-lp-*-cropped.webp entries are gt-7e97065cdf/gt-868e993bce/gt-b701af91e0/gt-cda710c642 (matcha/ube hero + plate) with the top band cropped off: that band is the pouch's zipper-track graphic, and on the source photos its printed text reads 'PULL TO TO COSE' / 'ONITER' -- legible at on-page size, a real defect on the physical pouch stock or its mockup, not an editing artifact. Cropped 2026-09-03, not retouched: same pixels, smaller frame, cut just below the zipper track (matcha/ube-hero at 30-32% from the top, matcha/ube-plate at 19% then trimmed to the alpha bounding box).",
  "cdn": "https://cdn.shopify.com/s/files/1/0484/4319/5552/t/124/assets/",
  "size": {
   "gt-0ae37a139e.webp": [
@@ -85,6 +85,22 @@
   "gt-btl-american.webp": [
    111,
    240
+  ],
+  "gt-lp-matcha-hero-cropped.webp": [
+   1100,
+   1002
+  ],
+  "gt-lp-ube-hero-cropped.webp": [
+   1100,
+   1031
+  ],
+  "gt-lp-matcha-plate-cropped.webp": [
+   760,
+   1173
+  ],
+  "gt-lp-ube-plate-cropped.webp": [
+   760,
+   1170
   ]
  }
 }
