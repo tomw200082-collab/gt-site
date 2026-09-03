@@ -417,6 +417,26 @@ gtag('js',new Date());gtag('config','{{ section.settings.analytics_id }}');
 
 <script src="{{ 'gt-site.js' | asset_url }}" defer></script>
 
+{% if section.settings.third_party_pixels %}
+<!-- Taboola -->
+<script>
+window._tfa = window._tfa || [];
+window._tfa.push({notify: 'event', name: 'page_view', id: 1547330});
+!function (t, f, a, x) { if (!document.getElementById(x)) {
+  t.async = 1; t.src = a; t.id = x; f.parentNode.insertBefore(t, f); } }
+(document.createElement('script'), document.getElementsByTagName('script')[0],
+ '//cdn.taboola.com/libtrc/unip/1547330/tfa.js', 'tb_tfa_script');
+</script>
+<!-- Retention Rocket -->
+<script>
+var _rmData = _rmData || [];
+_rmData.push(['setStoreKey', 'ym6nRgm7']);
+{% if customer %}_rmData.push(['setCustomer', {{ customer.email | json }}]);{% endif %}
+</script>
+<script async src="https://d3ryumxhbd2uw7.cloudfront.net/webtracking/track.js"></script>
+<script async src="https://d3ryumxhbd2uw7.cloudfront.net/webtracking/rmShopifyUtils.min.js"></script>
+{% endif %}
+
 {% schema %}
 {
   "name": "GT brand site",
@@ -424,8 +444,11 @@ gtag('js',new Date());gtag('config','{{ section.settings.analytics_id }}');
     { "type": "checkbox", "id": "show_pricing", "default": true,
       "label": "הצגת מחירון סיטונאי",
       "info": "כיבוי מסתיר את כל רשימת המחירים מהעמוד. המחירים עצמם לא משתנים." },
-    { "type": "text", "id": "analytics_id", "label": "GA4 Measurement ID",
-      "info": "G-XXXXXXXXXX. ריק = ללא מדידה נוספת; האנליטיקס של שופיפיי עובד בלי זה." }
+    { "type": "checkbox", "id": "third_party_pixels", "default": true,
+      "label": "פיקסלים של צד שלישי",
+      "info": "Taboola ו־Retention Rocket — אותם פיקסלים שרצים היום בעמוד הבית. כיבוי מסיר אותם מהעמוד הזה בלבד." },
+    { "type": "text", "id": "analytics_id", "label": "GA4 Measurement ID נוסף",
+      "info": "השאירו ריק. נכס ה־GA4 של החנות כבר רץ בעמוד הזה דרך ערוץ Google של שופיפיי, והזנה כאן תטען gtag פעם שנייה ותספור כל צפייה פעמיים. השדה קיים רק למדידה נפרדת ונוספת — ראו docs/2026-09-02_analytics.md." }
   ],
   "presets": [{ "name": "GT brand site" }]
 }
