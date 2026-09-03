@@ -19,13 +19,47 @@
 // Deployed with verify_jwt = false, because a website visitor has no token.
 // Every other defence is below.
 //
-// The one thing /ingest's contract has no field for is free text. The visitor's
-// message, role and interest are attached afterwards as a lead note, which is
-// where free text belongs, over a direct connection — PostgREST is not an
-// option here: `sales_core` is deliberately off its exposed-schema list, since
-// those tables have RLS disabled and exposing the schema would make every lead
+// ── WHAT /ingest KEEPS, AND WHAT IT DROPS ──────────────────────────────────
+//
+// Checked against the deployed normaliser (`_lib/ingest_body.ts`) and
+// `sales_core.ingest_lead`, not assumed. On the flat shape this form uses, the
+// meta that reaches the `created` event is exactly:
+//
+//     campaign_name campaign_id ad_name ad_id form_id form_name platform
+//     is_organic
+//
+// `city` is mapped onto the lead object and then never passed to `ingest_lead`,
+// which has no city parameter and never writes `org.city`. `role`, `interest`
+// and the visitor's own message have no field in that contract at all.
+//
+// So everything the visitor typed beyond name / business / phone / email is
+// this function's responsibility to store, and it stores it as a note event on
+// the lead — human-readable text for whoever works the queue, plus the same
+// answers as structured JSON beside it so nothing has to be parsed back out of
+// a sentence.
+//
+// The note is written over a direct connection: PostgREST is not an option,
+// because `sales_core` is deliberately off its exposed-schema list — those
+// tables have RLS disabled, and exposing the schema would make every lead
 // readable with the public anon key.
-import { Pool } from "https://deno.land/x/postgres@v0.17.0/mod.ts";
+//
+// Two things about that write, both learned the hard way:
+//
+//   * It uses `DATABASE_URL_POOLED` and `npm:pg`, which is what the poll
+//     function itself uses and what this project actually sets. An earlier
+//     version reached for `SUPABASE_DB_URL` and `deno.land/x/postgres`; that
+//     path has never once produced a note.
+//   * It inserts the `lead_event` row itself instead of calling
+//     `sales_core.add_lead_note`, because that function also calls
+//     `touch_first`, which sets `first_touch_at`. A lead born already "first
+//     touched" — by nobody — is a lead that looks handled before anyone has
+//     seen it.
+//
+// GET ?health=db opens that connection and runs `select 1`, so the note path
+// can be proven without putting a test lead into the sales queue.
+import pg from "npm:pg@8.11.3";
+
+const { Pool } = pg;
 
 const ALLOWED_ORIGINS = [
   "https://gteveryday.com",
@@ -55,9 +89,43 @@ const json = (body: unknown, status: number, origin: string | null) =>
     headers: { "content-type": "application/json", ...cors(origin) },
   });
 
+const dbUrl = () =>
+  Deno.env.get("DATABASE_URL_POOLED") ?? Deno.env.get("SUPABASE_DB_URL") ?? "";
+
+// The pg default export is a CommonJS namespace object, so its client type is
+// not reachable as `pg.PoolClient` here; the shape used below is one method.
+// deno-lint-ignore no-explicit-any
+async function withDb<T>(fn: (c: any) => Promise<T>): Promise<T> {
+  const pool = new Pool({ connectionString: dbUrl(), max: 1 });
+  try {
+    const c = await pool.connect();
+    try {
+      return await fn(c);
+    } finally {
+      c.release();
+    }
+  } finally {
+    await pool.end().catch(() => {});
+  }
+}
+
 Deno.serve(async (req) => {
   const origin = req.headers.get("origin");
   if (req.method === "OPTIONS") return new Response("ok", { headers: cors(origin) });
+
+  // Proves the note path without creating a lead. Says whether this function
+  // can reach the database and nothing else — no schema, no data, no secret.
+  if (req.method === "GET" && new URL(req.url).searchParams.get("health") === "db") {
+    if (!dbUrl()) return json({ db: "unconfigured" }, 200, origin);
+    try {
+      await withDb((c) => c.query("select 1"));
+      return json({ db: "ok" }, 200, origin);
+    } catch (e) {
+      console.error("health db", String(e));
+      return json({ db: "error" }, 200, origin);
+    }
+  }
+
   if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405, origin);
 
   const raw = await req.text();
@@ -84,8 +152,14 @@ Deno.serve(async (req) => {
   const contact_name = s("contact_name");
   const venue = s("venue");
   const city = s("city");
+  const role = s("role");
+  const interest = s("interest");
+  const message = s("message");
   const phone = s("phone");
   const email = s("email");
+  const page = typeof b.page === "string" ? b.page.slice(0, 300) : "";
+  const referrer = typeof b.referrer === "string" ? b.referrer.slice(0, 300) : "";
+
   const missing = [
     ["contact_name", contact_name], ["venue", venue], ["city", city], ["phone", phone],
   ].filter(([, v]) => !v).map(([k]) => k);
@@ -154,41 +228,58 @@ Deno.serve(async (req) => {
     return json({ error: "ingest_failed" }, 502, origin);
   }
 
-  // Free text has no field in /ingest's contract, so it becomes a note on the
-  // lead. Best-effort by design: the lead is already stored and alerted, and a
+  // Everything /ingest has no field for. Written as a note event: readable text
+  // for whoever works the queue, and the same answers as JSON beside it.
+  //
+  // Best-effort by design — the lead is already stored and alerted, and a
   // missing note must never turn a captured enquiry into an error the visitor
-  // sees.
-  const extras = [
-    s("role") && `תפקיד: ${s("role")}`,
-    s("interest") && `מתעניין ב: ${s("interest")}`,
-    s("message") && `הודעה: ${s("message")}`,
-    typeof b.page === "string" && b.page ? `עמוד: ${String(b.page).slice(0, 300)}` : "",
-    typeof b.referrer === "string" && b.referrer
-      ? `מקור: ${String(b.referrer).slice(0, 300)}` : "",
-  ].filter(Boolean).join("\n");
+  // sees. One retry, because a cold pooled connection failing once is common
+  // and losing what the visitor wrote is not acceptable.
+  let noteOk: boolean | null = null;
+  if (out?.was_new && out?.lead_id) {
+    const lines = [
+      "טופס האתר",
+      `עיר: ${city}`,
+      role && `תפקיד: ${role}`,
+      interest && `מתעניין ב: ${interest}`,
+      message && `הודעה: ${message}`,
+      page && `עמוד: ${page}`,
+      referrer && `הגיע מ: ${referrer}`,
+    ].filter(Boolean).join("\n");
 
-  if (extras && out?.was_new && out?.lead_id) {
-    const pool = new Pool(Deno.env.get("SUPABASE_DB_URL")!, 1, true);
-    try {
-      const conn = await pool.connect();
+    const payload = {
+      note: lines,
+      form: {
+        form_name: "partner_enquiry",
+        city, role: role || null, interest: interest || null,
+        message: message || null, page: page || null, referrer: referrer || null,
+      },
+    };
+
+    for (let attempt = 1; attempt <= 2 && noteOk !== true; attempt++) {
       try {
-        await conn.queryObject`
-          select sales_core.add_lead_note(
-            ${out.lead_id}::uuid,
-            ${`טופס האתר\n${extras}`}::text,
-            ${"system:website_form"}::text)`;
-      } finally {
-        conn.release();
+        await withDb((c) =>
+          c.query(
+            `insert into sales_core.lead_event (lead_id, event_type, payload, actor)
+             values ($1, 'note', $2::jsonb, 'system:website_form')`,
+            [out.lead_id, JSON.stringify(payload)],
+          )
+        );
+        noteOk = true;
+      } catch (e) {
+        noteOk = false;
+        // Loud on purpose: this is the line that says a visitor's message did
+        // not reach the people who answer it.
+        console.error("WEBSITE_LEAD_NOTE_FAILED", {
+          attempt, lead_id: out.lead_id, error: String(e).slice(0, 300),
+        });
       }
-    } catch (e) {
-      console.error("note failed (lead is stored)", { lead_id: out.lead_id, error: String(e) });
-    } finally {
-      await pool.end().catch(() => {});
     }
   }
 
   console.log("lead ingested", {
-    external_id, lead_id: out?.lead_id, was_new: out?.was_new, alerted: out?.alerted,
+    external_id, lead_id: out?.lead_id, was_new: out?.was_new,
+    alerted: out?.alerted, note: noteOk,
   });
   return json({ ok: true, was_new: out?.was_new ?? null }, 200, origin);
 });

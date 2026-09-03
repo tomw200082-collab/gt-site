@@ -62,7 +62,13 @@ text = SRC.read_text(encoding="utf-8")
 def all_image_urls(s):
     out = set()
     for pat in (r'https://wsrv\.nl/\?[^"\'\s)\\]+',
-                r'https://d2ol7oe51mr4n9\.cloudfront\.net/[^"\'\s)\\]+'):
+                r'https://d2ol7oe51mr4n9\.cloudfront\.net/[^"\'\s)\\]+',
+                # The partner logos are the one image family this repo owns
+                # rather than borrows: they live in theme/logos/ and are served
+                # from the repo, so the same hash-name-and-manifest machinery
+                # that carries the borrowed images carries them too.
+                r'https://raw\.githubusercontent\.com/tomw200082-collab/gt-site/'
+                r'main/theme/logos/[^"\'\s)\\]+'):
         for m in re.finditer(pat, s):
             out.add(m.group(0))
     return out
