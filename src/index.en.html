@@ -106,10 +106,22 @@ section{padding:100px 0}
 .center-cta{text-align:center;margin-top:44px}
 
 /* PARTNERS */
-.partners{background:var(--card);padding:70px 0;text-align:center}
-.plogos{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:28px}
-.plogo{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px 42px;font-family:'Bellefair';font-size:24px;color:#4B5148;transition:transform .2s}
-.plogo:hover{transform:translateY(-4px)}
+.partners{background:var(--card);padding:78px 0 84px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.psub{margin:12px auto 0;max-width:46ch;color:#6E7568;font-size:16.5px;line-height:1.6}
+/* The strip is one CSS animation on one element: two identical sets of tiles in a
+   track that travels exactly one set's width, so the loop has no seam. The gap
+   between the two sets is why the travel is -50% minus half a gap. */
+.pmarquee{margin-top:38px;overflow:hidden;perspective:1200px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
+.ptrack{display:flex;gap:18px;width:max-content;padding:16px 9px;transform-style:preserve-3d;animation:pslide 52s linear infinite}
+.pmarquee:hover .ptrack,.pmarquee:focus-within .ptrack{animation-play-state:paused}
+@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 9px),0,0)}}
+.pset{display:flex;gap:18px;margin:0;padding:0;list-style:none}
+.ptile{flex:0 0 auto;width:176px;height:94px;display:grid;place-items:center;background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(20,24,18,.04),0 10px 20px -14px rgba(20,24,18,.22);transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s;overflow:hidden}
+.ptile img{width:auto;height:auto;max-width:86%;max-height:74%;display:block}
+.ptile.dark{background:#1D2119;border-color:#1D2119}
+.ptile:hover{transform:translateY(-7px) rotateX(-7deg) scale(1.05);box-shadow:0 2px 5px rgba(20,24,18,.06),0 26px 38px -20px rgba(20,24,18,.36)}
+@media(max-width:640px){.ptile{width:142px;height:80px}.ptrack,.pset{gap:12px}@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 6px),0,0)}}}
+@media(prefers-reduced-motion:reduce){.ptrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.pset{flex-wrap:wrap;justify-content:center}.pset[aria-hidden]{display:none}.pmarquee{-webkit-mask-image:none;mask-image:none}}
 
 /* COLLECTIONS */
 .colgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
@@ -851,8 +863,12 @@ body{font-size:17.5px}
 
 <div class="partners rv" id="partners">
   <span class="eyebrow" style="justify-content:center;display:inline-flex">Already pouring GT</span>
-  <div class="plogos">
-    <div class="plogo">Biner</div><div class="plogo">Vista</div><div class="plogo">CafeCafe</div><div class="plogo">Emily &amp; Juli</div><div class="plogo">B.Bagel</div>
+  <p class="psub">A small part of who we pour for.</p>
+  <div class="pmarquee">
+    <div class="ptrack">
+      <ul class="pset"><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/landwer.webp" alt="לנדוור" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/delicatessen.webp" alt="Delicatessen" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/cafecafe.webp" alt="קפה קפה" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/kisu-group.webp" alt="KISU Group" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/gan-sipur.webp" alt="קפה גן סיפור" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/nono-mimi.webp" alt="NONO · MIMI" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/babka.webp" alt="Babka" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/elita.webp" alt="Elita" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/fu.webp" alt="FU" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/giraffe.webp" alt="Giraffe" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/minna-tomei.webp" alt="minna tomei" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/rm-hospitality.webp" alt="R&amp;M Hospitality" width="440" height="220" decoding="async"></li><li class="ptile dark"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/vivino.webp" alt="VIVINO" width="440" height="220" decoding="async"></li></ul>
+      <ul class="pset" aria-hidden="true"><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/landwer.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/delicatessen.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/cafecafe.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/kisu-group.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/gan-sipur.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/nono-mimi.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/babka.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/elita.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/fu.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/giraffe.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/minna-tomei.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/rm-hospitality.webp" alt="" width="440" height="220" decoding="async"></li><li class="ptile dark"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/logos/vivino.webp" alt="" width="440" height="220" decoding="async"></li></ul>
+    </div>
   </div>
 </div>
 
