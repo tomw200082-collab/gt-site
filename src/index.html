@@ -184,11 +184,14 @@ section{padding:100px 0}
 
 /* STEPS */
 .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
-.step{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:32px 26px;position:relative;transition:transform .2s}
-.step:hover{transform:translateY(-5px)}
-.step b{font-family:'Roca One','Heebo';font-size:44px;font-weight:900;color:var(--terra);line-height:1}
+.step{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:36px 26px 30px;position:relative;transition:transform .25s,box-shadow .25s}
+.step:before{content:'';position:absolute;top:0;left:0;right:0;height:5px;border-radius:22px 22px 0 0;background:var(--sc)}
+.step:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(32,36,31,.12)}
+.step-ic{display:block;width:30px;height:30px;color:var(--sc);margin-bottom:16px}
+.step b{font-family:'Roca One','Heebo';font-size:clamp(50px,6vw,70px);font-weight:900;color:var(--sc);line-height:1;opacity:.92}
 .step h4{font-family:'Roca One','Heebo';font-size:19px;font-weight:800;margin:10px 0 4px}
 .step p{font-size:15px;color:var(--ink-soft)}
+.step:not(:last-child):after{content:'→';position:absolute;top:50%;right:-16px;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink-soft);z-index:2}
 
 /* QUOTES */
 .quotes{background:var(--card)}
@@ -258,6 +261,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
   .fgrid{grid-template-columns:1fr 1fr}
   .colgrid{grid-template-columns:repeat(2,1fr)}
   .mgrid,.steps4{grid-template-columns:1fr 1fr}
+  .step:not(:last-child):after{display:none}
   .nav-links{display:none}
   .hero .side{height:340px}
 }
@@ -897,6 +901,7 @@ body{font-size:17.5px}
 .fcard.v3 .badge{left:auto;right:14px}
 .qcard .mark{left:auto;right:32px}
 .bottle:after{left:auto;right:12px}
+.step:not(:last-child):after{right:auto;left:-16px;content:'←'}
 .nav-links a:after{left:auto;right:0}
 
 /* previous/next swap sides: in Hebrew, "back" is to the right */
@@ -1152,10 +1157,22 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
     <p>בלי תוכנית הדרכה, בלי מכונות חדשות. כל ברמן מוזג GT מושלם כבר ביום הראשון.</p>
   </div>
   <div class="steps4">
-    <div class="step rv"><b>1</b><h4>כוס</h4><p>ממלאים בקרח.</p></div>
-    <div class="step rv"><b>2</b><h4>נוזל</h4><p>מים, סודה או חלב — עד ⅔.</p></div>
-    <div class="step rv"><b>3</b><h4>GT</h4><p>50 מ״ל תרכיז דרך כוס המדידה שלנו.</p></div>
-    <div class="step rv"><b>4</b><h4>מגישים</h4><p>מערבבים, מקשטים, מצלמים.</p></div>
+    <div class="step rv" style="--sc:var(--terra)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l-2.2 16.2a2 2 0 0 1-2 1.8h-3.6a2 2 0 0 1-2-1.8L6 3Z"/><path d="M6.9 9h10.2"/></svg>
+      <b>1</b><h4>כוס</h4><p>ממלאים בקרח.</p>
+    </div>
+    <div class="step rv" style="--sc:var(--calm)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 5.4 7.1 5.4 10a5.4 5.4 0 1 1-10.8 0C6.6 10.1 9 7 12 3Z"/></svg>
+      <b>2</b><h4>נוזל</h4><p>מים, סודה או חלב — עד ⅔.</p>
+    </div>
+    <div class="step rv" style="--sc:var(--gt)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4v3.2l2.4 3.6c.4.6.6 1.3.6 2V19a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V10.8c0-.7.2-1.4.6-2L10 5.2V2Z"/><path d="M8 14h8"/></svg>
+      <b>3</b><h4>GT</h4><p>50 מ״ל תרכיז דרך כוס המדידה שלנו.</p>
+    </div>
+    <div class="step rv" style="--sc:var(--energy)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l-2.2 16.2a2 2 0 0 1-2 1.8h-3.6a2 2 0 0 1-2-1.8L6 3Z"/><path d="M14 3c.5 1.6 2 2.4 3.4 1.8"/><path d="M9 21h6"/></svg>
+      <b>4</b><h4>מגישים</h4><p>מערבבים, מקשטים, מצלמים.</p>
+    </div>
   </div>
 </div></section>
 
