@@ -113,6 +113,11 @@ RTL_CSS = """
 .hs-track{direction:ltr}
 .hs-slide{direction:rtl}
 .ticker{direction:ltr}
+/* the partner logos travel the same way. The switch goes on the marquee, not
+   the track: an over-wide child of an RTL box hugs the right edge and overflows
+   left, so the leftward slide emptied the band for most of every cycle
+   (Tom, 2026-09-03). The logos carry no text, so nothing else changes. */
+.pmarquee{direction:ltr}
 .ticker span{direction:rtl;display:inline-block}
 .ticker span{margin-right:0;margin-left:56px}
 

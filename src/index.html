@@ -125,8 +125,11 @@ section{padding:100px 0}
 @media(max-width:900px){.pband{border-radius:38px;margin-inline:18px}}
 .pmarquee{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 11%,#000 89%,transparent 100%)}
 /* Never pauses. A logo leaving on the left is already re-entering on the right,
-   because the track carries two identical sets and travels exactly one of them. */
-.ptrack{display:flex;gap:48px;width:max-content;padding:50px 24px;animation:pslide 44s linear infinite}
+   because the track carries two identical sets and travels exactly one of them.
+   The -50% is measured on the track's own box, so the track carries no padding:
+   with padding inside it every loop overshot by that padding and jumped. */
+.pmarquee{padding:50px 24px}
+.ptrack{display:flex;gap:48px;width:max-content;animation:pslide 44s linear infinite}
 @keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 24px),0,0)}}
 .pset{display:flex;align-items:center;gap:48px;margin:0;padding:0;list-style:none}
 .plogo{flex:0 0 auto;height:112px;display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
@@ -138,7 +141,7 @@ section{padding:100px 0}
 @keyframes pfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .partners.in .plogo img{animation:prise .8s cubic-bezier(.2,.8,.25,1) backwards,pfloat calc(6.4s + var(--i,0)*.38s) ease-in-out infinite;animation-delay:calc(var(--i,0) * 55ms),calc(800ms + var(--i,0) * 55ms)}
 @keyframes prise{from{opacity:0;transform:translateY(18px) scale(.92)}to{opacity:.94;transform:none}}
-@media(max-width:640px){.plogo,.plogo img{height:82px}.ptrack{gap:34px;padding:30px 18px}.pset{gap:34px}@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 17px),0,0)}}}
+@media(max-width:640px){.plogo,.plogo img{height:82px}.pmarquee{padding:30px 18px}.ptrack{gap:34px}.pset{gap:34px}@keyframes pslide{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - 17px),0,0)}}}
 @media(prefers-reduced-motion:reduce){.plogo img,.partners.in .plogo img{animation:none;opacity:.94}.plogo:hover{transform:none}.ptrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.pset{flex-wrap:wrap;justify-content:center}.pset[aria-hidden]{display:none}.pmarquee{-webkit-mask-image:none;mask-image:none}}
 
 /* COLLECTIONS */
@@ -873,6 +876,11 @@ body{font-size:17.5px}
 .hs-track{direction:ltr}
 .hs-slide{direction:rtl}
 .ticker{direction:ltr}
+/* the partner logos travel the same way. The switch goes on the marquee, not
+   the track: an over-wide child of an RTL box hugs the right edge and overflows
+   left, so the leftward slide emptied the band for most of every cycle
+   (Tom, 2026-09-03). The logos carry no text, so nothing else changes. */
+.pmarquee{direction:ltr}
 .ticker span{direction:rtl;display:inline-block}
 .ticker span{margin-right:0;margin-left:56px}
 
