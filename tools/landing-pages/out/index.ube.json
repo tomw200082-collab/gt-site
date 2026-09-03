@@ -1,0 +1,12 @@
+{
+  "layout": "gt",
+  "sections": {
+    "main": {
+      "type": "gt-lp-ube",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,157 @@
+name: build
+
+# The Hebrew page is generated, and every generator in tools/ asserts its own
+# anchors. That safety only helps if something runs it: before this workflow the
+# build and the validator were run by hand, so a moved anchor or a figure that
+# drifted from the record could sit in a commit unnoticed.
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rebuild the Hebrew page from the English source
+        # Fails loudly if any patch anchor moved. The brain repo is not checked
+        # out here, so sync_figures falls back to the vendored record and says so.
+        run: ./tools/build.sh
+
+      - name: Every figure matches the figures of record
+        run: python3 tools/verify_figures.py
+
+      - name: The vendored record is a faithful copy
+        run: python3 tools/sync_figures.py --check
+
+      - name: The committed build is the build
+        # src/index.html is generated but committed, so the two must agree. If
+        # this fails someone edited the built page by hand instead of its source.
+        run: |
+          if ! git diff --quiet -- src/index.html; then
+            echo "::error::src/index.html differs from a clean build."
+            echo "Edit i18n/parts/ or tools/, then run ./tools/build.sh and commit the result."
+            git diff --stat -- src/index.html
+            exit 1
+          fi
+
+      - name: Regenerate the theme
+        run: python3 tools/build_theme.py
+
+      - name: The committed theme is the theme
+        run: |
+          if ! git diff --quiet -- theme/; then
+            echo "::error::theme/ differs from a clean build — run python3 tools/build_theme.py and commit."
+            git diff --stat -- theme/
+            exit 1
+          fi
+
+      - name: No placeholder copy reaches the page
+        # Field hints on the enquiry form are real content; unfinished copy is not.
+        run: |
+          if grep -n 'ממתין לחומרים\|TODO\|FIXME\|lorem ipsum' src/index.html; then
+            echo "::error::placeholder copy found in the built page"
+            exit 1
+          fi
+
+      - name: Liquid section stays under Shopify's limit
+        run: |
+          size=$(wc -c < theme/sections/gt-home.liquid)
+          echo "gt-home.liquid: $size bytes (limit 262144)"
+          [ "$size" -lt 262144 ] || { echo "::error::section exceeds Shopify's 256 KB limit"; exit 1; }
+
+      - name: No remote image URL survives into the theme
+        # src/index.html keeps its remote URLs on purpose — it is the browser
+        # preview. build_theme.py rewrites them, and theme/ must carry none.
+        # The Retention Rocket tracker is served from cloudfront and is a script,
+        # not an image (docs/2026-09-02_analytics.md). It is allowed by name, so
+        # every other cloudfront or wsrv URL still fails this check.
+        run: |
+          if grep -rn 'wsrv\.nl\|cloudfront\.net' theme/sections theme/assets \
+             | grep -v 'd3ryumxhbd2uw7\.cloudfront\.net/webtracking/'; then
+            echo "::error::theme still references a remote image host"
+            exit 1
+          fi
+
+      - name: Nothing is hidden by pushing it off-screen
+        # The page is RTL, so a large negative offset extends the scrollable
+        # area instead of falling outside it. A honeypot at left:-9999px widened
+        # the document to 11,310px and scrolled the whole page sideways into
+        # empty paper — with a correct DOM, so only a render showed it. Hide
+        # things by clipping.
+        run: |
+          if grep -nE '(left|right|top|margin-left|margin-right|text-indent): *-[0-9]{4,}' src/index.html; then
+            echo "::error::off-screen offset found — hide with clip-path/clip instead"
+            exit 1
+          fi
+
+      - name: The share card and structured data survive the build
+        # og:image and the JSON-LD are generated, so a change to build_theme.py
+        # can drop them silently — and a blank WhatsApp preview is invisible
+        # from the repo.
+        run: |
+          python3 - <<'EOF'
+          import json, re, sys
+          head = open('theme/layout/gt.liquid', encoding='utf-8').read()
+          sec = open('theme/sections/gt-home.liquid', encoding='utf-8').read()
+          fail = []
+          for tag in ('og:image', 'og:image:width', 'twitter:image', 'rel="icon"'):
+              if tag not in head:
+                  fail.append(f'layout is missing {tag}')
+          if head.count('rel="preconnect"') != 2:
+              fail.append(f'expected 2 preconnect hints, found {head.count(chr(34).join(["rel=", "preconnect", ""]))}')
+          m = re.search(r'<script type="application/ld\+json">(.*?)</script>', sec, re.S)
+          if not m:
+              fail.append('no JSON-LD in the section')
+          else:
+              types = {n['@type'] for n in json.loads(m.group(1))['@graph']}
+              if not {'Organization', 'FAQPage'} <= types:
+                  fail.append(f'JSON-LD @graph has {types}, expected Organization + FAQPage')
+          n = len(re.findall(r'<img\b[^>]*width="\d+"[^>]*>', sec))
+          if n < 60:
+              fail.append(f'only {n} images carry width/height — expected 60+')
+          for f in fail:
+              print(f'::error::{f}')
+          sys.exit(1 if fail else 0)
+          EOF
+
+      - name: The measurement the live homepage has, ours has too
+        # Our layout replaces the Vodoma layout on the homepage only, so a tag
+        # that lives in *their* layout silently stops on the one page we are
+        # publishing. Measured against the live store on 2026-09-02:
+        # docs/2026-09-02_analytics.md.
+        run: |
+          python3 - <<'EOF'
+          import json, re, sys
+          head = open('theme/layout/gt.liquid', encoding='utf-8').read()
+          sec = open('theme/sections/gt-home.liquid', encoding='utf-8').read()
+          js = open('theme/assets/gt-site.js', encoding='utf-8').read()
+          fail = []
+          if head.count('GTM-TFH9M99') != 2:
+              fail.append('layout must carry the GTM container twice — script and noscript')
+          if 'dataLayer' not in head:
+              fail.append('layout is missing the dataLayer bootstrap GTM reads')
+          for pixel, name in (('tb_tfa_script', 'Taboola'), ('ym6nRgm7', 'Retention Rocket')):
+              if pixel not in sec:
+                  fail.append(f'{name} pixel is gone from the section')
+          # Leads go to sales_core, not HubSpot (Tom 2026-08-31).
+          if 'hs-scripts' in head or 'hs-scripts' in sec:
+              fail.append('the HubSpot embed is back on the page')
+          # GA4 already arrives through content_for_header. A second one double-counts.
+          for hit in set(re.findall(r'\bG-[A-Z0-9]{8,12}\b', head + sec)):
+              fail.append(f'{hit} is hardcoded — GA4 comes from the Google channel already')
+          schema = json.loads(re.search(r'\{% schema %\}(.*?)\{% endschema %\}', sec, re.S).group(1))
+          ga = next((s for s in schema['settings'] if s['id'] == 'analytics_id'), None)
+          if ga is None or ga.get('default'):
+              fail.append('analytics_id must exist and must default to empty')
+          if 'generate_lead' not in js:
+              fail.append('the enquiry form no longer reports a conversion')
+          for f in fail:
+              print(f'::error::{f}')
+          sys.exit(1 if fail else 0)
+          EOF
