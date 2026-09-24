@@ -66,7 +66,8 @@ jobs:
           bad = []
           for f in files:
               t = open(f, encoding='utf-8').read()
-              for tok in ('₪', '\\u20aa', 'ש״ח', 'מחיר מומלץ', 'עלות מנה', 'מחירון סיטונאי גלוי', 'מחירון גלוי'):
+              # labels, not words: "אותה עלות מנה" in a sentence is not a price
+              for tok in ('₪', '\\u20aa', 'ש״ח', 'מחיר מומלץ', '<dt>עלות מנה', 'מחירון סיטונאי גלוי', 'מחירון גלוי'):
                   if tok in t:
                       bad.append(f'{f} still carries {tok!r}')
           for b in bad:
