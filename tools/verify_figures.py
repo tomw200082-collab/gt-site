@@ -21,7 +21,7 @@ SRC = ROOT / "src" / "index.html"
 RECORD = ROOT / "data" / "drinks_final_figures.json"
 
 sys.path.insert(0, str(ROOT / "tools"))
-from patch_figures import ALIAS, CARD_ANCHORS, COLD_INFUSIONS, MK_MAP, TICKER  # noqa: E402
+from patch_figures import CARD_ANCHORS, COLD_INFUSIONS, MK_MAP, TICKER, record_key  # noqa: E402
 
 fails: list[str] = []
 
@@ -42,14 +42,14 @@ def main() -> None:
             fails.append(f"record: cold infusions no longer share one figure ({n})")
 
     def rec(name):
-        return by_name[ALIAS.get(name, name)]
+        return by_name[record_key(name)]
 
     # ── 1. COLS drinks ──────────────────────────────────────────────────
     cols = json.loads(re.search(r"const COLS=(\[.*?\]);", text, re.S).group(1))
     drinks = 0
     for col in cols:
         for d in col["drinks"]:
-            key = ALIAS.get(d["he"], d["he"])
+            key = record_key(d["he"])
             if key not in by_name:
                 fails.append(f"COLS: {d['he']!r} is not in the record")
                 continue

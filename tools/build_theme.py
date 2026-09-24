@@ -117,32 +117,7 @@ SHOW_PRICES = strip_prices.show_prices()
 if not SHOW_PRICES:
     markup = strip_prices.strip_markup(markup)
     js = strip_prices.strip_js(js)
-    css = css + strip_prices.CSS
-
-# ── 2c. one geresh on the page ──────────────────────────────────────────
-#
-# 32 drink names and 5 collection names arrive from the figures of record spelled
-# with an ASCII apostrophe (צ'אי, מאצ'ה), because patch_figures.py and
-# verify_figures.py match them byte-for-byte against that record. Everywhere else
-# the page writes the Hebrew geresh (צ׳אי, מאצ׳ה), so the recipe modal showed both
-# spellings in one title block. The names are display-only in the script (dn() and
-# the chips; nothing looks a drink up by name, and the STEP_ICONS patterns accept
-# both marks), so the served copy takes the geresh after verification is done.
-_m = re.search(r"const COLS=(\[.*?\]);", js, re.S)
-if not _m:
-    sys.exit("FAIL: COLS not found for the geresh pass")
-_cols = json.loads(_m.group(1))
-_geresh = 0
-def _g(v):
-    global _geresh
-    out, n = re.subn(r"(?<=[\u05d0-\u05ea])'", "\u05f3", v)
-    _geresh += n
-    return out
-for _c in _cols:
-    _c["he"] = _g(_c["he"])
-    for _d in _c["drinks"]:
-        _d["he"] = _g(_d["he"])
-js = js[:_m.start(1)] + json.dumps(_cols, ensure_ascii=False) + js[_m.end(1):]
+    css += strip_prices.CSS
 
 # ── 3. rewrite image references ─────────────────────────────────────────
 def rewrite_markup(s):
@@ -174,36 +149,9 @@ def rewrite_js(s):
 # source: an edit made in the editor is silently overwritten by the next
 # build_theme.py. These two are safe because nothing in the build writes them.
 #
-# show_pricing is the switch for the open question in PUBLISH.md B3 — whether
-# 116 wholesale figures belong on a public URL. It makes that a click rather
-# than a rebuild, and it is reversible in both directions.
-if SHOW_PRICES:
-    _pricing_open = markup.index('<section id="pricing"')
-    _pricing_end = markup.rindex('</section>', _pricing_open, markup.index('<section id="about"')) + len('</section>')
-    markup = (markup[:_pricing_open]
-              + '{% if section.settings.show_pricing %}'
-              + markup[_pricing_open:_pricing_end]
-              + '{% endif %}'
-              + markup[_pricing_end:])
-
-    # Four links pointed into that section, so switching it off left the nav item
-    # "מחירון" and three product cards jumping to an anchor that is no longer on the
-    # page. The nav item goes with the section; the cards fall back to the enquiry
-    # form, which is where a reader who wanted a price should land anyway.
-    _nav = '<a href="#pricing">מחירון</a>'
-    assert markup.count(_nav) == 1, f"pricing nav item: {markup.count(_nav)} found"
-    # Parked behind a sentinel so the card pass below does not also rewrite this
-    # href — inside the {% if %} it can only ever render while the section is shown.
-    markup = markup.replace(
-        _nav, '{% if section.settings.show_pricing %}'
-              '<a href="#PRICING-NAV">מחירון</a>{% endif %}')
-
-    _card_href = 'href="#pricing"'
-    assert markup.count(_card_href) == 3, f"pricing card links: {markup.count(_card_href)} found"
-    markup = markup.replace(
-        _card_href,
-        'href="{% if section.settings.show_pricing %}#pricing'
-        '{% else %}#contact{% endif %}"').replace('#PRICING-NAV', '#pricing')
+# show_pricing is one of them while prices are shown at all: strip_prices.price_list()
+# either wraps the wholesale price list in it or leaves the list out of the theme.
+markup = strip_prices.price_list(markup, SHOW_PRICES)
 
 
 # ── 3c. width and height on every image ─────────────────────────────────
@@ -299,8 +247,6 @@ def faq_pairs(html_: str):
         q = re.sub(r"<[^>]+>", " ", m.group(1))
         a = re.sub(r"<[^>]+>", " ", m.group(2))
         q, a = " ".join(q.split()), " ".join(a.split())
-        # the invisible bidi isolates around number ranges are for the eye only
-        q, a = (x.replace("\u2066", "").replace("\u2069", "") for x in (q, a))
         # The drink modal uses <details> too; only real prose Q&A qualifies.
         if q.endswith("?") and 20 <= len(a) <= 900:
             out.append((q, a))
@@ -425,7 +371,6 @@ print(f"  images sized              {stamped_imgs:>8,}  (width/height stamped)")
 print(f"  FAQ entries in schema     {len(_faq):>8,}")
 print(f"  dead images dropped     {len(skipped):>8,}  ({removed} data entries removed)")
 print(f"  prices                  {'shown' if SHOW_PRICES else 'none — ' + str(len(strip_prices.applied)) + ' edits'}")
-print(f"  names given a geresh    {_geresh:>8,}")
 lo = [n for n in (b('sections/gt-home.liquid'),) if n > 256*1024]
 if lo:
     sys.exit("section exceeds the 256 KB Liquid file limit")

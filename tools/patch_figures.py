@@ -59,6 +59,18 @@ ALIAS = {
     "חליטת תה ירוק לואיזה וליים": "חליטת תה ירוק וליים",
 }
 
+# The page spells צ׳אי and מאצ׳ה with the Hebrew geresh; the figures of record spell
+# the same names with an ASCII apostrophe. A lookup treats the two as one name, and
+# COLS leaves this pass with the geresh the rest of the page uses — until it did,
+# the recipe modal showed both spellings in one title block.
+GERESH = re.compile(r"(?<=[\u05d0-\u05ea])'")
+
+
+def record_key(name: str) -> str:
+    """The figures-of-record name a page name is filed under."""
+    name = name.replace("\u05f3", "'")
+    return ALIAS.get(name, name)
+
 # The page's cold-infusion class. Every member carries identical figures in the
 # record; `cold_infusion_class()` asserts that before relying on it.
 COLD_INFUSIONS = (
@@ -175,7 +187,7 @@ def main() -> None:
     def lookup(name: str | None) -> dict:
         if name is None:
             return cold
-        entry = by_name.get(ALIAS.get(name, name))
+        entry = by_name.get(record_key(name))
         if entry is None:
             die(f"{name!r} is not in the figures of record — halt rather than guess")
         return entry
@@ -190,6 +202,9 @@ def main() -> None:
 
     headline: list[str] = []
     for col in cols:
+        col["he"] = GERESH.sub("\u05f3", col["he"])
+        for d in col["drinks"]:
+            d["he"] = GERESH.sub("\u05f3", d["he"])
         prices = []
         for d in col["drinks"]:
             r = lookup(d["he"])

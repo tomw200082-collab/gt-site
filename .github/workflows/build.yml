@@ -52,24 +52,24 @@ jobs:
           fi
 
       - name: No price reaches a served page while prices are off
-        # Tom, 2026-09-24: "צריך גם להוריד את המחירים שלא יראו אותם". The switch is
-        # data/site_flags.json; build_theme.py and landing-pages/gen.py already refuse
-        # to write a shekel, and this re-reads what was actually committed — the
-        # section, the script asset, the layout and all four landing pages.
+        # Tom, 2026-09-24: "צריך גם להוריד את המחירים שלא יראו אותם". The switch and
+        # the token list are tools/strip_prices.py's; build_theme.py and
+        # landing-pages/gen.py already refuse to write a price, and this re-reads what
+        # was actually committed — the section, the script asset, the layout and all
+        # four landing pages.
         run: |
           python3 - <<'EOF'
-          import glob, json, sys
-          if json.load(open('data/site_flags.json', encoding='utf-8')).get('show_prices', True):
+          import glob, sys
+          sys.path.insert(0, 'tools')
+          import strip_prices
+          if strip_prices.show_prices():
               print('prices are shown — nothing to check'); sys.exit(0)
           files = ['theme/sections/gt-home.liquid', 'theme/assets/gt-site.js',
                    'theme/layout/gt.liquid'] + sorted(glob.glob('tools/landing-pages/out/gt-lp-*.liquid'))
           bad = []
           for f in files:
               t = open(f, encoding='utf-8').read()
-              # labels, not words: "אותה עלות מנה" in a sentence is not a price
-              for tok in ('₪', '\\u20aa', 'ש״ח', 'מחיר מומלץ', '<dt>עלות מנה', 'מחירון סיטונאי גלוי', 'מחירון גלוי'):
-                  if tok in t:
-                      bad.append(f'{f} still carries {tok!r}')
+              bad += [f'{f} still carries {tok!r}' for tok in strip_prices.PRICE_TOKENS if tok in t]
           for b in bad:
               print(f'::error::{b}')
           print(f'{len(files)} served files checked — {len(bad)} price(s) found')

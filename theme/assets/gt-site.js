@@ -196,7 +196,7 @@ function renderMakesCols(n){
 }
 function openF(c){
  try{
-  const n0=c.querySelector('h4').textContent.trim(),n=({"מאצ׳ה":"Matcha","הוג׳יצ׳ה":"Hojicha","אובה":"Ube"})[n0]||n0;
+  const n0=c.querySelector('h4').textContent.trim(),n=Object.keys(FLCARD).find(k=>FLCARD[k]===c.id)||n0;
   baseImg=(FSCENE[c.id]||c.querySelector('.ph img').src);document.getElementById('fm-img').src=baseImg;document.getElementById('fm-img').style.opacity=1;
   const o=c.querySelector('.origin');document.getElementById('fm-origin').textContent=o?o.textContent:'';
   document.getElementById('fm-name').textContent=n0;
@@ -230,6 +230,7 @@ let cmC=0,cmI=0;
 
 var DFCOL={"Detox":"#D8492B","Revive":"#0FA3A3","Energy":"#4B3B8F","Consciousness":"#C2185B","American":"#C62828",
 "Fresh":"#A31F34","Desertea":"#D9A413","Calm":"#8E7CC3","Namastea":"#C98A2D","Matcha":"#5F8F4E","Ube":"#7C5CBF","Hojicha":"#A9752E"};
+function cardName(id,fallback){var h=id&&document.querySelector('#'+id+' h4');return h?h.textContent.trim():fallback;}
 function buildMatrix(){
  var box=document.getElementById('mx'); if(!box||typeof FLMAP==='undefined')return;
  var NOTE={"American":"בסיס למשקה דגל — משתלב עם מחיות אפרסק ומנגו של ODK.",
@@ -239,7 +240,7 @@ function buildMatrix(){
   var pairs=FLMAP[p]||[];
   var muted=pairs.length?'':' muted';
   h+='<div class="mxc'+muted+'"><div class="hd"><i class="pd" style="background:'+(DFCOL[p]||'#ccc')+'"></i>'
-    +'<span class="pn">'+({Matcha:'מאצ׳ה',Ube:'אובה',Hojicha:'הוג׳יצ׳ה'}[p]||p)+'</span><span class="pc">'+(pairs.length?(pairs.length===1?'משקה אחד':pairs.length+' משקאות'):'\u2014')+'</span></div>';
+    +'<span class="pn">'+cardName(FLCARD[p],p)+'</span><span class="pc">'+(pairs.length?(pairs.length===1?'משקה אחד':pairs.length+' משקאות'):'\u2014')+'</span></div>';
   if(!pairs.length){ h+='<div class="note">'+(NOTE[p]||'עדיין בלי מתכוני תפריט.')+'</div></div>'; return; }
   var byCh={},order=[];
   pairs.forEach(function(pr){ if(!byCh[pr[0]]){byCh[pr[0]]=[];order.push(pr[0]);} byCh[pr[0]].push(pr[1]); });
@@ -368,7 +369,7 @@ function cmSrcRender(ci,di){
  if(!srcs.length){host.innerHTML='';host.style.display='none';return;}
  host.style.display='flex';
  host.innerHTML='<span class="lbl">על בסיס</span>'+srcs.map(function(n){
-   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+({Matcha:'מאצ׳ה',Ube:'אובה',Hojicha:'הוג׳יצ׳ה'}[n]||n)+' \u2190</a>'; }).join('');
+   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+cardName(FLCARD[n],n)+' \u2190</a>'; }).join('');
  host.querySelectorAll('a').forEach(function(a){
   a.addEventListener('click',function(e){e.preventDefault();
    var el=document.getElementById(a.getAttribute('data-card')); if(!el)return;
@@ -471,7 +472,7 @@ function pmSlide(d){if(!pmShots.length)return;pmI=(pmI+d+pmShots.length)%pmShots
 function pmOpen(id){
  const p=PUREES[id];
  pmShots=((PEXTRA[id]&&PEXTRA[id].length)?PEXTRA[id]:[PIMG[id]||'']).filter(Boolean);pmI=0;pmRender();
- document.getElementById('pm-title').textContent='מחית '+({mango:'מנגו',strawberry:'תות',peach:'אפרסק'}[id]||p.t)+' · באילו משקאות היא נכנסת';
+ document.getElementById('pm-title').textContent='מחית '+cardName('p-'+id,p.t)+' · באילו משקאות היא נכנסת';
  document.getElementById('pm-sub').textContent=p.d;
  const L=document.getElementById('pm-list');L.innerHTML='';
  p.drinks.forEach(([name,ci,si])=>{

@@ -90,7 +90,7 @@
 /* the ledger sits on the seam between photo and paper */
 .g-lp .g-ledger{
   position:relative;max-width:1240px;margin:0 auto;padding:0 28px;
-  display:grid;grid-template-columns:repeat(var(--cells,3),1fr);
+  display:grid;grid-template-columns:repeat(3,1fr);
 }
 .g-lp .g-ledger div{
   background:var(--deep);color:var(--paper);padding:22px 24px;

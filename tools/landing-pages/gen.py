@@ -8,13 +8,15 @@ one set. They replaced a CSS-drawn glass that sized its bands from the millilitr
 in the recipe — an honest diagram, but a diagram, on a page whose job is to make a
 buyer want the cup. `photos.json` holds the drink-to-photo map and its provenance.
 """
-import json, html, os
+import json, html, os, re, sys
 from pathlib import Path
 
-# Tom, 2026-09-24: no shekel figure on any served page (data/site_flags.json). The
-# cards keep what stays true without a price: what is left for the café per cup.
-_FLAGS = Path(__file__).resolve().parents[2] / "data" / "site_flags.json"
-SHOW_PRICES = json.loads(_FLAGS.read_text(encoding="utf-8")).get("show_prices", True) if _FLAGS.exists() else True
+# Tom, 2026-09-24: no shekel figure on any served page. The switch and the check are
+# tools/strip_prices.py's, shared with the home page. The cards keep what stays true
+# without a price: what is left for the café per cup.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import strip_prices  # noqa: E402
+SHOW_PRICES = strip_prices.show_prices()
 
 D = json.load(open('drinks.json'))
 P = json.load(open('photos.json'))
@@ -31,7 +33,10 @@ def dim(asset):
     measure_assets.py refreshes assets.json whenever an asset is replaced."""
     w, h = A[asset]
     return f'width="{w}" height="{h}"'
-esc = lambda s: html.escape(s.replace("'", "׳"), quote=True)
+# צ'אי and מאצ'ה come from drinks.json with an ASCII apostrophe; the page writes the
+# Hebrew geresh. Only an apostrophe after a Hebrew letter is one.
+geresh = lambda s: re.sub(r"(?<=[\u05d0-\u05ea])'", "\u05f3", s)
+esc = lambda s: html.escape(geresh(s), quote=True)
 WA = "972543982444"
 
 PAGES = {
@@ -46,6 +51,7 @@ PAGES = {
      liner="רב־המכר של GT. מעולה על קרח, נהדר עם מי קוקוס, וחם הוא הופך לצ׳אי לאטה עם כל סוג חלב.",
      sizes=[("500 מ״ל","₪33"),("1 ליטר","₪65")],
      img="gt-0ae37a139e.webp"),
+   cups=("20", "כוסות מבקבוק של ליטר"),
    extra=None),
  "matcha": dict(
    key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#4C823D", tint="#E5ECDB", deep="#1C3117",
@@ -59,6 +65,7 @@ PAGES = {
      sizes=[("50 גרם","₪65"),("500 גרם","₪590")],
      yields=[("50 גרם","27"),("500 גרם","277")], dose="1.8 גרם לכוס",
      img="gt-lp-matcha-plate-cropped.webp"),
+   cups=("277", "כוסות מ־500 גרם אבקה"),
    extra=dict(name="הוג׳יצ׳ה", tagline='קלוי · "מאצ׳ה שחורה"',
      liner="את כל שישה־עשר המשקאות בעמוד הזה אפשר להכין גם עם הוג׳יצ׳ה — מאצ׳ה שחורה קלויה, עם נימות אגוז לוז וקקאו. אותה הכנה, טעם אחר לגמרי.",
      comp="מאצ׳ה מובחרת קלויה · נימות אגוז לוז וקקאו",
@@ -75,6 +82,7 @@ PAGES = {
      liner="תמציות מכל עולם התה, כל אחת עם אופי משלה. אחרי הפתיחה הבקבוק מחזיק שלושה חודשים בקירור.",
      sizes=[("500 מ״ל","₪33"),("1 ליטר","₪65")],
      img="gt-682cbb70f5.webp"),
+   cups=("20–25", "כוסות מבקבוק של ליטר"),
    extra=None),
  "ube": dict(
    key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7B5CC6", tint="#E9E2EC", deep="#251C3B",
@@ -88,6 +96,7 @@ PAGES = {
      sizes=[("500 גרם","₪175"),("1 ק״ג","₪340")],
      yields=[("500 גרם","250"),("1 ק״ג","500")], dose="2 גרם לכוס",
      img="gt-lp-ube-plate-cropped.webp"),
+   cups=("500", "כוסות מקילו אבקה"),
    extra=None),
 }
 
@@ -172,12 +181,11 @@ def build(slug, cfg):
     cards = "".join(card(d) for d in ds)
     p = cfg['prod']
     wa = f"https://wa.me/{WA}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
-        f"היי, הגעתי מהעמוד על {cfg['key']} באתר ואשמח לקבל את המחירון")
-    lo = min(float(d['cost']) for d in ds)
-    stat = {"chai": ("20", "כוסות מבקבוק של ליטר"), "matcha": ("277", "כוסות מ־500 גרם אבקה"),
-            "iced-tea": ("20–25", "כוסות מבקבוק של ליטר"), "ube": ("500", "כוסות מקילו אבקה")}[slug]
-    cost_cell = (f'\n      <div><b dir="ltr">₪{lo:.2f}</b><i>עלות המנה הנמוכה כאן</i></div>'
-                 if SHOW_PRICES else f'\n      <div><b dir="ltr">{stat[0]}</b><i>{esc(stat[1])}</i></div>')
+        geresh(f"היי, הגעתי מהעמוד על {cfg['key']} באתר ואשמח לקבל את המחירון"))
+    # The ledger's third cell: the cheapest cup on the page, or with prices off,
+    # how many cups the product pours.
+    third = ((f"₪{min(float(d['cost']) for d in ds):.2f}", "עלות המנה הנמוכה כאן")
+             if SHOW_PRICES else cfg['cups'])
     mn, mx = min(int(d['marg']) for d in ds), max(int(d['marg']) for d in ds)
 
     yield_line = ""
@@ -245,9 +253,10 @@ def build(slug, cfg):
         <a class="g-btn g-ghost" href="{wa}" target="_blank" rel="noopener">וואטסאפ <span class="g-arr" aria-hidden="true">←</span></a>
       </div>
     </div>
-    <div class="g-ledger" style="--cells:3">
+    <div class="g-ledger">
       <div><b dir="ltr">{len(ds)}</b><i>משקאות {esc(cfg["unit"])}</i></div>
-      <div><b dir="ltr">{mn}–{mx}%</b><i>נשאר אצלכם על כל כוס</i></div>{cost_cell}
+      <div><b dir="ltr">{mn}–{mx}%</b><i>נשאר אצלכם על כל כוס</i></div>
+      <div><b dir="ltr">{third[0]}</b><i>{esc(third[1])}</i></div>
     </div>
   </header>
 
@@ -363,6 +372,8 @@ def build(slug, cfg):
 os.makedirs('out', exist_ok=True)
 for slug, cfg in PAGES.items():
     src = build(slug, cfg)
+    if not SHOW_PRICES:
+        strip_prices.assert_clean(f"gt-lp-{slug}.liquid", src)
     open(f'out/gt-lp-{slug}.liquid','w').write(src)
     tpl = {"layout":"gt","sections":{"main":{"type":f"gt-lp-{slug}","settings":{}}},"order":["main"]}
     open(f'out/page.{slug}.json','w').write(json.dumps(tpl, indent=2)+"\n")

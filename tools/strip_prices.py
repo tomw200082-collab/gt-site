@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Take every shekel figure off the pages the store serves.
 
 Tom, 2026-09-24: "צריך גם להוריד את המחירים שלא יראו אותם" — take the prices down
@@ -15,9 +14,10 @@ Why here and not in `src/index.html`
     the section *and* `gt-site.js` — carries no price at all. Hiding them with CSS
     would have left all 48 drinks' costs one "view source" away.
 
-The switch is `data/site_flags.json` → `show_prices`. Every edit asserts its anchor
-and its count, so a moved anchor fails the build instead of leaving a price behind,
-and `assert_clean()` refuses any ₪ that survives anywhere.
+The switch is `data/site_flags.json` → `show_prices`, read here for the theme, the
+landing pages and CI alike. Every edit asserts its anchor and its count, so a moved
+anchor fails the build instead of leaving a price behind, and `assert_clean()`
+refuses any price token that survives anywhere.
 """
 import json
 import re
@@ -27,13 +27,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FLAGS = ROOT / "data" / "site_flags.json"
 
+# What a price looks like on a served page, in markup or in a JS literal, plus the
+# labels that only ever stand beside one. Labels, not words: "אותה עלות מנה" in a
+# sentence is not a price, "<dt>עלות מנה" is. `assert_clean()` and the CI guard in
+# .github/workflows/build.yml both read this list.
+PRICE_TOKENS = ("₪", "\\u20aa", "&#8362;", "ש״ח", 'ש"ח',
+                "מחיר מומלץ", "<dt>עלות מנה", "מחירון סיטונאי גלוי", "מחירון גלוי")
+
 applied: list[str] = []
 
 
 def show_prices() -> bool:
-    if not FLAGS.exists():
-        return True
-    return bool(json.loads(FLAGS.read_text(encoding="utf-8")).get("show_prices", True))
+    return json.loads(FLAGS.read_text(encoding="utf-8"))["show_prices"]
 
 
 def die(msg: str) -> None:
@@ -48,8 +53,8 @@ def sub(label: str, old: str, new: str, text: str, count: int = 1) -> str:
     return text.replace(old, new)
 
 
-def sub_re(label: str, pattern: str, repl: str, text: str, count: int, flags=0) -> str:
-    out, n = re.subn(pattern, repl, text, flags=flags)
+def sub_re(label: str, pattern: str, repl: str, text: str, count: int) -> str:
+    out, n = re.subn(pattern, repl, text)
     if n != count:
         die(f"{label}: expected {count} match(es), found {n}")
     applied.append(f"{label} ×{n}")
@@ -97,25 +102,36 @@ def strip_markup(markup: str) -> str:
     # Bar tools: name and English kicker stay, the price goes.
     markup = sub_re("tool prices", r"<i>" + PRICE + r"</i>", "", markup, 8)
 
-    # The recipe modal's figures row: margin stays, the three money cells go.
-    markup = sub("modal cost cell", '<div><i>עלות חומר גלם · ללא מע״מ</i><b id="cm-fc"></b></div>', "", markup)
-    markup = sub("modal price cell", '<div><i>מחיר מומלץ · כולל מע״מ</i><b id="cm-p"></b></div>', "", markup)
-    markup = sub("modal profit cell", '<div><i>רווח לכוס</i><b id="cm-pr"></b></div>', "", markup)
+    # The recipe modal's figures row: margin stays, the three money cells —
+    # cost, recommended price, profit per cup — go.
+    return sub_re("modal money cells", r'<div><i>[^<]*</i><b id="cm-(?:fc|p|pr)"></b></div>', "", markup, 3)
 
-    # The wholesale price list itself, and the four links that pointed into it:
-    # the nav item goes with it, the three product cards send a reader who wants
-    # a price to the form — where the price list is sent from.
+
+def price_list(markup: str, shown: bool) -> str:
+    """The wholesale price list, and the nav item and three card links into it.
+
+    Shown, the section is wrapped in the theme editor's `show_pricing` switch — the
+    open question in PUBLISH.md B3, whether 116 wholesale figures belong on a public
+    URL, stays a click, reversible both ways. Not shown, it is not written at all.
+    Either way a hidden list takes its nav item with it, and the three product cards
+    send a reader who wants a price to the enquiry form, which is where the price
+    list is sent from.
+    """
     start = markup.find('<section id="pricing"')
-    if start < 0:
-        die("pricing section not found")
-    end = markup.find("</section>", start)
-    if end < 0 or markup.find('<section id="about"') < end:
-        die("pricing section end not found before #about")
-    markup = markup[:start] + markup[end + len("</section>"):]
+    end = markup.find("</section>", start) + len("</section>")
+    if start < 0 or not start < end <= markup.find('<section id="about"'):
+        die("price list section not found before #about")
+    if shown:
+        on, off = "{% if section.settings.show_pricing %}", "{% endif %}"
+        markup = markup[:start] + on + markup[start:end] + off + markup[end:]
+        nav = on + '<a href="#pricing">מחירון</a>' + off
+        card = f'href="{on}#pricing{{% else %}}#contact{off}"'
+    else:
+        markup = markup[:start] + markup[end:]
+        nav, card = "", 'href="#contact"'
     applied.append("price list section")
-    markup = sub("price list nav", '<a href="#pricing">מחירון</a>', "", markup)
-    markup = sub("price list card links", 'href="#pricing"', 'href="#contact"', markup, 3)
-    return markup
+    markup = sub_re("price list card links", r'href="#pricing"(?!>מחירון</a>)', card, markup, 3)
+    return sub("price list nav", '<a href="#pricing">מחירון</a>', nav, markup)
 
 
 def strip_js(js: str) -> str:
@@ -146,22 +162,15 @@ def strip_js(js: str) -> str:
     # MK flavour-card rows: {t:"…",p:20,m:81,fc:"3.25",st:…}
     js = sub_re("MK rows", r',p:\d+,m:(\d+),fc:"[\d.]+"', r",m:\1", js, 23)
 
-    # The three "what it makes" renderers and the recipe modal. A row's summary
-    # keeps its margin; the recipe footer under it only repeated the figures, so
-    # with the prices gone it goes too.
-    js = sub("list price", "<i>\\u20aa'+d.p+' \\u00b7 <b>'+d.m+'%</b></i></summary>'",
-             "<i>רווחיות <b>'+d.m+'%</b></i></summary>'", js, 2)
-    js = sub("recipe footer",
-             "'</ol><div class=\"fc\">עלות חומר גלם \\u20aa'+d.fc+' ללא מע״מ \\u00b7 מחיר מומלץ \\u20aa'+d.p+"
-             "' כולל מע״מ \\u00b7 רווחיות '+d.m+'%</div></div></details>'",
-             "'</ol></div></details>'", js, 2)
-    js = sub("link price", "'<i>\\u20aa'+d.p+' \\u00b7 <b>'+d.m+'%</b>",
-             "'<i>רווחיות <b>'+d.m+'%</b>", js)
-    for cell in ("cm-fc", "cm-pr"):
-        js = sub_re(f"modal {cell}", r"\s*document\.getElementById\('" + cell + r"'\)\.textContent='\\u20aa'\+d\.\w+;",
-                    "", js, 1)
-    js = sub_re("modal cm-p", r"\s*document\.getElementById\('cm-p'\)\.textContent='\\u20aa'\+d\.p;", "", js, 1)
-    return js
+    # The three "what it makes" renderers and the recipe modal. A row keeps its
+    # margin; the recipe footer under it only repeated the figures, so with the
+    # prices gone it goes too.
+    js = sub("row price", "<i>\\u20aa'+d.p+' \\u00b7 <b>", "<i>רווחיות <b>", js, 3)
+    js = sub_re("recipe footer", r"""'</ol><div class="fc">[^<]*</div></div></details>'""",
+                "'</ol></div></details>'", js, 2)
+    return sub_re("modal money lines",
+                  r"\s*document\.getElementById\('cm-(?:fc|pr|p)'\)\.textContent='\\u20aa'\+d\.\w+;",
+                  "", js, 3)
 
 
 CSS = """
@@ -172,11 +181,7 @@ CSS = """
 
 
 def assert_clean(label: str, text: str) -> None:
-    for token in ("₪", "\\u20aa", "&#8362;", "ש״ח", 'ש"ח'):
+    for token in PRICE_TOKENS:
         i = text.find(token)
         if i >= 0:
             die(f"{label}: a price survived — …{text[max(0, i - 80):i + 40]}…")
-
-
-if __name__ == "__main__":
-    print("strip_prices is a module; build_theme.py runs it when data/site_flags.json says show_prices: false")

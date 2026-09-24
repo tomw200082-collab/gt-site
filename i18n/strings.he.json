@@ -2436,7 +2436,7 @@
   "start": 104645,
   "end": 104841,
   "en": "A single blend builds up to 13 menu items and pours 20–25 cups. Food cost from ₪3.25 a glass, margins up to 85% on top serves — as profitable as your espresso machine, with none of the complexity.",
-  "he": "מתמצית אחת יוצאים עד 13 משקאות בתפריט, ומכל בקבוק 20–25 כוסות. עלות חומר גלם מ־₪3.25 לכוס, רווחיות של עד 85%: קצת פחות מקפה, והרבה יותר ממשקה מוכן מהמקרר."
+  "he": "מתמצית אחת יוצאים עד 13 משקאות בתפריט, ומכל בקבוק <bdi dir=\"ltr\">20–25</bdi> כוסות. עלות חומר גלם מ־₪3.25 לכוס, רווחיות של עד 85%: קצת פחות מקפה, והרבה יותר ממשקה מוכן מהמקרר."
  },
  {
   "id": "t0271",
@@ -2508,7 +2508,7 @@
   "start": 105580,
   "end": 105617,
   "en": "Your guests drink 20–30% less alcohol",
-  "he": "האורחים שלכם שותים 20–30% פחות אלכוהול"
+  "he": "האורחים שלכם שותים <bdi dir=\"ltr\">20–30%</bdi> פחות אלכוהול"
  },
  {
   "id": "t0279",
@@ -4083,7 +4083,7 @@
   "start": 130085,
   "end": 130205,
   "en": "One bottle of essence makes 20–25 glasses. At recommended menu prices that’s the margin story your accountant will love.",
-  "he": "בקבוק תמצית אחד נותן 20–25 כוסות. תמחיר מלא לכל משקה נשלח לכם יחד עם המחירון."
+  "he": "בקבוק תמצית אחד נותן <bdi dir=\"ltr\">20–25</bdi> כוסות. תמחיר מלא לכל משקה נשלח לכם יחד עם המחירון."
  },
  {
   "id": "t0454",
@@ -4569,7 +4569,7 @@
   "start": 136035,
   "end": 136059,
   "en": "1 bottle = 20–25 glasses",
-  "he": "בקבוק אחד = 20–25 כוסות"
+  "he": "בקבוק אחד = <bdi dir=\"ltr\">20–25</bdi> כוסות"
  },
  {
   "id": "t0508",

@@ -76,36 +76,20 @@ def main() -> None:
     text = sub("stat cost", '<b class="num">₪3.25</b>',
                f'<b class="num">₪{min_cost:.2f}</b>', text)
 
-    # ── what the flavour cards actually hold ────────────────────────────
-    # The cards render from MK, except the three pouch flavours, which render
-    # their matching COLS collection. Count both the way the page does.
+    # ── the product matrix's heading ────────────────────────────────────
+    # The line heads the product matrix, which lists the menu drinks by the
+    # product each is made from (51 rows for 48 drinks: a drink made from two
+    # products sits under both). The pre-launch review found its old "34" was
+    # counted from the flavour cards, not from the panel it introduces. The
+    # figure is now the matrix's own, and "all" is only written when it is true.
     cols = json.loads(re.search(r"const COLS=(\[.*?\]);", text, re.S).group(1))
-    mk = re.search(r"const MK=\{(.*?)\n\};", text, re.S).group(1)
-    products = json.loads(re.search(r"(?:const|var) FLCARD=(\{.*?\});", text, re.S).group(1))
-    pouch = json.loads(
-        re.search(r"var POUCHCH=(\{.*?\});", text, re.S).group(1).replace("׳", "׳")
-    )
-    by_title = {c["t"]: c for c in cols}
-
-    drinks = len(re.findall(r'\{t:"', mk))
-    for title in pouch.values():
-        if title in by_title:
-            drinks += len(by_title[title]["drinks"])
-
-    if not 1 <= drinks <= 200:
-        die(f"flavour-card drink count came out as {drinks} — refusing to write it")
-
-    # The line heads the product matrix, which lists all 48 menu drinks by
-    # product (51 rows: a drink made from two products sits under both). It no
-    # longer states a count of its own — the pre-launch review found the old
-    # "34" was counted from the flavour cards, not from the panel it introduces
-    # — so what is asserted here is that its "all 48" is still true.
-    n_cols = sum(len(c["drinks"]) for c in cols)
-    if n_cols != 48:
-        die(f"the matrix line says all 48 drinks, COLS holds {n_cols}")
-    if text.count("מה יוצא מכל מוצר — כל 48 המשקאות, לפי מוצר") != 1:
-        die("matrix line not found")
-    applied.append("matrix line (48 checked)")
+    flmap = json.loads(re.search(r"var FLMAP=(\{.*?\});", text, re.S).group(1))
+    placed = {tuple(pair) for pairs in flmap.values() for pair in pairs}
+    n_drinks = sum(len(c["drinks"]) for c in cols)
+    if len(placed) != n_drinks:
+        die(f"the matrix places {len(placed)} of {n_drinks} drinks — 'all' would be false")
+    text = sub("matrix line", "מה יוצא מכל מוצר — כל 48 המשקאות, לפי מוצר",
+               f"מה יוצא מכל מוצר — כל {n_drinks} המשקאות, לפי מוצר", text)
 
     # ── the placeholder ─────────────────────────────────────────────────
     # The About section opens with a slot for factory and team photographs that

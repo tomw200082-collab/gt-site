@@ -37,7 +37,9 @@ is fixed at its source in i18n/parts/; this file carries what is not copy.
   Three product cards opened empty
       openF() looked each product up by its card heading, and the matcha, hojicha
       and ube headings are Hebrew while every data table is keyed in Latin — so
-      those three modals listed no drinks. The heading stays; the lookup uses the key.
+      those three modals listed no drinks. The heading stays; the lookup uses the
+      key FLCARD already pairs with each card, and wherever the script prints a
+      product's name it now reads that card's heading.
 
   English the extractor never reached
       The product matrix ("Detox 2 drinks", "Matcha"), its empty note, the recipe's
@@ -47,7 +49,8 @@ is fixed at its source in i18n/parts/; this file carries what is not copy.
   Arrows and a minus sign pointing the wrong way
       Every forward arrow on the page points ← (the reader's direction); the recipe
       rows, the four-step strip and the matrix links pointed →. "−25%" put its
-      minus on the right.
+      minus on the right. (Number ranges — "20–25 כוסות" read as "25–20" — are
+      fixed in the copy itself, i18n/parts/, with a left-to-right <bdi>.)
 
   "0 מקום במקרר"
       A zero with a singular noun, and the weakest way to make the point. The stat
@@ -56,7 +59,6 @@ is fixed at its source in i18n/parts/; this file carries what is not copy.
 
 Every edit asserts its anchor, so a silent no-op is impossible.
 """
-import re
 import sys
 from pathlib import Path
 
@@ -68,7 +70,7 @@ applied: list[str] = []
 # Served from the repo like the partner logos: build_theme.py turns each URL into a
 # hash-named theme asset and records it in theme/assets.manifest.json.
 PHOTO = "https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/"
-HERO = {600: 804, 900: 1206, 1200: 1607}
+HERO_WIDTHS = (600, 900, 1200)  # hero-bottles-<w>.webp, all 1744:2336
 
 
 def die(msg: str) -> None:
@@ -84,11 +86,11 @@ def sub(label: str, old: str, new: str, text: str, count: int = 1) -> str:
 
 
 def hero_img() -> str:
-    srcset = ", ".join(f"{PHOTO}hero-bottles-{w}.webp {w}w" for w in HERO)
+    srcset = ", ".join(f"{PHOTO}hero-bottles-{w}.webp {w}w" for w in HERO_WIDTHS)
     return (f'<img src="{PHOTO}hero-bottles-900.webp" srcset="{srcset}"'
             ' sizes="(max-width: 980px) min(92vw, 520px), 480px"'
             ' alt="תמציות התה של GT — עשרה בקבוקים על שלושה מדפים"'
-            f' width="900" height="{HERO[900]}" fetchpriority="high" decoding="async">')
+            ' width="900" height="1206" fetchpriority="high" decoding="async">')
 
 
 CSS = """
@@ -132,29 +134,6 @@ footer.site .social a:hover,footer.site .social a:focus-visible{border-color:cur
 """
 
 
-def isolate_ranges(text: str) -> str:
-    """Wrap every non-price number range in the page's text nodes in LRI/PDI."""
-    parts = re.split(r"(<script>.*?</script>|<style>.*?</style>)", text, flags=re.S)
-    n = 0
-
-    def in_text(chunk: str) -> str:
-        nonlocal n
-
-        def node(m):
-            nonlocal n
-            s, k = re.subn(r"(?<![₪\d.,])(\d{1,3}%?–\d{1,3}%?)(?![\d%])",
-                           "\u2066\\1\u2069", m.group(0))
-            n += k
-            return s
-        return re.sub(r">[^<>]*<", node, chunk)
-
-    out = "".join(p if p.startswith(("<script>", "<style>")) else in_text(p) for p in parts)
-    if n != 4:
-        die(f"number ranges: expected 4 (econ, alcohol line, FAQ, bottle chip), found {n}")
-    applied.append(f"number ranges ×{n}")
-    return out
-
-
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
 
@@ -184,40 +163,48 @@ def main() -> None:
     # ── the matcha, hojicha and ube cards opened empty ──────────────────
     # openF() looks the product up by its card heading — FLMAP, POUCHCH, MKMORE
     # and FL are keyed by the Latin names — and the three pouch cards' headings
-    # are Hebrew. So those three modals listed no drinks at all. The heading
-    # stays what the reader sees; the lookup uses the key.
-    text = sub("pouch lookup key", "const n=c.querySelector('h4').textContent.trim();",
+    # are Hebrew. So those three modals listed no drinks at all. FLCARD already
+    # pairs every key with its card, so the lookup reads the key from there and
+    # the heading stays what the reader sees.
+    text = sub("product key from its card", "const n=c.querySelector('h4').textContent.trim();",
                "const n0=c.querySelector('h4').textContent.trim(),"
-               "n=({\"מאצ׳ה\":\"Matcha\",\"הוג׳יצ׳ה\":\"Hojicha\",\"אובה\":\"Ube\"})[n0]||n0;", text)
-    text = sub("pouch modal title", "getElementById('fm-name').textContent=n;",
+               "n=Object.keys(FLCARD).find(k=>FLCARD[k]===c.id)||n0;", text)
+    text = sub("product modal title", "getElementById('fm-name').textContent=n;",
                "getElementById('fm-name').textContent=n0;", text)
 
-    # ── English the extractor never saw, in the product matrix ──────────
+    # ── English the extractor never saw ─────────────────────────────────
+    # Wherever the script prints a product or a purée by its key (the matrix,
+    # the recipe's "על בסיס" chip, the purée modal's title), it prints that
+    # card's heading instead — the one Hebrew name the reader already sees.
+    text = sub("card heading helper", "function buildMatrix(){",
+               "function cardName(id,fallback){var h=id&&document.querySelector('#'+id+' h4');"
+               "return h?h.textContent.trim():fallback;}\n"
+               "function buildMatrix(){", text)
     text = sub("matrix product names",
                "<span class=\"pn\">'+p+'</span><span class=\"pc\">'+(pairs.length?pairs.length+"
                "(pairs.length===1?' drink':' drinks'):'\\u2014')+'</span></div>';",
-               "<span class=\"pn\">'+({Matcha:'מאצ׳ה',Ube:'אובה',Hojicha:'הוג׳יצ׳ה'}[p]||p)+"
+               "<span class=\"pn\">'+cardName(FLCARD[p],p)+"
                "'</span><span class=\"pc\">'+(pairs.length?(pairs.length===1?'משקה אחד':"
                "pairs.length+' משקאות'):'\\u2014')+'</span></div>';", text)
     text = sub("matrix empty note", "'No menu drinks yet.'", "'עדיין בלי מתכוני תפריט.'", text)
     text = sub("recipe source chip", "'\">'+n+' \\u2190</a>'",
-               "'\">'+({Matcha:'מאצ׳ה',Ube:'אובה',Hojicha:'הוג׳יצ׳ה'}[n]||n)+' \\u2190</a>'", text)
+               "'\">'+cardName(FLCARD[n],n)+' \\u2190</a>'", text)
     text = sub("price list toggle", "'Expand all'", "'פתחו הכול'", text)
-
-    # ── the purée modal's title: "Mango · …" in English, and glued ──────
+    # "Mango · …" in English, and glued to the rest of the title
     text = sub("puree title",
                "getElementById('pm-title').textContent=p.t+' · באילו משקאות היא נכנסת';",
-               "getElementById('pm-title').textContent='מחית '+({mango:'מנגו',strawberry:'תות',"
-               "peach:'אפרסק'}[id]||p.t)+' · באילו משקאות היא נכנסת';", text)
+               "getElementById('pm-title').textContent='מחית '+cardName('p-'+id,p.t)+"
+               "' · באילו משקאות היא נכנסת';", text)
 
     # ── "Massala": two recipe kickers kept the English source's misspelling ─
     text = sub("masala spelling", '"en": "Massala"', '"en": "Masala"', text, 2)
 
-    # ── the four-step strip and the matrix links read the reader's way ──
+    # ── every forward arrow points the reader's way ─────────────────────
     text = sub("step strip arrow", '<span class="sep">\\u2192</span>',
                '<span class="sep">\\u2190</span>', text)
     text = sub("matrix link arrow", "' \\u00b7 '+COLS[ci].t+' \\u2192</span>'",
                "' \\u00b7 '+COLS[ci].t+' \\u2190</span>'", text)
+    text = sub("recipe link arrow", "<u>\\u2192</u>", "<u>\\u2190</u>", text)
 
     # ── "−25%" rendered its minus on the wrong side in RTL ──────────────
     text = sub("minus sign direction", '<b style="color:var(--energy)">−25%</b>',
@@ -228,18 +215,6 @@ def main() -> None:
     # #shelf_life): a closed bottle keeps a year with no refrigeration.
     text = sub("shelf-life stat", '<b class="num">0</b><span>חודשים על המדף לבקבוק סגור</span>',
                '<b class="num">12</b><span>חודשים על המדף לבקבוק סגור</span>', text)
-
-    # ── the forward arrow points the reader's way ───────────────────────
-    text = sub("recipe link arrow", "<u>\\u2192</u>", "<u>\\u2190</u>", text)
-
-    # ── number ranges inside Hebrew run backwards ────────────────────────
-    # "20–25 כוסות" rendered as "25–20": the en dash between two numbers takes
-    # the paragraph's right-to-left direction, so the bidi algorithm swaps the
-    # numbers. Each range is wrapped in an invisible left-to-right isolate (U+2066
-    # … U+2069) — no visible character changes, so the approved alcohol sentence
-    # keeps its exact wording and simply reads the way it was written. Price
-    # ranges are left alone: they never reach the served page (strip_prices.py).
-    text = isolate_ranges(text)
 
     text = sub("launch stylesheet", "</style>", CSS + "</style>", text)
 
