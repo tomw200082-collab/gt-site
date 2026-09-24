@@ -1012,6 +1012,37 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 /* motion respects the visitor's setting (the hero is handled in script) */
 @media(prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+/* ====================================================================
+   Pre-launch pass 2026-09-24 (tools/patch_launch.py). Appended last.
+   ==================================================================== */
+/* the hero photograph, at its own 3:4 so no bottle is cropped */
+.hero .side{height:auto;padding:0;background:#F3E3C9;overflow:hidden;display:block;
+  width:min(100%,calc(min(640px,74vh) * 0.7466));aspect-ratio:1744/2336;justify-self:center}
+.hero .side:before{display:none}
+.hero .side img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:980px){
+  .hero .side{height:auto;width:min(100%,520px)}
+}
+@media(max-width:640px){
+  .hero{padding:40px 0 64px}
+  .hero .in{gap:36px}
+  .hero h2{margin-bottom:24px}
+}
+/* the economics card fits a phone */
+@media(max-width:640px){
+  .econ{padding:40px 22px;gap:30px;border-radius:26px}
+  .stats{gap:10px}
+  .stat{padding:18px 14px}
+  .stat b{font-size:30px}
+}
+/* collection cards: darken the top, where the title and count sit */
+.ccard::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,15,12,.55) 0%,rgba(15,15,12,.18) 34%,rgba(15,15,12,0) 55%)}
+.ccard h4,.ccard small,.ccard .idx{text-shadow:0 1px 14px rgba(0,0,0,.35)}
+/* a line of text beside a button wraps under it instead of running into it */
+.center-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px}
+.center-cta>span{margin:0!important}
 </style>
 </head>
 <body>
@@ -1033,7 +1064,7 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
       <a class="sub-cta" href="#hs">לצפייה במשקאות</a>
     </div>
   </div>
-  <div class="side"></div>
+  <div class="side"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-900.webp" srcset="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-600.webp 600w, https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-900.webp 900w, https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-1200.webp 1200w" sizes="(max-width: 980px) min(92vw, 520px), 480px" alt="תמציות התה של GT — עשרה בקבוקים על שלושה מדפים" width="900" height="1206" fetchpriority="high" decoding="async"></div>
 </div></div></section>
 
 <header class="hs" id="hs">
@@ -1519,24 +1550,24 @@ function renderMakesPouch(n){
  const box=document.getElementById('fm-makes');
  const ch=(typeof COLS!=='undefined')?COLS.find(x=>x.t===POUCHCH[n]):null;
  if(!ch){box.innerHTML=(typeof MKMORE!=='undefined'&&MKMORE[n])?('<div class="mkmore">'+MKMORE[n]+'</div>'):'';return;}
- let h='<h6>Menu drinks it makes \u2014 tap for recipe</h6>';
+ let h='<h6>מה מכינים ממנו \u2014 לחצו למתכון</h6>';
  ch.drinks.forEach(d=>{
   h+='<details class="mk"><summary><span>'+dn(d)+'</span><i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b></i></summary>';
   h+='<div class="rec"><ol>';
   d.st.forEach(x=>{h+='<li>'+x+'</li>'});
-  h+='</ol><div class="fc">Food cost \u20aa'+d.fc+' ex-VAT \u00b7 recommended price \u20aa'+d.p+' incl. VAT \u00b7 margin '+d.m+'%</div></div></details>';
+  h+='</ol><div class="fc">עלות חומר גלם \u20aa'+d.fc+' ללא מע״מ \u00b7 מחיר מומלץ \u20aa'+d.p+' כולל מע״מ \u00b7 רווחיות '+d.m+'%</div></div></details>';
  });
  box.innerHTML=h;
 }
 function renderMakes(n){
  const box=document.getElementById('fm-makes');
  const list=MK[n]||[]; let h='';
- if(list.length){h+='<h6>Menu drinks it makes \u2014 tap for recipe</h6>';
+ if(list.length){h+='<h6>מה מכינים ממנו \u2014 לחצו למתכון</h6>';
   list.forEach(d=>{
    h+='<details class="mk"><summary><span>'+d.t+'</span><i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b></i></summary>';
    h+='<div class="rec"><ol>';
    d.st.forEach(x=>{h+='<li>'+x+'</li>'});
-   h+='</ol><div class="fc">Food cost \u20aa'+d.fc+' ex-VAT \u00b7 recommended price \u20aa'+d.p+' incl. VAT \u00b7 margin '+d.m+'%</div></div></details>';
+   h+='</ol><div class="fc">עלות חומר גלם \u20aa'+d.fc+' ללא מע״מ \u00b7 מחיר מומלץ \u20aa'+d.p+' כולל מע״מ \u00b7 רווחיות '+d.m+'%</div></div></details>';
   });}
  if(MKMORE[n])h+='<div class="mkmore">'+MKMORE[n]+'</div>';
  box.innerHTML=h;
@@ -1608,13 +1639,13 @@ function fmDrinkImg(ci,di){
 function renderMakesCols(n){
  var box=document.getElementById('fm-makes'), map=FLMAP[n];
  if(!map||typeof COLS==='undefined')return false;
- var h='<h6>Menu drinks it makes \u2014 tap to open the recipe</h6><div class="mkgo-list">';
+ var h='<h6>מה מכינים ממנו \u2014 לחצו לפתיחת המתכון</h6><div class="mkgo-list">';
  var cnt=0;
  map.forEach(function(pair){
   var c=COLS[pair[0]]; if(!c)return; var d=c.drinks[pair[1]]; if(!d)return; cnt++;
   h+='<a class="mkgo" href="#!" data-ci="'+pair[0]+'" data-di="'+pair[1]+'">'
    + '<span class="nm">'+dn(d)+'<em>'+c.t+'</em></span>'
-   + '<i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b><u>\u2192</u></i></a>';
+   + '<i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b><u>\u2190</u></i></a>';
  });
  if(!cnt)return false;
  h+='</div>';

@@ -9,6 +9,12 @@ in the recipe — an honest diagram, but a diagram, on a page whose job is to ma
 buyer want the cup. `photos.json` holds the drink-to-photo map and its provenance.
 """
 import json, html, os
+from pathlib import Path
+
+# Tom, 2026-09-24: no shekel figure on any served page (data/site_flags.json). The
+# cards keep what stays true without a price: what is left for the café per cup.
+_FLAGS = Path(__file__).resolve().parents[2] / "data" / "site_flags.json"
+SHOW_PRICES = json.loads(_FLAGS.read_text(encoding="utf-8")).get("show_prices", True) if _FLAGS.exists() else True
 
 D = json.load(open('drinks.json'))
 P = json.load(open('photos.json'))
@@ -121,6 +127,15 @@ def band(slug, end):
             f' width="2048" height="532" loading="lazy" decoding="async">\n')
 
 
+def figs(d):
+    keep = f"""
+            <div class="g-keep"><dt>נשאר אצלכם</dt><dd>{d['marg']}%</dd></div>"""
+    if not SHOW_PRICES:
+        return keep
+    return f"""
+            <div><dt>עלות מנה</dt><dd>₪{d['cost']}</dd></div>
+            <div><dt>מחיר מומלץ</dt><dd>₪{d['price']}</dd></div>""" + keep
+
 def card(d):
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])
     note = f'<p class="g-note">{esc(d["note"])}</p>' if d['note'] else ""
@@ -130,10 +145,7 @@ def card(d):
         <div class="g-drink-tx">
           <h3>{esc(d['he'])}</h3>
           <span class="g-en">{esc(d['en'])}</span>
-          <dl class="g-fig">
-            <div><dt>עלות מנה</dt><dd>₪{d['cost']}</dd></div>
-            <div><dt>מחיר מומלץ</dt><dd>₪{d['price']}</dd></div>
-            <div class="g-keep"><dt>נשאר אצלכם</dt><dd>{d['marg']}%</dd></div>
+          <dl class="g-fig">{figs(d)}
           </dl>
           <details>
             <summary>איך מכינים</summary>
@@ -144,7 +156,16 @@ def card(d):
       </article>"""
 
 def sizes_html(pairs):
+    if not SHOW_PRICES:
+        return "".join(f'<span>{esc(l)}</span>' for l, v in pairs)
     return "".join(f'<span>{esc(l)}<b dir="ltr">{esc(v)}</b></span>' for l, v in pairs)
+
+if SHOW_PRICES:
+    MENU_INTRO = "כל כוס בתמונה היא הכוס שיוצאת מהמתכון שלידה. לצד כל אחת: מה היא עולה לכם, מה מומלץ לגבות, ומה נשאר."
+    FINE_PRINT = "עלות = ללא מע״מ · מחיר מומלץ = כולל מע״מ 18% · הרווח מחושב על ההכנסה נטו · עלות רכיבי המשקה בלבד, ללא גרניש"
+else:
+    MENU_INTRO = "כל כוס בתמונה יוצאת בדיוק מהמתכון שלידה. ליד כל אחת: כמה נשאר לכם ממנה, ואיך מכינים אותה."
+    FINE_PRINT = "הרווח מחושב על ההכנסה ללא מע״מ, לפי עלות רכיבי המשקה בלבד (בלי קישוט)."
 
 def build(slug, cfg):
     ds = [d for d in D if d['page'] == cfg['key']]
@@ -153,6 +174,8 @@ def build(slug, cfg):
     wa = f"https://wa.me/{WA}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
         f"היי, הגעתי מדף ה{cfg['key']} באתר ואשמח לקבל את המחירון")
     lo = min(float(d['cost']) for d in ds)
+    cost_cell = (f'\n      <div><b dir="ltr">₪{lo:.2f}</b><i>עלות המנה הנמוכה כאן</i></div>'
+                 if SHOW_PRICES else "")
     mn, mx = min(int(d['marg']) for d in ds), max(int(d['marg']) for d in ds)
 
     yield_line = ""
@@ -220,10 +243,9 @@ def build(slug, cfg):
         <a class="g-btn g-ghost" href="{wa}" target="_blank" rel="noopener">וואטסאפ <span class="g-arr" aria-hidden="true">←</span></a>
       </div>
     </div>
-    <div class="g-ledger">
+    <div class="g-ledger" style="--cells:{3 if SHOW_PRICES else 2}">
       <div><b dir="ltr">{len(ds)}</b><i>משקאות {esc(cfg["unit"])}</i></div>
-      <div><b dir="ltr">{mn}–{mx}%</b><i>נשאר אצלכם על כל כוס</i></div>
-      <div><b dir="ltr">₪{lo:.2f}</b><i>עלות המנה הנמוכה כאן</i></div>
+      <div><b dir="ltr">{mn}–{mx}%</b><i>נשאר אצלכם על כל כוס</i></div>{cost_cell}
     </div>
   </header>
 
@@ -233,10 +255,10 @@ def build(slug, cfg):
       <div class="g-head g-fade-up">
         <span class="g-eyebrow">התפריט</span>
         <h2 class="g-display">זה יכול להיות <em>התפריט שלך.</em></h2>
-        <p>כל כוס בתמונה היא הכוס שיוצאת מהמתכון שלידה. לצד כל אחת: מה היא עולה לכם, מה מומלץ לגבות, ומה נשאר.</p>
+        <p>{MENU_INTRO}</p>
       </div>
       <div class="g-grid">{cards}</div>
-      <p class="g-fine">עלות = ללא מע״מ · מחיר מומלץ = כולל מע״מ 18% · הרווח מחושב על ההכנסה נטו · עלות רכיבי המשקה בלבד, ללא גרניש</p>
+      <p class="g-fine">{FINE_PRINT}</p>
     </div>
   </section>
 

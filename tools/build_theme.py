@@ -63,12 +63,12 @@ def all_image_urls(s):
     out = set()
     for pat in (r'https://wsrv\.nl/\?[^"\'\s)\\]+',
                 r'https://d2ol7oe51mr4n9\.cloudfront\.net/[^"\'\s)\\]+',
-                # The partner logos are the one image family this repo owns
-                # rather than borrows: they live in theme/logos/ and are served
-                # from the repo, so the same hash-name-and-manifest machinery
-                # that carries the borrowed images carries them too.
+                # The partner logos and Tom's own photographs are the image
+                # families this repo owns rather than borrows: they live in
+                # theme/logos/ and theme/photos/ and are served from the repo, so
+                # the same hash-name-and-manifest machinery carries them too.
                 r'https://raw\.githubusercontent\.com/tomw200082-collab/gt-site/'
-                r'main/theme/logos/[^"\'\s)\\]+'):
+                r'main/theme/(?:logos|photos)/[^"\'\s)\\]+'):
         for m in re.finditer(pat, s):
             out.add(m.group(0))
     return out
@@ -105,6 +105,20 @@ js = "\n;\n".join(scripts)
 markup = re.sub(r"<style>.*?</style>", "", text, flags=re.S)
 markup = re.sub(r"<script>.*?</script>", "", markup, flags=re.S)
 
+# ── 2b. no prices on the served page ─────────────────────────────────────
+#
+# Tom, 2026-09-24: take the prices down so they are not seen. src/index.html stays
+# the full, figure-verified build; the theme — markup and gt-site.js alike — is
+# written without a single shekel while data/site_flags.json says show_prices: false.
+# See tools/strip_prices.py for what goes and what stays.
+sys.path.insert(0, str(ROOT / "tools"))
+import strip_prices  # noqa: E402
+SHOW_PRICES = strip_prices.show_prices()
+if not SHOW_PRICES:
+    markup = strip_prices.strip_markup(markup)
+    js = strip_prices.strip_js(js)
+    css = css + strip_prices.CSS
+
 # ── 3. rewrite image references ─────────────────────────────────────────
 def rewrite_markup(s):
     for u, name in asset_name.items():
@@ -138,32 +152,33 @@ def rewrite_js(s):
 # show_pricing is the switch for the open question in PUBLISH.md B3 — whether
 # 116 wholesale figures belong on a public URL. It makes that a click rather
 # than a rebuild, and it is reversible in both directions.
-_pricing_open = markup.index('<section id="pricing"')
-_pricing_end = markup.rindex('</section>', _pricing_open, markup.index('<section id="about"')) + len('</section>')
-markup = (markup[:_pricing_open]
-          + '{% if section.settings.show_pricing %}'
-          + markup[_pricing_open:_pricing_end]
-          + '{% endif %}'
-          + markup[_pricing_end:])
+if SHOW_PRICES:
+    _pricing_open = markup.index('<section id="pricing"')
+    _pricing_end = markup.rindex('</section>', _pricing_open, markup.index('<section id="about"')) + len('</section>')
+    markup = (markup[:_pricing_open]
+              + '{% if section.settings.show_pricing %}'
+              + markup[_pricing_open:_pricing_end]
+              + '{% endif %}'
+              + markup[_pricing_end:])
 
-# Four links pointed into that section, so switching it off left the nav item
-# "מחירון" and three product cards jumping to an anchor that is no longer on the
-# page. The nav item goes with the section; the cards fall back to the enquiry
-# form, which is where a reader who wanted a price should land anyway.
-_nav = '<a href="#pricing">מחירון</a>'
-assert markup.count(_nav) == 1, f"pricing nav item: {markup.count(_nav)} found"
-# Parked behind a sentinel so the card pass below does not also rewrite this
-# href — inside the {% if %} it can only ever render while the section is shown.
-markup = markup.replace(
-    _nav, '{% if section.settings.show_pricing %}'
-          '<a href="#PRICING-NAV">מחירון</a>{% endif %}')
+    # Four links pointed into that section, so switching it off left the nav item
+    # "מחירון" and three product cards jumping to an anchor that is no longer on the
+    # page. The nav item goes with the section; the cards fall back to the enquiry
+    # form, which is where a reader who wanted a price should land anyway.
+    _nav = '<a href="#pricing">מחירון</a>'
+    assert markup.count(_nav) == 1, f"pricing nav item: {markup.count(_nav)} found"
+    # Parked behind a sentinel so the card pass below does not also rewrite this
+    # href — inside the {% if %} it can only ever render while the section is shown.
+    markup = markup.replace(
+        _nav, '{% if section.settings.show_pricing %}'
+              '<a href="#PRICING-NAV">מחירון</a>{% endif %}')
 
-_card_href = 'href="#pricing"'
-assert markup.count(_card_href) == 3, f"pricing card links: {markup.count(_card_href)} found"
-markup = markup.replace(
-    _card_href,
-    'href="{% if section.settings.show_pricing %}#pricing'
-    '{% else %}#contact{% endif %}"').replace('#PRICING-NAV', '#pricing')
+    _card_href = 'href="#pricing"'
+    assert markup.count(_card_href) == 3, f"pricing card links: {markup.count(_card_href)} found"
+    markup = markup.replace(
+        _card_href,
+        'href="{% if section.settings.show_pricing %}#pricing'
+        '{% else %}#contact{% endif %}"').replace('#PRICING-NAV', '#pricing')
 
 
 # ── 3c. width and height on every image ─────────────────────────────────
@@ -315,6 +330,11 @@ _rmData.push(['setStoreKey', 'ym6nRgm7']);
 {% endif %}
 """
 
+PRICING_SETTING = ("""    { "type": "checkbox", "id": "show_pricing", "default": true,
+      "label": "\u05d4\u05e6\u05d2\u05ea \u05de\u05d7\u05d9\u05e8\u05d5\u05df \u05e1\u05d9\u05d8\u05d5\u05e0\u05d0\u05d9",
+      "info": "\u05db\u05d9\u05d1\u05d5\u05d9 \u05de\u05e1\u05ea\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05e8\u05e9\u05d9\u05de\u05ea \u05d4\u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05de\u05d4\u05e2\u05de\u05d5\u05d3. \u05d4\u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05e2\u05e6\u05de\u05dd \u05dc\u05d0 \u05de\u05e9\u05ea\u05e0\u05d9\u05dd." },
+""" if SHOW_PRICES else "")
+
 SECTION = f"""{{%- comment -%}}
   GT Everyday brand site — the whole v5 R124 page as one section.
   Generated by tools/build_theme.py from src/index.html. Edit the source and
@@ -335,10 +355,7 @@ SECTION = f"""{{%- comment -%}}
 {{
   "name": "GT brand site",
   "settings": [
-    {{ "type": "checkbox", "id": "show_pricing", "default": true,
-      "label": "\u05d4\u05e6\u05d2\u05ea \u05de\u05d7\u05d9\u05e8\u05d5\u05df \u05e1\u05d9\u05d8\u05d5\u05e0\u05d0\u05d9",
-      "info": "\u05db\u05d9\u05d1\u05d5\u05d9 \u05de\u05e1\u05ea\u05d9\u05e8 \u05d0\u05ea \u05db\u05dc \u05e8\u05e9\u05d9\u05de\u05ea \u05d4\u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05de\u05d4\u05e2\u05de\u05d5\u05d3. \u05d4\u05de\u05d7\u05d9\u05e8\u05d9\u05dd \u05e2\u05e6\u05de\u05dd \u05dc\u05d0 \u05de\u05e9\u05ea\u05e0\u05d9\u05dd." }},
-    {{ "type": "checkbox", "id": "third_party_pixels", "default": true,
+{PRICING_SETTING}    {{ "type": "checkbox", "id": "third_party_pixels", "default": true,
       "label": "פיקסלים של צד שלישי",
       "info": "Taboola ו־Retention Rocket — אותם פיקסלים שרצים היום בעמוד הבית. כיבוי מסיר אותם מהעמוד הזה בלבד." }},
     {{ "type": "text", "id": "analytics_id", "label": "GA4 Measurement ID נוסף",
@@ -354,6 +371,10 @@ INDEX = {
     "sections": {"main": {"type": "gt-home", "settings": {}}},
     "order": ["main"],
 }
+
+if not SHOW_PRICES:
+    strip_prices.assert_clean("sections/gt-home.liquid", SECTION)
+    strip_prices.assert_clean("assets/gt-site.js", js)
 
 THEME.mkdir(exist_ok=True)
 for sub in ("layout", "sections", "templates", "assets"):
@@ -376,6 +397,7 @@ print(f"  images in manifest      {len(manifest):>8,}")
 print(f"  images sized              {stamped_imgs:>8,}  (width/height stamped)")
 print(f"  FAQ entries in schema     {len(_faq):>8,}")
 print(f"  dead images dropped     {len(skipped):>8,}  ({removed} data entries removed)")
+print(f"  prices                  {'shown' if SHOW_PRICES else 'none — ' + str(len(strip_prices.applied)) + ' edits'}")
 lo = [n for n in (b('sections/gt-home.liquid'),) if n > 256*1024]
 if lo:
     sys.exit("section exceeds the 256 KB Liquid file limit")

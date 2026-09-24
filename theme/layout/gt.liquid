@@ -57,10 +57,10 @@
   # cut of this file shipped that as the home page's description and og:description,
   # replacing a sentence that actually says what GT sells.
   assign meta_title = 'GT Everyday · סיטונאות למסעדנות'
-  assign meta_desc = 'GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.'
+  assign meta_desc = 'GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות מוכנים לתפריט, עם מתכון מדויק לכל כוס.'
   # The home page's share line has always been shorter and punchier than its meta
   # description -- a card is read at a glance, a search result is not. Keep both.
-  assign og_desc = '48 משקאות. ספק אחד. מחירון גלוי.'
+  assign og_desc = '48 משקאות. ספק אחד. הזמנה אחת.'
   unless request.page_type == 'index'
     assign meta_title = page_title
     if page_description != blank
@@ -93,7 +93,13 @@
 <meta property="og:image:alt" content="{{ og_alt | escape }}">
 <meta name="twitter:image" content="https:{{ og_img | asset_url }}">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="preload" as="image" href="{{ 'gt-cd7b9d4764.webp' | asset_url }}" fetchpriority="high">
+{%- comment -%}
+  The home page's largest paint is Tom's hero photograph (2026-09-24), so that is what
+  gets preloaded — and only there: the landing pages paint their own hero first.
+{%- endcomment -%}
+{%- if template.name == 'index' and template.suffix == blank -%}
+<link rel="preload" as="image" href="{{ 'gt-36a934986c.webp' | asset_url }}" imagesrcset="{{ 'gt-d9758f1af6.webp' | asset_url }} 600w, {{ 'gt-36a934986c.webp' | asset_url }} 900w, {{ 'gt-5f6bd5748d.webp' | asset_url }} 1200w" imagesizes="(max-width: 980px) min(92vw, 520px), 480px" fetchpriority="high">
+{%- endif %}
 <link rel="canonical" href="{{ canonical_url }}">
 {%- comment -%}
   Organization only. Every field below is already stated on the pages themselves.
@@ -105,7 +111,7 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "GT Everyday",
-  "legalName": "גרין טי אוורידיי בע״מ",
+  "legalName": "גרינטי אוירי די בע״מ",
   "url": "{{ shop.url }}",
   "logo": "https:{{ 'gt-71e14890dd.png' | asset_url }}",
   "email": "info@gteveryday.com",

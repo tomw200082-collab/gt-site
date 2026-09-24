@@ -997,3 +997,38 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 /* motion respects the visitor's setting (the hero is handled in script) */
 @media(prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+/* ====================================================================
+   Pre-launch pass 2026-09-24 (tools/patch_launch.py). Appended last.
+   ==================================================================== */
+/* the hero photograph, at its own 3:4 so no bottle is cropped */
+.hero .side{height:auto;padding:0;background:#F3E3C9;overflow:hidden;display:block;
+  width:min(100%,calc(min(640px,74vh) * 0.7466));aspect-ratio:1744/2336;justify-self:center}
+.hero .side:before{display:none}
+.hero .side img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:980px){
+  .hero .side{height:auto;width:min(100%,520px)}
+}
+@media(max-width:640px){
+  .hero{padding:40px 0 64px}
+  .hero .in{gap:36px}
+  .hero h2{margin-bottom:24px}
+}
+/* the economics card fits a phone */
+@media(max-width:640px){
+  .econ{padding:40px 22px;gap:30px;border-radius:26px}
+  .stats{gap:10px}
+  .stat{padding:18px 14px}
+  .stat b{font-size:30px}
+}
+/* collection cards: darken the top, where the title and count sit */
+.ccard::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,15,12,.55) 0%,rgba(15,15,12,.18) 34%,rgba(15,15,12,0) 55%)}
+.ccard h4,.ccard small,.ccard .idx{text-shadow:0 1px 14px rgba(0,0,0,.35)}
+/* a line of text beside a button wraps under it instead of running into it */
+.center-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px}
+.center-cta>span{margin:0!important}
+
+/* No prices on the served page (tools/strip_prices.py): the recipe modal's
+   figures row is down to the margin, so it spans the card. */
+.cm-stats{grid-template-columns:1fr}
