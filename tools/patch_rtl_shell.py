@@ -58,11 +58,8 @@ sub(
     '  <div class="nav-links" id="nav-links">',
 )
 
-# ── customer portal entry: last in .nav-links, beside the header CTA ────
-# A plain link to the ordering portal. It needs nothing of its own: the burger
-# panel styles every direct child of .nav-links alike, and the close-on-click
-# handler below lets the link navigate. Anchored on the list's closing tag, not
-# on the FAQ label, so a copy edit cannot move it.
+# ── customer portal entry: last in .nav-links; the burger styles it like the rest.
+# Anchored on the list's closing tag, so a copy edit cannot move it.
 sub(
     "customer portal entry",
     '\n  </div>\n  <a class="btn" href="#contact">',
