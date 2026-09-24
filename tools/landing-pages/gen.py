@@ -38,6 +38,11 @@ def dim(asset):
 geresh = lambda s: re.sub(r"(?<=[\u05d0-\u05ea])'", "\u05f3", s)
 esc = lambda s: html.escape(geresh(s), quote=True)
 WA = "972543982444"
+# Where the form sends a lead: the public intake the home page's enquiry form
+# already uses (gt-factory-os supabase/functions/website_lead_intake). It files
+# the lead in sales_core — the sales team's queue — and emails them. The
+# section's lead_webhook setting overrides it; nobody has set one.
+INTAKE = "https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake"
 
 PAGES = {
  "chai": dict(
@@ -322,16 +327,19 @@ def build(slug, cfg):
           <li>הלהב 15, חולון · info@gteveryday.com</li>
         </ul>
       </div>
-      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | escape }}}}" data-source="site-{slug}" data-wa="{WA}" novalidate>
+      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | default: '{INTAKE}' | escape }}}}" data-source="site-{slug}" data-wa="{WA}" novalidate>
         <div class="g-f-row">
           <label><span>שם העסק</span><input name="display_name" required autocomplete="organization"></label>
           <label><span>שם מלא</span><input name="contact_name" required autocomplete="name"></label>
         </div>
         <div class="g-f-row">
           <label><span>טלפון</span><input name="phone" type="tel" required autocomplete="tel" inputmode="tel"></label>
-          <label><span>עיר</span><input name="city" autocomplete="address-level2"></label>
+          <label><span>עיר</span><input name="city" required autocomplete="address-level2"></label>
         </div>
         <label><span>אימייל (לא חובה)</span><input name="email" type="email" autocomplete="email"></label>
+        <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
+          <label>אל תמלאו שדה זה<input name="company_website" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
         <label class="g-ok"><input type="checkbox" name="consent" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
         <button type="submit" class="g-btn g-solid">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></button>
         <p class="g-msg" role="status" aria-live="polite"></p>
@@ -361,8 +369,8 @@ def build(slug, cfg):
     {{
       "type": "text",
       "id": "lead_webhook",
-      "label": "Lead webhook (Make)",
-      "info": "POST target for the form. Leave empty and the form falls back to WhatsApp with the details prefilled."
+      "label": "Lead endpoint (override)",
+      "info": "Leave empty: leads go to the sales system (website_lead_intake → sales_core), like the home page form. Set only to send them somewhere else."
     }}
   ]
 }}

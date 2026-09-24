@@ -34,14 +34,20 @@ Never type a figure into a section by hand. Change the catalog, re-verify, regen
 
 ## Lead capture
 
-Each page's form posts JSON to the Make webhook set in the section's
-`lead_webhook` setting. Make holds `LEAD_INGEST_TOKEN` and calls the `ingest`
-route on the `sales-leads-poll` Edge Function; the browser never sees the secret.
-The per-page discriminator is `source` (`site-chai`, `site-matcha`,
-`site-iced-tea`, `site-ube`) — `sales_core.lead.source`, unique with `external_id`.
+Each page's form posts JSON to `website_lead_intake`, the same public Edge
+Function the home page's enquiry form uses (gt-factory-os
+`supabase/functions/website_lead_intake`). It holds `LEAD_INGEST_TOKEN`, calls
+the `ingest` route on `sales-leads-poll`, and so files the lead in `sales_core`
+and emails the sales team; the browser never sees a secret. The section's
+`lead_webhook` setting overrides the endpoint; nobody has set one.
 
-With no webhook set the form falls back to WhatsApp with the details prefilled,
-so a submission is never silently lost.
+The per-page discriminator is `form_name` (`landing-site-chai`,
+`landing-site-matcha`, `landing-site-iced-tea`, `landing-site-ube`): the key
+`sales_core.campaign_map` holds for each page (gt-factory-os migration 0344).
+The intake accepts only those four names and `partner_enquiry`.
+
+If the send fails, the form opens WhatsApp with the details prefilled, so a
+submission is never silently lost.
 
 ## Namespacing (why every class starts with `g-`)
 
