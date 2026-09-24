@@ -86,7 +86,7 @@ def strip_markup(markup: str) -> str:
     markup = sub_re(
         "econ cost stat",
         r'<div class="stat"><b class="num">' + PRICE + r"</b><span>עלות חומר גלם לכוס, החל מ־</span></div>",
-        '<div class="stat"><b class="num">20–25</b><span>כוסות מכל בקבוק</span></div>',
+        '<div class="stat"><b class="num" dir="ltr">20–25</b><span>כוסות מכל בקבוק</span></div>',
         markup, 1)
     markup = sub_re(
         "econ menu stat",

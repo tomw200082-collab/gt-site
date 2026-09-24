@@ -299,6 +299,8 @@ def faq_pairs(html_: str):
         q = re.sub(r"<[^>]+>", " ", m.group(1))
         a = re.sub(r"<[^>]+>", " ", m.group(2))
         q, a = " ".join(q.split()), " ".join(a.split())
+        # the invisible bidi isolates around number ranges are for the eye only
+        q, a = (x.replace("\u2066", "").replace("\u2069", "") for x in (q, a))
         # The drink modal uses <details> too; only real prose Q&A qualifies.
         if q.endswith("?") and 20 <= len(a) <= 900:
             out.append((q, a))

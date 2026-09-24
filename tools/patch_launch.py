@@ -132,6 +132,29 @@ footer.site .social a:hover,footer.site .social a:focus-visible{border-color:cur
 """
 
 
+def isolate_ranges(text: str) -> str:
+    """Wrap every non-price number range in the page's text nodes in LRI/PDI."""
+    parts = re.split(r"(<script>.*?</script>|<style>.*?</style>)", text, flags=re.S)
+    n = 0
+
+    def in_text(chunk: str) -> str:
+        nonlocal n
+
+        def node(m):
+            nonlocal n
+            s, k = re.subn(r"(?<![₪\d.,])(\d{1,3}%?–\d{1,3}%?)(?![\d%])",
+                           "\u2066\\1\u2069", m.group(0))
+            n += k
+            return s
+        return re.sub(r">[^<>]*<", node, chunk)
+
+    out = "".join(p if p.startswith(("<script>", "<style>")) else in_text(p) for p in parts)
+    if n != 4:
+        die(f"number ranges: expected 4 (econ, alcohol line, FAQ, bottle chip), found {n}")
+    applied.append(f"number ranges ×{n}")
+    return out
+
+
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
 
@@ -187,6 +210,9 @@ def main() -> None:
                "getElementById('pm-title').textContent='מחית '+({mango:'מנגו',strawberry:'תות',"
                "peach:'אפרסק'}[id]||p.t)+' · באילו משקאות היא נכנסת';", text)
 
+    # ── "Massala": two recipe kickers kept the English source's misspelling ─
+    text = sub("masala spelling", '"en": "Massala"', '"en": "Masala"', text, 2)
+
     # ── the four-step strip and the matrix links read the reader's way ──
     text = sub("step strip arrow", '<span class="sep">\\u2192</span>',
                '<span class="sep">\\u2190</span>', text)
@@ -205,6 +231,15 @@ def main() -> None:
 
     # ── the forward arrow points the reader's way ───────────────────────
     text = sub("recipe link arrow", "<u>\\u2192</u>", "<u>\\u2190</u>", text)
+
+    # ── number ranges inside Hebrew run backwards ────────────────────────
+    # "20–25 כוסות" rendered as "25–20": the en dash between two numbers takes
+    # the paragraph's right-to-left direction, so the bidi algorithm swaps the
+    # numbers. Each range is wrapped in an invisible left-to-right isolate (U+2066
+    # … U+2069) — no visible character changes, so the approved alcohol sentence
+    # keeps its exact wording and simply reads the way it was written. Price
+    # ranges are left alone: they never reach the served page (strip_prices.py).
+    text = isolate_ranges(text)
 
     text = sub("launch stylesheet", "</style>", CSS + "</style>", text)
 
