@@ -62,8 +62,8 @@ def main() -> None:
     # מאצ'ה אגבה על הקרח.
     text = sub("cheapest cup", "עלות חומר גלם מ־₪3.25 לכוס",
                f"עלות חומר גלם מ־₪{min_cost:.2f} לכוס", text)
-    text = sub("best margin", "רווחיות של עד 85% בהגשות העליונות",
-               f"רווחיות של עד {max_marg}% בהגשות העליונות", text)
+    text = sub("best margin", "רווחיות של עד 85%:",
+               f"רווחיות של עד {max_marg}%:", text)
 
     # The same two figures again, as the stat cards beside that paragraph and
     # in the Tea 2.0 band. The superseded values had survived there, so the
@@ -95,8 +95,17 @@ def main() -> None:
     if not 1 <= drinks <= 200:
         die(f"flavour-card drink count came out as {drinks} — refusing to write it")
 
-    text = sub("flavour-card count", "מה יוצא מכל מוצר — 51 משקאות מ־12 מוצרים",
-               f"מה יוצא מכל מוצר — {drinks} משקאות מ־{len(products)} מוצרים", text)
+    # The line heads the product matrix, which lists all 48 menu drinks by
+    # product (51 rows: a drink made from two products sits under both). It no
+    # longer states a count of its own — the pre-launch review found the old
+    # "34" was counted from the flavour cards, not from the panel it introduces
+    # — so what is asserted here is that its "all 48" is still true.
+    n_cols = sum(len(c["drinks"]) for c in cols)
+    if n_cols != 48:
+        die(f"the matrix line says all 48 drinks, COLS holds {n_cols}")
+    if text.count("מה יוצא מכל מוצר — כל 48 המשקאות, לפי מוצר") != 1:
+        die("matrix line not found")
+    applied.append("matrix line (48 checked)")
 
     # ── the placeholder ─────────────────────────────────────────────────
     # The About section opens with a slot for factory and team photographs that

@@ -30,9 +30,29 @@ is fixed at its source in i18n/parts/; this file carries what is not copy.
       cards the white title and drink count sat on pale yellow. The gradient moves
       to ::before, where nothing competes for it.
 
-  The "open recipe" arrow pointed backwards
-      Every forward arrow on the page points ← (the reader's direction); the rows
-      in the product modal pointed →.
+  The footer's social names were text, not links
+      "אינסטגרם · פייסבוק · יוטיוב" looked like three links and went nowhere. They
+      now point at the accounts the live store already links to.
+
+  Three product cards opened empty
+      openF() looked each product up by its card heading, and the matcha, hojicha
+      and ube headings are Hebrew while every data table is keyed in Latin — so
+      those three modals listed no drinks. The heading stays; the lookup uses the key.
+
+  English the extractor never reached
+      The product matrix ("Detox 2 drinks", "Matcha"), its empty note, the recipe's
+      "על בסיס Matcha" chip, the purée modal title ("Mango · …") and the price
+      list's "Expand all" were all JS literals outside the catalogue.
+
+  Arrows and a minus sign pointing the wrong way
+      Every forward arrow on the page points ← (the reader's direction); the recipe
+      rows, the four-step strip and the matrix links pointed →. "−25%" put its
+      minus on the right.
+
+  "0 מקום במקרר"
+      A zero with a singular noun, and the weakest way to make the point. The stat
+      is now the approved shelf life: 12 months closed, no refrigeration
+      (Sales-Machine knowledge/claims/public-claims.yaml #shelf_life).
 
 Every edit asserts its anchor, so a silent no-op is impossible.
 """
@@ -99,9 +119,16 @@ CSS = """
 .ccard::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(15,15,12,.55) 0%,rgba(15,15,12,.18) 34%,rgba(15,15,12,0) 55%)}
 .ccard h4,.ccard small,.ccard .idx{text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.ccard h4{line-height:1.12}
+.ccard small{display:block;margin-top:3px}
 /* a line of text beside a button wraps under it instead of running into it */
 .center-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px}
 .center-cta>span{margin:0!important}
+/* footer.site's `padding:40px 0` erased .wrap's side gutter: text ran to the screen edge */
+footer.site{padding:40px 28px}
+@media(max-width:640px){footer.site{padding:32px 20px;justify-content:flex-start}}
+footer.site .social a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+footer.site .social a:hover,footer.site .social a:focus-visible{border-color:currentColor}
 """
 
 
@@ -121,6 +148,60 @@ def main() -> None:
                "' incl. VAT \\u00b7 margin '+d.m+'%</div></div></details>'",
                "'</ol><div class=\"fc\">עלות חומר גלם \\u20aa'+d.fc+' ללא מע״מ \\u00b7 מחיר מומלץ \\u20aa'+d.p+"
                "' כולל מע״מ \\u00b7 רווחיות '+d.m+'%</div></div></details>'", text, 2)
+
+    # ── the footer's social names were plain text that looked like links ─
+    # The URLs are the store's own, read from the live theme's settings_data.json
+    # (social_instagram_link / social_facebook_link / social_youtube_link).
+    text = sub("footer social links", "<span>אינסטגרם · פייסבוק · יוטיוב</span>",
+               '<span class="social"><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">אינסטגרם</a>'
+               ' · <a href="https://facebook.com/greenteaeveryday" target="_blank" rel="noopener">פייסבוק</a>'
+               ' · <a href="https://www.youtube.com/channel/UC7U7qL5vs9xt6Rzxj2GiSOg" target="_blank" rel="noopener">יוטיוב</a></span>',
+               text)
+
+    # ── the matcha, hojicha and ube cards opened empty ──────────────────
+    # openF() looks the product up by its card heading — FLMAP, POUCHCH, MKMORE
+    # and FL are keyed by the Latin names — and the three pouch cards' headings
+    # are Hebrew. So those three modals listed no drinks at all. The heading
+    # stays what the reader sees; the lookup uses the key.
+    text = sub("pouch lookup key", "const n=c.querySelector('h4').textContent.trim();",
+               "const n0=c.querySelector('h4').textContent.trim(),"
+               "n=({\"מאצ׳ה\":\"Matcha\",\"הוג׳יצ׳ה\":\"Hojicha\",\"אובה\":\"Ube\"})[n0]||n0;", text)
+    text = sub("pouch modal title", "getElementById('fm-name').textContent=n;",
+               "getElementById('fm-name').textContent=n0;", text)
+
+    # ── English the extractor never saw, in the product matrix ──────────
+    text = sub("matrix product names",
+               "<span class=\"pn\">'+p+'</span><span class=\"pc\">'+(pairs.length?pairs.length+"
+               "(pairs.length===1?' drink':' drinks'):'\\u2014')+'</span></div>';",
+               "<span class=\"pn\">'+({Matcha:'מאצ׳ה',Ube:'אובה',Hojicha:'הוג׳יצ׳ה'}[p]||p)+"
+               "'</span><span class=\"pc\">'+(pairs.length?(pairs.length===1?'משקה אחד':"
+               "pairs.length+' משקאות'):'\\u2014')+'</span></div>';", text)
+    text = sub("matrix empty note", "'No menu drinks yet.'", "'עדיין בלי מתכוני תפריט.'", text)
+    text = sub("recipe source chip", "'\">'+n+' \\u2190</a>'",
+               "'\">'+({Matcha:'מאצ׳ה',Ube:'אובה',Hojicha:'הוג׳יצ׳ה'}[n]||n)+' \\u2190</a>'", text)
+    text = sub("price list toggle", "'Expand all'", "'פתחו הכול'", text)
+
+    # ── the purée modal's title: "Mango · …" in English, and glued ──────
+    text = sub("puree title",
+               "getElementById('pm-title').textContent=p.t+' · באילו משקאות היא נכנסת';",
+               "getElementById('pm-title').textContent='מחית '+({mango:'מנגו',strawberry:'תות',"
+               "peach:'אפרסק'}[id]||p.t)+' · באילו משקאות היא נכנסת';", text)
+
+    # ── the four-step strip and the matrix links read the reader's way ──
+    text = sub("step strip arrow", '<span class="sep">\\u2192</span>',
+               '<span class="sep">\\u2190</span>', text)
+    text = sub("matrix link arrow", "' \\u00b7 '+COLS[ci].t+' \\u2192</span>'",
+               "' \\u00b7 '+COLS[ci].t+' \\u2190</span>'", text)
+
+    # ── "−25%" rendered its minus on the wrong side in RTL ──────────────
+    text = sub("minus sign direction", '<b style="color:var(--energy)">−25%</b>',
+               '<b style="color:var(--energy)" dir="ltr">−25%</b>', text)
+
+    # ── "0 מקום במקרר" becomes the shelf life, which is the same point ──
+    # Tom-approved (Sales-Machine knowledge/claims/public-claims.yaml
+    # #shelf_life): a closed bottle keeps a year with no refrigeration.
+    text = sub("shelf-life stat", '<b class="num">0</b><span>חודשים על המדף לבקבוק סגור</span>',
+               '<b class="num">12</b><span>חודשים על המדף לבקבוק סגור</span>', text)
 
     # ── the forward arrow points the reader's way ───────────────────────
     text = sub("recipe link arrow", "<u>\\u2192</u>", "<u>\\u2190</u>", text)

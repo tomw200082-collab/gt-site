@@ -119,6 +119,31 @@ if not SHOW_PRICES:
     js = strip_prices.strip_js(js)
     css = css + strip_prices.CSS
 
+# ── 2c. one geresh on the page ──────────────────────────────────────────
+#
+# 32 drink names and 5 collection names arrive from the figures of record spelled
+# with an ASCII apostrophe (צ'אי, מאצ'ה), because patch_figures.py and
+# verify_figures.py match them byte-for-byte against that record. Everywhere else
+# the page writes the Hebrew geresh (צ׳אי, מאצ׳ה), so the recipe modal showed both
+# spellings in one title block. The names are display-only in the script (dn() and
+# the chips; nothing looks a drink up by name, and the STEP_ICONS patterns accept
+# both marks), so the served copy takes the geresh after verification is done.
+_m = re.search(r"const COLS=(\[.*?\]);", js, re.S)
+if not _m:
+    sys.exit("FAIL: COLS not found for the geresh pass")
+_cols = json.loads(_m.group(1))
+_geresh = 0
+def _g(v):
+    global _geresh
+    out, n = re.subn(r"(?<=[\u05d0-\u05ea])'", "\u05f3", v)
+    _geresh += n
+    return out
+for _c in _cols:
+    _c["he"] = _g(_c["he"])
+    for _d in _c["drinks"]:
+        _d["he"] = _g(_d["he"])
+js = js[:_m.start(1)] + json.dumps(_cols, ensure_ascii=False) + js[_m.end(1):]
+
 # ── 3. rewrite image references ─────────────────────────────────────────
 def rewrite_markup(s):
     for u, name in asset_name.items():
@@ -398,6 +423,7 @@ print(f"  images sized              {stamped_imgs:>8,}  (width/height stamped)")
 print(f"  FAQ entries in schema     {len(_faq):>8,}")
 print(f"  dead images dropped     {len(skipped):>8,}  ({removed} data entries removed)")
 print(f"  prices                  {'shown' if SHOW_PRICES else 'none — ' + str(len(strip_prices.applied)) + ' edits'}")
+print(f"  names given a geresh    {_geresh:>8,}")
 lo = [n for n in (b('sections/gt-home.liquid'),) if n > 256*1024]
 if lo:
     sys.exit("section exceeds the 256 KB Liquid file limit")

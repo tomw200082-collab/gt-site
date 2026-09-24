@@ -53,7 +53,7 @@ def main() -> None:
     # The visible first <option> is the label a sighted user reads, so it is
     # the right accessible name too.
     text = sub("select pf-role", '<select id="pf-role">',
-               '<select id="pf-role" aria-label="התפקיד שלך">', text)
+               '<select id="pf-role" aria-label="תפקיד">', text)
     text = sub("select pf-int", '<select id="pf-int">',
                '<select id="pf-int" aria-label="מה מעניין אתכם">', text)
 
