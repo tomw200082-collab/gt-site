@@ -35,7 +35,7 @@ sub("slide heading css", ".hs-copy h1", ".hs-copy .hs-h", 2)
 sub(
     "document h1",
     '<div class="ticker">',
-    '<h1 class="sr-only">עידן חדש של משקאות. בבית העסק שלכם.</h1>\n<div class="ticker">',
+    '<h1 class="sr-only">עידן חדש של משקאות בבית העסק שלכם.</h1>\n<div class="ticker">',
 )
 
 # ── hero art: mirror the photograph, not the slide ──────────────────────
