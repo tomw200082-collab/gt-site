@@ -59,11 +59,12 @@ sub(
 )
 
 # ── customer portal entry: last in .nav-links; the burger styles it like the rest.
-# Anchored on the list's closing tag, so a copy edit cannot move it.
+# Anchored on the list's closing tag, so a copy edit cannot move it. The portal
+# lives on the API's own host (Tom 2026-09-25: no DNS for now).
 sub(
     "customer portal entry",
     '\n  </div>\n  <a class="btn" href="#contact">',
-    '<a href="https://order.gteveryday.com/">כניסת לקוחות</a>'
+    '<a href="https://gt-factory-os-api-production.up.railway.app/portal/">כניסת לקוחות</a>'
     '\n  </div>\n  <a class="btn" href="#contact">',
 )
 
