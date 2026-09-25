@@ -58,14 +58,28 @@ sub(
     '  <div class="nav-links" id="nav-links">',
 )
 
-# ── customer portal entry: last in .nav-links; the burger styles it like the rest.
-# Anchored on the list's closing tag, so a copy edit cannot move it. The portal
-# lives on the API's own host (Tom 2026-09-25: no DNS for now).
+# ── customer portal entry (gate G-27): three placements of one link. On phones a 44 px
+# icon (labelled for screen readers) beside the burger and the first row of the menu; on
+# desktop an outline pill beside the contact CTA. build_theme.py wraps all three in the theme
+# editor's show_portal_entry switch (default off) so the recipe fixes can ship before
+# the portal opens to everyone (M5). The portal lives on the API's own host
+# (Tom 2026-09-25: no DNS for now).
+PORTAL = "https://gt-factory-os-api-production.up.railway.app/portal/"
+PORTAL_ICON = ('<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"'
+               ' stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+               '<circle cx="12" cy="8" r="4"/><path d="M4 20.5c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>')
 sub(
-    "customer portal entry",
+    "customer portal entry: phone icon and first menu row",
+    '  <div class="nav-links" id="nav-links">',
+    f'  <a class="portal-ico" href="{PORTAL}" aria-label="כניסה">{PORTAL_ICON}</a>\n'
+    '  <div class="nav-links" id="nav-links">'
+    f'<a class="portal-link" href="{PORTAL}">כניסת לקוחות</a>',
+)
+sub(
+    "customer portal entry: desktop pill",
     '\n  </div>\n  <a class="btn" href="#contact">',
-    '<a href="https://gt-factory-os-api-production.up.railway.app/portal/">כניסת לקוחות</a>'
-    '\n  </div>\n  <a class="btn" href="#contact">',
+    f'\n  </div>\n  <a class="portal-pill" href="{PORTAL}">{PORTAL_ICON}כניסת לקוחות</a>'
+    '\n  <a class="btn" href="#contact">',
 )
 
 sub(
@@ -181,7 +195,17 @@ nav.open .nav-burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
 nav.open .nav-burger i:nth-child(2){opacity:0}
 nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* the customer portal entry (gate G-27) */
+.portal-pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;
+  box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);font-weight:700;font-size:14px;text-decoration:none;
+  white-space:nowrap;flex:0 0 auto;margin-inline-end:10px}
+.portal-ico{display:none}
+.nav-links .portal-link{display:none}
 @media(max-width:980px){
+  .portal-pill{display:none}
+  .portal-ico{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--ink);
+    margin-inline-start:auto;margin-inline-end:4px}
+  .nav-links .portal-link{display:block;font-weight:800}
   .nav-burger{display:flex}
   /* nav carries backdrop-filter, which makes it the containing block for its
      position:fixed descendants — the panel would inherit the bar's height.
@@ -198,7 +222,9 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav-links .nav-dd{border-bottom:1px solid var(--line)}
   .nav-links .nav-dd>a .car{display:none}
   /* the flavour dropdown becomes an inline list instead of a hover panel */
-  .nav-links .dd-menu{position:static;opacity:1;visibility:visible;
+  /* visibility:inherit, not visible: a child of the hidden panel must stay hidden, or
+     where Safari ignores the unprefixed backdrop-filter above it takes taps (gate G-58). */
+  .nav-links .dd-menu{position:static;opacity:1;visibility:inherit;
     transform:none;padding:0;box-shadow:none;background:none}
   .nav-links .dd-in{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;
     padding:6px 0 12px;background:none;box-shadow:none;border:0}
@@ -210,6 +236,12 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav-links{inset:80px 0 0}
 }
 """
+
+sub(
+    "arrow keys follow reading direction",
+    "if(e.key==='ArrowRight')cmGo(1);if(e.key==='ArrowLeft')cmGo(-1);",
+    "if(e.key==='ArrowLeft')cmGo(1);if(e.key==='ArrowRight')cmGo(-1);",
+)
 
 sub("rtl stylesheet", "</style>", RTL_CSS + "</style>", 1)
 
