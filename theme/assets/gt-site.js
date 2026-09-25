@@ -186,7 +186,7 @@ function renderMakesCols(n){
  box.querySelectorAll('a.mkgo').forEach(function(a){
   var ci=+a.getAttribute('data-ci'), di=+a.getAttribute('data-di');
   var pu=fmDrinkImg(ci,di); if(pu)fmPreload(pu);
-  a.addEventListener('mouseenter',function(){ if(pu)swapImg(pu);});
+  if(matchMedia('(hover:hover)').matches)a.addEventListener('mouseenter',function(){ if(pu)swapImg(pu);});
   a.addEventListener('click',function(e){e.preventDefault();
    document.getElementById('fmodal').classList.remove('open');
    cmOpen(ci); cmI=di; cmRender();});
@@ -214,7 +214,7 @@ function openF(c){
 }
 window.openF=openF;
 
-function ddGo(e,id){e.preventDefault();const el=document.getElementById(id);if(!el)return;
+function ddGo(e,id){e.preventDefault();var dd=e.target.closest&&e.target.closest('.nav-dd');if(dd){dd.classList.add('dd-shut');document.addEventListener('pointerdown',function(){dd.classList.remove('dd-shut')},{once:true,capture:true});}const el=document.getElementById(id);if(!el)return;
  if(el.scrollIntoView)el.scrollIntoView({behavior:'smooth',block:'center'});
  setTimeout(()=>{try{openF(el)}catch(_){}},650);}
 window.ddGo=ddGo;
@@ -268,8 +268,11 @@ function heroSwipe(){
   if(typeof hsGo==='function'){hsGo(dx<0?hsI+1:hsI-1); if(typeof hsRestart==='function')hsRestart();}
  },{passive:true});
 }
-function cmOpen(ci){cmC=ci;cmI=0;cmRender();document.getElementById('cmodal').classList.add('open');}
-function cmClose(){document.getElementById('cmodal').classList.remove('open');}
+function cmCenterChip(){var d=document.getElementById('cm-dots'),a=d&&d.querySelector('.on');if(!a||!d.clientWidth)return;var dr=d.getBoundingClientRect(),ar=a.getBoundingClientRect();d.scrollLeft+=(ar.left+ar.width/2)-(dr.left+dr.width/2);}
+function cmOpen(ci,di,fromPop){cmC=ci;cmI=di||0;if(!fromPop&&!(history.state&&history.state.gtRecipe))history.pushState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);cmRender();document.getElementById('cmodal').classList.add('open');document.documentElement.classList.add('cm-lock');cmCenterChip();}
+function cmClose(fromPop){document.getElementById('cmodal').classList.remove('open');document.documentElement.classList.remove('cm-lock');if(!fromPop&&history.state&&history.state.gtRecipe)history.back();}
+function cmFromHash(){var m=/^#recipe-(\d+)-(\d+)$/.exec(location.hash);if(!m||typeof COLS==='undefined'||!COLS[+m[1]])return false;cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);return true;}
+window.addEventListener('popstate',function(){if(!cmFromHash()&&document.getElementById('cmodal').classList.contains('open'))cmClose(true);});
 function cmGo(d){const n=COLS[cmC].drinks.length;cmI=Math.min(n-1,Math.max(0,cmI+d));cmRender();}
 
 // ==== SVG-инфографика стакана со слоями состава ====
@@ -434,11 +437,13 @@ function cmRender(){
   sp.className='cm-chip'+(i===cmI?' on':'');sp.textContent=dn(dd);
   sp.onclick=()=>{cmI=i;cmRender();};dots.appendChild(sp);});
  const act=dots.querySelector('.on');
- if(act&&act.scrollIntoView)try{act.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}
+ cmCenterChip();var cb=document.querySelector('#cmodal .cm-body');if(cb)cb.scrollTop=0;if(history.state&&history.state.gtRecipe)history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);
  cmSrcRender(cmC,cmI);
  cmPrefetchNear();
 }
-document.querySelectorAll('.ccard').forEach((el,i)=>{el.style.cursor='pointer';el.addEventListener('click',()=>cmOpen(i));});
+document.querySelectorAll('.ccard').forEach((el)=>{el.style.cursor='pointer';});
+(function(){var c=document.querySelector('#cmodal .cm-card');if(!c)return;var x0=null,y0=0;c.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});c.addEventListener('touchend',function(e){if(x0==null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;if(e.target.closest('.cm-dots,button,a'))return;if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy))cmGo(dx>0?1:-1);},{passive:true});})();
+if(cmFromHash())history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);
 try{
  var mxt=document.getElementById('mxtog'), mxb=document.getElementById('mxbox'), mxBuilt=false;
  if(mxt&&mxb){ mxt.addEventListener('click',function(){
@@ -448,9 +453,9 @@ try{
         mxb.hidden=false; mxt.setAttribute('aria-expanded','true'); }
  }); }
 }catch(e){}
-try{heroSwipe()}catch(e){}
+
 document.addEventListener('keydown',e=>{const o=document.getElementById('cmodal').classList.contains('open');if(!o)return;
- if(e.key==='Escape')cmClose();if(e.key==='ArrowRight')cmGo(1);if(e.key==='ArrowLeft')cmGo(-1);});
+ if(e.key==='Escape')cmClose();if(e.key==='ArrowLeft')cmGo(1);if(e.key==='ArrowRight')cmGo(-1);});
 document.getElementById('cmodal').addEventListener('click',e=>{if(e.target.id==='cmodal')cmClose();});
 const PUREES={"mango": {"t": "Mango", "d": "מחית מנגו זהובה בסגנון אלפונסו — שכבה של קיץ במשקאות הדגל, במאצ׳ה, בקוקוס ובאובה.", "drinks": [["משקה דגל Revive מנגו", 2, 2], ["אייס מאצ׳ה מנגו", 4, 1], ["מאצ׳ה קוקוס מנגו", 6, 3], ["אייס אובה מנגו", 9, 1]]}, "strawberry": {"t": "Strawberry", "d": "מחית תות אדום ובשל — רב־המכר של תפריט הקיץ.", "drinks": [["משקה דגל Detox תות", 2, 1], ["אייס מאצ׳ה תות", 4, 2], ["מאצ׳ה קוקוס תות", 6, 2], ["אייס אובה תות", 9, 0]]}, "peach": {"t": "Peach", "d": "מחית אפרסק קטיפתית — מככבת במשקה הדגל ובגזוז המדבריים, במאצ׳ה ובאובה.", "drinks": [["משקה דגל Desertea אפרסק", 2, 0], ["גזוז Desertea אפרסק", 3, 1], ["אייס מאצ׳ה אפרסק", 4, 3], ["אייס אובה אפרסק", 9, 2]]}};
 let PIMG={"mango": (GT_ASSET_BASE+"gt-a4039bc6a8.webp"), "strawberry": (GT_ASSET_BASE+"gt-b422ab404b.webp"), "peach": (GT_ASSET_BASE+"gt-c1c67d9c51.webp")};
@@ -518,7 +523,7 @@ try{
 var CYCSHOTS={"0": [(GT_ASSET_BASE+"gt-2057456452.webp"), (GT_ASSET_BASE+"gt-dbb6f70ab8.webp"), (GT_ASSET_BASE+"gt-f2b0bded99.webp"), (GT_ASSET_BASE+"gt-a8d86ef209.webp"), (GT_ASSET_BASE+"gt-1b1a5fe6f0.webp"), (GT_ASSET_BASE+"gt-1ef5ba754c.webp"), (GT_ASSET_BASE+"gt-0a9c7c969a.webp")], "1": [(GT_ASSET_BASE+"gt-c942631391.webp"), (GT_ASSET_BASE+"gt-bf31374321.webp"), (GT_ASSET_BASE+"gt-4445c6ab4a.webp")], "2": [(GT_ASSET_BASE+"gt-39a9e89014.webp"), (GT_ASSET_BASE+"gt-c30af31427.webp"), (GT_ASSET_BASE+"gt-d1ca1a3dd5.webp"), (GT_ASSET_BASE+"gt-a72027a9c6.webp")], "3": [(GT_ASSET_BASE+"gt-2a0820440f.webp"), (GT_ASSET_BASE+"gt-9a20a715c3.webp"), (GT_ASSET_BASE+"gt-732cf0c401.webp")], "4": [(GT_ASSET_BASE+"gt-8728800f85.webp"), (GT_ASSET_BASE+"gt-c3872fdce0.webp"), (GT_ASSET_BASE+"gt-cc4193ac56.webp"), (GT_ASSET_BASE+"gt-de4bdcef66.webp"), (GT_ASSET_BASE+"gt-9b5c14e199.webp"), (GT_ASSET_BASE+"gt-f59f059ff2.webp")], "5": [(GT_ASSET_BASE+"gt-d6a15a37c6.webp"), (GT_ASSET_BASE+"gt-29868b6d41.webp"), (GT_ASSET_BASE+"gt-fe76b1afa1.webp"), (GT_ASSET_BASE+"gt-7565afcb24.webp"), (GT_ASSET_BASE+"gt-5752efa538.webp")], "6": [(GT_ASSET_BASE+"gt-e9f4e7fc38.webp"), (GT_ASSET_BASE+"gt-63eac43d2d.webp"), (GT_ASSET_BASE+"gt-b843ae6fca.webp"), (GT_ASSET_BASE+"gt-ba6967c907.webp"), (GT_ASSET_BASE+"gt-e7bf263165.webp")], "7": [(GT_ASSET_BASE+"gt-7a2b44891b.webp"), (GT_ASSET_BASE+"gt-8d26f09d17.webp"), (GT_ASSET_BASE+"gt-36f43500ad.webp"), (GT_ASSET_BASE+"gt-af10238dca.webp"), (GT_ASSET_BASE+"gt-690f2e7dec.webp"), (GT_ASSET_BASE+"gt-c6c2dd8d6b.webp")], "8": [(GT_ASSET_BASE+"gt-676ae5224b.webp"), (GT_ASSET_BASE+"gt-d35192636a.webp"), (GT_ASSET_BASE+"gt-2b1babb40e.webp"), (GT_ASSET_BASE+"gt-6e94247f32.webp")], "9": [(GT_ASSET_BASE+"gt-7281b3e7a6.webp"), (GT_ASSET_BASE+"gt-83ff7d7c09.webp"), (GT_ASSET_BASE+"gt-9c1a90ccd8.webp"), (GT_ASSET_BASE+"gt-e048d3f32b.webp"), (GT_ASSET_BASE+"gt-ec3523c940.webp")]};
 // ── листание напитков главы при наведении на карточку коллекции ──
 (function(){
-  function build(){
+  function build(){if(!matchMedia('(hover:hover)').matches)return;
     document.querySelectorAll('.ccard[data-ci]').forEach(function(card){
       if(card.querySelector('.cyc')) return;
       var ci=card.getAttribute('data-ci');

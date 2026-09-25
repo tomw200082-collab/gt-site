@@ -928,7 +928,17 @@ nav.open .nav-burger i:nth-child(1){transform:translateY(7px) rotate(45deg)}
 nav.open .nav-burger i:nth-child(2){opacity:0}
 nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
+/* the customer portal entry (gate G-27) */
+.portal-pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;
+  box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);font-weight:700;font-size:14px;text-decoration:none;
+  white-space:nowrap;flex:0 0 auto;margin-inline-end:10px}
+.portal-ico{display:none}
+.nav-links .portal-link{display:none}
 @media(max-width:980px){
+  .portal-pill{display:none}
+  .portal-ico{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--ink);
+    margin-inline-start:auto;margin-inline-end:4px}
+  .nav-links .portal-link{display:block;font-weight:800}
   .nav-burger{display:flex}
   /* nav carries backdrop-filter, which makes it the containing block for its
      position:fixed descendants — the panel would inherit the bar's height.
@@ -945,7 +955,9 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .nav-links .nav-dd{border-bottom:1px solid var(--line)}
   .nav-links .nav-dd>a .car{display:none}
   /* the flavour dropdown becomes an inline list instead of a hover panel */
-  .nav-links .dd-menu{position:static;opacity:1;visibility:visible;
+  /* visibility:inherit, not visible: a child of the hidden panel must stay hidden, or
+     where Safari ignores the unprefixed backdrop-filter above it takes taps (gate G-58). */
+  .nav-links .dd-menu{position:static;opacity:1;visibility:inherit;
     transform:none;padding:0;box-shadow:none;background:none}
   .nav-links .dd-in{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;
     padding:6px 0 12px;background:none;box-shadow:none;border:0}
@@ -1035,6 +1047,55 @@ footer.site{padding:40px 28px}
 @media(max-width:640px){footer.site{padding:32px 20px;justify-content:flex-start}}
 footer.site .social a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
 footer.site .social a:hover,footer.site .social a:focus-visible{border-color:currentColor}
+
+/* ====================================================================
+   iPad and touch (tools/patch_ipad.py, UX gate 2026-09-25). Appended last.
+   ==================================================================== */
+/* G-59 / G-57: the body is the only scroller; header, stats and nav stay pinned */
+#cmodal .cm-card{max-height:94vh!important;max-height:94dvh!important;overflow:hidden!important}
+#cmodal .cm-card .cm-scroll{display:flex;flex-direction:column;flex:1 1 auto!important;min-height:0!important;overflow:hidden}
+#cmodal .cm-card .cm-body{flex:1 1 auto!important;min-height:0!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+#cmodal .cm-card .cm-rec{max-height:none!important;overflow:visible!important}
+#cmodal .cm-stats{margin-top:0}
+#cmodal .cm-stats>div{display:flex;justify-content:center;align-items:baseline;gap:10px;padding:8px 10px}
+#cmodal .cm-stats b{display:inline;font-size:22px!important}
+@media(min-width:600px){
+  #cmodal #cm-visual{position:sticky;top:0}
+  #cmodal #cm-visual img{max-height:calc(94vh - 250px)!important;max-height:calc(94dvh - 250px)!important;object-fit:cover!important;object-position:50% 100%}
+}
+/* G-60: the photo sits beside the method in portrait; capped on phones */
+@media(min-width:600px) and (max-width:860px){#cmodal .cm-card .cm-body{grid-template-columns:minmax(220px,38%) 1fr!important}}
+@media(max-width:599px){#cmodal #cm-visual img{max-height:38vh!important;object-fit:cover!important;object-position:50% 100%}}
+/* G-61: one swipeable chip row */
+.cm-dots{flex-wrap:nowrap;justify-content:flex-start;align-content:normal;max-height:none!important;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;padding:4px 2px}
+.cm-dots::-webkit-scrollbar{display:none}
+.cm-chip{flex:0 0 auto;scroll-snap-align:center;min-height:40px;padding:8px 14px;font-size:13.5px}
+/* G-62: the icon strip grows from its own start, not from the physical left */
+#cm-glass{transform:none!important;margin:12px 0 16px!important}
+.cm-build .st i{width:40px;height:40px;font-size:19px}
+.cm-build .st b{font-size:11px}
+/* G-63: the page stays put while a card is open */
+html.cm-lock,html.cm-lock body{overflow:hidden}
+/* G-70: 44 px targets in the recipe and flavour modals; the matrix chips grow to 36 px */
+#cmodal .cm-x{width:44px;height:44px;top:14px}
+.cm-nav>button{min-height:44px}
+.mxd{min-height:36px;padding:8px 12px}
+.fmodal .x{width:44px;height:44px;border-radius:50%;background:rgba(32,36,31,.45);top:14px;left:14px}
+@media(hover:none) and (min-width:761px){.fmodal .box{overflow:auto}.fmodal .mtxt{max-height:none;display:block}.fmodal .makes{overflow:visible}}
+/* G-58 parity: Safari paints the same containing blocks as Chromium */
+nav{-webkit-backdrop-filter:blur(10px)}
+#cmodal,.fmodal,#pmodal{-webkit-backdrop-filter:blur(6px)}
+/* G-65: hover is for pointers; on touch nothing lifts, pours or reveals on the first tap */
+@media(hover:none){
+ .fcard:hover .comp{opacity:0;max-height:0;padding-top:0}
+ .fcard.v3:hover .ph.vis img.hovimg{opacity:0}
+ .fcard.v3:hover{transform:none;box-shadow:0 6px 30px rgba(32,36,31,.08)}
+ .fcard.v3:hover .circle,.fcard:hover .ph img,.ccard:hover,.ccard:hover .cimg{transform:none}
+ .fmodal a.mkgo i u{opacity:1;transform:none}
+ .ccard small:after{content:"  \2190"} /* G-70: a tap cue on collection cards */
+}
+/* G-65: the products menu folds after a pick (ddGo adds .dd-shut until the next pointerdown) */
+.nav-dd.dd-shut .dd-menu{opacity:0!important;visibility:hidden!important}
 
 /* No prices on the served page (tools/strip_prices.py): the recipe modal's
    figures row is down to the margin, so it spans the card. */
