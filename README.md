@@ -75,14 +75,15 @@ kicker, the same pairing the collection cards use.
 
 ## Where it runs
 
-The Hebrew page is live as an **unpublished** Shopify theme on
-`greenteaeveryday.myshopify.com`. Nothing is published — `HE-RU Vodoma 2024`
-is still the live theme.
+The Hebrew page is the live theme on `greenteaeveryday.myshopify.com`: MAIN
+since 2026-09-24 13:52Z (Admin API `themes`, read 2026-09-25).
 
 | | |
 |---|---|
-| Theme | `GT Site v5 — Hebrew (do not publish)` · id `162206646513` |
-| Preview | `https://gteveryday.com/?preview_theme_id=162206646513` |
+| Live theme | `GT 2026 Site` · id `162206646513` · **MAIN** |
+| Next | `GT 2026 Site — כניסת לקוחות` · id `166730072305` · UNPUBLISHED — the live theme plus the customer-portal entry; publishing it is Tom's (`PUBLISH.md`) |
+| Preview (next) | `https://gteveryday.com/?preview_theme_id=166730072305` |
+| Rollback | `HE-RU Vodoma 2024` · id `131669328113` · UNPUBLISHED |
 | Old homepage | kept as `templates/index.vodoma.json` → `?view=vodoma` |
 
 Open the full preview URL in a browser: Shopify sets a cookie and redirects, so

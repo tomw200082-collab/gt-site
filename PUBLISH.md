@@ -1,17 +1,19 @@
 # Publishing the site
 
-The theme is built, uploaded and unpublished. This is the whole procedure for
-making it live, and the whole procedure for putting it back.
+**Published.** `162206646513` has been MAIN since 2026-09-24 13:52Z (Admin API
+`themes`, read 2026-09-25). §1–§3 are the record of that publish; §4 is still
+the rollback. The next publish is the same act on the copy below: before it,
+the copy must be UNPUBLISHED and `162206646513` MAIN.
 
 **Nothing here runs without Tom's written word.** A session executing this file
 must be able to quote the instruction it is acting on.
 
 | | |
 |---|---|
-| New theme | `162206646513` · `GT Site v5 — Hebrew (do not publish)` · **UNPUBLISHED** |
-| Live theme | `131669328113` · `HE-RU Vodoma 2024` · **MAIN** |
-| Preview | `https://gteveryday.com/?preview_theme_id=162206646513` |
-| Rollback | publish `131669328113` again — see §4 |
+| Live theme | `162206646513` · `GT 2026 Site` · **MAIN** |
+| Next | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **UNPUBLISHED** — the live theme plus the customer-portal entry |
+| Preview (next) | `https://gteveryday.com/?preview_theme_id=166730072305` |
+| Rollback | publish `131669328113` (`HE-RU Vodoma 2024`, now UNPUBLISHED) — see §4. To drop only the entry, publish `162206646513` again |
 
 ---
 
