@@ -1076,7 +1076,7 @@ footer.site .social a:hover,footer.site .social a:focus-visible{border-color:cur
 .cm-build .st b{font-size:11px}
 /* G-63: the page stays put while a card is open */
 html.cm-lock,html.cm-lock body{overflow:hidden}
-/* G-70: 44 px targets in the recipe and flavour modals and the matrix */
+/* G-70: 44 px targets in the recipe and flavour modals; the matrix chips grow to 36 px */
 #cmodal .cm-x{width:44px;height:44px;top:14px}
 .cm-nav>button{min-height:44px}
 .mxd{min-height:36px;padding:8px 12px}
@@ -1089,12 +1089,12 @@ nav{-webkit-backdrop-filter:blur(10px)}
 @media(hover:none){
  .fcard:hover .comp{opacity:0;max-height:0;padding-top:0}
  .fcard.v3:hover .ph.vis img.hovimg{opacity:0}
- .fcard:hover{transform:none;box-shadow:none}
  .fcard.v3:hover{transform:none;box-shadow:0 6px 30px rgba(32,36,31,.08)}
  .fcard.v3:hover .circle,.fcard:hover .ph img,.ccard:hover,.ccard:hover .cimg{transform:none}
  .fmodal a.mkgo i u{opacity:1;transform:none}
- .ccard small:after{content:"  \2190"}
+ .ccard small:after{content:"  \2190"} /* G-70: a tap cue on collection cards */
 }
+/* G-65: the products menu folds after a pick (ddGo adds .dd-shut until the next pointerdown) */
 .nav-dd.dd-shut .dd-menu{opacity:0!important;visibility:hidden!important}
 
 /* No prices on the served page (tools/strip_prices.py): the recipe modal's

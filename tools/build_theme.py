@@ -156,11 +156,9 @@ markup = strip_prices.price_list(markup, SHOW_PRICES)
 # show_portal_entry (gate G-27, W10): the three placements of the customer portal entry
 # that patch_rtl_shell.py writes are wrapped in one theme-editor switch, default off, so
 # the staged theme carries the iPad recipe fixes without the entry until M5.
-_portal_links = re.findall(r'<a class="portal-(?:ico|link|pill)"[^>]*>.*?</a>', markup, flags=re.S)
-if len(_portal_links) != 3:
-    sys.exit(f"expected 3 portal entry links, found {len(_portal_links)}")
-for _a in _portal_links:
-    markup = markup.replace(_a, "{% if section.settings.show_portal_entry %}" + _a + "{% endif %}", 1)
+markup, _n = re.subn(r'<a class="portal-(?:ico|link|pill)"[^>]*>.*?</a>', r"{% if section.settings.show_portal_entry %}\g<0>{% endif %}", markup, flags=re.S)
+if _n != 3:
+    sys.exit(f"expected 3 portal entry links, found {_n}")
 
 
 # ── 3c. width and height on every image ─────────────────────────────────

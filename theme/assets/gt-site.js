@@ -271,7 +271,8 @@ function heroSwipe(){
 function cmCenterChip(){var d=document.getElementById('cm-dots'),a=d&&d.querySelector('.on');if(!a||!d.clientWidth)return;var dr=d.getBoundingClientRect(),ar=a.getBoundingClientRect();d.scrollLeft+=(ar.left+ar.width/2)-(dr.left+dr.width/2);}
 function cmOpen(ci,di,fromPop){cmC=ci;cmI=di||0;if(!fromPop&&!(history.state&&history.state.gtRecipe))history.pushState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);cmRender();document.getElementById('cmodal').classList.add('open');document.documentElement.classList.add('cm-lock');cmCenterChip();}
 function cmClose(fromPop){document.getElementById('cmodal').classList.remove('open');document.documentElement.classList.remove('cm-lock');if(!fromPop&&history.state&&history.state.gtRecipe)history.back();}
-window.addEventListener('popstate',function(){var o=document.getElementById('cmodal').classList.contains('open');var m=/^#recipe-(\d+)-(\d+)$/.exec(location.hash);if(m&&typeof COLS!=='undefined'&&COLS[+m[1]]){cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);}else if(o)cmClose(true);});
+function cmFromHash(){var m=/^#recipe-(\d+)-(\d+)$/.exec(location.hash);if(!m||typeof COLS==='undefined'||!COLS[+m[1]])return false;cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);return true;}
+window.addEventListener('popstate',function(){if(!cmFromHash()&&document.getElementById('cmodal').classList.contains('open'))cmClose(true);});
 function cmGo(d){const n=COLS[cmC].drinks.length;cmI=Math.min(n-1,Math.max(0,cmI+d));cmRender();}
 
 // ==== SVG-инфографика стакана со слоями состава ====
@@ -442,7 +443,7 @@ function cmRender(){
 }
 document.querySelectorAll('.ccard').forEach((el)=>{el.style.cursor='pointer';});
 (function(){var c=document.querySelector('#cmodal .cm-card');if(!c)return;var x0=null,y0=0;c.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});c.addEventListener('touchend',function(e){if(x0==null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;if(e.target.closest('.cm-dots,button,a'))return;if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy))cmGo(dx>0?1:-1);},{passive:true});})();
-(function(){var m=/^#recipe-(\d+)-(\d+)$/.exec(location.hash);if(m&&typeof COLS!=='undefined'&&COLS[+m[1]]){history.replaceState({gtRecipe:1},'',location.hash);cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);}})();
+if(cmFromHash())history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);
 try{
  var mxt=document.getElementById('mxtog'), mxb=document.getElementById('mxbox'), mxBuilt=false;
  if(mxt&&mxb){ mxt.addEventListener('click',function(){

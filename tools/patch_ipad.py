@@ -17,9 +17,10 @@ script or CSS appended last, where it wins.
       body resets to the top, and a collection card opens once (the second
       listener is gone).
 
-  Invisible product links over the portrait screen (G-58, in patch_rtl_shell.py)
-      `visibility:inherit` on the folded dropdown, and `-webkit-backdrop-filter`
-      beside each unprefixed rule so Safari paints the same containing blocks.
+  Invisible product links over the portrait screen (G-58)
+      `visibility:inherit` on the folded dropdown (patch_rtl_shell.py), and here
+      `-webkit-backdrop-filter` beside each unprefixed rule so Safari paints the
+      same containing blocks.
 
   The photo filled the portrait card (G-60), the chips clipped their first row
   (G-61), step 1 of the icon strip sat off the card (G-62), the page scrolled
@@ -44,16 +45,12 @@ SRC = ROOT / "src" / "index.html"
 applied: list[str] = []
 
 
-def die(msg: str) -> None:
-    sys.exit(f"FAIL [patch_ipad]: {msg}")
-
-
-def sub(label: str, old: str, new: str, text: str, count: int = 1) -> str:
+def sub(label: str, old: str, new: str, text: str) -> str:
     n = text.count(old)
-    if n != count:
-        die(f"{label}: expected {count} occurrence(s), found {n}")
+    if n != 1:
+        sys.exit(f"FAIL [patch_ipad]: {label}: expected 1 occurrence, found {n}")
     applied.append(label)
-    return text.replace(old, new, count)
+    return text.replace(old, new, 1)
 
 
 CSS = """
@@ -85,7 +82,7 @@ CSS = """
 .cm-build .st b{font-size:11px}
 /* G-63: the page stays put while a card is open */
 html.cm-lock,html.cm-lock body{overflow:hidden}
-/* G-70: 44 px targets in the recipe and flavour modals and the matrix */
+/* G-70: 44 px targets in the recipe and flavour modals; the matrix chips grow to 36 px */
 #cmodal .cm-x{width:44px;height:44px;top:14px}
 .cm-nav>button{min-height:44px}
 .mxd{min-height:36px;padding:8px 12px}
@@ -98,12 +95,12 @@ nav{-webkit-backdrop-filter:blur(10px)}
 @media(hover:none){
  .fcard:hover .comp{opacity:0;max-height:0;padding-top:0}
  .fcard.v3:hover .ph.vis img.hovimg{opacity:0}
- .fcard:hover{transform:none;box-shadow:none}
  .fcard.v3:hover{transform:none;box-shadow:0 6px 30px rgba(32,36,31,.08)}
  .fcard.v3:hover .circle,.fcard:hover .ph img,.ccard:hover,.ccard:hover .cimg{transform:none}
  .fmodal a.mkgo i u{opacity:1;transform:none}
- .ccard small:after{content:"  \\2190"}
+ .ccard small:after{content:"  \\2190"} /* G-70: a tap cue on collection cards */
 }
+/* G-65: the products menu folds after a pick (ddGo adds .dd-shut until the next pointerdown) */
 .nav-dd.dd-shut .dd-menu{opacity:0!important;visibility:hidden!important}
 """
 
@@ -131,10 +128,10 @@ def main() -> None:
                "function cmClose(fromPop){document.getElementById('cmodal').classList.remove('open');"
                "document.documentElement.classList.remove('cm-lock');"
                "if(!fromPop&&history.state&&history.state.gtRecipe)history.back();}\n"
-               "window.addEventListener('popstate',function(){var o=document.getElementById('cmodal').classList.contains('open');"
-               "var m=/^#recipe-(\\d+)-(\\d+)$/.exec(location.hash);"
-               "if(m&&typeof COLS!=='undefined'&&COLS[+m[1]]){cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);}"
-               "else if(o)cmClose(true);});", text)
+               # one reader of the deep link, for popstate and for the first load
+               "function cmFromHash(){var m=/^#recipe-(\\d+)-(\\d+)$/.exec(location.hash);if(!m||typeof COLS==='undefined'||!COLS[+m[1]])return false;"
+               "cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);return true;}\n"
+               "window.addEventListener('popstate',function(){if(!cmFromHash()&&document.getElementById('cmodal').classList.contains('open'))cmClose(true);});", text)
     # ── a card opens once: its inline onclick already does ──────────────────
     text = sub("a card opens once (its inline onclick already does)",
                "document.querySelectorAll('.ccard').forEach((el,i)=>{el.style.cursor='pointer';el.addEventListener('click',()=>cmOpen(i));});",
@@ -144,9 +141,8 @@ def main() -> None:
                "c.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});"
                "c.addEventListener('touchend',function(e){if(x0==null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;"
                "if(e.target.closest('.cm-dots,button,a'))return;if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy))cmGo(dx>0?1:-1);},{passive:true});})();\n"
-               # U9: a shared or reloaded deep link opens its card
-               "(function(){var m=/^#recipe-(\\d+)-(\\d+)$/.exec(location.hash);"
-               "if(m&&typeof COLS!=='undefined'&&COLS[+m[1]]){history.replaceState({gtRecipe:1},'',location.hash);cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);}})();", text)
+               # U9: a shared or reloaded deep link opens its card, and the entry is marked so back closes it
+               "if(cmFromHash())history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);", text)
     # ── G-64: one swipe, one slide ──────────────────────────────────────────
     text = sub("one swipe, one slide", "try{heroSwipe()}catch(e){}", "", text)
     # ── G-65: no hover preview on touch; the products menu closes after a pick ──
