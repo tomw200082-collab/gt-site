@@ -107,7 +107,7 @@ def main() -> None:
         "done copy",
         "<span>אפליקציית המייל שלכם נפתחה עם המכתב המוכן. "
         "אם לא — כתבו ל־info@gteveryday.com</span>",
-        "<span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. "
+        "<span>קיבלנו את הפרטים ונחזור אליכם תוך יום עסקים אחד. "
         "אם דחוף — <a href=\"tel:+972543982444\">054-398-2444</a>.</span>",
         text,
     )
@@ -147,7 +147,7 @@ def main() -> None:
         "    f.classList.add('sent');btn.innerHTML='נשלח \\u2713';\n"
         "    document.getElementById('pf-done').scrollIntoView("
         "{block:'nearest',behavior:'smooth'});return;}\n"
-        "   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. "
+        "   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. "
         "בדקו שם, שם העסק, עיר וטלפון.');return;}\n"
         "   if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. "
         "בדקו אותו ונסו שוב.');return;}\n"

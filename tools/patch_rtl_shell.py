@@ -129,6 +129,7 @@ RTL_CSS = """
 .fcard.v3 .badge{left:auto;right:14px}
 .qcard .mark{left:auto;right:32px}
 .bottle:after{left:auto;right:12px}
+.step:not(:last-child):after{right:auto;left:-16px;content:'←'}
 .nav-links a:after{left:auto;right:0}
 
 /* previous/next swap sides: in Hebrew, "back" is to the right */

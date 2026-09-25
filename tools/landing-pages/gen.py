@@ -8,7 +8,15 @@ one set. They replaced a CSS-drawn glass that sized its bands from the millilitr
 in the recipe — an honest diagram, but a diagram, on a page whose job is to make a
 buyer want the cup. `photos.json` holds the drink-to-photo map and its provenance.
 """
-import json, html, os
+import json, html, os, re, sys
+from pathlib import Path
+
+# Tom, 2026-09-24: no shekel figure on any served page. The switch and the check are
+# tools/strip_prices.py's, shared with the home page. The cards keep what stays true
+# without a price: what is left for the café per cup.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import strip_prices  # noqa: E402
+SHOW_PRICES = strip_prices.show_prices()
 
 D = json.load(open('drinks.json'))
 P = json.load(open('photos.json'))
@@ -25,63 +33,75 @@ def dim(asset):
     measure_assets.py refreshes assets.json whenever an asset is replaced."""
     w, h = A[asset]
     return f'width="{w}" height="{h}"'
-esc = lambda s: html.escape(s, quote=True)
+# צ'אי and מאצ'ה come from drinks.json with an ASCII apostrophe; the page writes the
+# Hebrew geresh. Only an apostrophe after a Hebrew letter is one.
+geresh = lambda s: re.sub(r"(?<=[\u05d0-\u05ea])'", "\u05f3", s)
+esc = lambda s: html.escape(geresh(s), quote=True)
 WA = "972543982444"
+# Where the form sends a lead: the public intake the home page's enquiry form
+# already uses (gt-factory-os supabase/functions/website_lead_intake). It files
+# the lead in sales_core — the sales team's queue — and emails them. The
+# section's lead_webhook setting overrides it; nobody has set one.
+INTAKE = "https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake"
 
 PAGES = {
  "chai": dict(
    key="צ'אי", unit="מבקבוק אחד", accent="#D96B3F", atext="#B85B36", tint="#F6E4D9", deep="#412013",
    hero="gt-74108519a7.webp", eyebrow="צ׳אי מסאלה · NAMASTEA",
-   h1=("בקבוק אחד. ", "אחת־עשרה כוסות."),
-   promise="שני סוגי תה שחור וחמישה תבלינים, מוכנים למזיגה. אחד־עשר משקאות שהבר שלכם יודע להכין כבר עכשיו — בלי ציוד, בלי הכשרה, בלי פריט חדש במקרר.",
-   need=("צריך רק מה שכבר יש לכם", "קרח, חלב או מים, וכוס. כל אחד־עשר המשקאות יוצאים מאותו בקבוק."),
+   h1=("בקבוק אחד. ", "אחד־עשר משקאות."),
+   promise="תמצית משני סוגי תה שחור וחמישה תבלינים, מוכנה למזיגה. 50 מ״ל לכוס — בלי ציוד ובלי הכנה מראש.",
+   need=("צריך רק מה שכבר יש לכם", "קרח, חלב, טוניק, אספרסו או מיץ תפוזים. כל אחד־עשר המשקאות יוצאים מאותו בקבוק."),
    prod=dict(name="NAMASTEA", origin="תערובת הודית",
      comp="שני סוגי תה שחור · קינמון · הל · ג׳ינג׳ר · פלפל שחור · ציפורן",
-     liner="רב־המכר של GT בקהל הישראלי. מבריק קר, נהדר עם מי קוקוס, ועובד חם כצ׳אי לאטה עם כל חלב.",
+     liner="רב־המכר של GT. מעולה על קרח, נהדר עם מי קוקוס, וחם הוא הופך לצ׳אי לאטה עם כל סוג חלב.",
      sizes=[("500 מ״ל","₪33"),("1 ליטר","₪65")],
      img="gt-0ae37a139e.webp"),
+   cups=("20", "כוסות מבקבוק של ליטר"),
    extra=None),
  "matcha": dict(
    key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#4C823D", tint="#E5ECDB", deep="#1C3117",
    hero="gt-lp-matcha-hero-cropped.webp", eyebrow="מאצ׳ה · שיזואוקה",
-   h1=("המאצ׳ה היפנית ", "האיכותית בישראל."),
-   promise="מאצ׳ה טקסית משיזואוקה, בהטסה ישירה מהחקלאים. בסיס אחד נבנה בתחילת המשמרת ומשרת את כל שש־עשרה הכוסות שבתפריט הזה.",
-   need=("צריך מקציף וחלב", "הבסיס נבנה פעם אחת — 1.8 גרם על 50 מ״ל מים — ומחזיק לכל המשמרת."),
+   h1=("מאצ׳ה יפנית ", "ישר מהחקלאים."),
+   promise="בדרגה טקסית, ממחוז שיזואוקה. מכינים בסיס אחד בתחילת המשמרת, והוא משמש את כל שישה־עשר המשקאות בתפריט.",
+   need=("צריך מקציף וחלב", "לבסיס: 1.8 גרם אבקה לכל 50 מ״ל מים, מקציפים עד שהתערובת חלקה."),
    prod=dict(name="מאצ׳ה שיזואוקה", origin="שיזואוקה · יפן",
      comp="דרגה טקסית · מיובא ישירות מהחקלאים",
-     liner="אבקת מאצ׳ה טקסית ממחוז שיזואוקה, בהטסה ישירה מהחקלאים ביפן. את ההבדל הלקוחות מרגישים בטעם.",
+     liner="אבקת מאצ׳ה טקסית ממחוז שיזואוקה, בהטסה ישירה מהחקלאים ביפן. הלקוחות שלכם ירגישו את ההבדל בטעם.",
      sizes=[("50 גרם","₪65"),("500 גרם","₪590")],
      yields=[("50 גרם","27"),("500 גרם","277")], dose="1.8 גרם לכוס",
      img="gt-lp-matcha-plate-cropped.webp"),
-   extra=dict(name="הוג׳יצ׳ה", tagline="קלוי · ״מאצ׳ה שחורה״",
-     liner="כל שש־עשרה הכוסות בעמוד הזה אפשר להכין גם עם הוג׳יצ׳ה — מאצ׳ה שחורה קלויה, עם נימות אגוז לוז וקקאו. אותה הכנה, אותה עלות מנה, פרופיל טעם אחר לגמרי.",
-     comp="מאצ׳ה מובחר קלוי · נימות אגוז לוז וקקאו",
+   cups=("277", "כוסות מ־500 גרם אבקה"),
+   extra=dict(name="הוג׳יצ׳ה", tagline='קלוי · "מאצ׳ה שחורה"',
+     liner="את כל שישה־עשר המשקאות בעמוד הזה אפשר להכין גם עם הוג׳יצ׳ה — מאצ׳ה שחורה קלויה, עם נימות אגוז לוז וקקאו. אותה הכנה, טעם אחר לגמרי.",
+     comp="מאצ׳ה מובחרת קלויה · נימות אגוז לוז וקקאו",
      sizes=[("500 גרם","₪375")], img="gt-a06eb940fc.webp")),
  "iced-tea": dict(
-   key="תה קר", unit="מאותו קו תרכיזים", accent="#E63950", atext="#DA364C", tint="#F8DDDB", deep="#451118",
-   hero="gt-d3abd65414.webp", eyebrow="חליטות קרות · אחד עשר תרכיזים",
-   h1=("שש־עשרה כוסות. ", "בלי מכונה אחת."),
-   promise="תרכיזי תה מוכנים למזיגה. חמישים מיליליטר, קרח, ומים או סודה — והמשקה על הבר. בקבוק סגור לא צריך מקום במקרר.",
-   need=("צריך רק מה שכבר יש לכם", "קרח, מים או סודה, וכוס. בקבוק סגור לא צריך קירור."),
+   key="תה קר", unit="מאותה סדרת תמציות", accent="#E63950", atext="#DA364C", tint="#F8DDDB", deep="#451118",
+   hero="gt-d3abd65414.webp", eyebrow="חליטות קרות · אחת־עשרה תמציות",
+   h1=("שישה־עשר משקאות. ", "בלי אף מכונה."),
+   promise="תמציות תה מוכנות למזיגה. 50 מ״ל על קרח, משלימים במים או בסודה, והמשקה מוכן. בקבוק סגור לא תופס מקום במקרר.",
+   need=("צריך רק מה שכבר יש לכם", "קרח, מים או סודה, וכוס."),
    line=True,
-   prod=dict(name="אחד עשר תרכיזים", origin="הקו",
-     comp="Fresh · Detox · Revive · Energy · Consciousness · Calm · Desertea · Namastea · American",
-     liner="אחד עשר תרכיזים מכל עולם התה, כל אחד עם פרופיל משלו. בקבוק סגור לא צריך מקרר, ופתוח מחזיק בקירור.",
+   prod=dict(name="אחת־עשרה תמציות", origin="כל הסדרה",
+     comp="Fresh · Detox · Revive · Energy · Consciousness · Calm · Desertea · Namastea · American · Detox ללא סוכר · Fresh ללא סוכר",
+     liner="תמציות מכל עולם התה, כל אחת עם אופי משלה. אחרי הפתיחה הבקבוק מחזיק שלושה חודשים בקירור.",
      sizes=[("500 מ״ל","₪33"),("1 ליטר","₪65")],
      img="gt-682cbb70f5.webp"),
+   cups=("20–25", "כוסות מבקבוק של ליטר"),
    extra=None),
  "ube": dict(
    key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7B5CC6", tint="#E9E2EC", deep="#251C3B",
-   hero="gt-lp-ube-hero-cropped.webp", eyebrow="אובה · שורש בטטה סגולה",
-   h1=("הטרנד הסגול ", "שכובש את העולם."),
-   promise="אבקת שורש יאם — מרקם קרמי ומתיקות עדינה בין וניל לאגוז. הצבע מגיע מהשורש עצמו, וזה בדיוק מה שמצלם.",
-   need=("צריך מקציף וחלב", "כל כוס כאן מחברת אובה למוצר GT שני — מחית פרי, מאצ׳ה או צ׳אי."),
-   prod=dict(name="אובה", origin="שורש בטטה סגולה",
-     comp="אבקת בטטה סגולה · צבע טבעי",
-     liner="אבקת שורש יאם — בטטה סגולה. הצבע טבעי ומגיע מהשורש עצמו, והאבקה נכנסת ללאטה, לשייק ולסודה.",
+   hero="gt-lp-ube-hero-cropped.webp", eyebrow="אובה · שורש יאם סגול",
+   h1=("הטרנד הסגול ", "מגיע לבר שלכם."),
+   promise="אבקת שורש יאם סגול — מרקם קרמי ומתיקות עדינה בין וניל לאגוז, וצבע שמצטלם מעולה.",
+   need=("צריך מקציף וחלב", "כל משקה כאן משלב אובה עם מוצר GT נוסף: מחית פרי, מאצ׳ה או צ׳אי."),
+   prod=dict(name="אובה", origin="שורש יאם סגול",
+     comp="אבקת יאם סגול · צבע טבעי",
+     liner="אבקה סגולה בלי טיפת צבע מאכל: הצבע כולו מהשורש. מתאימה ללאטה, לשייק ולסודה.",
      sizes=[("500 גרם","₪175"),("1 ק״ג","₪340")],
      yields=[("500 גרם","250"),("1 ק״ג","500")], dose="2 גרם לכוס",
      img="gt-lp-ube-plate-cropped.webp"),
+   cups=("500", "כוסות מקילו אבקה"),
    extra=None),
 }
 
@@ -121,6 +141,15 @@ def band(slug, end):
             f' width="2048" height="532" loading="lazy" decoding="async">\n')
 
 
+def figs(d):
+    keep = f"""
+            <div class="g-keep"><dt>נשאר אצלכם</dt><dd>{d['marg']}%</dd></div>"""
+    if not SHOW_PRICES:
+        return keep
+    return f"""
+            <div><dt>עלות מנה</dt><dd>₪{d['cost']}</dd></div>
+            <div><dt>מחיר מומלץ</dt><dd>₪{d['price']}</dd></div>""" + keep
+
 def card(d):
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])
     note = f'<p class="g-note">{esc(d["note"])}</p>' if d['note'] else ""
@@ -130,10 +159,7 @@ def card(d):
         <div class="g-drink-tx">
           <h3>{esc(d['he'])}</h3>
           <span class="g-en">{esc(d['en'])}</span>
-          <dl class="g-fig">
-            <div><dt>עלות מנה</dt><dd>₪{d['cost']}</dd></div>
-            <div><dt>מחיר מומלץ</dt><dd>₪{d['price']}</dd></div>
-            <div class="g-keep"><dt>נשאר אצלכם</dt><dd>{d['marg']}%</dd></div>
+          <dl class="g-fig">{figs(d)}
           </dl>
           <details>
             <summary>איך מכינים</summary>
@@ -144,15 +170,27 @@ def card(d):
       </article>"""
 
 def sizes_html(pairs):
+    if not SHOW_PRICES:
+        return "".join(f'<span>{esc(l)}</span>' for l, v in pairs)
     return "".join(f'<span>{esc(l)}<b dir="ltr">{esc(v)}</b></span>' for l, v in pairs)
+
+if SHOW_PRICES:
+    MENU_INTRO = "כל כוס בתמונה היא הכוס שיוצאת מהמתכון שלידה. לצד כל אחת: מה היא עולה לכם, מה מומלץ לגבות, ומה נשאר."
+    FINE_PRINT = "עלות = ללא מע״מ · מחיר מומלץ = כולל מע״מ 18% · הרווח מחושב על ההכנסה נטו · עלות רכיבי המשקה בלבד, ללא גרניש"
+else:
+    MENU_INTRO = "כל כוס בתמונה היא בדיוק מה שיוצא מהמתכון שלצידה. ליד כל אחת תמצאו כמה מהמחיר נשאר אצלכם ואיך מכינים אותה."
+    FINE_PRINT = "הרווח מחושב על ההכנסה ללא מע״מ, לפי עלות רכיבי המשקה בלבד (בלי קישוט)."
 
 def build(slug, cfg):
     ds = [d for d in D if d['page'] == cfg['key']]
     cards = "".join(card(d) for d in ds)
     p = cfg['prod']
     wa = f"https://wa.me/{WA}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
-        f"היי, הגעתי מדף ה{cfg['key']} באתר ואשמח לקבל את המחירון")
-    lo = min(float(d['cost']) for d in ds)
+        geresh(f"היי, הגעתי מהעמוד על {cfg['key']} באתר ואשמח לקבל את המחירון"))
+    # The ledger's third cell: the cheapest cup on the page, or with prices off,
+    # how many cups the product pours.
+    third = ((f"₪{min(float(d['cost']) for d in ds):.2f}", "עלות המנה הנמוכה כאן")
+             if SHOW_PRICES else cfg['cups'])
     mn, mx = min(int(d['marg']) for d in ds), max(int(d['marg']) for d in ds)
 
     yield_line = ""
@@ -223,7 +261,7 @@ def build(slug, cfg):
     <div class="g-ledger">
       <div><b dir="ltr">{len(ds)}</b><i>משקאות {esc(cfg["unit"])}</i></div>
       <div><b dir="ltr">{mn}–{mx}%</b><i>נשאר אצלכם על כל כוס</i></div>
-      <div><b dir="ltr">₪{lo:.2f}</b><i>עלות המנה הנמוכה כאן</i></div>
+      <div><b dir="ltr">{third[0]}</b><i>{esc(third[1])}</i></div>
     </div>
   </header>
 
@@ -232,11 +270,11 @@ def build(slug, cfg):
     <div class="g-wrap">
       <div class="g-head g-fade-up">
         <span class="g-eyebrow">התפריט</span>
-        <h2 class="g-display">זה יכול להיות <em>התפריט שלך.</em></h2>
-        <p>כל כוס בתמונה היא הכוס שיוצאת מהמתכון שלידה. לצד כל אחת: מה היא עולה לכם, מה מומלץ לגבות, ומה נשאר.</p>
+        <h2 class="g-display">ככה ייראה <em>התפריט שלכם.</em></h2>
+        <p>{MENU_INTRO}</p>
       </div>
       <div class="g-grid">{cards}</div>
-      <p class="g-fine">עלות = ללא מע״מ · מחיר מומלץ = כולל מע״מ 18% · הרווח מחושב על ההכנסה נטו · עלות רכיבי המשקה בלבד, ללא גרניש</p>
+      <p class="g-fine">{FINE_PRINT}</p>
     </div>
   </section>
 
@@ -264,14 +302,14 @@ def build(slug, cfg):
       <div class="g-fade-up">
         <span class="g-eyebrow">מי אנחנו</span>
         <h2 class="g-display">יצרנית בוטיק <em>ישראלית.</em></h2>
-        <p>אנחנו חולטים עלי תה וצמחי מאכל מכל העולם ומוציאים מהם תמציות טבעיות, בלי חומרים משמרים. מהן נבנה כל משקה בתפריט שלמעלה.</p>
+        <p>אנחנו חולטים עלי תה וצמחי מאכל מכל העולם ומפיקים מהם תמציות טבעיות, בלי חומרים משמרים, במפעל שלנו בחולון.</p>
       </div>
       <div class="g-fade-up">
-        <p class="g-punch">אלו יהיו המשקאות הכי רווחיים שלך.</p>
+        <p class="g-punch">רווחי כמעט כמו קפה, והרבה יותר ממשקה מוכן מהמקרר.</p>
         <ul>
-          <li>נבנה לבתי קפה ומסעדות.</li>
-          <li>קל לתפעול ולהטמעה — הצוות שלכם כבר יודע את התנועות.</li>
-          <li>באחסון סגור לא צריך קירור ולא תופס מקום במקרר.</li>
+          <li>מיועד לבתי קפה ולמסעדות.</li>
+          <li>לכל משקה יש סרטון הדרכה לצוות.</li>
+          <li>בלי מקרר עד הפתיחה, ושנה על המדף.</li>
         </ul>
       </div>
     </div>
@@ -282,32 +320,35 @@ def build(slug, cfg):
       <div class="g-fade-up">
         <span class="g-eyebrow">נדבר</span>
         <h2 class="g-display">בואו נהיה <em>שותפים.</em></h2>
-        <p>המחירון הסיטונאי, המתכונים המתומחרים, והתאמה לתפריט שלכם. חוזרים תוך יום עסקים אחד.</p>
+        <p>המחירון הסיטונאי, המתכונים המתומחרים והתאמה לתפריט שלכם. חוזרים תוך יום עסקים אחד.</p>
         <ul class="g-contact">
           <li><a href="{wa}" target="_blank" rel="noopener">וואטסאפ · 054-398-2444</a></li>
           <li><a href="tel:+{WA}">חייגו · 054-398-2444</a></li>
           <li>הלהב 15, חולון · info@gteveryday.com</li>
         </ul>
       </div>
-      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | escape }}}}" data-source="site-{slug}" data-wa="{WA}" novalidate>
+      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | default: '{INTAKE}' | escape }}}}" data-source="site-{slug}" data-wa="{WA}" novalidate>
         <div class="g-f-row">
           <label><span>שם העסק</span><input name="display_name" required autocomplete="organization"></label>
-          <label><span>השם שלך</span><input name="contact_name" required autocomplete="name"></label>
+          <label><span>שם מלא</span><input name="contact_name" required autocomplete="name"></label>
         </div>
         <div class="g-f-row">
           <label><span>טלפון</span><input name="phone" type="tel" required autocomplete="tel" inputmode="tel"></label>
-          <label><span>עיר</span><input name="city" autocomplete="address-level2"></label>
+          <label><span>עיר</span><input name="city" required autocomplete="address-level2"></label>
         </div>
-        <label><span>אימייל · לא חובה</span><input name="email" type="email" autocomplete="email"></label>
-        <label class="g-ok"><input type="checkbox" name="consent" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
+        <label><span>אימייל (לא חובה)</span><input name="email" type="email" autocomplete="email"></label>
+        <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
+          <label>אל תמלאו שדה זה<input name="company_website" type="text" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <label class="g-ok"><input type="checkbox" name="consent" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
         <button type="submit" class="g-btn g-solid">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></button>
         <p class="g-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
 
-  <nav class="g-siblings" aria-label="קווים נוספים">
-    <span>עוד קווים</span>
+  <nav class="g-siblings" aria-label="עוד מ־GT">
+    <span>עוד מ־GT</span>
     {siblings}
   </nav>
 
@@ -315,7 +356,7 @@ def build(slug, cfg):
 
   <footer class="g-foot">
     <div class="g-wrap">
-      <span>© 2026 גרינטי אוירי די בע״מ</span>
+      <span>‎© 2026 גרינטי אוירי די בע״מ</span>
       <span class="g-serif" dir="ltr">Don't Drink Boring.</span>
     </div>
   </footer>
@@ -328,8 +369,8 @@ def build(slug, cfg):
     {{
       "type": "text",
       "id": "lead_webhook",
-      "label": "Lead webhook (Make)",
-      "info": "POST target for the form. Leave empty and the form falls back to WhatsApp with the details prefilled."
+      "label": "Lead endpoint (override)",
+      "info": "Leave empty: leads go to the sales system (website_lead_intake → sales_core), like the home page form. Set only to send them somewhere else."
     }}
   ]
 }}
@@ -339,6 +380,8 @@ def build(slug, cfg):
 os.makedirs('out', exist_ok=True)
 for slug, cfg in PAGES.items():
     src = build(slug, cfg)
+    if not SHOW_PRICES:
+        strip_prices.assert_clean(f"gt-lp-{slug}.liquid", src)
     open(f'out/gt-lp-{slug}.liquid','w').write(src)
     tpl = {"layout":"gt","sections":{"main":{"type":f"gt-lp-{slug}","settings":{}}},"order":["main"]}
     open(f'out/page.{slug}.json','w').write(json.dumps(tpl, indent=2)+"\n")

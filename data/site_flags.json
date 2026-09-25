@@ -1,0 +1,5 @@
+{
+  "show_prices": false,
+  "_why": "Tom, 2026-09-24: 'צריך גם להוריד את המחירים שלא יראו אותם'. No shekel figure on any page the store serves: GT's prices, the per-cup cost, the recommended menu price, profit per cup and the wholesale list. Margin percentages stay.",
+  "_how": "The theme build (tools/build_theme.py via tools/strip_prices.py) and the landing-page generator (tools/landing-pages/gen.py) both read this flag. Set true, rebuild both, upload — and put the two price lines in theme/layout/gt.liquid (meta_desc, og_desc) back if the list should be advertised again. src/index.html always keeps every figure, verified by tools/verify_figures.py."
+}

@@ -1,8 +1,8 @@
 /* gt-lp.js — reveal on scroll + lead capture for the GT category landing pages.
-   The form POSTs to the Make webhook set on the section. Make holds
-   LEAD_INGEST_TOKEN and calls /ingest; the browser never sees a secret.
-   With no webhook set, the form falls back to WhatsApp with the details
-   prefilled — a submission is never silently lost. */
+   The form POSTs to website_lead_intake, the same public intake as the home
+   page's enquiry form: it files the lead in sales_core and alerts the sales
+   team, and holds every secret itself. If the send fails, the form opens
+   WhatsApp with the details prefilled — a submission is never silently lost. */
 (function () {
   'use strict';
 
@@ -72,7 +72,7 @@
   function waFallback(f, payload) {
     var lines = [
       'היי, הגעתי מהאתר ואשמח לקבל את המחירון.',
-      'עסק: ' + payload.display_name,
+      'עסק: ' + payload.venue,
       'שם: ' + payload.contact_name,
       'טלפון: ' + payload.phone,
       payload.city ? 'עיר: ' + payload.city : '',
@@ -80,6 +80,8 @@
     ].filter(Boolean).join('\n');
     window.open('https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines), '_blank', 'noopener');
   }
+
+  var shown = Date.now();
 
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp form'), function (f) {
     var msg = f.querySelector('.g-msg');
@@ -94,36 +96,40 @@
       ev.preventDefault();
       if (!f.reportValidity()) return;
 
+      // The fields website_lead_intake reads. form_name is this page's key in
+      // sales_core.campaign_map, so the lead is counted against its page.
       var payload = {
-        source: f.dataset.source,
-        display_name: f.display_name.value.trim(),
         contact_name: f.contact_name.value.trim(),
+        venue: f.display_name.value.trim(),
         phone: f.phone.value.trim(),
         city: f.city.value.trim(),
         email: f.email.value.trim(),
+        company_website: f.company_website.value,
         form_name: 'landing-' + f.dataset.source,
-        platform: 'site',
-        page_url: location.href
+        elapsed_ms: Date.now() - shown,
+        page: location.href,
+        referrer: document.referrer
       };
-
-      var endpoint = f.dataset.endpoint;
-      if (!endpoint) {
-        say('פותחים לכם וואטסאפ עם הפרטים — שלחו ונחזור אליכם.', false);
-        waFallback(f, payload);
-        return;
-      }
 
       btn.disabled = true;
       say('שולחים…', false);
 
-      fetch(endpoint, {
+      fetch(f.dataset.endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }).then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        f.reset();
-        say('תודה — קיבלנו. נחזור אליכם תוך יום עסקים אחד.', false);
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (r.ok && j.ok !== false) {
+            f.reset();
+            say('תודה — קיבלנו. נחזור אליכם תוך יום עסקים אחד.', false);
+            return;
+          }
+          // A typo is the visitor's to fix, not a reason to leave for WhatsApp.
+          if (j.error === 'bad_phone') { say('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.', true); return; }
+          if (j.error === 'bad_email') { say('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.', true); return; }
+          throw new Error(j.error || 'HTTP ' + r.status);
+        });
       }).catch(function () {
         say('השליחה נכשלה. פותחים וואטסאפ עם הפרטים כדי שלא ילכו לאיבוד.', true);
         waFallback(f, payload);

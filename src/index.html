@@ -1,19 +1,23 @@
 <!DOCTYPE html><html lang="he" dir="rtl"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="GT Everyday — יצרנית בוטיק ישראלית של תמציות תה, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים מתומחרים ומחירון סיטונאי גלוי.">
+<meta name="description" content="GT Everyday — תמציות תה מתוצרת ישראל, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות מוכנים לתפריט, עם מתכון מדויק לכל כוס.">
 <meta name="theme-color" content="#3E6E34">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="GT Everyday">
-<meta property="og:title" content="GT Everyday · סיטונאות למסעדנות">
-<meta property="og:description" content="48 משקאות. ספק אחד. מחירון גלוי.">
+<meta property="og:title" content="GT Everyday · תמציות תה ומאצ׳ה לבתי קפה ומסעדות">
+<meta property="og:description" content="48 משקאות. ספק אחד. הזמנה אחת.">
 <meta name="twitter:card" content="summary_large_image">
-<title>GT Everyday · סיטונאות למסעדנות</title>
+<title>GT Everyday · תמציות תה ומאצ׳ה לבתי קפה ומסעדות</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bellefair&amp;family=Assistant:wght@300;400;600;700;800&amp;family=Playfair+Display:ital,wght@0,700;0,900;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
 <style>
+/* Roca One (English) is a paid Latinotype font, not on Google Fonts — no licensed
+   files yet. Every stack below lists it first so Latin glyphs use it the moment
+   real files land; until then every character, Hebrew and Latin alike, falls
+   back to Heebo. (Tom, 2026-09-03) */
 :root{
   --ink:#20241F; --ink-soft:#4B5148; --paper:#FBF8F2; --card:#F3EFE6; --white:#FFFFFF;
   --gt:#3E6E34; --gt-d:#2B4F24; --terra:#C4744B; --line:#E7E1D3;
@@ -24,12 +28,12 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 ::selection{background:var(--consc);color:#fff}
-body{font-family:'Assistant',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
-.serif{font-family:'Bellefair',serif}
-.num{font-family:'Playfair Display',serif}
+body{font-family:'Roca One','Heebo',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Roca One','Heebo',serif}
+.num{font-family:'Roca One','Heebo',serif}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
-h2.display{font-family:'Bellefair',serif;font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:.01em}
-h2.display em{font-style:italic;font-family:'Playfair Display',serif;font-weight:700}
+h2.display{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:.01em}
+h2.display em{font-style:italic;font-family:'Roca One','Heebo',serif;font-weight:700}
 .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);font-weight:800}
 .eyebrow:before{content:"";width:34px;height:1px;background:var(--terra)}
 
@@ -45,7 +49,7 @@ nav{position:sticky;top:0;background:rgba(251,248,242,.9);backdrop-filter:blur(1
 .nav-links a{color:var(--ink);text-decoration:none;position:relative}
 .nav-links a:after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--terra);transition:width .2s}
 .nav-links a:hover:after{width:100%}
-.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);font-weight:800;padding:14px 30px;border-radius:999px;text-decoration:none;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;border:none;cursor:pointer;font-family:'Assistant'}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);font-weight:800;padding:14px 30px;border-radius:999px;text-decoration:none;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;border:none;cursor:pointer;font-family:'Roca One','Heebo'}
 .btn .arr{transition:transform .2s}
 .btn:hover{background:var(--gt-d)}
 .btn:hover .arr{transform:translateX(4px)}
@@ -58,9 +62,9 @@ nav{position:sticky;top:0;background:rgba(251,248,242,.9);backdrop-filter:blur(1
 .hero .b1{width:480px;height:480px;background:var(--consc);top:-160px;right:-120px;opacity:.25}
 .hero .b2{width:380px;height:380px;background:var(--energy);bottom:-140px;left:-100px;opacity:.28}
 .hero .in{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative}
-.hero h2{font-family:'Bellefair',serif;font-weight:400;font-size:clamp(56px,7.6vw,104px);line-height:.98;margin:0 0 30px}
-.hero h2 em{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:var(--gt)}
-.hero .tags{font-family:'Assistant';font-size:17px;font-weight:800;letter-spacing:.02em;color:var(--terra);text-transform:uppercase}
+.hero h2{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(56px,7.6vw,104px);line-height:.98;margin:0 0 30px}
+.hero h2 em{font-family:'Roca One','Heebo',serif;font-style:italic;font-weight:700;color:var(--gt)}
+.hero .tags{font-family:'Roca One','Heebo';font-size:17px;font-weight:800;letter-spacing:.02em;color:var(--terra);text-transform:uppercase}
 .hero p{font-size:19px;color:var(--ink-soft);max-width:470px;margin:18px 0 36px}
 .hero .ctas{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .hero .sub-cta{font-weight:700;color:var(--gt);text-decoration:none;border-bottom:2px solid transparent}
@@ -70,9 +74,9 @@ nav{position:sticky;top:0;background:rgba(251,248,242,.9);backdrop-filter:blur(1
 
 /* TICKER */
 .ticker{background:var(--ink);color:var(--paper);padding:16px 0;overflow:hidden;white-space:nowrap}
-.ticker .track{display:inline-block;animation:roll 32s linear infinite;font-family:'Bellefair';font-size:19px;letter-spacing:.08em}
+.ticker .track{display:inline-block;animation:roll 32s linear infinite;font-family:'Roca One','Heebo';font-size:19px;letter-spacing:.08em}
 .ticker span{margin-right:56px}
-.ticker b{color:var(--energy);font-family:'Playfair Display'}
+.ticker b{color:var(--energy);font-family:'Roca One','Heebo'}
 @keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 section{padding:100px 0}
@@ -84,7 +88,7 @@ section{padding:100px 0}
 .bottle:before{content:"";position:absolute;top:-17px;left:50%;transform:translateX(-50%);width:27px;height:21px;background:#1E1E1C;border-radius:5px 5px 3px 3px}
 .bottle:after{content:"";position:absolute;top:14px;left:12px;width:7px;height:120px;background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,0));border-radius:99px}
 .bottle .label{position:absolute;left:8px;right:8px;top:52px;height:64px;background:#FBF8F2;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.bottle .label b{font-family:'Bellefair';font-size:12px;letter-spacing:.08em;color:#20241F}
+.bottle .label b{font-family:'Roca One','Heebo';font-size:12px;letter-spacing:.08em;color:#20241F}
 .bottle .label i{width:22px;height:2px;background:currentColor;display:block}
 
 /* FLAVOR CARDS */
@@ -96,7 +100,7 @@ section{padding:100px 0}
 .fcard .ph .bottle{transition:transform .3s}
 .fcard:hover .ph .bottle{transform:scale(1.05) rotate(-3deg)}
 .fcard .ph img{height:212px;width:auto;filter:drop-shadow(0 20px 26px rgba(32,36,31,.3));transition:transform .3s}
-.fcard .prow{display:flex;gap:14px;margin-top:10px;font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:#20241F}
+.fcard .prow{display:flex;gap:14px;margin-top:10px;font-family:'Roca One','Heebo',serif;font-weight:700;font-size:15px;color:#20241F}
 .fcard .prow span:last-child{opacity:.55}
 .fcard .ph.full{padding:0}
 
@@ -107,7 +111,7 @@ section{padding:100px 0}
 .fcard:hover .glass{opacity:.95;transform:translateY(0)}
 .fcard .info{padding:22px 26px 26px}
 .fcard .origin{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#9A9F93}
-.fcard h4{font-family:'Bellefair';font-weight:400;font-size:30px;margin:4px 0 6px}
+.fcard h4{font-family:'Roca One','Heebo';font-weight:400;font-size:30px;margin:4px 0 6px}
 .fcard .liner{font-size:15px;color:var(--ink-soft);min-height:46px}
 .fcard .comp{font-size:13px;color:#9A9F93;margin-top:10px;opacity:0;max-height:0;transition:all .3s;border-top:1px dashed var(--line);padding-top:0}
 .fcard:hover .comp{opacity:1;max-height:70px;padding-top:10px}
@@ -155,44 +159,47 @@ section{padding:100px 0}
 .ccard>div{position:relative;z-index:2}
 .ccard:after{content:"";position:absolute;top:-30px;right:-30px;width:110px;height:110px;background:rgba(255,255,255,.14);border-radius:50%}
 .ccard:hover{transform:translateY(-8px) rotate(-1.4deg)}
-.ccard .idx{font-family:'Playfair Display';font-weight:900;font-size:14px;opacity:.8}
-.ccard h4{font-family:'Bellefair';font-weight:400;font-size:24px;line-height:1.02;margin-top:4px}
+.ccard .idx{font-family:'Roca One','Heebo';font-weight:900;font-size:14px;opacity:.8}
+.ccard h4{font-family:'Roca One','Heebo';font-weight:400;font-size:24px;line-height:1.02;margin-top:4px}
 .ccard small{font-weight:700;font-size:13px;opacity:.88}
-.ccard .pr{font-family:'Playfair Display';font-weight:700;font-size:19px}
+.ccard .pr{font-family:'Roca One','Heebo';font-weight:700;font-size:19px}
 
 /* ECON */
 .econ{background:linear-gradient(135deg,var(--gt),var(--gt-d));color:#fff;border-radius:32px;padding:70px 60px;display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;box-shadow:0 50px 100px -40px rgba(43,79,36,.5)}
-.econ h2{font-family:'Bellefair';font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.02;margin-bottom:16px}
+.econ h2{font-family:'Roca One','Heebo';font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.02;margin-bottom:16px}
 .econ p{opacity:.93;font-size:17px}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .stat{background:rgba(255,255,255,.13);border-radius:20px;padding:24px;border:1px solid rgba(255,255,255,.14)}
-.stat b{display:block;font-family:'Playfair Display';font-size:38px;font-weight:900}
+.stat b{display:block;font-family:'Roca One','Heebo';font-size:38px;font-weight:900}
 .stat span{font-size:13px;opacity:.9;letter-spacing:.04em}
 
 /* TEA 2.0 */
 .tea2{background:var(--ink);color:var(--paper);padding:120px 0;text-align:center;position:relative;overflow:hidden}
-.tea2 .ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bellefair';font-size:clamp(180px,30vw,420px);opacity:.045;white-space:nowrap;pointer-events:none}
-.tea2 h2{font-family:'Bellefair';font-weight:400;font-size:clamp(34px,5vw,60px);line-height:1.05;margin:14px 0 22px;position:relative}
+.tea2 .ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Roca One','Heebo';font-size:clamp(180px,30vw,420px);opacity:.045;white-space:nowrap;pointer-events:none}
+.tea2 h2{font-family:'Roca One','Heebo';font-weight:400;font-size:clamp(34px,5vw,60px);line-height:1.05;margin:14px 0 22px;position:relative}
 .tea2 p{font-size:19px;opacity:.82;max-width:640px;margin:0 auto;position:relative}
 .tea2 .nums{display:flex;gap:56px;justify-content:center;flex-wrap:wrap;margin-top:52px;position:relative}
-.tea2 b{font-family:'Playfair Display';font-size:52px;font-weight:900;display:block;line-height:1}
+.tea2 b{font-family:'Roca One','Heebo';font-size:52px;font-weight:900;display:block;line-height:1}
 .tea2 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;font-weight:700}
 
 /* STEPS */
 .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
-.step{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:32px 26px;position:relative;transition:transform .2s}
-.step:hover{transform:translateY(-5px)}
-.step b{font-family:'Playfair Display';font-size:44px;font-weight:900;color:var(--terra);line-height:1}
-.step h4{font-family:'Assistant';font-size:19px;font-weight:800;margin:10px 0 4px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:36px 26px 30px;position:relative;transition:transform .25s,box-shadow .25s}
+.step:before{content:'';position:absolute;top:0;left:0;right:0;height:5px;border-radius:22px 22px 0 0;background:var(--sc)}
+.step:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(32,36,31,.12)}
+.step-ic{display:block;width:30px;height:30px;color:var(--sc);margin-bottom:16px}
+.step b{font-family:'Roca One','Heebo';font-size:clamp(50px,6vw,70px);font-weight:900;color:var(--sc);line-height:1;opacity:.92}
+.step h4{font-family:'Roca One','Heebo';font-size:19px;font-weight:800;margin:10px 0 4px}
 .step p{font-size:15px;color:var(--ink-soft)}
+.step:not(:last-child):after{content:'→';position:absolute;top:50%;right:-16px;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--ink-soft);z-index:2}
 
 /* QUOTES */
 .quotes{background:var(--card)}
 .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .qcard{background:var(--white);border-radius:26px;padding:38px 40px;border:1px solid var(--line);position:relative}
-.qcard .mark{font-family:'Playfair Display';font-style:italic;font-size:72px;line-height:.5;color:var(--terra);opacity:.35;position:absolute;top:34px;left:32px}
-.qcard p{font-family:'Bellefair';font-size:21px;line-height:1.5;color:#3A4034;padding-top:22px}
-.qcard footer{margin-top:20px;font-weight:800;font-size:15px;font-family:'Assistant'}
+.qcard .mark{font-family:'Roca One','Heebo';font-style:italic;font-size:72px;line-height:.5;color:var(--terra);opacity:.35;position:absolute;top:34px;left:32px}
+.qcard p{font-family:'Roca One','Heebo';font-size:21px;line-height:1.5;color:#3A4034;padding-top:22px}
+.qcard footer{margin-top:20px;font-weight:800;font-size:15px;font-family:'Roca One','Heebo'}
 .qcard footer span{display:block;font-weight:600;color:#9A9F93;font-size:14px}
 
 /* SPECIALS */
@@ -200,34 +207,34 @@ section{padding:100px 0}
 .mcard{border-radius:24px;padding:30px 26px;color:#fff;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s;position:relative;overflow:hidden}
 .mcard:after{content:"";position:absolute;bottom:-40px;right:-40px;width:140px;height:140px;background:rgba(255,255,255,.12);border-radius:50%}
 .mcard:hover{transform:translateY(-7px)}
-.mcard h4{font-family:'Bellefair';font-weight:400;font-size:30px}
+.mcard h4{font-family:'Roca One','Heebo';font-weight:400;font-size:30px}
 .mcard p{font-size:14px;opacity:.94;margin-top:6px}
-.mcard .pr{font-family:'Playfair Display';font-weight:700;margin-top:16px;font-size:18px}
+.mcard .pr{font-family:'Roca One','Heebo';font-weight:700;margin-top:16px;font-size:18px}
 
 /* ABOUT */
 .about{background:var(--card)}
 .about .in{display:grid;grid-template-columns:1fr;gap:60px;align-items:center;max-width:760px}
 .about .ph{border-radius:28px;height:430px;background:linear-gradient(160deg,#E7DCC6,#CBB astronomical894);background:linear-gradient(160deg,#E7DCC6,#CBB894);display:flex;align-items:center;justify-content:center;color:#8A7A56;font-weight:700;text-align:center;padding:24px;box-shadow:0 40px 80px -35px rgba(32,36,31,.3)}
-.about h2{font-family:'Bellefair';font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.03;margin:10px 0 18px}
+.about h2{font-family:'Roca One','Heebo';font-weight:400;font-size:clamp(32px,4.4vw,52px);line-height:1.03;margin:10px 0 18px}
 .about p{margin-bottom:14px;color:#3A4034;font-size:17px}
 
 /* BIG CTA */
 .bigcta{background:linear-gradient(120deg,var(--consc),var(--amer));color:#fff;text-align:center;padding:130px 0;position:relative;overflow:hidden}
-.bigcta .ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bellefair';font-size:clamp(160px,26vw,380px);opacity:.08;white-space:nowrap}
-.bigcta h2{font-family:'Bellefair';font-weight:400;font-size:clamp(40px,6.4vw,78px);line-height:.98;margin-bottom:18px;position:relative}
+.bigcta .ghost{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Roca One','Heebo';font-size:clamp(160px,26vw,380px);opacity:.08;white-space:nowrap}
+.bigcta h2{font-family:'Roca One','Heebo';font-weight:400;font-size:clamp(40px,6.4vw,78px);line-height:.98;margin-bottom:18px;position:relative}
 .bigcta p{font-size:19px;opacity:.94;margin-bottom:38px;position:relative}
 
 /* CONTACT */
 .contact .in{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-.contact h2{font-family:'Bellefair';font-weight:400;font-size:clamp(34px,4.6vw,54px);margin:10px 0 14px}
+.contact h2{font-family:'Roca One','Heebo';font-weight:400;font-size:clamp(34px,4.6vw,54px);margin:10px 0 14px}
 .contact ul{list-style:none;margin-top:24px}
 .contact li{padding:12px 0;border-bottom:1px solid var(--line);font-weight:700}
 /* ── заявка на партнёрство ── */
 .partner .pf-head{display:flex;flex-direction:column;gap:3px;margin-bottom:4px}
-.partner .pf-head b{font-family:'Bellefair',serif;font-weight:400;font-size:26px}
+.partner .pf-head b{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:26px}
 .partner .pf-head span{font-size:12.5px;color:#8a8577}
 .partner .pf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.partner textarea{font-family:'Assistant';font-size:16px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;width:100%;background:var(--paper);resize:vertical;transition:border .2s}
+.partner textarea{font-family:'Roca One','Heebo';font-size:16px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;width:100%;background:var(--paper);resize:vertical;transition:border .2s}
 .partner textarea:focus{outline:none;border-color:var(--gt)}
 .partner .pf-ok{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#6b6659;line-height:1.45}
 .partner .pf-ok input{width:16px;height:16px;flex:none;margin-top:2px;accent-color:#20241F}
@@ -243,7 +250,7 @@ section{padding:100px 0}
 .partner.sent .pf-done{display:block}
 @media(max-width:640px){.partner .pf-row{grid-template-columns:1fr}}
 form{background:var(--white);border:1px solid var(--line);border-radius:26px;padding:38px;display:grid;gap:15px;box-shadow:0 30px 60px -30px rgba(32,36,31,.18)}
-input,select{font-family:'Assistant';font-size:16px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;width:100%;background:var(--paper);transition:border .2s}
+input,select{font-family:'Roca One','Heebo';font-size:16px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;width:100%;background:var(--paper);transition:border .2s}
 input:focus,select:focus{outline:none;border-color:var(--gt)}
 
 footer.site{padding:40px 0;font-size:14px;color:#6B7065;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--line)}
@@ -254,6 +261,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
   .fgrid{grid-template-columns:1fr 1fr}
   .colgrid{grid-template-columns:repeat(2,1fr)}
   .mgrid,.steps4{grid-template-columns:1fr 1fr}
+  .step:not(:last-child):after{display:none}
   .nav-links{display:none}
   .hero .side{height:340px}
 }
@@ -267,12 +275,12 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .fmodal .mimg img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .28s}
 .fmodal .mtxt{padding:38px 34px}
 .fmodal .mtxt .origin{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a8577;font-weight:700}
-.fmodal .mtxt h3{font-family:'Bellefair',serif;font-weight:400;font-size:44px;margin:6px 0 10px}
+.fmodal .mtxt h3{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:44px;margin:6px 0 10px}
 .fmodal .mtxt .comp{font-size:13px;color:#6b6659;margin-bottom:14px}
 .fmodal .mtxt p{font-size:15.5px;line-height:1.65;color:#3a3d36;margin-bottom:14px}
 .fmodal .facts{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
 .fmodal .facts span{font-size:12px;font-weight:700;background:#EFE9DC;border-radius:20px;padding:6px 12px;color:#4c4a3f}
-.fmodal .prow{display:flex;gap:16px;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;margin-bottom:20px}
+.fmodal .prow{display:flex;gap:16px;font-family:'Roca One','Heebo',serif;font-weight:700;font-size:18px;margin-bottom:20px}
 .fmodal .prow span:last-child{opacity:.55}
 .fmodal .cta{display:inline-block;background:#20241F;color:#fff;border-radius:30px;padding:13px 26px;font-weight:700;font-size:14px;text-decoration:none}
 .fmodal .x{position:absolute;top:18px;right:22px;font-size:26px;color:#fff;cursor:pointer;background:none;border:none;z-index:2}
@@ -284,9 +292,9 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 #pricing .sub{color:#6b6659;margin-bottom:34px}
 .pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .ptable{background:#fff;border-radius:20px;padding:26px 26px 18px}
-.ptable h5{font-family:'Bellefair',serif;font-weight:400;font-size:26px;margin-bottom:14px}
+.ptable h5{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:26px;margin-bottom:14px}
 .prl{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #EFE9DC;font-size:14.5px}
-.prl b{font-family:'Playfair Display',serif;font-size:16px}
+.prl b{font-family:'Roca One','Heebo',serif;font-size:16px}
 .pnote{font-size:12.5px;color:#8a8577;padding-top:10px;line-height:1.5}
 /* ── прайс-лист: аккордеон на всю ширину ── */
 .pgrid{display:block;max-width:920px;margin:0 auto}
@@ -300,7 +308,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .ptable summary h5{margin:0;font-size:24px;line-height:1.1;flex:1 1 auto;min-width:0}
 .pmeta{display:flex;align-items:baseline;gap:14px;flex:none}
 .pmeta i{font-style:normal;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#A8A79B}
-.pmeta b{font-family:'Playfair Display',serif;font-weight:700;font-size:16px;color:#20241F}
+.pmeta b{font-family:'Roca One','Heebo',serif;font-weight:700;font-size:16px;color:#20241F}
 .psign{position:relative;width:18px;height:18px;flex:none}
 .psign:before,.psign:after{content:'';position:absolute;left:50%;top:50%;background:#B0793B;border-radius:2px;
   transform:translate(-50%,-50%);transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s}
@@ -312,7 +320,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .ptable .prl{padding:11px 0}
 .ptable .prl:last-of-type{border-bottom:none}
 .pctl{display:flex;justify-content:flex-end;max-width:920px;margin:0 auto 12px}
-.pall{background:none;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-family:'Assistant';font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#4c4a3f;cursor:pointer;transition:all .2s}
+.pall{background:none;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-family:'Roca One','Heebo';font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#4c4a3f;cursor:pointer;transition:all .2s}
 .pall:hover{background:#20241F;color:#fff;border-color:#20241F}
 @media(max-width:640px){
   .ptable summary{padding:16px 18px;gap:12px}
@@ -329,7 +337,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 #faq details p{margin-top:10px;font-size:14.5px;line-height:1.65;color:#4c4a3f}
 .fmodal .makes h6{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a8577;margin:2px 0 8px;font-weight:700}
 .fmodal .mk{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #EFE9DC;font-size:14px}
-.fmodal .mk i{font-style:normal;font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap}
+.fmodal .mk i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap}
 .fmodal .mk i b{color:#4C8C46}
 .fmodal .mkgo-list{display:grid;gap:2px}
 .fmodal a.mkgo{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #EFE9DC;font-size:14px;color:var(--ink,#20241F)!important;text-decoration:none!important;transition:padding-left .15s,border-color .15s}
@@ -339,7 +347,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .fmodal a.mkgo .nm{display:flex;flex-direction:column;gap:1px;font-weight:600;line-height:1.25}
 .fmodal a.mkgo .nm em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9F93}
 .fmodal a.mkgo:hover .nm em{color:#B0793B}
-.fmodal a.mkgo i{font-style:normal;font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.fmodal a.mkgo i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:8px}
 .fmodal a.mkgo i b{color:#4C8C46}
 .fmodal a.mkgo i u{text-decoration:none;opacity:0;transform:translateX(-4px);transition:.15s;color:#B0793B}
 .fmodal a.mkgo:hover i u{opacity:1;transform:none}
@@ -347,7 +355,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .fmodal details.mk{display:block;border-bottom:1px solid #EFE9DC;padding:0}
 .fmodal details.mk summary{display:flex;justify-content:space-between;gap:10px;padding:9px 0;font-size:14px;cursor:pointer;list-style:none;align-items:center}
 .fmodal details.mk summary::-webkit-details-marker{display:none}
-.fmodal details.mk summary i{font-style:normal;font-family:'Playfair Display',serif;font-weight:700;white-space:nowrap}
+.fmodal details.mk summary i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap}
 .fmodal details.mk summary i b{color:#4C8C46}
 .fmodal .rec{background:#F4EFE4;border-radius:12px;padding:12px 14px;margin:2px 0 12px;font-size:13px;line-height:1.55;color:#4c4a3f}
 .fmodal .rec ol{margin:6px 0 0 16px;padding:0}
@@ -392,9 +400,9 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-card>.cm-nav{border-top:1px solid rgba(0,0,0,.07)}
 .cm-head{padding:13px 28px 12px;color:#fff;position:relative}
 .cm-head .ch{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;opacity:.85}
-.cm-head h3{font-family:'Bellefair',serif;font-weight:400;font-size:38px;margin:2px 0 0;line-height:1.06}
+.cm-head h3{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:38px;margin:2px 0 0;line-height:1.06}
 .cm-head .heh{font-size:15px;opacity:.9;direction:rtl;line-height:1.3}
-.cm-num{position:absolute;top:12px;right:74px;font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:44px;opacity:.35;color:#fff}
+.cm-num{position:absolute;top:12px;right:74px;font-family:'Roca One','Heebo',serif;font-style:italic;font-weight:700;font-size:44px;opacity:.35;color:#fff}
 .cm-x{position:absolute;top:18px;right:22px;background:rgba(255,255,255,.22);border:none;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer}
 .cm-body{display:grid;grid-template-columns:1.15fr .85fr;gap:0}
 .cm-rec{padding:24px 34px 20px}
@@ -408,7 +416,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-ing span{background:#fff;border:1px solid var(--line);border-radius:16px;padding:6px 12px;font-size:13px}
 .cm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:22px}
 .cm-stats>div{background:#fff;padding:16px 10px;text-align:center}
-.cm-stats b{display:block;font-family:'Playfair Display',serif;font-size:22px;font-weight:700}
+.cm-stats b{display:block;font-family:'Roca One','Heebo',serif;font-size:22px;font-weight:700}
 .cm-stats i{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93}
 .cm-nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:20px;row-gap:12px;padding:14px 30px 20px}
 .cm-nav>button{background:#20241F;color:#fff;border:none;border-radius:22px;padding:11px 22px;font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap}
@@ -434,12 +442,12 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .mxc .grp{margin-top:9px}
 .mxc .gl{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#B9BCB1;display:block;margin-bottom:5px}
 .mxc .chips{display:flex;flex-wrap:wrap;gap:5px}
-.mxd{background:#F6F3EA;border:1px solid transparent;border-radius:12px;padding:5px 10px;font-size:12.5px;font-weight:600;color:#20241F;cursor:pointer;font-family:'Assistant',sans-serif;transition:.14s;line-height:1.2}
+.mxd{background:#F6F3EA;border:1px solid transparent;border-radius:12px;padding:5px 10px;font-size:12.5px;font-weight:600;color:#20241F;cursor:pointer;font-family:'Roca One','Heebo',sans-serif;transition:.14s;line-height:1.2}
 .mxd:hover{background:#fff;border-color:#20241F}
 .mxc .note{font-size:12.5px;color:#9A9F93;line-height:1.4}
 
 .cm-dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;align-content:center;max-height:78px;overflow-y:auto;padding:2px 6px;min-width:0}
-.cm-chip{background:#fff;border:1px solid var(--line);color:#5d6157;border-radius:14px;padding:5px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Assistant',sans-serif;white-space:nowrap;transition:.14s}
+.cm-chip{background:#fff;border:1px solid var(--line);color:#5d6157;border-radius:14px;padding:5px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Roca One','Heebo',sans-serif;white-space:nowrap;transition:.14s}
 .cm-chip:hover{border-color:#20241F;color:#20241F}
 .cm-chip.on{background:#20241F;border-color:#20241F;color:#fff}
 .cm-src{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:0 0 12px;font-size:13px}
@@ -462,7 +470,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .pm-img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center bottom;display:block;background:#F2EDE4}
 .pm-x{position:absolute;top:16px;right:18px;background:rgba(255,255,255,.85);border:none;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer;z-index:3}
 .pm-body{padding:22px 30px 28px}
-.pm-body h3{font-family:'Bellefair',serif;font-weight:400;font-size:32px;margin:0 0 4px}
+.pm-body h3{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:32px;margin:0 0 4px}
 .pm-body .sub{color:#77796d;font-size:14.5px;margin-bottom:16px}
 .pm-list{display:grid;gap:8px}
 .pm-list a{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-weight:600;font-size:14.5px;transition:transform .15s}
@@ -472,7 +480,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 /* ── список «где применяется»: убираем синие ссылки браузера ── */
 .pm-list a{color:var(--ink,#20241F)!important;text-decoration:none!important;gap:18px;
   border-color:#EFE9DC;transition:transform .18s,border-color .2s,background .2s}
-.pm-list a>span:first-child{font-family:'Assistant',sans-serif;font-weight:600;font-size:15px;
+.pm-list a>span:first-child{font-family:'Roca One','Heebo',sans-serif;font-weight:600;font-size:15px;
   color:#20241F;text-decoration:none}
 .pm-list a:hover{transform:translateX(4px);border-color:#20241F;background:#FBF8F2}
 .pm-list a:hover .tag{color:#B0793B}
@@ -512,7 +520,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .hs-copy .hs-h{margin:0}
 .hs-copy p{margin:0}
 .hs-copy .eyebrow{color:rgba(255,255,255,.85)}
-.hs-copy .hs-h{font-family:'Bellefair',serif;font-weight:400;font-size:clamp(48px,5.8vw,86px);line-height:.96;margin:14px 0 8px;color:#fff;text-shadow:0 3px 30px rgba(0,0,0,.45)}
+.hs-copy .hs-h{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(48px,5.8vw,86px);line-height:.96;margin:14px 0 8px;color:#fff;text-shadow:0 3px 30px rgba(0,0,0,.45)}
 .hs-copy .heh{font-size:19px;opacity:.9;direction:rtl;text-align:left;margin-bottom:12px}
 .hs-copy p{color:rgba(255,255,255,.92);font-size:16.5px;max-width:400px}
 .hs-copy .meta{display:flex;gap:12px;margin:16px 0 22px;font-weight:800;font-size:13.5px}
@@ -602,7 +610,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 
 
 /* gt logo: big hypno-gradient */
-.logo-gt{font-family:'Bellefair',serif;font-size:44px;line-height:1;font-weight:400;text-decoration:none;display:flex;align-items:baseline;gap:8px;background:linear-gradient(90deg,#D45B3F,#D89A2B,#4E8C42,#4F9186,#6B4FB0,#C2497B,#D45B3F);background-size:400% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gtflow 5s linear infinite}
+.logo-gt{font-family:'Roca One','Heebo',serif;font-size:44px;line-height:1;font-weight:400;text-decoration:none;display:flex;align-items:baseline;gap:8px;background:linear-gradient(90deg,#D45B3F,#D89A2B,#4E8C42,#4F9186,#6B4FB0,#C2497B,#D45B3F);background-size:400% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:gtflow 5s linear infinite}
 .logo-gt span{font-family:inherit;font-size:15px;letter-spacing:.22em;text-transform:uppercase}
 @keyframes gtflow{0%{background-position:0% 50%}100%{background-position:400% 50%}}
 
@@ -624,7 +632,7 @@ nav .btn{box-shadow:0 2px 14px rgba(0,0,0,.25)}
 /* ===== TYPO ORDER ===== */
 .band-head{max-width:1180px;margin:0 auto;padding:74px 24px 34px;text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center}
 .band-head .eyebrow{letter-spacing:.22em;font-weight:800}
-.band-head h2{margin:0;font-family:'Bellefair',serif;font-weight:400;font-size:clamp(46px,5.6vw,92px);line-height:.98}
+.band-head h2{margin:0;font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(46px,5.6vw,92px);line-height:.98}
 .band-head p{margin:0;max-width:680px;font-size:18.5px;line-height:1.55}
 .sec-head h2,.sec-head .display,h2.display{font-size:clamp(44px,5vw,80px)!important;line-height:1!important}
 .sec-head p{font-size:18px!important}
@@ -718,11 +726,11 @@ body{font-size:17.5px}
 /* ── подписи на полосах: крупная витринная типографика ── */
 .bandcap{position:absolute;left:0;right:0;top:7%;bottom:auto;text-align:center;z-index:3;
   padding:0 5vw;pointer-events:none}
-.bandcap .eb{font-family:'Assistant',sans-serif;font-weight:800;letter-spacing:.26em;
+.bandcap .eb{font-family:'Roca One','Heebo',sans-serif;font-weight:800;letter-spacing:.26em;
   text-transform:uppercase;font-size:clamp(10px,1.05vw,14px);margin:0 0 clamp(10px,1.4vw,20px)}
-.bandcap h3{font-family:'Bellefair',serif;font-weight:400;margin:0;
+.bandcap h3{font-family:'Roca One','Heebo',serif;font-weight:400;margin:0;
   font-size:clamp(46px,7.4vw,138px);line-height:.9;letter-spacing:.005em}
-.bandcap em{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;
+.bandcap em{font-family:'Roca One','Heebo',serif;font-style:italic;font-weight:700;
   font-size:.86em;letter-spacing:-.01em}
 .bandcap.ink{color:#20241F}
 .bandcap.ink .eb{color:rgba(32,36,31,.55)}
@@ -819,12 +827,12 @@ body{font-size:17.5px}
 
 /* цветная плашка внутри Drinks */
 .mxband{margin:0 0 26px;border-radius:20px;background:linear-gradient(105deg,#F2571B 0%,#D6431A 52%,#C4744B 100%);box-shadow:0 16px 40px -22px rgba(196,64,26,.85);overflow:hidden}
-.mxtog{display:flex;align-items:center;gap:15px;width:100%;background:transparent;border:0;padding:18px 22px;cursor:pointer;text-align:left;font-family:'Assistant',sans-serif}
+.mxtog{display:flex;align-items:center;gap:15px;width:100%;background:transparent;border:0;padding:18px 22px;cursor:pointer;text-align:left;font-family:'Roca One','Heebo',sans-serif}
 .mxtog .ico{width:34px;height:34px;flex:0 0 auto;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;display:flex;align-items:center;justify-content:center;font-size:21px;line-height:1;transition:transform .28s cubic-bezier(.22,.61,.36,1),background .2s}
 .mxtog:hover .ico{background:rgba(255,255,255,.3)}
 .mxtog[aria-expanded="true"] .ico{transform:rotate(45deg)}
 .mxtog .tx{display:flex;flex-direction:column;gap:2px;min-width:0}
-.mxtog .tx b{font-family:'Bellefair',serif;font-weight:400;font-size:25px;color:#fff;letter-spacing:.01em;line-height:1.15}
+.mxtog .tx b{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:25px;color:#fff;letter-spacing:.01em;line-height:1.15}
 .mxtog .tx i{font-style:normal;font-size:13px;color:rgba(255,255,255,.82)}
 .mxbox[hidden]{display:none}
 .mxbox{padding:0 14px 14px;animation:mxopen .34s cubic-bezier(.22,.61,.36,1) both}
@@ -893,6 +901,7 @@ body{font-size:17.5px}
 .fcard.v3 .badge{left:auto;right:14px}
 .qcard .mark{left:auto;right:32px}
 .bottle:after{left:auto;right:12px}
+.step:not(:last-child):after{right:auto;left:-16px;content:'←'}
 .nav-links a:after{left:auto;right:0}
 
 /* previous/next swap sides: in Hebrew, "back" is to the right */
@@ -1003,6 +1012,44 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 /* motion respects the visitor's setting (the hero is handled in script) */
 @media(prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+/* ====================================================================
+   Pre-launch pass 2026-09-24 (tools/patch_launch.py). Appended last.
+   ==================================================================== */
+/* the hero photograph, at its own 3:4 so no bottle is cropped */
+.hero .side{height:auto;padding:0;background:#F3E3C9;overflow:hidden;display:block;
+  width:min(100%,calc(min(640px,74vh) * 0.7466));aspect-ratio:1744/2336;justify-self:center}
+.hero .side:before{display:none}
+.hero .side img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:980px){
+  .hero .side{height:auto;width:min(100%,520px)}
+}
+@media(max-width:640px){
+  .hero{padding:40px 0 64px}
+  .hero .in{gap:36px}
+  .hero h2{margin-bottom:24px}
+}
+/* the economics card fits a phone */
+@media(max-width:640px){
+  .econ{padding:40px 22px;gap:30px;border-radius:26px}
+  .stats{gap:10px}
+  .stat{padding:18px 14px}
+  .stat b{font-size:30px}
+}
+/* collection cards: darken the top, where the title and count sit */
+.ccard::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,15,12,.55) 0%,rgba(15,15,12,.18) 34%,rgba(15,15,12,0) 55%)}
+.ccard h4,.ccard small,.ccard .idx{text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.ccard h4{line-height:1.12}
+.ccard small{display:block;margin-top:3px}
+/* a line of text beside a button wraps under it instead of running into it */
+.center-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 18px}
+.center-cta>span{margin:0!important}
+/* footer.site's `padding:40px 0` erased .wrap's side gutter: text ran to the screen edge */
+footer.site{padding:40px 28px}
+@media(max-width:640px){footer.site{padding:32px 20px;justify-content:flex-start}}
+footer.site .social a{color:inherit;text-decoration:none;border-bottom:1px solid transparent}
+footer.site .social a:hover,footer.site .social a:focus-visible{border-color:currentColor}
 </style>
 </head>
 <body>
@@ -1011,7 +1058,7 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
   <a href="#" class="logo-gt" aria-label="GT Everyday"><img src="https://wsrv.nl/?url=https%3A%2F%2Fd2ol7oe51mr4n9.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fac9ff24a-b5e8-4728-bf2d-81541c13b31e.png&amp;trim=8&amp;w=600&amp;output=png&amp;n=-1" alt="GT Everyday" decoding="async" onerror="this.onerror=null;this.src='https://d2ol7oe51mr4n9.cloudfront.net/user_3DnHlJj9Ckne89yfhr8HpB5bYXZ/ac9ff24a-b5e8-4728-bf2d-81541c13b31e.png'"></a>
   <button class="nav-burger" aria-label="תפריט" aria-expanded="false" aria-controls="nav-links" onclick="navToggle(this)"><i></i><i></i><i></i></button>
   <div class="nav-links" id="nav-links">
-    <span class="nav-dd"><a href="#products">מוצרים<span class="car">▾</span></a><span class="dd-menu"><span class="dd-in"><span class="dd-head">11 תמציות תה</span><a href="#f-detox" onclick="ddGo(event,'f-detox')"><span class="dd-dot" style="background:#D8492B"></span>Detox</a><a href="#f-revive" onclick="ddGo(event,'f-revive')"><span class="dd-dot" style="background:#0FA3A3"></span>Revive</a><a href="#f-energy" onclick="ddGo(event,'f-energy')"><span class="dd-dot" style="background:#4B3B8F"></span>Energy</a><a href="#f-consciousness" onclick="ddGo(event,'f-consciousness')"><span class="dd-dot" style="background:#C2185B"></span>Consciousness</a><a href="#f-american" onclick="ddGo(event,'f-american')"><span class="dd-dot" style="background:#C62828"></span>American</a><a href="#f-fresh" onclick="ddGo(event,'f-fresh')"><span class="dd-dot" style="background:#A31F34"></span>Fresh</a><a href="#f-desertea" onclick="ddGo(event,'f-desertea')"><span class="dd-dot" style="background:#D9A413"></span>Desertea</a><a href="#f-calm" onclick="ddGo(event,'f-calm')"><span class="dd-dot" style="background:#8E7CC3"></span>Calm</a><a href="#f-namastea" onclick="ddGo(event,'f-namastea')"><span class="dd-dot" style="background:#C98A2D"></span>Namastea</a><span class="dd-head">אבקות ומחיות</span><a href="#f-matcha" onclick="ddGo(event,'f-matcha')"><span class="dd-dot" style="background:#7BA05B"></span>מאצ׳ה</a><a href="#f-hojicha" onclick="ddGo(event,'f-hojicha')"><span class="dd-dot" style="background:#8B5E3C"></span>הוג׳יצ׳ה</a><a href="#f-ube" onclick="ddGo(event,'f-ube')"><span class="dd-dot" style="background:#7C5CBF"></span>אובה</a><a href="#p-mango" onclick="ddGo(event,'p-mango')"><span class="dd-dot" style="background:#E8940A"></span>מנגו</a><a href="#p-strawberry" onclick="ddGo(event,'p-strawberry')"><span class="dd-dot" style="background:#D8203F"></span>תות</a><a href="#p-peach" onclick="ddGo(event,'p-peach')"><span class="dd-dot" style="background:#E8794A"></span>אפרסק</a></span></span></span><a href="#drinks">משקאות</a><a href="#partners">לקוחות</a><a href="#pricing">מחירון</a><a href="#about">עלינו</a><a href="#faq">שאלות</a>
+    <span class="nav-dd"><a href="#products">מוצרים<span class="car">▾</span></a><span class="dd-menu"><span class="dd-in"><span class="dd-head">תמציות תה</span><a href="#f-detox" onclick="ddGo(event,'f-detox')"><span class="dd-dot" style="background:#D8492B"></span>Detox</a><a href="#f-revive" onclick="ddGo(event,'f-revive')"><span class="dd-dot" style="background:#0FA3A3"></span>Revive</a><a href="#f-energy" onclick="ddGo(event,'f-energy')"><span class="dd-dot" style="background:#4B3B8F"></span>Energy</a><a href="#f-consciousness" onclick="ddGo(event,'f-consciousness')"><span class="dd-dot" style="background:#C2185B"></span>Consciousness</a><a href="#f-american" onclick="ddGo(event,'f-american')"><span class="dd-dot" style="background:#C62828"></span>American</a><a href="#f-fresh" onclick="ddGo(event,'f-fresh')"><span class="dd-dot" style="background:#A31F34"></span>Fresh</a><a href="#f-desertea" onclick="ddGo(event,'f-desertea')"><span class="dd-dot" style="background:#D9A413"></span>Desertea</a><a href="#f-calm" onclick="ddGo(event,'f-calm')"><span class="dd-dot" style="background:#8E7CC3"></span>Calm</a><a href="#f-namastea" onclick="ddGo(event,'f-namastea')"><span class="dd-dot" style="background:#C98A2D"></span>Namastea</a><span class="dd-head">אבקות ומחיות</span><a href="#f-matcha" onclick="ddGo(event,'f-matcha')"><span class="dd-dot" style="background:#7BA05B"></span>מאצ׳ה</a><a href="#f-hojicha" onclick="ddGo(event,'f-hojicha')"><span class="dd-dot" style="background:#8B5E3C"></span>הוג׳יצ׳ה</a><a href="#f-ube" onclick="ddGo(event,'f-ube')"><span class="dd-dot" style="background:#7C5CBF"></span>אובה</a><a href="#p-mango" onclick="ddGo(event,'p-mango')"><span class="dd-dot" style="background:#E8940A"></span>מנגו</a><a href="#p-strawberry" onclick="ddGo(event,'p-strawberry')"><span class="dd-dot" style="background:#D8203F"></span>תות</a><a href="#p-peach" onclick="ddGo(event,'p-peach')"><span class="dd-dot" style="background:#E8794A"></span>אפרסק</a></span></span></span><a href="#drinks">משקאות</a><a href="#partners">לקוחות</a><a href="#pricing">מחירון</a><a href="#about">עלינו</a><a href="#faq">שאלות</a>
   </div>
   <a class="btn" href="#contact">רוצים להתחיל <span class="arr">←</span></a>
 </div></nav>
@@ -1024,13 +1071,13 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
       <a class="sub-cta" href="#hs">לצפייה במשקאות</a>
     </div>
   </div>
-  <div class="side"></div>
+  <div class="side"><img src="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-900.webp" srcset="https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-600.webp 600w, https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-900.webp 900w, https://raw.githubusercontent.com/tomw200082-collab/gt-site/main/theme/photos/hero-bottles-1200.webp 1200w" sizes="(max-width: 980px) min(92vw, 520px), 480px" alt="תמציות התה של GT — עשרה בקבוקים על שלושה מדפים" width="900" height="1206" fetchpriority="high" decoding="async"></div>
 </div></div></section>
 
 <header class="hs" id="hs">
   <button class="hs-arr prev" onclick="hsGo(hsI-1)" aria-label="הקודם">‹</button>
   <button class="hs-arr next" onclick="hsGo(hsI+1)" aria-label="הבא">›</button>
-  <div class="hs-track" id="hs-track"><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_103852_96bf7394-4975-4dd2-9acf-6947ea2e2c37.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B0603B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 01/10</span><h2 class="hs-h">חליטות קרות</h2><div class="heh">Iced Tea</div><p>שבע חליטות קרות. מזיגה אחת מדודה.</p><div class="meta"><span>7 משקאות</span><span>מחיר מומלץ ₪20</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(0);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_110757_d4649511-4aab-4960-a7d5-64b2657b352a.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D89A2B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 02/10</span><h2 class="hs-h">לימונדות</h2><div class="heh">Lemonade</div><p>שלוש לימונדות על בסיס תה אמיתי.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(1);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_b9da167b-2bc2-4246-ba65-dd648600de1f.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D45B3F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 03/10</span><h2 class="hs-h">משקאות הדגל</h2><div class="heh">Signature</div><p>משקאות הדגל, על מחיות פרי 50%.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪24–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(2);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_121010_39e00a53-d3c0-459f-9483-e401683f8d26.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6E99AA"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 04/10</span><h2 class="hs-h">גזוז</h2><div class="heh">Gazoz</div><p>בועות תל אביביות, על בסיס תה.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22–33</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(3);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_eb17ce1e-9413-4356-b8c4-3de655daf7b7.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4E8C42"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 05/10</span><h2 class="hs-h">אייס מאצ׳ה</h2><div class="heh">Ice Matcha</div><p>שיזואוקה טקסי, בשש דרכים.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪26–39</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(4);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_0ffd1f0c-ca1d-410a-ad83-5ad8028c9b5d.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#75755F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 06/10</span><h2 class="hs-h">מאצ׳ה ספיישל</h2><div class="heh">Matcha Specials</div><p>מוניל ועד שומשום שחור.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–29</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(5);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_4ad880e7-1c74-4f05-83b8-8fb8df1ff95e.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4F9186"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 07/10</span><h2 class="hs-h">מאצ׳ה קוקוס</h2><div class="heh">Matcha Coconut</div><p>מי קוקוס, קרם קוקוס, מאצ׳ה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪32–44</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(6);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_111422_0603088e-e15d-4c62-a951-4304d57ab516.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B06A38"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 08/10</span><h2 class="hs-h">צ׳אי מסאלה</h2><div class="heh">Chai Massala</div><p>הלהיט הגדול, בשש הגשות.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪24–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(7);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100616_9efaf31a-6fa0-485b-8260-870a9cb4dd07.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#9A6B33"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 09/10</span><h2 class="hs-h">קולד פואם</h2><div class="heh">Cold Foam</div><p>קצף קטיפתי, בארבעה טעמים.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪28–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(8);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_104204_d2e522db-949d-4ca9-b693-e1506bf0bf63.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6B4FB0"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 10/10</span><h2 class="hs-h">אובה</h2><div class="heh">Ube</div><p>הסגול שעוצר את הגלילה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(9);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div></div>
+  <div class="hs-track" id="hs-track"><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_103852_96bf7394-4975-4dd2-9acf-6947ea2e2c37.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B0603B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 01/10</span><h2 class="hs-h">חליטות קרות</h2><div class="heh">Iced Tea</div><p>שבע חליטות קרות. מזיגה אחת ומגישים.</p><div class="meta"><span>7 משקאות</span><span>מחיר מומלץ ₪20</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(0);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_110757_d4649511-4aab-4960-a7d5-64b2657b352a.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D89A2B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 02/10</span><h2 class="hs-h">לימונדות</h2><div class="heh">Lemonade</div><p>שלוש לימונדות על בסיס תה אמיתי.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(1);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_b9da167b-2bc2-4246-ba65-dd648600de1f.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D45B3F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 03/10</span><h2 class="hs-h">משקאות הדגל</h2><div class="heh">Signature</div><p>ארבעה משקאות על מחיות עם 50% פרי.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪24–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(2);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_121010_39e00a53-d3c0-459f-9483-e401683f8d26.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6E99AA"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 04/10</span><h2 class="hs-h">גזוז</h2><div class="heh">Gazoz</div><p>בועות תל אביביות, על בסיס תה.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22–33</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(3);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_eb17ce1e-9413-4356-b8c4-3de655daf7b7.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4E8C42"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 05/10</span><h2 class="hs-h">אייס מאצ׳ה</h2><div class="heh">Ice Matcha</div><p>מאצ׳ה טקסי משיזואוקה, בשש דרכים.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪26–39</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(4);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_0ffd1f0c-ca1d-410a-ad83-5ad8028c9b5d.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#75755F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 06/10</span><h2 class="hs-h">מאצ׳ה ספיישל</h2><div class="heh">Matcha Specials</div><p>מווניל ועד שומשום שחור.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–29</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(5);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_4ad880e7-1c74-4f05-83b8-8fb8df1ff95e.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4F9186"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 07/10</span><h2 class="hs-h">מאצ׳ה קוקוס</h2><div class="heh">Matcha Coconut</div><p>מי קוקוס, קרם קוקוס, מאצ׳ה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪32–44</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(6);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_111422_0603088e-e15d-4c62-a951-4304d57ab516.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B06A38"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 08/10</span><h2 class="hs-h">צ׳אי מסאלה</h2><div class="heh">Chai Masala</div><p>הלהיט הגדול, בשש הגשות.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪24–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(7);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100616_9efaf31a-6fa0-485b-8260-870a9cb4dd07.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#9A6B33"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 09/10</span><h2 class="hs-h">קולד פואם</h2><div class="heh">Cold Foam</div><p>קצף קטיפתי, בארבעה טעמים.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪28–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(8);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_104204_d2e522db-949d-4ca9-b693-e1506bf0bf63.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6B4FB0"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 10/10</span><h2 class="hs-h">אובה</h2><div class="heh">Ube</div><p>הסגול שעוצר את הגלילה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(9);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div></div>
   <div class="hs-dots" id="hs-dots"></div>
 </header>
 
@@ -1046,22 +1093,22 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 <section id="products"><div class="wrap">
   <div class="sec-head rv">
-    <span class="eyebrow">הקו</span>
-    <h2 class="display">הכירו את <em>התמציות.</em></h2>
-    <p>אחת עשרה תמציות מכל עולם התה. ₪33 ל־500 מ״ל · ₪65 לליטר. בקבוק סגור לא צריך מקרר. העבירו עכבר כדי למזוג.</p>
+    <span class="eyebrow">קו התמציות</span>
+    <h2 class="display">תמצית לכל <em>טעם.</em></h2>
+    <p>אחת עשרה תמציות מכל רחבי עולם התה. ₪33 ל־500 מ״ל · ₪65 לליטר. בקבוק סגור לא צריך מקרר. לחצו על תמצית כדי לראות מה מכינים ממנה.</p>
   </div>
   <div class="fgrid">
-        <a class="fcard rv v3" id="f-detox" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F6D9CF"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_115311_18bf0e0a-93b2-41f8-9eaa-d0eb907e9575.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F6D9CF"><div class="badge">3 משקאות</div><div class="circle" style="background:#D8492B"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174417_353928d2-e731-4a71-b4a4-f71af6cb3e6d.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174759_43221016-35bd-4cf1-92b8-2c5a54d92251.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_115311_18bf0e0a-93b2-41f8-9eaa-d0eb907e9575.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Detox נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F6D9CF"></path></svg><div class="txtwrap" style="background:#F6D9CF"><div class="info"><div class="origin">תמצית ישראלית</div><h4>Detox</h4><div class="liner">הכוס שהאורחים שלכם כבר מזמינים בשם. פרופיל נקי וקליל שכל גיל מבין מיד — סיפור בריאות שלא צריך להסביר.</div><div class="comp">תה ירוק · לואיזה · נענע · ליים</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-revive" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#D5EDEA"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_5d3f3072-3506-47a5-9301-351822060b63.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#D5EDEA"><div class="badge">3 משקאות</div><div class="circle" style="background:#0FA3A3"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174432_51fcbf09-4ac3-416f-b95d-1ae9548408d7.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174814_7897091e-b7f7-4a1e-af8b-ccdcec871917.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_5d3f3072-3506-47a5-9301-351822060b63.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Revive נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#D5EDEA"></path></svg><div class="txtwrap" style="background:#D5EDEA"><div class="info"><div class="origin">תמצית יפנית</div><h4>Revive</h4><div class="liner">סנצ׳ה ישר מיפן. פסיפלורה ישר לעניין. 70% סנצ׳ה יפני מובחר — תה של יוקרה שקטה, עם סיפור שאורחים זוכרים.</div><div class="comp">70% סנצ׳ה יפני · פסיפלורה טרופית</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-energy" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#E2DEF2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_a3b55393-38cf-4a72-b770-21fe9e23fa9a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E2DEF2"><div class="badge">2 משקאות</div><div class="circle" style="background:#4B3B8F"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072443_286b7de4-9c6f-4a1a-8688-a7b218be3f1b.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_172103_02f78da8-a77c-4639-9d30-a6cbfc113535.png&w=420&trim=10&output=webp&q=88" alt="GT Energy 250 מ״ל" loading="lazy"></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_a3b55393-38cf-4a72-b770-21fe9e23fa9a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Energy נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E2DEF2"></path></svg><div class="txtwrap" style="background:#E2DEF2"><div class="info"><div class="origin">תמצית שנחאית</div><h4>Energy</h4><div class="liner">קפאין טבעי עם בעיטה של למון גראס. נוכחות אמיתית, ארומה אמיתית — האלטרנטיבה הירוקה שמרחיבה כל תפריט.</div><div class="comp">תה ירוק · למון גראס · נענע · לימון</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-consciousness" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F6D9E6"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_8f6a6d9b-3878-45b3-98c2-709a6f14fdf2.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F6D9E6"><div class="badge">3 משקאות</div><div class="circle" style="background:#C2185B"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174439_f20705c4-88d9-4cd6-9f14-1e3665ba20b0.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174823_e3874537-f9fb-491b-a26e-e560ee795063.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_8f6a6d9b-3878-45b3-98c2-709a6f14fdf2.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Consciousness נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F6D9E6"></path></svg><div class="txtwrap" style="background:#F6D9E6"><div class="info"><div class="origin">תמצית קוריאנית</div><h4>Consciousness</h4><div class="liner">יסמין וליצ׳י. אלגנטיות שאפשר למזוג. 70% תה יסמין, עם ארומה עדינה שנשארת הרבה אחרי הלגימה האחרונה.</div><div class="comp">70% תה יסמין · ליצ׳י טבעי</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-detox" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F6D9CF"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_115311_18bf0e0a-93b2-41f8-9eaa-d0eb907e9575.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F6D9CF"><div class="badge">3 משקאות</div><div class="circle" style="background:#D8492B"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174417_353928d2-e731-4a71-b4a4-f71af6cb3e6d.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174759_43221016-35bd-4cf1-92b8-2c5a54d92251.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_115311_18bf0e0a-93b2-41f8-9eaa-d0eb907e9575.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Detox נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F6D9CF"></path></svg><div class="txtwrap" style="background:#F6D9CF"><div class="info"><div class="origin">תמצית ישראלית</div><h4>Detox</h4><div class="liner">המשקה שהאורחים שלכם כבר מבקשים בשם. טעם נקי וקליל שמתאים לכל גיל ומשתלב בכל תפריט.</div><div class="comp">תה ירוק · לואיזה · נענע · ליים</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-revive" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#D5EDEA"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_5d3f3072-3506-47a5-9301-351822060b63.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#D5EDEA"><div class="badge">3 משקאות</div><div class="circle" style="background:#0FA3A3"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174432_51fcbf09-4ac3-416f-b95d-1ae9548408d7.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174814_7897091e-b7f7-4a1e-af8b-ccdcec871917.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_5d3f3072-3506-47a5-9301-351822060b63.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Revive נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#D5EDEA"></path></svg><div class="txtwrap" style="background:#D5EDEA"><div class="info"><div class="origin">תמצית יפנית</div><h4>Revive</h4><div class="liner">סנצ׳ה ישר מיפן ופסיפלורה טרופית. 70% סנצ׳ה יפני מובחר — משקה יוקרתי ומאופק שאורחים זוכרים.</div><div class="comp">70% סנצ׳ה יפני · פסיפלורה טרופית</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-energy" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#E2DEF2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_a3b55393-38cf-4a72-b770-21fe9e23fa9a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E2DEF2"><div class="badge">2 משקאות</div><div class="circle" style="background:#4B3B8F"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072443_286b7de4-9c6f-4a1a-8688-a7b218be3f1b.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_172103_02f78da8-a77c-4639-9d30-a6cbfc113535.png&w=420&trim=10&output=webp&q=88" alt="GT Energy 250 מ״ל" loading="lazy"></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_a3b55393-38cf-4a72-b770-21fe9e23fa9a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Energy נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E2DEF2"></path></svg><div class="txtwrap" style="background:#E2DEF2"><div class="info"><div class="origin">תמצית שנגחאית</div><h4>Energy</h4><div class="liner">קפאין טבעי עם בעיטה של למון גראס וארומה אמיתית — האלטרנטיבה הירוקה לקפה.</div><div class="comp">תה ירוק · למון גראס · נענע · לימון</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-consciousness" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F6D9E6"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_8f6a6d9b-3878-45b3-98c2-709a6f14fdf2.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F6D9E6"><div class="badge">3 משקאות</div><div class="circle" style="background:#C2185B"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174439_f20705c4-88d9-4cd6-9f14-1e3665ba20b0.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174823_e3874537-f9fb-491b-a26e-e560ee795063.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_8f6a6d9b-3878-45b3-98c2-709a6f14fdf2.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Consciousness נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F6D9E6"></path></svg><div class="txtwrap" style="background:#F6D9E6"><div class="info"><div class="origin">תמצית קוריאנית</div><h4>Consciousness</h4><div class="liner">יסמין וליצ׳י — אלגנטיות בכוס. 70% תה יסמין, וארומה עדינה שנשארת עוד הרבה אחרי הלגימה האחרונה.</div><div class="comp">70% תה יסמין · ליצ׳י טבעי</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
         <a class="fcard rv v3" id="f-american" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F6DCD3"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_805decd7-8553-4cd4-838c-1f4320e688fd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F6DCD3"><div class="badge">2 משקאות</div><div class="circle" style="background:#C62828"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174446_e3585348-d84b-449d-af5d-2536d47db5f1.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065812_621d5f95-4fb7-49f8-9125-266e33d5dc82.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_805decd7-8553-4cd4-838c-1f4320e688fd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT American נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F6DCD3"></path></svg><div class="txtwrap" style="background:#F6DCD3"><div class="info"><div class="origin">תמצית אמריקאית</div><h4>American</h4><div class="liner">קלאסיקה עם חוצפה ישראלית. תה מיושן פוגש יוזו, ברגמוט והדרים — ומסתדר מצוין עם מחית אפרסק או מנגו.</div><div class="comp">תה שחור · תה סיני מיושן · יוזו · ברגמוט · הדרים</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-fresh" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F3D9DD"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_114144_b45cfb63-79f0-4d01-ab15-b957b2b801ba.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F3D9DD"><div class="badge">5 משקאות</div><div class="circle" style="background:#A31F34"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072450_4d68d9c9-c4dd-442b-bba8-ff285a071d39.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_172451_e4083999-949c-486d-914a-1e516cb3768e.png&w=420&trim=10&output=webp&q=88" alt="GT Fresh 250 מ״ל" loading="lazy"></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_114144_b45cfb63-79f0-4d01-ab15-b957b2b801ba.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Fresh נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F3D9DD"></path></svg><div class="txtwrap" style="background:#F3D9DD"><div class="info"><div class="origin">תמצית תאילנדית</div><h4>Fresh</h4><div class="liner">אדום כל כך חזק שהוא מוכר את עצמו. אפס קפאין. חמצמץ בעדינות, מצטלם בלי סוף — הכוס שמחזירה אורחים.</div><div class="comp">פרחי היביסקוס · ליים</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-desertea" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F3E7C9"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_23934494-b622-4d2a-96ac-a4bf98266e7a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F3E7C9"><div class="badge">5 משקאות</div><div class="circle" style="background:#D9A413"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072457_6193c4c5-a17b-4aec-bf37-49f3b2ff4090.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065828_4ab1481f-52a4-4ffb-b5bc-0cdcf7b59479.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_23934494-b622-4d2a-96ac-a4bf98266e7a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Desertea נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F3E7C9"></path></svg><div class="txtwrap" style="background:#F3E7C9"><div class="info"><div class="origin">תמצית מדברית</div><h4>Desertea</h4><div class="liner">חמישה צמחי בר ישראליים. אפס מתחרים. חליטה מדברית נטולת קפאין ששום ספק אחר לא יכול לשכפל.</div><div class="comp">לואיזה · נענע · אזוב · מליסה · מרווה · זוטה לבנה</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-calm" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#E6E1F2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E6E1F2"><div class="badge">2 משקאות</div><div class="circle" style="background:#8E7CC3"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174515_0777ca30-0b2a-4183-a1ba-99776254c7b2.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174840_db9afed8-5b1e-49a9-a1d2-1d46b0fe362d.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Calm נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E6E1F2"></path></svg><div class="txtwrap" style="background:#E6E1F2"><div class="info"><div class="origin">תמצית צרפתית</div><h4>Calm</h4><div class="liner">כוס הערב. מתוקה בטבעיות, בלי קפאין. קמומיל, תפוח וציפורן — אלגנטית בכל גיל, מושלמת מאחר הצהריים.</div><div class="comp">קמומיל · תפוח · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
-        <a class="fcard rv v3" id="f-namastea" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F0E2CC"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F0E2CC"><div class="badge">13 משקאות</div><div class="circle" style="background:#C98A2D"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072505_2194918c-1263-4660-a55b-27a72f0da833.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065820_4249880c-f06f-494a-80d6-e4ad3c4fe8f0.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Namastea נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F0E2CC"></path></svg><div class="txtwrap" style="background:#F0E2CC"><div class="info"><div class="origin">תמצית הודית</div><h4>Namastea</h4><div class="liner">רב המכר. קר, לאטה או עם מי קוקוס. שני תה שחור וחמישה תבלינים — להיט אדיר בקהל הישראלי.</div><div class="comp">שני סוגי תה שחור · קינמון · הל · ג׳ינג׳ר · פלפל שחור · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-fresh" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F3D9DD"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_114144_b45cfb63-79f0-4d01-ab15-b957b2b801ba.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F3D9DD"><div class="badge">5 משקאות</div><div class="circle" style="background:#A31F34"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072450_4d68d9c9-c4dd-442b-bba8-ff285a071d39.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_172451_e4083999-949c-486d-914a-1e516cb3768e.png&w=420&trim=10&output=webp&q=88" alt="GT Fresh 250 מ״ל" loading="lazy"></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_114144_b45cfb63-79f0-4d01-ab15-b957b2b801ba.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Fresh נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F3D9DD"></path></svg><div class="txtwrap" style="background:#F3D9DD"><div class="info"><div class="origin">תמצית תאילנדית</div><h4>Fresh</h4><div class="liner">אדום עז שמוכר את עצמו. אפס קפאין, חמצמץ בעדינות ומצטלם מעולה — משקה שאורחים חוזרים בשבילו.</div><div class="comp">פרחי היביסקוס · ליים</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-desertea" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F3E7C9"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_23934494-b622-4d2a-96ac-a4bf98266e7a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F3E7C9"><div class="badge">5 משקאות</div><div class="circle" style="background:#D9A413"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072457_6193c4c5-a17b-4aec-bf37-49f3b2ff4090.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065828_4ab1481f-52a4-4ffb-b5bc-0cdcf7b59479.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_23934494-b622-4d2a-96ac-a4bf98266e7a.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Desertea נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F3E7C9"></path></svg><div class="txtwrap" style="background:#F3E7C9"><div class="info"><div class="origin">תמצית מדברית</div><h4>Desertea</h4><div class="liner">צמחי בר ישראליים, אפס מתחרים. חליטה מדברית נטולת קפאין ששום ספק אחר לא יכול לשכפל.</div><div class="comp">לואיזה · נענע · אזוב · מליסה · מרווה · זוטה לבנה</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-calm" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#E6E1F2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E6E1F2"><div class="badge">2 משקאות</div><div class="circle" style="background:#8E7CC3"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174515_0777ca30-0b2a-4183-a1ba-99776254c7b2.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174840_db9afed8-5b1e-49a9-a1d2-1d46b0fe362d.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Calm נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E6E1F2"></path></svg><div class="txtwrap" style="background:#E6E1F2"><div class="info"><div class="origin">תמצית צרפתית</div><h4>Calm</h4><div class="liner">כוס הערב. מתוקה מטבעה ונטולת קפאין. קמומיל, תפוח וציפורן — עדינה, מתאימה לכל גיל ומושלמת לשעות אחר הצהריים והערב.</div><div class="comp">קמומיל · תפוח · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
+        <a class="fcard rv v3" id="f-namastea" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F0E2CC"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F0E2CC"><div class="badge">13 משקאות</div><div class="circle" style="background:#C98A2D"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072505_2194918c-1263-4660-a55b-27a72f0da833.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065820_4249880c-f06f-494a-80d6-e4ad3c4fe8f0.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Namastea נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F0E2CC"></path></svg><div class="txtwrap" style="background:#F0E2CC"><div class="info"><div class="origin">תמצית הודית</div><h4>Namastea</h4><div class="liner">רב המכר שלנו. קר, כלאטה או עם מי קוקוס. שני סוגי תה שחור וחמישה תבלינים — להיט ענק אצל הקהל הישראלי.</div><div class="comp">שני סוגי תה שחור · קינמון · הל · ג׳ינג׳ר · פלפל שחור · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
   </div>
-  <div class="center-cta rv"><a class="btn" href="#contact">לקטלוג המלא <span class="arr">←</span></a><span style="margin-left:16px;color:#9A9F93;font-weight:600">‎+ Fresh ו־Detox ללא סוכר</span></div>
+  <div class="center-cta rv"><a class="btn" href="#contact">לקבלת הקטלוג המלא <span class="arr">←</span></a><span style="margin-left:16px;color:#9A9F93;font-weight:600">ועוד Detox ו־Fresh ללא סוכר</span></div>
 </div></section>
 
 <div class="partners rv" id="partners">
@@ -1086,12 +1133,12 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
     <span class="eyebrow">תפריט קיץ 2026</span>
     <h2 class="display">עשר קולקציות. <em>48 משקאות.</em></h2>
     <p>כל מתכון מתומחר, נבדק ומצולם — עם מחירים מומלצים ₪19–28. מכניסים ישר לתפריט.</p>
-  </div><div class="imgband rv" style="aspect-ratio:16/9;max-height:860px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_152139_1c9c6f08-ded1-42da-b528-c08d9446a135.png&amp;w=1440&amp;output=webp&amp;q=78&amp;il" alt="מיקס הצבעים של GT" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light"><div class="eb">ספק אחד · אפס שעמום</div><h3>48 משקאות.<br><em>הזמנה אחת משם.</em></h3></div></div>
+  </div><div class="imgband rv" style="aspect-ratio:16/9;max-height:860px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_152139_1c9c6f08-ded1-42da-b528-c08d9446a135.png&amp;w=1440&amp;output=webp&amp;q=78&amp;il" alt="מיקס הצבעים של GT" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light"><div class="eb">ספק אחד · אפס שעמום</div><h3>48 משקאות.<br><em>במרחק הזמנה אחת.</em></h3></div></div>
 <section id="drinks"><div class="wrap">
   <div class="mxband rv">
     <button class="mxtog" id="mxtog" type="button" aria-expanded="false" aria-controls="mxbox">
       <span class="ico">+</span>
-      <span class="tx"><b>בקבוק אחד, המון כוסות</b><i>מה יוצא מכל מוצר — 34 משקאות מ־12 מוצרים</i></span>
+      <span class="tx"><b>בקבוק אחד, המון כוסות</b><i>מה יוצא מכל מוצר — כל 48 המשקאות, לפי מוצר</i></span>
     </button>
     <div class="mxbox" id="mxbox" hidden><div class="mxgrid" id="mx"></div></div>
   </div>
@@ -1113,14 +1160,14 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
   <div class="econ rv">
     <div>
       <h2>בקבוק אחד.<br><em class="num" style="font-style:italic">שלושה עשר</em> משקאות.</h2>
-      <p>תמצית אחת בונה עד 13 פריטים בתפריט ומוזגת 20–25 כוסות. עלות חומר גלם מ־₪2.85 לכוס, רווחיות של עד 87% בהגשות העליונות — רווחית כמו מכונת האספרסו, בלי שום סיבוך.</p>
-      <a class="btn light" style="margin-top:24px" href="#contact">רוצה מחירון מתומחר <span class="arr">←</span></a>
+      <p>מתמצית אחת יוצאים עד 13 משקאות בתפריט, ומכל בקבוק <bdi dir="ltr">20–25</bdi> כוסות. עלות חומר גלם מ־₪2.85 לכוס, רווחיות של עד 87%: קצת פחות מקפה, והרבה יותר ממשקה מוכן מהמקרר.</p>
+      <a class="btn light" style="margin-top:24px" href="#contact">רוצה מחירון ותמחירים <span class="arr">←</span></a>
     </div>
     <div class="stats">
-      <div class="stat"><b class="num">87%</b><span>רווחיות בהגשות העליונות</span></div>
+      <div class="stat"><b class="num">87%</b><span>רווחיות מקסימלית למשקה</span></div>
       <div class="stat"><b class="num">₪2.85</b><span>עלות חומר גלם לכוס, החל מ־</span></div>
       <div class="stat"><b class="num">₪19–28</b><span>מחירי תפריט מומלצים</span></div>
-      <div class="stat"><b class="num">0</b><span>מקום במקרר למלאי סגור</span></div>
+      <div class="stat"><b class="num">12</b><span>חודשים על המדף לבקבוק סגור</span></div>
     </div>
   </div>
 </div></section>
@@ -1129,12 +1176,12 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
   <div class="ghost" aria-hidden="true">TEA 2.0</div>
   <div class="wrap rv">
     <span class="eyebrow" style="color:var(--energy)">Tea 2.0 · למה עכשיו</span>
-    <h2>האורחים שלכם שותים 20–30% פחות אלכוהול<br>מאשר לפני עשור.</h2>
-    <p>הם לא מחפשים ראש — הם בוחרים משקה עם סיפור ועם תפקיד. תה הוא קטגוריית המשקאות הבאה, והמקומות שזזים ראשונים לוקחים את הרווח.</p>
+    <h2>האורחים שלכם שותים <bdi dir="ltr">20–30%</bdi> פחות אלכוהול<br>מאשר לפני עשור.</h2>
+    <p>הם לא מחפשים להשתכר — הם מחפשים משקה עם אופי. התה הוא הדבר הבא בעולם המשקאות, ומי שמכניס אותו לתפריט ראשון מרוויח ראשון.</p>
     <div class="nums">
-      <div><b style="color:var(--energy)">−25%</b><span>אלכוהול מול דור המילניום</span></div>
+      <div><b style="color:var(--energy)" dir="ltr">−25%</b><span>פחות אלכוהול מלפני עשור</span></div>
       <div><b style="color:var(--consc)">Tea 2.0</b><span>הקטגוריה הבאה</span></div>
-      <div><b style="color:var(--fresh)">87%</b><span>רווחיות בהגשות העליונות</span></div>
+      <div><b style="color:var(--fresh)">87%</b><span>רווחיות מקסימלית למשקה</span></div>
     </div>
   </div>
 </section>
@@ -1145,13 +1192,25 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
   <div class="sec-head rv">
     <span class="eyebrow">תפעול</span>
     <h2 class="display">מגישים בארבעה <em>צעדים.</em></h2>
-    <p>בלי תוכנית הדרכה, בלי מכונות חדשות. כל ברמן מוזג GT מושלם כבר ביום הראשון.</p>
+    <p>בלי הכשרה מיוחדת, בלי מכונות חדשות. כל ברמן מוזג GT מושלם כבר ביום הראשון.</p>
   </div>
   <div class="steps4">
-    <div class="step rv"><b>1</b><h4>כוס</h4><p>ממלאים בקרח.</p></div>
-    <div class="step rv"><b>2</b><h4>נוזל</h4><p>מים, סודה או חלב — עד ⅔.</p></div>
-    <div class="step rv"><b>3</b><h4>GT</h4><p>50 מ״ל תרכיז דרך כוס המדידה שלנו.</p></div>
-    <div class="step rv"><b>4</b><h4>מגישים</h4><p>מערבבים, מקשטים, מצלמים.</p></div>
+    <div class="step rv" style="--sc:var(--terra)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l-2.2 16.2a2 2 0 0 1-2 1.8h-3.6a2 2 0 0 1-2-1.8L6 3Z"/><path d="M6.9 9h10.2"/></svg>
+      <b>1</b><h4>כוס</h4><p>ממלאים בקרח.</p>
+    </div>
+    <div class="step rv" style="--sc:var(--calm)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 4 5.4 7.1 5.4 10a5.4 5.4 0 1 1-10.8 0C6.6 10.1 9 7 12 3Z"/></svg>
+      <b>2</b><h4>נוזל</h4><p>מים, סודה או חלב — עד ⅔.</p>
+    </div>
+    <div class="step rv" style="--sc:var(--gt)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2h4v3.2l2.4 3.6c.4.6.6 1.3.6 2V19a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V10.8c0-.7.2-1.4.6-2L10 5.2V2Z"/><path d="M8 14h8"/></svg>
+      <b>3</b><h4>GT</h4><p>מודדים 50 מ״ל תמצית בכוס המדידה שלנו.</p>
+    </div>
+    <div class="step rv" style="--sc:var(--energy)">
+      <svg class="step-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l-2.2 16.2a2 2 0 0 1-2 1.8h-3.6a2 2 0 0 1-2-1.8L6 3Z"/><path d="M14 3c.5 1.6 2 2.4 3.4 1.8"/><path d="M9 21h6"/></svg>
+      <b>4</b><h4>מגישים</h4><p>מערבבים, מקשטים, מצלמים.</p>
+    </div>
   </div>
 </div></section>
 
@@ -1160,29 +1219,29 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 
 
-<div class="imgband rv" style="aspect-ratio:16/9;max-height:860px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170832_6231312b-1964-4ee0-82a8-119fd1beb85e.png&amp;w=1600&amp;output=webp&amp;q=80&amp;il" alt="הספיישלים של GT — מאצ׳ה, הוג׳יצ׳ה ואובה על שיש ירוק" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light top specials"><div class="eb">הספיישלים</div><h3>מאצ׳ה. הוג׳יצ׳ה. <em>אובה.</em></h3><p>מאצ׳ה טקסי משיזואוקה, מוטס ישירות מהחקלאים — טריות שננעלת מרגע הקטיף.</p></div></div>
+<div class="imgband rv" style="aspect-ratio:16/9;max-height:860px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170832_6231312b-1964-4ee0-82a8-119fd1beb85e.png&amp;w=1600&amp;output=webp&amp;q=80&amp;il" alt="הספיישלים של GT — מאצ׳ה, הוג׳יצ׳ה ואובה על שיש ירוק" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light top specials"><div class="eb">הספיישלים</div><h3>מאצ׳ה. הוג׳יצ׳ה. <em>אובה.</em></h3><p>מאצ׳ה טקסי משיזואוקה, מיובא ישירות מהחקלאים ביפן.</p></div></div>
 
 
 <section id="matcha"><div class="wrap">
   
   <div class="fgrid fgrid-3">
-    <a class="fcard rv v3" id="f-matcha" href="#pricing" style="cursor:pointer;background:#DDEBD6"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_38e3756a-25e1-4296-a809-8be736b4e8dd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#DDEBD6"><div class="badge">17 משקאות</div><div class="circle" style="background:#5F8F4E"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_080143_a26f4b1a-b6cf-4217-b835-2fb3d387b411.png&amp;w=760&amp;trim=6&amp;output=webp&amp;q=88&amp;n=-1" alt="שקית מאצ׳ה של GT" loading="lazy"><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_38e3756a-25e1-4296-a809-8be736b4e8dd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות מאצ׳ה של GT" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#DDEBD6"></path></svg><div class="txtwrap" style="background:#DDEBD6"><div class="info"><div class="origin">שיזואוקה · יפן</div><h4>מאצ׳ה</h4><div class="liner">מאצ׳ה טקסי משיזואוקה, מוטס מהחקלאים ברגע הקטיף. לא טרנד חולף — כאן כדי להישאר.</div><div class="comp">דרגה טקסית · מיובא ישירות מהחקלאים</div><div class="prow"><span>50 גרם · ₪65</span><span>500 גרם · ₪590</span></div></div></div></a>
-    <a class="fcard rv v3" id="f-hojicha" href="#pricing" style="cursor:pointer;background:#EFE3CC"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_190013_c7ff8502-175c-4ecd-9872-fff7eb88eb1f.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#EFE3CC"><div class="badge">חם וקר</div><div class="circle" style="background:#A9752E"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_080151_c36e496f-8194-41a4-af2b-b9d1d2fbaa9c.png&amp;w=760&amp;trim=6&amp;output=webp&amp;q=88&amp;n=-1" alt="שקית הוג׳יצ׳ה של GT" loading="lazy"><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_190013_c7ff8502-175c-4ecd-9872-fff7eb88eb1f.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="לאטה הוג׳יצ׳ה של GT" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#EFE3CC"></path></svg><div class="txtwrap" style="background:#EFE3CC"><div class="info"><div class="origin">קלוי · ״מאצ׳ה שחור״</div><h4>הוג׳יצ׳ה</h4><div class="liner">הלהיט החדש שכובש את העולם. אגוזי לוז, קקאו ותה בכוס אחת — מאצ׳ה פרימיום קלוי.</div><div class="comp">מאצ׳ה מובחר קלוי · נימות אגוז לוז וקקאו</div><div class="prow"><span>500 גרם · ₪375</span></div></div></div></a>
-    <a class="fcard rv v3" id="f-ube" href="#pricing" style="cursor:pointer;background:#E8DFF2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_5d54ae12-27b2-448c-97e3-ce2c4f1c7f2c.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E8DFF2"><div class="badge">5 משקאות</div><div class="circle" style="background:#7C5CBF"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_080147_80de24bd-d4ff-4027-8844-30ae9e2e64fb.png&amp;w=760&amp;trim=6&amp;output=webp&amp;q=88&amp;n=-1" alt="שקית אובה של GT" loading="lazy"><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_5d54ae12-27b2-448c-97e3-ce2c4f1c7f2c.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות אובה של GT" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E8DFF2"></path></svg><div class="txtwrap" style="background:#E8DFF2"><div class="info"><div class="origin">שורש בטטה סגולה</div><h4>אובה</h4><div class="liner">הסגול שעוצר את הגלילה — צבע ישר מהשורש עצמו. קרמי, בין וניל לאגוז. מושלם בלאטה, בשייק ובסודה.</div><div class="comp">אבקת בטטה סגולה · צבע טבעי</div><div class="prow"><span>500 גרם · ₪175</span><span>1 ק״ג · ₪340</span></div></div></div></a>
+    <a class="fcard rv v3" id="f-matcha" href="#pricing" style="cursor:pointer;background:#DDEBD6"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_38e3756a-25e1-4296-a809-8be736b4e8dd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#DDEBD6"><div class="badge">17 משקאות</div><div class="circle" style="background:#5F8F4E"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_080143_a26f4b1a-b6cf-4217-b835-2fb3d387b411.png&amp;w=760&amp;trim=6&amp;output=webp&amp;q=88&amp;n=-1" alt="שקית מאצ׳ה של GT" loading="lazy"><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_38e3756a-25e1-4296-a809-8be736b4e8dd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות מאצ׳ה של GT" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#DDEBD6"></path></svg><div class="txtwrap" style="background:#DDEBD6"><div class="info"><div class="origin">שיזואוקה · יפן</div><h4>מאצ׳ה</h4><div class="liner">הבסיס של כל תפריט המאצ׳ה. לא טרנד חולף — המאצ׳ה כאן כדי להישאר.</div><div class="comp">דרגה טקסית · מיובא ישירות מהחקלאים</div><div class="prow"><span>50 גרם · ₪65</span><span>500 גרם · ₪590</span></div></div></div></a>
+    <a class="fcard rv v3" id="f-hojicha" href="#pricing" style="cursor:pointer;background:#EFE3CC"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_190013_c7ff8502-175c-4ecd-9872-fff7eb88eb1f.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#EFE3CC"><div class="badge">חם וקר</div><div class="circle" style="background:#A9752E"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_080151_c36e496f-8194-41a4-af2b-b9d1d2fbaa9c.png&amp;w=760&amp;trim=6&amp;output=webp&amp;q=88&amp;n=-1" alt="שקית הוג׳יצ׳ה של GT" loading="lazy"><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_190013_c7ff8502-175c-4ecd-9872-fff7eb88eb1f.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="לאטה הוג׳יצ׳ה של GT" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#EFE3CC"></path></svg><div class="txtwrap" style="background:#EFE3CC"><div class="info"><div class="origin">קלוי · "מאצ׳ה שחור"</div><h4>הוג׳יצ׳ה</h4><div class="liner">הלהיט החדש שכובש את העולם: מאצ׳ה פרימיום קלוי, עם נימות של אגוזי לוז וקקאו.</div><div class="comp">מאצ׳ה מובחר קלוי · נימות אגוז לוז וקקאו</div><div class="prow"><span>500 גרם · ₪375</span></div></div></div></a>
+    <a class="fcard rv v3" id="f-ube" href="#pricing" style="cursor:pointer;background:#E8DFF2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_5d54ae12-27b2-448c-97e3-ce2c4f1c7f2c.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E8DFF2"><div class="badge">5 משקאות</div><div class="circle" style="background:#7C5CBF"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_080147_80de24bd-d4ff-4027-8844-30ae9e2e64fb.png&amp;w=760&amp;trim=6&amp;output=webp&amp;q=88&amp;n=-1" alt="שקית אובה של GT" loading="lazy"><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_170453_5d54ae12-27b2-448c-97e3-ce2c4f1c7f2c.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות אובה של GT" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E8DFF2"></path></svg><div class="txtwrap" style="background:#E8DFF2"><div class="info"><div class="origin">יאם סגול</div><h4>אובה</h4><div class="liner">צבע סגול טבעי לגמרי, וטעם קרמי בין וניל לאגוזים — מושלם בלאטה, בשייק ובסודה.</div><div class="comp">אבקת בטטה סגולה · צבע טבעי</div><div class="prow"><span>500 גרם · ₪175</span><span>1 ק״ג · ₪340</span></div></div></div></a>
 
   </div>
 </div></section>
 
 
 
-<div class="imgband rv" style="aspect-ratio:16/9;max-height:860px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260813_163154_c57e3664-f0c3-4bb9-a5fe-3ed800118831.png&amp;w=1440&amp;output=webp&amp;q=78&amp;il" alt="מחיות ODK על פודיומים" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light top peach"><div class="eb">מחית סמוזי ODK</div><h3>מחיות פרי. <em>50% פרי אמיתי.</em></h3><p>שלושה טעמים, תפקיד אחד: להפוך כל תמצית GT, מאצ׳ה או אובה למשקה דגל. לחצו על טעם כדי לראות בדיוק לאן הוא הולך.</p></div></div>
+<div class="imgband rv" style="aspect-ratio:16/9;max-height:860px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260813_163154_c57e3664-f0c3-4bb9-a5fe-3ed800118831.png&amp;w=1440&amp;output=webp&amp;q=78&amp;il" alt="מחיות ODK על פודיומים" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light top peach"><div class="eb">מחית סמוזי ODK</div><h3>מחיות פרי. <em>50% פרי אמיתי.</em></h3><p>שלושה טעמים שהופכים כל תמצית GT, מאצ׳ה או אובה למשקה דגל. לחצו על טעם כדי לראות באילו משקאות הוא נכנס.</p></div></div>
 
 <section id="purees"><div class="wrap">
   
   <div class="fgrid fgrid-3">
-    <a class="fcard rv v3" id="p-mango" href="#!" onclick="pmOpen('mango');return false;" style="cursor:pointer;background:#FCEAD2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_d3d813f6-8108-452b-88c3-b7e61cda7dd0.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#FCEAD2"><div class="badge">4 משקאות</div><div class="circle" style="background:#E8940A"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_172357_99086b18-1a86-47bf-9ac5-2c8635b79ba0.png&amp;w=700&amp;trim=10&amp;output=webp&amp;q=85" alt="מחית מנגו ODK" loading="lazy"><img class="hovimg" id="pm-hov-mango" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_d3d813f6-8108-452b-88c3-b7e61cda7dd0.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות מנגו" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#FCEAD2"></path></svg><div class="txtwrap" style="background:#FCEAD2"><div class="info"><div class="origin">ODK · תוצרת איטליה · 50% פרי</div><h4>מנגו</h4><div class="liner">מחית מנגו בסגנון אלפונסו זהוב — שכבת השמש למשקאות הדגל, למאצ׳ה, לקוקוס ולאובה.</div><div class="comp">50% תכולת פרי · שקית 1000 מ״ל</div><div class="prow"><span>1 ליטר · ₪60</span></div></div></div></a>
-    <a class="fcard rv v3" id="p-strawberry" href="#!" onclick="pmOpen('strawberry');return false;" style="cursor:pointer;background:#F9DCDF"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_5b5aa910-9d0b-48ff-bd69-5d3bb2adb3ed.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F9DCDF"><div class="badge">4 משקאות</div><div class="circle" style="background:#D8203F"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_172401_9330c992-71a4-4550-b009-2ceb184abdbf.png&amp;w=700&amp;trim=10&amp;output=webp&amp;q=85" alt="מחית תות ODK" loading="lazy"><img class="hovimg" id="pm-hov-strawberry" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_5b5aa910-9d0b-48ff-bd69-5d3bb2adb3ed.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות תות" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F9DCDF"></path></svg><div class="txtwrap" style="background:#F9DCDF"><div class="info"><div class="origin">ODK · תוצרת איטליה · 50% פרי</div><h4>תות</h4><div class="liner">מחית תות אדום ובשל — שכבת רב המכר לאורך כל תפריט הקיץ.</div><div class="comp">50% תכולת פרי · שקית 1000 מ״ל</div><div class="prow"><span>1 ליטר · ₪60</span></div></div></div></a>
-    <a class="fcard rv v3" id="p-peach" href="#!" onclick="pmOpen('peach');return false;" style="cursor:pointer;background:#FBE3D0"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_63e302a6-01eb-4b11-9b4d-a6596d45b27e.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#FBE3D0"><div class="badge">4 משקאות</div><div class="circle" style="background:#E8794A"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_172405_64171a82-aac1-459d-8807-c07e3ef1e876.png&amp;w=700&amp;trim=10&amp;output=webp&amp;q=85" alt="מחית אפרסק ODK" loading="lazy"><img class="hovimg" id="pm-hov-peach" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_63e302a6-01eb-4b11-9b4d-a6596d45b27e.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות אפרסק" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#FBE3D0"></path></svg><div class="txtwrap" style="background:#FBE3D0"><div class="info"><div class="origin">ODK · תוצרת איטליה · 50% פרי</div><h4>אפרסק</h4><div class="liner">מחית אפרסק קטיפתי — הכוכב של המדברי־אפרסק: משקה דגל, גזוז, מאצ׳ה ואובה.</div><div class="comp">50% תכולת פרי · שקית 1000 מ״ל</div><div class="prow"><span>1 ליטר · ₪60</span></div></div></div></a>
+    <a class="fcard rv v3" id="p-mango" href="#!" onclick="pmOpen('mango');return false;" style="cursor:pointer;background:#FCEAD2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_d3d813f6-8108-452b-88c3-b7e61cda7dd0.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#FCEAD2"><div class="badge">4 משקאות</div><div class="circle" style="background:#E8940A"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_172357_99086b18-1a86-47bf-9ac5-2c8635b79ba0.png&amp;w=700&amp;trim=10&amp;output=webp&amp;q=85" alt="מחית מנגו ODK" loading="lazy"><img class="hovimg" id="pm-hov-mango" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_d3d813f6-8108-452b-88c3-b7e61cda7dd0.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות מנגו" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#FCEAD2"></path></svg><div class="txtwrap" style="background:#FCEAD2"><div class="info"><div class="origin">ODK · תוצרת איטליה · 50% פרי</div><h4>מנגו</h4><div class="liner">מחית מנגו זהובה בסגנון אלפונסו — שכבה של קיץ במשקאות הדגל, במאצ׳ה, בקוקוס ובאובה.</div><div class="comp">50% תכולת פרי · שקית 1000 מ״ל</div><div class="prow"><span>1 ליטר · ₪60</span></div></div></div></a>
+    <a class="fcard rv v3" id="p-strawberry" href="#!" onclick="pmOpen('strawberry');return false;" style="cursor:pointer;background:#F9DCDF"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_5b5aa910-9d0b-48ff-bd69-5d3bb2adb3ed.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F9DCDF"><div class="badge">4 משקאות</div><div class="circle" style="background:#D8203F"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_172401_9330c992-71a4-4550-b009-2ceb184abdbf.png&amp;w=700&amp;trim=10&amp;output=webp&amp;q=85" alt="מחית תות ODK" loading="lazy"><img class="hovimg" id="pm-hov-strawberry" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_5b5aa910-9d0b-48ff-bd69-5d3bb2adb3ed.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות תות" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F9DCDF"></path></svg><div class="txtwrap" style="background:#F9DCDF"><div class="info"><div class="origin">ODK · תוצרת איטליה · 50% פרי</div><h4>תות</h4><div class="liner">מחית תות אדום ובשל — רב־המכר של תפריט הקיץ.</div><div class="comp">50% תכולת פרי · שקית 1000 מ״ל</div><div class="prow"><span>1 ליטר · ₪60</span></div></div></div></a>
+    <a class="fcard rv v3" id="p-peach" href="#!" onclick="pmOpen('peach');return false;" style="cursor:pointer;background:#FBE3D0"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_63e302a6-01eb-4b11-9b4d-a6596d45b27e.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#FBE3D0"><div class="badge">4 משקאות</div><div class="circle" style="background:#E8794A"></div><img class="duoimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_172405_64171a82-aac1-459d-8807-c07e3ef1e876.png&amp;w=700&amp;trim=10&amp;output=webp&amp;q=85" alt="מחית אפרסק ODK" loading="lazy"><img class="hovimg" id="pm-hov-peach" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_63e302a6-01eb-4b11-9b4d-a6596d45b27e.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="משקאות אפרסק" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#FBE3D0"></path></svg><div class="txtwrap" style="background:#FBE3D0"><div class="info"><div class="origin">ODK · תוצרת איטליה · 50% פרי</div><h4>אפרסק</h4><div class="liner">מחית אפרסק קטיפתית — מככבת במשקה הדגל ובגזוז המדבריים, במאצ׳ה ובאובה.</div><div class="comp">50% תכולת פרי · שקית 1000 מ״ל</div><div class="prow"><span>1 ליטר · ₪60</span></div></div></div></a>
   </div>
 
 </div></section>
@@ -1200,7 +1259,7 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 <section id="pricing"><div class="wrap">
   <span class="eyebrow rv">מחירון סיטונאי</span>
   <h2 class="rv">כל המחירים. <em class="num" style="font-style:italic">על השולחן.</em></h2>
-  <p class="sub rv">בלי מדרגות נסתרות, בלי ״צרו קשר לתמחור״. כל המחירים בשקלים, לפני מע״מ.</p>
+  <p class="sub rv">בלי מדרגות נסתרות, בלי "צרו קשר לתמחור". כל המחירים בשקלים, לפני מע״מ.</p>
   <div class="pctl rv"><button type="button" class="pall" onclick="pAll(this)">פתחו הכול</button></div>
   <div class="pgrid">
       <details class="ptable rv" open>
@@ -1242,7 +1301,7 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
         <div class="prl"><span>‏ODK מנגו · 1 ליטר</span><b>₪60</b></div>
         <div class="prl"><span>‏ODK תות · 1 ליטר</span><b>₪60</b></div>
         <div class="prl"><span>‏ODK אפרסק · 1 ליטר</span><b>₪60</b></div>
-        <div class="pnote">50% פרי. עשוי בשביל מאצ׳ה, אובה ומשקאות דגל.</div>
+        <div class="pnote">50% פרי. מושלמות למאצ׳ה, לאובה ולמשקאות דגל.</div>
         </div>
       </details>
       <details class="ptable rv">
@@ -1270,15 +1329,15 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 
 
-<div class="imgband rv" style="aspect-ratio:16/9;max-height:760px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_113517_b5e3f61b-6d44-4557-adfa-e8021ff13132.png&amp;w=1600&amp;output=webp&amp;q=80&amp;il" alt="בר במלון של GT — הגשה על מגש" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light side"><div class="eb">מלונות · מסעדות · בתי קפה</div><h3>מוזגים אצל<br><em>המקצוענים.</em></h3><p>הזמנה אחת מכסה את כל הבר — תמציות, אבקות, מחיות והכלים להגיש אותם.</p></div></div>
+<div class="imgband rv" style="aspect-ratio:16/9;max-height:760px;width:100%;overflow:hidden;position:relative"><img loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_113517_b5e3f61b-6d44-4557-adfa-e8021ff13132.png&amp;w=1600&amp;output=webp&amp;q=80&amp;il" alt="משקאות GT מוגשים על מגש בבר של מלון" style="width:100%;height:100%;object-fit:cover;object-position:center center;display:block"><div class="bandcap light side"><div class="eb">מלונות · מסעדות · בתי קפה</div><h3>מוגש אצל<br><em>המקצוענים.</em></h3><p>הזמנה אחת מכסה את כל הבר — תמציות, אבקות, מחיות וכלי הגשה.</p></div></div>
 <section id="about" class="about"><div class="wrap in">
   <div class="rv">
     <span class="eyebrow">על GT</span>
-    <h2>עידן הפשרות<br>כבר <em class="num" style="font-style:italic">נגמר.</em></h2>
-    <p>‏GT הוקמה כדי להביא משהו חדש: משקה וולנס קר שהוא טעים בטירוף, מאוזן — ורווחי לכם כמו קפה.</p>
-    <p>אנחנו יצרנים ישראלים בוטיק. בוררים ביד עלי תה מובחרים וצמחי בר מרחבי העולם והופכים אותם לתמציות ייחודיות — בלי חומרים משמרים, בלי טעמים מוספים, בלי ממתיקים מלאכותיים.</p>
-    <p>סגור, הבקבוק לא צריך מקרר ולא תופס שטח קירור; אחרי הפתיחה הוא חי בקור — כי זה מוצר טבעי לגמרי. ההכנה היא ארבעה צעדים שכל בריסטה לומד בדקה.</p>
-    <p>בנוי לדור של אורחים שרוצים משקה עם ערך אמיתי: חוויה, לא סתם משהו לשתות. ברוכים הבאים לעולם משקאות חדש.</p>
+    <h2>לא צריך<br>יותר <em class="num" style="font-style:italic">להתפשר.</em></h2>
+    <p>‏GT הוקמה כדי להביא משהו חדש: משקה קר, טעים בטירוף ומאוזן — ורווחי לכם כמעט כמו קפה.</p>
+    <p>אנחנו יצרן בוטיק ישראלי. בוררים ביד עלי תה מובחרים וצמחים מרחבי העולם, והופכים אותם לתמציות ייחודיות — בלי חומרים משמרים, בלי צבעי מאכל ובלי תמציות טעם.</p>
+    <p>כל עוד הבקבוק סגור, הוא לא צריך מקרר ולא תופס בו מקום. אחרי הפתיחה שומרים אותו בקירור — כי אין בו חומרים משמרים. ההכנה היא ארבעה צעדים שכל בריסטה לומד בדקה.</p>
+    <p>המשקאות שלנו נועדו לדור של אורחים שמחפשים בכוס חוויה — לא סתם משהו לשתות.</p>
   </div>
 </div></section>
 
@@ -1294,18 +1353,18 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
 
 <section id="faq"><div class="wrap" style="max-width:860px">
   <span class="eyebrow rv">שאלות נפוצות</span>
-  <h2 class="rv">יש שאלות? <em class="num" style="font-style:italic">יופי.</em></h2>
-  <details class="rv"><summary>הבקבוקים צריכים קירור?</summary><p>לא עד שפותחים אותם. בקבוק סגור חי בטמפרטורת החדר ולא תופס שום מקום במקרר. אחרי הפתיחה — לשמור בקירור, כי זה מוצר טבעי לגמרי.</p></details>
-  <details class="rv"><summary>כמה משקאות יוצאים מבקבוק אחד?</summary><p>בקבוק תמצית אחת עושה 20–25 כוסות. במחירי התפריט המומלצים זה סיפור הרווחיות שרואה החשבון שלכם יאהב.</p></details>
-  <details class="rv"><summary>מה בעצם יש בפנים?</summary><p>עלי תה מובחרים וצמחים אכילים — וזהו. בלי חומרים משמרים, בלי טעמים או ריחות מוספים, בלי ממתיקים מלאכותיים.</p></details>
-  <details class="rv"><summary>כמה זה מסובך לצוות שלי?</summary><p>ארבעה צעדים: כוס עם מים וקרח, מוסיפים תרכיז עם כוס המדידה שלנו, מערבבים, מגישים. כל בריסטה לומד את זה בדקה.</p></details>
-  <details class="rv"><summary>יש אפשרויות בלי סוכר?</summary><p>כן — Detox ו־Fresh קיימים בגרסה ללא סוכר, באותו מחיר ובאותה לוגיקת טעם.</p></details>
+  <h2 class="rv">כל מה <em class="num" style="font-style:italic">שרציתם לדעת.</em></h2>
+  <details class="rv"><summary>הבקבוקים צריכים קירור?</summary><p>רק אחרי שפותחים אותם. בקבוק סגור נשמר בטמפרטורת החדר ולא תופס מקום במקרר. אחרי הפתיחה שומרים אותו בקירור, ואז הוא מחזיק שלושה חודשים.</p></details>
+  <details class="rv"><summary>כמה משקאות יוצאים מבקבוק אחד?</summary><p>בקבוק תמצית אחד נותן <bdi dir="ltr">20–25</bdi> כוסות. תמחיר מלא לכל משקה נשלח לכם יחד עם המחירון.</p></details>
+  <details class="rv"><summary>מה בעצם יש בפנים?</summary><p>עלי תה מובחרים וצמחים אכילים. בלי חומרים משמרים, בלי צבעי מאכל ובלי תמציות טעם.</p></details>
+  <details class="rv"><summary>כמה זה מסובך לצוות?</summary><p>ארבעה צעדים: כוס עם מים וקרח, מוסיפים תמצית עם כוס המדידה שלנו, מערבבים, מגישים. כל בריסטה לומד את זה בדקה.</p></details>
+  <details class="rv"><summary>יש אפשרויות בלי סוכר?</summary><p>כן — Detox ו־Fresh מגיעים גם בגרסה ללא סוכר, באותו מחיר.</p></details>
   <details class="rv"><summary>איפה מתחילים?</summary><p>משאירים פרטים כאן למטה — ואנחנו נבנה לכם תפריט פתיחה למקום, כולל מתכונים, תמחור והדרכת צוות.</p></details>
 </div></section>
 
 <section id="contact" class="contact"><div class="wrap in">
   <div class="rv">
-    <span class="eyebrow">צור קשר</span>
+    <span class="eyebrow">צרו קשר</span>
     <h2>בואו נדבר.</h2>
     <p style="color:var(--ink-soft)">השאירו פרטים — נשלח את המחירון המלא ונקבע טעימה.</p>
     <ul>
@@ -1317,15 +1376,15 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
   </div>
   <form class="rv partner" id="pform" method="post" enctype="text/plain"
       action="mailto:info@gteveryday.com?subject=GT%20Everyday%20%E2%80%94%20בקשת%20שיתוף%20פעולה" onsubmit="return pSend(event)">
-    <div class="pf-head"><b>בקשת שיתוף פעולה</b><span>עונים תוך יום עסקים אחד</span></div>
+    <div class="pf-head"><b>בקשת מחירון וטעימה</b><span>עונים תוך יום עסקים אחד</span></div>
     <div class="pf-row">
-      <input id="pf-name" name="name" autocomplete="name" placeholder="השם שלך *" required>
+      <input id="pf-name" name="name" autocomplete="name" placeholder="שם מלא *" required>
       <input id="pf-venue" name="venue" autocomplete="organization" placeholder="שם העסק *" required>
     </div>
     <div class="pf-row">
       <input id="pf-city" name="city" autocomplete="address-level2" placeholder="עיר *" required>
-      <select id="pf-role" name="role" aria-label="התפקיד שלך">
-        <option value="">התפקיד שלך</option><option>בעלים</option><option>מנהל/ת</option>
+      <select id="pf-role" name="role" aria-label="תפקיד">
+        <option value="">תפקיד</option><option>בעלים</option><option>מנהל/ת</option>
         <option>אחראי/ת בר</option><option>בריסטה</option><option>אחר</option>
       </select>
     </div>
@@ -1335,7 +1394,7 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
     </div>
     <select id="pf-int" name="interest" aria-label="מה מעניין אתכם">
       <option value="">מה מעניין אתכם…</option><option>המחירון המלא</option><option>טעימה במקום</option>
-      <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>מחית סמוזי</option>
+      <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>
       <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
     </select>
     <textarea id="pf-msg" name="message" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
@@ -1344,16 +1403,16 @@ input:focus-visible,select:focus-visible,.partner textarea:focus-visible{outline
       <input id="pf-cw" name="company_website" type="text" tabindex="-1" autocomplete="off">
     </div>
     <div class="pf-err" id="pf-err" role="alert" hidden></div>
-    <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אני מאשר/ת פנייה בנוגע לאספקה סיטונאית.</label>
+    <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
     <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
-    <div class="pf-alt">או שתכתבו לנו ב <a href="https://wa.me/972543982444" target="_blank" rel="noopener">וואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
-    <div class="pf-done" id="pf-done" role="status"><b>תודה — הבקשה בדרך אלינו.</b><span>קיבלנו את הפרטים ואנחנו חוזרים אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
+    <div class="pf-alt">או כתבו לנו <a href="https://wa.me/972543982444" target="_blank" rel="noopener">בוואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
+    <div class="pf-done" id="pf-done" role="status"><b>תודה רבה!</b><span>קיבלנו את הפרטים ונחזור אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
   </form>
 </div></section>
 
 <footer class="site wrap">
   <span>‎© 2026 גרינטי אוירי די בע״מ</span>
-  <span>אינסטגרם · פייסבוק · יוטיוב</span>
+  <span class="social"><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">אינסטגרם</a> · <a href="https://facebook.com/greenteaeveryday" target="_blank" rel="noopener">פייסבוק</a> · <a href="https://www.youtube.com/channel/UC7U7qL5vs9xt6Rzxj2GiSOg" target="_blank" rel="noopener">יוטיוב</a></span>
   <span class="serif">Don't Drink Boring.</span>
 </footer>
 
@@ -1430,7 +1489,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   <div class="box"><div class="mimg sp-card sp-card"><img loading="lazy" decoding="async" id="fm-img" src="" alt=""></div>
   <div class="mtxt"><div class="origin" id="fm-origin"></div><h3 id="fm-name"></h3>
   <div class="comp" id="fm-comp"></div><p id="fm-text"></p>
-  <div class="facts"><span>בקבוק אחד = 20–25 כוסות</span><span>בלי מקרר עד הפתיחה</span><span>100% טבעי</span></div>
+  <div class="facts"><span>בקבוק אחד = <bdi dir="ltr">20–25</bdi> כוסות</span><span>בלי מקרר עד הפתיחה</span><span>ללא חומרים משמרים</span></div>
   <div class="makes" id="fm-makes"></div>
   <div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div>
   <a class="cta" href="#contact" onclick="document.getElementById('fmodal').classList.remove('open')">הוסיפו לתפריט ←</a>
@@ -1440,82 +1499,82 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 var FSCENE={"f-matcha":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260727_134109_25aaf22d-38fd-40ec-aef3-c703b539197d.png&w=1100&output=webp&q=82&il","f-hojicha":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260727_171546_dcfe4da3-8f6a-4151-b431-4cf564826578.png&w=1100&output=webp&q=82&il","f-ube":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260727_134149_b53b10db-97e5-4c75-a4bc-f148b786de02.png&w=1100&output=webp&q=82&il","f-detox":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_165833_61d40f69-0838-4457-8773-40344f891cf9.png&w=1100&output=webp&q=80&il","f-energy":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_165833_abfa3da2-9340-4246-9635-7a6f9a6f96d4.png&w=1100&output=webp&q=80&il","f-revive":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_165833_af725fe3-e2a0-4046-b0fd-80e66b85212e.png&w=1100&output=webp&q=80&il","f-fresh":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_165833_658bc571-4368-4353-a4fa-827400f07ad3.png&w=1100&output=webp&q=80&il","f-consciousness":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_171245_05c511ff-2d1f-4ba7-aeaf-c4c94f7d6234.png&w=1100&output=webp&q=80&il","f-namastea":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_171245_d4917425-8471-4984-a8c9-847a2effd930.png&w=1100&output=webp&q=80&il","f-desertea":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_171245_c39ec4b8-8cb1-49ab-ba76-25ca9455c95a.png&w=1100&output=webp&q=80&il","f-calm":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_073503_b7a00475-86ed-4d40-89ad-f6664b16ddda.png&w=1100&output=webp&q=80&il","f-american":"https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_171245_0ba1b7f1-0135-46e8-b23a-3d1000af7909.png&w=1100&output=webp&q=80&il"};
 
 const FL={
- "Detox":"הדגל של התפריט היומיומי. פרופיל קליל ומרענן שאורחים בכל גיל מבינים מיד — סיפור בריאות ברור וישר שלא צריך להסביר. עובד מצוין כחליטה קרה, כבסיס ללימונדה או כגזוז.",
- "Revive":"סנצ׳ה מדרגה גבוהה, מיובא ישירות מיפן, מורם עם פסיפלורה טרופית. כוס מפתיעה עם סיפור שהצוות שלכם יאהב לספר — וטעם שאורחים לא שוכחים.",
- "Energy":"קפאין טבעי עם נוכחות וארומה אמיתיות: תה ירוק, למון גראס, נענע ולימון. האלטרנטיבה הירוקה שמרחיבה את התפריט מעבר לקפה — בהיר, ארומטי, ער.",
- "Consciousness":"פרחוניות עדינה עם ליצ׳י טבעי — כוס אלגנטית ומדויקת. בנויה על 70% תה יסמין, עם ארומה רכה שנשארת הרבה אחרי הלגימה האחרונה.",
- "American":"הקלאסיקה האמריקאית עם חוצפה ישראלית. תה מיושן ועמוק שמורם ביוזו, ברגמוט והדרים — ובן זוג מושלם למחית אפרסק או מנגו מקו הסמוזי שלנו.",
- "Fresh":"קריאת השכמה בלי קפאין. אדום נועז ומסקרן שעוצר את הגלילה, עם חמיצות עדינה שמחזירה אורחים שוב ושוב.",
- "Desertea":"מוצר ישראלי ייחודי בלי מתחרים: חמישה צמחי בר מקומיים — לואיזה, נענע, אזוב, מליסה, מרווה וזוטה לבנה — בכוס אחת. בלי קפאין, בטעם של מדבר אחרי גשם.",
- "Calm":"עדין ואלגנטי, לכל גיל. קמומיל, תפוח וציפורן: מתוק בטבעיות, בלי קפאין — הכוס המושלמת לאחר הצהריים ולערב.",
- "Namastea":"רב מכר אדיר בקהל הישראלי. שני סוגי תה שחור וחמישה תבלינים — מבריק קר או עם מי קוקוס, ונהדר חם כצ׳אי לאטה עם כל חלב."
+ "Detox":"ספינת הדגל של התפריט היומיומי. תה ירוק, לואיזה, נענע וליים — קליל, מרענן ומתאים לכל גיל. האורחים יודעים מה יש בכוס בלי שתצטרכו להסביר. מצוין כחליטה קרה, כבסיס ללימונדה או כגזוז.",
+ "Revive":"סנצ׳ה מובחר, מיובא ישירות מיפן, עם נגיעה טרופית של פסיפלורה. כוס מפתיעה, עם סיפור שהצוות ישמח לספר וטעם שהאורחים לא שוכחים.",
+ "Energy":"קפאין טבעי שמרגישים באמת, וארומה עשירה: תה ירוק, למון גראס, נענע ולימון. האלטרנטיבה הירוקה לקפה, שמרחיבה את התפריט — רעננה ומעירה.",
+ "Consciousness":"פרחוניות עדינה וליצ׳י טבעי — כוס אלגנטית ומאוזנת. על בסיס 70% תה יסמין, עם ארומה רכה שנשארת הרבה אחרי הלגימה האחרונה.",
+ "American":"הקלאסיקה האמריקאית, עם חוצפה ישראלית. תה מיושן ועמוק עם יוזו, ברגמוט והדרים — ומשתלב מצוין עם מחיות האפרסק והמנגו שלנו.",
+ "Fresh":"מכניס צבע לתפריט, בלי טיפת קפאין. אדום עז ומסקרן שעוצר את הגלילה, עם חמיצות עדינה שמחזירה את האורחים שוב ושוב.",
+ "Desertea":"מוצר ישראלי שאין לו מתחרים. לואיזה, נענע, אזוב, מליסה, מרווה וזוטה לבנה — צמחי בר מקומיים בכוס אחת. בלי קפאין, ובטעם של מדבר אחרי גשם.",
+ "Calm":"עדין ואלגנטי, לכל גיל. קמומיל, תפוח וציפורן: מתיקות טבעית ובלי קפאין — הכוס המושלמת לשעות אחר הצהריים והערב.",
+ "Namastea":"להיט ענק אצל הקהל הישראלי. שני סוגי תה שחור וחמישה תבלינים — מעולה קר או עם מי קוקוס, ונהדר חם כצ׳אי לאטה עם כל סוג חלב."
 };
 
 const T={
- tea:["ממלאים כוס בקרח","מוסיפים 50 מ״ל תרכיז GT","משלימים ל־⅔ במים קרים — או בסודה לגרסה מוגזת","קישוט: פרוסת לימון + עשבי תיבול טריים"],
- lem:["ממלאים כוס בקרח","מוסיפים 50 מ״ל תרכיז GT","ממלאים עד למעלה בלימונדה","מערבבים קלות ומגישים"],
- sig:(x)=>["ממלאים כוס בקרח","מוסיפים 40 מ״ל"+x,"מוסיפים 40 מ״ל תרכיז GT","משלימים ל־⅔ במים","מקשטים לפי הטעם"],
- gaz:(x)=>["ממלאים כוס בקרח","מוסיפים 40 מ״ל"+x,"מוסיפים 40 מ״ל תרכיז GT","משלימים בסודה (כ־150 מ״ל)","מקשטים"]
+ tea:["ממלאים כוס בקרח","מוסיפים 50 מ״ל תמצית GT","משלימים ל־⅔ במים קרים — או בסודה לגרסה מוגזת","מקשטים בפרוסת לימון ובעשבי תיבול טריים"],
+ lem:["ממלאים כוס בקרח","מוסיפים 50 מ״ל תמצית GT","ממלאים עד למעלה בלימונדה","מערבבים קלות ומגישים"],
+ sig:(x)=>["ממלאים כוס בקרח","מוסיפים 40 מ״ל "+x,"מוסיפים 40 מ״ל תמצית GT","משלימים ל־⅔ במים","מקשטים לפי הטעם"],
+ gaz:(x)=>["ממלאים כוס בקרח","מוסיפים 40 מ״ל "+x,"מוסיפים 40 מ״ל תמצית GT","משלימים בסודה (כ־150 מ״ל)","מקשטים"]
 };
 const MK={
  "Detox":[
   {t:"חליטת Detox קרה — רגילה או מוגזת",p:20,m:81,fc:"3.25",st:T.tea},
-  {t:"משקה דגל תות־לואיזה",p:31,m:82,fc:"4.80",st:T.sig("מחית תות")}],
+  {t:"משקה דגל תות ולואיזה",p:31,m:82,fc:"4.80",st:T.sig("מחית תות")}],
  "Revive":[
   {t:"חליטת Revive קרה — רגילה או מוגזת",p:20,m:81,fc:"3.25",st:T.tea},
-  {t:"משקה דגל מנגו־סנצ׳ה",p:31,m:82,fc:"4.80",st:T.sig("מחית מנגו")}],
+  {t:"משקה דגל מנגו וסנצ׳ה",p:31,m:82,fc:"4.80",st:T.sig("מחית מנגו")}],
  "Energy":[
   {t:"חליטת Energy קרה — רגילה או מוגזת",p:20,m:81,fc:"3.25",st:T.tea}],
  "Consciousness":[
-  {t:"חליטת יסמין־ליצ׳י",p:20,m:81,fc:"3.25",st:T.tea},
-  {t:"גזוז ליצ׳י",p:25,m:85,fc:"3.08",st:["ממלאים כוס בקרח","מוסיפים 40 מ״ל מי ליצ׳י","מוסיפים 40 מ״ל תרכיז GT","משלימים בסודה (כ־150 מ״ל)","קישוט: 2 ליצ׳י טריים"]}],
+  {t:"חליטת יסמין וליצ׳י",p:20,m:81,fc:"3.25",st:T.tea},
+  {t:"גזוז ליצ׳י",p:25,m:85,fc:"3.08",st:["ממלאים כוס בקרח","מוסיפים 40 מ״ל מי ליצ׳י","מוסיפים 40 מ״ל תמצית GT","משלימים בסודה (כ־150 מ״ל)","מקשטים ב־2 ליצ׳י טריים"]}],
  "American":[
   {t:"חליטת American קרה — רגילה או מוגזת",p:20,m:81,fc:"3.25",st:T.tea}],
  "Fresh":[
   {t:"חליטת Fresh",p:20,m:81,fc:"3.25",st:T.tea},
-  {t:"לימונדת היביסקוס־ליים",p:22,m:79,fc:"3.95",st:T.lem},
-  {t:"משקה דגל תפוח־היביסקוס",p:24,m:86,fc:"2.88",st:T.sig("מיץ תפוחים")},
-  {t:"גזוז היביסקוס־תפוח",p:22,m:85,fc:"2.88",st:T.gaz("מיץ תפוחים")}],
+  {t:"לימונדת היביסקוס וליים",p:22,m:79,fc:"3.95",st:T.lem},
+  {t:"משקה דגל תפוח והיביסקוס",p:24,m:86,fc:"2.88",st:T.sig("מיץ תפוחים")},
+  {t:"גזוז היביסקוס ותפוח",p:22,m:85,fc:"2.88",st:T.gaz("מיץ תפוחים")}],
  "Desertea":[
   {t:"חליטה מדברית",p:20,m:81,fc:"3.25",st:T.tea},
   {t:"לימונדה מדברית",p:22,m:79,fc:"3.95",st:T.lem},
-  {t:"משקה דגל מדברי־אפרסק",p:31,m:82,fc:"4.80",st:T.sig("מחית אפרסק")},
-  {t:"גזוז מדברי־אפרסק",p:33,m:83,fc:"4.80",st:T.gaz("מחית אפרסק")}],
+  {t:"משקה דגל אפרסק מדברי",p:31,m:82,fc:"4.80",st:T.sig("מחית אפרסק")},
+  {t:"גזוז אפרסק מדברי",p:33,m:83,fc:"4.80",st:T.gaz("מחית אפרסק")}],
  "Calm":[
-  {t:"חליטת קמומיל־תפוח — רגילה או מוגזת",p:20,m:81,fc:"3.25",st:T.tea}],
+  {t:"חליטת קמומיל ותפוח — רגילה או מוגזת",p:20,m:81,fc:"3.25",st:T.tea}],
  "Namastea":[
-  {t:"אייס צ׳אי מסאלה קלאסי",p:28,m:77,fc:"5.57",st:["ממלאים כוס בקרח","משלימים ל־⅔ בחלב (כל חלב מתאים)","מוזגים 50 מ״ל תרכיז מסאלה GT","מכתירים בקצף חלב","מפזרים קינמון"]},
-  {t:"צ׳אי מסאלה על קרח",p:24,m:82,fc:"3.70",st:["ממלאים כוס בקרח","משלימים ל־⅔ במים","מוזגים 50 מ״ל תרכיז מסאלה GT","מכתירים בקצף חלב נדיב"]},
-  {t:"דירטי צ׳אי (עם אספרסו)",p:32,m:76,fc:"6.57",st:["מוציאים שוט אספרסו","ממלאים כוס בקרח","משלימים ל־⅔ בחלב","מוזגים 50 מ״ל מסאלה + האספרסו","מכתירים בקצף חלב"]},
-  {t:"צ׳אי וטוניק תפוז מיובש",p:26,m:78,fc:"4.75",st:["ממלאים כוס בקרח","מוזגים 50 מ״ל תרכיז מסאלה GT","ממלאים בטוניק (כ־150 מ״ל)","מקשטים בפרוסת תפוז מיובש"]},
-  {t:"טוניק ורדים ורוד",p:24,m:77,fc:"4.75",st:["ממלאים כוס בקרח","מוזגים 50 מ״ל תרכיז מסאלה GT","ממלאים בטוניק ורדים או אשכוליות (כ־150 מ״ל)"]},
-  {t:"צ׳אי קולד פואם וניל",p:28,m:83,fc:"4.00",st:["ממלאים כוס בקרח","משלימים ל־⅔ במים","מוזגים 50 מ״ל תרכיז מסאלה GT","מכתירים בקצף קר וניל","מקשטים במקל וניל"]}]
+  {t:"אייס צ׳אי מסאלה קלאסי",p:28,m:77,fc:"5.57",st:["ממלאים כוס בקרח","משלימים ל־⅔ בחלב (כל חלב מתאים)","מוזגים 50 מ״ל תמצית מסאלה GT","מכתירים בקצף חלב","מפזרים קינמון"]},
+  {t:"צ׳אי מסאלה על קרח",p:24,m:82,fc:"3.70",st:["ממלאים כוס בקרח","משלימים ל־⅔ במים","מוזגים 50 מ״ל תמצית מסאלה GT","מכתירים בשכבה נדיבה של קצף חלב"]},
+  {t:"דירטי צ׳אי (עם אספרסו)",p:32,m:76,fc:"6.57",st:["מוציאים שוט אספרסו","ממלאים כוס בקרח","משלימים ל־⅔ בחלב","מוזגים 50 מ״ל תמצית מסאלה GT ואת האספרסו","מכתירים בקצף חלב"]},
+  {t:"צ׳אי וטוניק תפוז מיובש",p:26,m:78,fc:"4.75",st:["ממלאים כוס בקרח","מוזגים 50 מ״ל תמצית מסאלה GT","ממלאים בטוניק (כ־150 מ״ל)","מקשטים בפרוסת תפוז מיובש"]},
+  {t:"טוניק ורדים",p:24,m:77,fc:"4.75",st:["ממלאים כוס בקרח","מוזגים 50 מ״ל תמצית מסאלה GT","ממלאים בטוניק ורדים או אשכוליות (כ־150 מ״ל)"]},
+  {t:"צ׳אי קולד פואם וניל",p:28,m:83,fc:"4.00",st:["ממלאים כוס בקרח","משלימים ל־⅔ במים","מוזגים 50 מ״ל תמצית מסאלה GT","מכתירים בקצף קר וניל","מקשטים במקל וניל"]}]
 };
-const MKMORE={"Hojicha":"מוגש בשתי הדרכים — הוג׳יצ׳ה לאטה חם עם כל חלב, או קר על חלב. נימות קלויות של אגוזי לוז וקקאו.","American":"משתלב מושלם עם מחיות אפרסק ומנגו של ODK — הבסיס למשקאות הדגל.","Energy":"כל חליטה קרה היא גם גזוז: אותו מתכון, סודה במקום מים.","Calm":"כל חליטה קרה היא גם גזוז: אותו מתכון, סודה במקום מים."};
+const MKMORE={"Hojicha":"מוגש בשתי הדרכים — הוג׳יצ׳ה לאטה חם עם כל חלב, או קר על חלב. נימות קלויות של אגוזי לוז וקקאו.","American":"הבסיס למשקאות הדגל, עם מחיות האפרסק והמנגו של ODK.","Energy":"כל חליטה קרה היא גם גזוז: אותו מתכון, סודה במקום מים.","Calm":"כל חליטה קרה היא גם גזוז: אותו מתכון, סודה במקום מים."};
 window.POUCH=['f-matcha','f-hojicha','f-ube'];
 var POUCHCH={"Matcha":"אייס מאצ׳ה","Ube":"אובה"};
 function renderMakesPouch(n){
  const box=document.getElementById('fm-makes');
  const ch=(typeof COLS!=='undefined')?COLS.find(x=>x.t===POUCHCH[n]):null;
  if(!ch){box.innerHTML=(typeof MKMORE!=='undefined'&&MKMORE[n])?('<div class="mkmore">'+MKMORE[n]+'</div>'):'';return;}
- let h='<h6>Menu drinks it makes \u2014 tap for recipe</h6>';
+ let h='<h6>מה מכינים ממנו \u2014 לחצו למתכון</h6>';
  ch.drinks.forEach(d=>{
   h+='<details class="mk"><summary><span>'+dn(d)+'</span><i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b></i></summary>';
   h+='<div class="rec"><ol>';
   d.st.forEach(x=>{h+='<li>'+x+'</li>'});
-  h+='</ol><div class="fc">Food cost \u20aa'+d.fc+' ex-VAT \u00b7 recommended price \u20aa'+d.p+' incl. VAT \u00b7 margin '+d.m+'%</div></div></details>';
+  h+='</ol><div class="fc">עלות חומר גלם \u20aa'+d.fc+' ללא מע״מ \u00b7 מחיר מומלץ \u20aa'+d.p+' כולל מע״מ \u00b7 רווחיות '+d.m+'%</div></div></details>';
  });
  box.innerHTML=h;
 }
 function renderMakes(n){
  const box=document.getElementById('fm-makes');
  const list=MK[n]||[]; let h='';
- if(list.length){h+='<h6>Menu drinks it makes \u2014 tap for recipe</h6>';
+ if(list.length){h+='<h6>מה מכינים ממנו \u2014 לחצו למתכון</h6>';
   list.forEach(d=>{
    h+='<details class="mk"><summary><span>'+d.t+'</span><i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b></i></summary>';
    h+='<div class="rec"><ol>';
    d.st.forEach(x=>{h+='<li>'+x+'</li>'});
-   h+='</ol><div class="fc">Food cost \u20aa'+d.fc+' ex-VAT \u00b7 recommended price \u20aa'+d.p+' incl. VAT \u00b7 margin '+d.m+'%</div></div></details>';
+   h+='</ol><div class="fc">עלות חומר גלם \u20aa'+d.fc+' ללא מע״מ \u00b7 מחיר מומלץ \u20aa'+d.p+' כולל מע״מ \u00b7 רווחיות '+d.m+'%</div></div></details>';
   });}
  if(MKMORE[n])h+='<div class="mkmore">'+MKMORE[n]+'</div>';
  box.innerHTML=h;
@@ -1587,13 +1646,13 @@ function fmDrinkImg(ci,di){
 function renderMakesCols(n){
  var box=document.getElementById('fm-makes'), map=FLMAP[n];
  if(!map||typeof COLS==='undefined')return false;
- var h='<h6>Menu drinks it makes \u2014 tap to open the recipe</h6><div class="mkgo-list">';
+ var h='<h6>מה מכינים ממנו \u2014 לחצו לפתיחת המתכון</h6><div class="mkgo-list">';
  var cnt=0;
  map.forEach(function(pair){
   var c=COLS[pair[0]]; if(!c)return; var d=c.drinks[pair[1]]; if(!d)return; cnt++;
   h+='<a class="mkgo" href="#!" data-ci="'+pair[0]+'" data-di="'+pair[1]+'">'
    + '<span class="nm">'+dn(d)+'<em>'+c.t+'</em></span>'
-   + '<i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b><u>\u2192</u></i></a>';
+   + '<i>\u20aa'+d.p+' \u00b7 <b>'+d.m+'%</b><u>\u2190</u></i></a>';
  });
  if(!cnt)return false;
  h+='</div>';
@@ -1612,10 +1671,10 @@ function renderMakesCols(n){
 }
 function openF(c){
  try{
-  const n=c.querySelector('h4').textContent.trim();
+  const n0=c.querySelector('h4').textContent.trim(),n=Object.keys(FLCARD).find(k=>FLCARD[k]===c.id)||n0;
   baseImg=(FSCENE[c.id]||c.querySelector('.ph img').src);document.getElementById('fm-img').src=baseImg;document.getElementById('fm-img').style.opacity=1;
   const o=c.querySelector('.origin');document.getElementById('fm-origin').textContent=o?o.textContent:'';
-  document.getElementById('fm-name').textContent=n;
+  document.getElementById('fm-name').textContent=n0;
   const cp=c.querySelector('.comp');document.getElementById('fm-comp').textContent=cp?cp.textContent:'';
   const ln=c.querySelector('.liner');
   document.getElementById('fm-text').textContent=FL[n]||(ln?ln.textContent:'');
@@ -1640,12 +1699,13 @@ document.addEventListener('click',function(e){
  if(c && !c.id.startsWith('p-')){e.preventDefault();openF(c);}
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('fmodal').classList.remove('open')});
-const COLS=[{"n": "01", "t": "חליטות קרות", "he": "חליטות קרות", "p": "₪20", "drinks": [{"en": "Fresh", "he": "חליטת היביסקוס וליים", "d": "חליטת היביסקוס וליים, רגילה או מוגזת, עם לימון ונענע", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · נענע טרייה"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Calm", "he": "חליטת קמומיל ותפוח", "d": "קמומיל, תפוח וציפורן · בלי קפאין, מרגיע", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · אזוב או נענע"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Desertea", "he": "חליטה מדברית", "d": "לואיזה, נענע, אזוב, מרווה וזוטה לבנה · בלי קפאין", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · תערובת תבלינים"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Revive", "he": "חליטת סנצ'ה ופסיפלורה", "d": "סנצ׳ה יפני ופסיפלורה · עם קפאין, מרענן", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · רוזמרין"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Detox", "he": "חליטת תה ירוק לואיזה וליים", "d": "תה ירוק, לואיזה, נענע וליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · נענע טרייה"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Energy", "he": "חליטת תה ירוק ולמון גראס", "d": "תה ירוק, למון גראס, נענע ולימון", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · בזיליקום"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Consciousness", "he": "חליטת יסמין וליצ'י", "d": "תה יסמין וליצ׳י — רגיל או מוגז, ארומטי ועדין", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים ל־⅔ במים קרים (או סודה)", "קישוט: פרוסת לימון · נענע טרייה"], "ing": ["קרח", "50 מ״ל תרכיז GT", "פרוסת לימון", "עשבי קישוט"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}], "ac": "var(--terra)"}, {"n": "02", "t": "לימונדות", "he": "לימונדות", "p": "₪22", "drinks": [{"en": "לימונדת Fresh", "he": "לימונדת היביסקוס וליים", "d": "לימונדת היביסקוס וליים מרעננת", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים עד למעלה בלימונדה", "מערבבים בעדינות ומגישים"], "ing": ["קרח", "50 מ״ל תרכיז GT", "~250 מ״ל לימונדה"], "fc": "3.95", "p": 22, "m": 79, "pr": "14.69"}, {"en": "לימונדה מדברית", "he": "לימונדה מדברית", "d": "לימונדה על צמחי בר ישראליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים עד למעלה בלימונדה", "מערבבים בעדינות ומגישים"], "ing": ["קרח", "50 מ״ל תרכיז GT", "~250 מ״ל לימונדה"], "fc": "3.95", "p": 22, "m": 79, "pr": "14.69"}, {"en": "לימונדת Namastea", "he": "לימונדת צ'אי מסאלה", "d": "לימונדה על צ׳אי מסאלה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז GT", "משלימים עד למעלה בלימונדה", "מערבבים בעדינות ומגישים"], "ing": ["קרח", "50 מ״ל תרכיז GT", "~250 מ״ל לימונדה"], "fc": "3.95", "p": 22, "m": 79, "pr": "14.69"}], "ac": "var(--energy)"}, {"n": "03", "t": "משקאות הדגל", "he": "משקאות הדגל", "p": "₪24–31", "drinks": [{"en": "מדברי אפרסק", "he": "חליטת אפרסק מדברית", "d": "משקה דגל על מחית אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "מוסיפים 40 מ״ל תרכיז GT", "מוסיפים מים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "40 מ״ל תרכיז GT", "קישוט"], "fc": "4.80", "p": 31, "m": 82, "pr": "21.47"}, {"en": "Detox תות", "he": "חליטת תות לואיזה", "d": "משקה דגל על מחית תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "מוסיפים 40 מ״ל תרכיז GT", "משלימים ל־⅔ במים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית תות", "40 מ״ל תרכיז GT", "קישוט"], "fc": "4.80", "p": 31, "m": 82, "pr": "21.47"}, {"en": "Revive מנגו", "he": "חליטת מנגו סנצ'ה", "d": "משקה דגל על מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "מוסיפים 40 מ״ל תרכיז GT", "משלימים ל־⅔ במים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית מנגו", "40 מ״ל תרכיז GT", "קישוט"], "fc": "4.80", "p": 31, "m": 82, "pr": "21.47"}, {"en": "Fresh תפוח", "he": "חליטת תפוח היביסקוס", "d": "משקה דגל על מיץ תפוחים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מיץ תפוחים", "מוסיפים 40 מ״ל תרכיז GT", "משלימים ל־⅔ במים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מיץ תפוחים", "40 מ״ל תרכיז GT", "קישוט"], "fc": "2.88", "p": 24, "m": 86, "pr": "17.46"}], "ac": "var(--revive)"}, {"n": "04", "t": "גזוז", "he": "גזוז", "p": "₪22–33", "drinks": [{"en": "Consciousness ליצ׳י", "he": "גזוז יסמין וליצ'י", "d": "גזוז תה יסמין וליצ׳י עם ליצ׳י טרי", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מי ליצ׳י", "מוסיפים 40 מ״ל תרכיז GT", "משלימים ל־⅔ בסודה (כ־150 מ״ל)", "קישוט: 2 ליצ׳י"], "ing": ["קרח", "40 מ״ל מי ליצ׳י", "40 מ״ל תרכיז GT", "~150 מ״ל סודה", "2 ליצ׳י"], "fc": "3.08", "p": 25, "m": 85, "pr": "18.11"}, {"en": "גזוז מדברי אפרסק", "he": "גזוז מדברי ואפרסק", "d": "גזוז צמחי בר ואפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "מוסיפים 40 מ״ל תרכיז GT", "משלימים ל־⅔ בסודה (כ־150 מ״ל)", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "40 מ״ל תרכיז GT", "~150 מ״ל סודה"], "fc": "4.80", "p": 33, "m": 83, "pr": "23.17"}, {"en": "גזוז Fresh תפוח", "he": "גזוז היביסקוס ותפוח", "d": "גזוז היביסקוס עם מיץ תפוחים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מיץ תפוחים", "מוסיפים 40 מ״ל תרכיז GT", "משלימים ל־⅔ בסודה (כ־150 מ״ל)", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מיץ תפוחים", "40 מ״ל תרכיז GT", "~150 מ״ל סודה"], "fc": "2.88", "p": 22, "m": 85, "pr": "15.76"}], "ac": "#7FA8B8"}, {"n": "05", "t": "אייס מאצ׳ה", "he": "אייס מאצ'ה", "p": "₪26–39", "drinks": [{"en": "Classic", "he": "אייס מאצ'ה קלאסי", "d": "אייס מאצ׳ה קלאסי", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "4.26", "p": 26, "m": 81, "pr": "17.77"}, {"en": "Mango", "he": "אייס מאצ'ה מנגו", "d": "אייס מאצ׳ה מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית מנגו", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.46", "p": 39, "m": 80, "pr": "26.59"}, {"en": "Strawberry", "he": "אייס מאצ'ה תות", "d": "אייס מאצ׳ה מחית תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית תות", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.46", "p": 39, "m": 80, "pr": "26.59"}, {"en": "Peach", "he": "אייס מאצ'ה אפרסק", "d": "אייס מאצ׳ה מחית אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.46", "p": 39, "m": 80, "pr": "26.59"}, {"en": "Massala", "he": "אייס מאצ'ה מסאלה", "d": "אייס מאצ׳ה עם תרכיז מסאלה GT", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל תרכיז מסאלה GT", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל תרכיז מסאלה GT", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.86", "p": 37, "m": 78, "pr": "24.50"}, {"en": "אגבה על קרח", "he": "מאצ'ה אגבה על הקרח", "d": "אייס מאצ׳ה קליל עם אגבה על קרח", "st": ["ממלאים את הכוס בקרח", "מוסיפים 15 מ״ל סירופ אגבה", "משלימים ל־⅔ במים", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס מים", "15 מ״ל סירופ אגבה", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "2.85", "p": 26, "m": 87, "pr": "19.18"}], "ac": "var(--matcha)"}, {"n": "06", "t": "מאצ׳ה ספיישל", "he": "מאצ'ה — טעמים מיוחדים", "p": "₪28–29", "drinks": [{"en": "Vanilla", "he": "אייס מאצ'ה וניל", "d": "אייס מאצ׳ה וניל", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים מקל וניל", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "מקל וניל", "70 מ״ל קצף חלב"], "fc": "4.56", "p": 28, "m": 81, "pr": "19.17"}, {"en": "Pistachio", "he": "אייס מאצ'ה פיסטוק", "d": "אייס מאצ׳ה פיסטוק", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים פיסטוק גרוס", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "פיסטוק גרוס", "70 מ״ל קצף חלב"], "fc": "5.46", "p": 28, "m": 77, "pr": "18.27"}, {"en": "שומשום שחור", "he": "אייס מאצ'ה שומשום שחור", "d": "אייס מאצ׳ה שומשום שחור", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים שומשום שחור", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "שומשום שחור", "70 מ״ל קצף חלב"], "fc": "5.06", "p": 28, "m": 79, "pr": "18.67"}, {"en": "Coffee", "he": "אייס מאצ'ה קפה", "d": "אייס מאצ׳ה קפה", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים שוט אספרסו", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "שוט אספרסו", "70 מ״ל קצף חלב"], "fc": "5.26", "p": 29, "m": 79, "pr": "19.32"}, {"en": "Banana", "he": "אייס מאצ'ה בננה", "d": "אייס מאצ׳ה בננה", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים מחית בננה", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "מחית בננה", "70 מ״ל קצף חלב"], "fc": "4.76", "p": 28, "m": 80, "pr": "18.97"}], "ac": "#8C8C7A"}, {"n": "07", "t": "מאצ׳ה קוקוס", "he": "מאצ'ה קוקוס", "p": "₪32–44", "drinks": [{"en": "אגבה קלאסי", "he": "מאצ'ה קוקוס אגבה", "d": "מאצ׳ה קוקוס אגבה קלאסי", "st": ["ממלאים את הכוס בקרח", "מוסיפים 15 מ״ל סירופ אגבה", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "15 מ״ל סירופ אגבה", "~150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "4.04", "p": 34, "m": 86, "pr": "24.77"}, {"en": "Lychee", "he": "מאצ'ה קוקוס ליצ'י", "d": "מאצ׳ה קוקוס ליצ׳י", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מי ליצ׳י", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מי ליצ׳י", "~150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "4.07", "p": 32, "m": 85, "pr": "23.05"}, {"en": "Strawberry", "he": "מאצ'ה קוקוס תות", "d": "מאצ׳ה קוקוס תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מחית תות", "~150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "5.79", "p": 44, "m": 84, "pr": "31.50"}, {"en": "Mango", "he": "מאצ'ה קוקוס מנגו", "d": "מאצ׳ה קוקוס מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מחית מנגו", "~150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "5.79", "p": 44, "m": 84, "pr": "31.50"}, {"en": "Peach", "he": "מאצ'ה קוקוס אפרסק", "d": "מאצ׳ה קוקוס אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "~150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "5.79", "p": 44, "m": 84, "pr": "31.50"}], "ac": "#5FA89B"}, {"n": "08", "t": "צ׳אי מסאלה", "he": "צ'אי מסאלה", "p": "₪24–32", "drinks": [{"en": "אייס מסאלה קלאסי", "he": "אייס צ'אי מסאלה קלאסי", "d": "צ׳אי מסאלה עשיר עם קצף חלב וקינמון", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל תרכיז מסאלה GT", "מוסיפים קצף חלב", "מפזרים קינמון"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מסאלה GT", "70 מ״ל קצף חלב", "קינמון"], "fc": "5.57", "p": 28, "m": 77, "pr": "18.16"}, {"en": "על קרח", "he": "צ'אי מסאלה על הקרח", "d": "צ׳אי מסאלה קליל ומרענן על מים", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ במים", "מוזגים 50 מ״ל תרכיז מסאלה GT", "מוסיפים קצף חלב נדיב"], "ing": ["קרח", "⅔ כוס מים", "50 מ״ל מסאלה GT", "70 מ״ל קצף חלב"], "fc": "3.70", "p": 24, "m": 82, "pr": "16.64"}, {"en": "דירטי צ׳אי", "he": "דירטי צ'אי", "d": "צ׳אי מסאלה עם שוט אספרסו וקצף חלב עשיר", "st": ["מכינים שוט אספרסו", "ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב", "מוזגים 50 מ״ל מסאלה GT + האספרסו", "מוסיפים קצף חלב נדיב"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מסאלה GT", "שוט אספרסו", "70 מ״ל קצף חלב"], "fc": "6.57", "p": 32, "m": 76, "pr": "20.55"}, {"en": "טוניק תפוז מיובש", "he": "צ'אי מסאלה תפוז וטוניק", "d": "צ׳אי מסאלה מוגז עם טוניק ותפוז מיובש", "st": ["ממלאים את הכוס בקרח", "מוזגים 50 מ״ל תרכיז מסאלה GT", "משלימים בטוניק (כ־150 מ״ל)", "מקשטים בפרוסת תפוז מיובש"], "ing": ["קרח", "50 מ״ל מסאלה GT", "~150 מ״ל טוניק", "תפוז מיובש"], "fc": "4.75", "p": 26, "m": 78, "pr": "17.28"}, {"en": "טוניק ורדים ורוד", "he": "צ'אי מסאלה פינק טוניק", "d": "צ׳אי מסאלה עם טוניק ורדים או אשכוליות", "st": ["ממלאים את הכוס בקרח", "מוזגים 50 מ״ל תרכיז מסאלה GT", "משלימים בטוניק ורדים או אשכוליות (כ־150 מ״ל)"], "ing": ["קרח", "50 מ״ל מסאלה GT", "~150 מ״ל טוניק ורדים"], "fc": "4.75", "p": 24, "m": 77, "pr": "15.59"}, {"en": "מיץ תפוזים", "he": "צ'אי מסאלה ומיץ תפוזים", "d": "צ׳אי מסאלה עם מיץ תפוזים סחוט", "st": ["ממלאים את הכוס בקרח", "מוזגים 50 מ״ל תרכיז מסאלה GT", "משלימים במיץ תפוזים סחוט (כ־150 מ״ל)"], "ing": ["קרח", "50 מ״ל מסאלה GT", "~150 מ״ל מיץ תפוזים"], "fc": "5.25", "p": 28, "m": 78, "pr": "18.48"}], "ac": "var(--nama)"}, {"n": "09", "t": "קולד פואם", "he": "צ'אי מסאלה קולד פואם", "p": "₪28–32", "drinks": [{"en": "Vanilla", "he": "צ'אי מסאלה קולד פואם וניל", "d": "צ׳אי מסאלה עם קצף קר וניל", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ במים", "מוזגים 50 מ״ל תרכיז מסאלה GT", "מכתירים בקצף קר וניל", "מקשטים במקל וניל"], "ing": ["קרח", "⅔ כוס מים", "50 מ״ל מסאלה GT", "70 מ״ל קצף קר", "תמצית וניל"], "fc": "4.00", "p": 28, "m": 83, "pr": "19.73"}, {"en": "Pistachio", "he": "צ'אי מסאלה קולד פואם פיסטוק", "d": "צ׳אי מסאלה עם קצף קר ופיסטוק גרוס", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב", "מוזגים 50 מ״ל תרכיז מסאלה GT", "מכתירים בקצף קר חלבי", "מפזרים פיסטוק גרוס"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מסאלה GT", "70 מ״ל קצף קר", "פיסטוק גרוס"], "fc": "4.90", "p": 30, "m": 81, "pr": "20.52"}, {"en": "קוקוס תאילנדי", "he": "צ'אי תאילנדי קוקוס קולד פואם", "d": "צ׳אי מסאלה עם קצף קר קוקוס, בסגנון תאילנדי", "st": ["ממלאים את הכוס בקרח", "משלימים במי קוקוס (כ־150 מ״ל)", "מוזגים 50 מ״ל תרכיז מסאלה GT", "מכתירים בקצף קר קוקוס (70 מ״ל)"], "ing": ["קרח", "~150 מ״ל מי קוקוס", "50 מ״ל מסאלה GT", "70 מ״ל קרם קוקוס"], "fc": "4.90", "p": 32, "m": 82, "pr": "22.22"}, {"en": "Banana", "he": "צ'אי מסאלה קולד פואם בננה", "d": "צ׳אי מסאלה עם קצף קר בננה", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב", "מוזגים 50 מ״ל מסאלה GT + מחית בננה", "מכתירים בקצף קר חלבי"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מסאלה GT", "מחית בננה", "70 מ״ל קצף קר"], "fc": "4.20", "p": 31, "m": 84, "pr": "22.07"}], "ac": "#B0793B"}, {"n": "10", "t": "אובה", "he": "אובה", "p": "₪28–31", "drinks": [{"en": "Strawberry", "he": "אייס אובה תות", "d": "אייס אובה תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית תות", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "5.22", "p": 30, "m": 79, "pr": "20.20"}, {"en": "Mango", "he": "אייס אובה מנגו", "d": "אייס אובה מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית מנגו", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "5.22", "p": 30, "m": 79, "pr": "20.20"}, {"en": "Peach", "he": "אייס אובה אפרסק", "d": "אייס אובה אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "5.22", "p": 30, "m": 79, "pr": "20.20"}, {"en": "Massala", "he": "אייס אובה מסאלה", "d": "אייס אובה מסאלה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תרכיז מסאלה GT", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "50 מ״ל מסאלה GT", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "6.27", "p": 31, "m": 76, "pr": "20.00"}, {"en": "Matcha", "he": "אייס אובה מאצ'ה", "d": "אייס אובה מאצ׳ה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "משלימים ל־⅔ בחלב (או חלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "50 מ״ל מאצ׳ה (1.8 גרם)", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "4.96", "p": 28, "m": 79, "pr": "18.77"}], "ac": "var(--ube)"}];
+const COLS=[{"n": "01", "t": "חליטות קרות", "he": "חליטות קרות", "p": "₪20", "drinks": [{"en": "Fresh", "he": "חליטת היביסקוס וליים", "d": "חליטת היביסקוס וליים, רגילה או מוגזת, עם לימון ונענע", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובנענע טרייה"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Calm", "he": "חליטת קמומיל ותפוח", "d": "קמומיל, תפוח וציפורן · בלי קפאין, מרגיע", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובאזוב או בנענע"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Desertea", "he": "חליטה מדברית", "d": "לואיזה, נענע, אזוב, מליסה, מרווה וזוטה לבנה · בלי קפאין", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובתערובת תבלינים"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Revive", "he": "חליטת סנצ׳ה ופסיפלורה", "d": "סנצ׳ה יפני ופסיפלורה · עם קפאין, מרענן", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובענף רוזמרין"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Detox", "he": "חליטת תה ירוק לואיזה וליים", "d": "תה ירוק, לואיזה, נענע וליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובנענע טרייה"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Energy", "he": "חליטת תה ירוק ולמון גראס", "d": "תה ירוק, למון גראס, נענע ולימון", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובעלי בזיליקום"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}, {"en": "Consciousness", "he": "חליטת יסמין וליצ׳י", "d": "תה יסמין וליצ׳י — רגיל או מוגז, ארומטי ועדין", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "משלימים ל־⅔ במים קרים (או בסודה)", "מקשטים בפרוסת לימון ובנענע טרייה"], "ing": ["קרח", "50 מ״ל תמצית GT", "פרוסת לימון", "עשבי תיבול"], "fc": "3.25", "p": 20, "m": 81, "pr": "13.70"}], "ac": "var(--terra)"}, {"n": "02", "t": "לימונדות", "he": "לימונדות", "p": "₪22", "drinks": [{"en": "לימונדת Fresh", "he": "לימונדת היביסקוס וליים", "d": "לימונדה על בסיס היביסקוס וליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "ממלאים עד למעלה בלימונדה", "מערבבים בעדינות ומגישים"], "ing": ["קרח", "50 מ״ל תמצית GT", "כ־250 מ״ל לימונדה"], "fc": "3.95", "p": 22, "m": 79, "pr": "14.69"}, {"en": "לימונדת Desertea", "he": "לימונדה מדברית", "d": "לימונדה על בסיס צמחי בר ישראליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "ממלאים עד למעלה בלימונדה", "מערבבים בעדינות ומגישים"], "ing": ["קרח", "50 מ״ל תמצית GT", "כ־250 מ״ל לימונדה"], "fc": "3.95", "p": 22, "m": 79, "pr": "14.69"}, {"en": "לימונדת Namastea", "he": "לימונדת צ׳אי מסאלה", "d": "לימונדה על בסיס צ׳אי מסאלה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית GT", "ממלאים עד למעלה בלימונדה", "מערבבים בעדינות ומגישים"], "ing": ["קרח", "50 מ״ל תמצית GT", "כ־250 מ״ל לימונדה"], "fc": "3.95", "p": 22, "m": 79, "pr": "14.69"}], "ac": "var(--energy)"}, {"n": "03", "t": "משקאות הדגל", "he": "משקאות הדגל", "p": "₪24–31", "drinks": [{"en": "Desertea אפרסק", "he": "חליטת אפרסק מדברית", "d": "מחית אפרסק וצמחי בר ישראליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "מוסיפים 40 מ״ל תמצית GT", "מוסיפים מים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "40 מ״ל תמצית GT", "קישוט"], "fc": "4.80", "p": 31, "m": 82, "pr": "21.47"}, {"en": "Detox תות", "he": "חליטת תות לואיזה", "d": "מחית תות, תה ירוק ולואיזה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "מוסיפים 40 מ״ל תמצית GT", "משלימים ל־⅔ במים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית תות", "40 מ״ל תמצית GT", "קישוט"], "fc": "4.80", "p": 31, "m": 82, "pr": "21.47"}, {"en": "Revive מנגו", "he": "חליטת מנגו סנצ׳ה", "d": "מחית מנגו, סנצ׳ה ופסיפלורה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "מוסיפים 40 מ״ל תמצית GT", "משלימים ל־⅔ במים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית מנגו", "40 מ״ל תמצית GT", "קישוט"], "fc": "4.80", "p": 31, "m": 82, "pr": "21.47"}, {"en": "Fresh תפוח", "he": "חליטת תפוח היביסקוס", "d": "מיץ תפוחים, היביסקוס וליים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מיץ תפוחים", "מוסיפים 40 מ״ל תמצית GT", "משלימים ל־⅔ במים", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מיץ תפוחים", "40 מ״ל תמצית GT", "קישוט"], "fc": "2.88", "p": 24, "m": 86, "pr": "17.46"}], "ac": "var(--revive)"}, {"n": "04", "t": "גזוז", "he": "גזוז", "p": "₪22–33", "drinks": [{"en": "גזוז Consciousness ליצ׳י", "he": "גזוז יסמין וליצ׳י", "d": "גזוז תה יסמין וליצ׳י עם ליצ׳י טרי", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מי ליצ׳י", "מוסיפים 40 מ״ל תמצית GT", "משלימים ל־⅔ בסודה (כ־150 מ״ל)", "מקשטים ב־2 ליצ׳י"], "ing": ["קרח", "40 מ״ל מי ליצ׳י", "40 מ״ל תמצית GT", "כ־150 מ״ל סודה", "2 ליצ׳י"], "fc": "3.08", "p": 25, "m": 85, "pr": "18.11"}, {"en": "גזוז Desertea אפרסק", "he": "גזוז מדברי ואפרסק", "d": "גזוז צמחי בר ואפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "מוסיפים 40 מ״ל תמצית GT", "משלימים ל־⅔ בסודה (כ־150 מ״ל)", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "40 מ״ל תמצית GT", "כ־150 מ״ל סודה"], "fc": "4.80", "p": 33, "m": 83, "pr": "23.17"}, {"en": "גזוז Fresh תפוח", "he": "גזוז היביסקוס ותפוח", "d": "גזוז היביסקוס עם מיץ תפוחים", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מיץ תפוחים", "מוסיפים 40 מ״ל תמצית GT", "משלימים ל־⅔ בסודה (כ־150 מ״ל)", "מקשטים לפי הטעם"], "ing": ["קרח", "40 מ״ל מיץ תפוחים", "40 מ״ל תמצית GT", "כ־150 מ״ל סודה"], "fc": "2.88", "p": 22, "m": 85, "pr": "15.76"}], "ac": "#7FA8B8"}, {"n": "05", "t": "אייס מאצ׳ה", "he": "אייס מאצ׳ה", "p": "₪26–39", "drinks": [{"en": "Classic", "he": "אייס מאצ׳ה קלאסי", "d": "אייס מאצ׳ה קלאסי", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "4.26", "p": 26, "m": 81, "pr": "17.77"}, {"en": "Mango", "he": "אייס מאצ׳ה מנגו", "d": "אייס מאצ׳ה עם מחית מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית מנגו", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.46", "p": 39, "m": 80, "pr": "26.59"}, {"en": "Strawberry", "he": "אייס מאצ׳ה תות", "d": "אייס מאצ׳ה עם מחית תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית תות", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.46", "p": 39, "m": 80, "pr": "26.59"}, {"en": "Peach", "he": "אייס מאצ׳ה אפרסק", "d": "אייס מאצ׳ה עם מחית אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.46", "p": 39, "m": 80, "pr": "26.59"}, {"en": "Masala", "he": "אייס מאצ׳ה מסאלה", "d": "אייס מאצ׳ה עם תמצית מסאלה GT", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל תמצית מסאלה GT", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל תמצית מסאלה GT", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "6.86", "p": 37, "m": 78, "pr": "24.50"}, {"en": "אגבה על קרח", "he": "מאצ׳ה אגבה על הקרח", "d": "אייס מאצ׳ה קליל עם אגבה על קרח", "st": ["ממלאים את הכוס בקרח", "מוסיפים 15 מ״ל סירופ אגבה", "משלימים ל־⅔ במים", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס מים", "15 מ״ל סירופ אגבה", "50 מ״ל מאצ׳ה (1.8 גרם)", "70 מ״ל קצף חלב"], "fc": "2.85", "p": 26, "m": 87, "pr": "19.18"}], "ac": "var(--matcha)"}, {"n": "06", "t": "מאצ׳ה ספיישל", "he": "מאצ׳ה — טעמים מיוחדים", "p": "₪28–29", "drinks": [{"en": "Vanilla", "he": "אייס מאצ׳ה וניל", "d": "אייס מאצ׳ה וניל", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים מקל וניל", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "מקל וניל", "70 מ״ל קצף חלב"], "fc": "4.56", "p": 28, "m": 81, "pr": "19.17"}, {"en": "Pistachio", "he": "אייס מאצ׳ה פיסטוק", "d": "אייס מאצ׳ה פיסטוק", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים פיסטוק גרוס", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "פיסטוק גרוס", "70 מ״ל קצף חלב"], "fc": "5.46", "p": 28, "m": 77, "pr": "18.27"}, {"en": "שומשום שחור", "he": "אייס מאצ׳ה שומשום שחור", "d": "אייס מאצ׳ה שומשום שחור", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים שומשום שחור", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "שומשום שחור", "70 מ״ל קצף חלב"], "fc": "5.06", "p": 28, "m": 79, "pr": "18.67"}, {"en": "Coffee", "he": "אייס מאצ׳ה קפה", "d": "אייס מאצ׳ה קפה", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים שוט אספרסו", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "שוט אספרסו", "70 מ״ל קצף חלב"], "fc": "5.26", "p": 29, "m": 79, "pr": "19.32"}, {"en": "Banana", "he": "אייס מאצ׳ה בננה", "d": "אייס מאצ׳ה בננה", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "מוסיפים מחית בננה", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל מאצ׳ה (1.8 גרם)", "מחית בננה", "70 מ״ל קצף חלב"], "fc": "4.76", "p": 28, "m": 80, "pr": "18.97"}], "ac": "#8C8C7A"}, {"n": "07", "t": "מאצ׳ה קוקוס", "he": "מאצ׳ה קוקוס", "p": "₪32–44", "drinks": [{"en": "קלאסי עם אגבה", "he": "מאצ׳ה קוקוס אגבה", "d": "מאצ׳ה קוקוס קלאסי, ממותק באגבה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 15 מ״ל סירופ אגבה", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "15 מ״ל סירופ אגבה", "כ־150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "4.04", "p": 34, "m": 86, "pr": "24.77"}, {"en": "Lychee", "he": "מאצ׳ה קוקוס ליצ׳י", "d": "מאצ׳ה קוקוס ליצ׳י", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מי ליצ׳י", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מי ליצ׳י", "כ־150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "4.07", "p": 32, "m": 85, "pr": "23.05"}, {"en": "Strawberry", "he": "מאצ׳ה קוקוס תות", "d": "מאצ׳ה קוקוס תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מחית תות", "כ־150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "5.79", "p": 44, "m": 84, "pr": "31.50"}, {"en": "Mango", "he": "מאצ׳ה קוקוס מנגו", "d": "מאצ׳ה קוקוס מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מחית מנגו", "כ־150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "5.79", "p": 44, "m": 84, "pr": "31.50"}, {"en": "Peach", "he": "מאצ׳ה קוקוס אפרסק", "d": "מאצ׳ה קוקוס אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "משלימים ל־⅔ במי קוקוס (כ־150 מ״ל)", "מוסיפים קרם קוקוס (70 מ״ל)", "מוזגים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "כ־150 מ״ל מי קוקוס", "70 מ״ל קרם קוקוס", "50 מ״ל מאצ׳ה (1.8 גרם)"], "fc": "5.79", "p": 44, "m": 84, "pr": "31.50"}], "ac": "#5FA89B"}, {"n": "08", "t": "צ׳אי מסאלה", "he": "צ׳אי מסאלה", "p": "₪24–32", "drinks": [{"en": "אייס מסאלה קלאסי", "he": "אייס צ׳אי מסאלה קלאסי", "d": "צ׳אי מסאלה עשיר עם קצף חלב וקינמון", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל תמצית מסאלה GT", "מוסיפים קצף חלב", "מפזרים קינמון"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל תמצית מסאלה GT", "70 מ״ל קצף חלב", "קינמון"], "fc": "5.57", "p": 28, "m": 77, "pr": "18.16"}, {"en": "על קרח", "he": "צ׳אי מסאלה על הקרח", "d": "צ׳אי מסאלה קליל ומרענן על מים", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ במים", "מוזגים 50 מ״ל תמצית מסאלה GT", "מוסיפים שכבה נדיבה של קצף חלב"], "ing": ["קרח", "⅔ כוס מים", "50 מ״ל תמצית מסאלה GT", "70 מ״ל קצף חלב"], "fc": "3.70", "p": 24, "m": 82, "pr": "16.64"}, {"en": "צ׳אי מסאלה ואספרסו", "he": "דירטי צ׳אי", "d": "צ׳אי מסאלה עם שוט אספרסו וקצף חלב עשיר", "st": ["מכינים שוט אספרסו", "ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב", "מוזגים 50 מ״ל תמצית מסאלה GT ואת האספרסו", "מוסיפים שכבה נדיבה של קצף חלב"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל תמצית מסאלה GT", "שוט אספרסו", "70 מ״ל קצף חלב"], "fc": "6.57", "p": 32, "m": 76, "pr": "20.55"}, {"en": "טוניק תפוז מיובש", "he": "צ׳אי מסאלה תפוז וטוניק", "d": "צ׳אי מסאלה מוגז עם טוניק ותפוז מיובש", "st": ["ממלאים את הכוס בקרח", "מוזגים 50 מ״ל תמצית מסאלה GT", "משלימים בטוניק (כ־150 מ״ל)", "מקשטים בפרוסת תפוז מיובש"], "ing": ["קרח", "50 מ״ל תמצית מסאלה GT", "כ־150 מ״ל טוניק", "תפוז מיובש"], "fc": "4.75", "p": 26, "m": 78, "pr": "17.28"}, {"en": "טוניק ורדים", "he": "צ׳אי מסאלה פינק טוניק", "d": "צ׳אי מסאלה עם טוניק ורדים או אשכוליות", "st": ["ממלאים את הכוס בקרח", "מוזגים 50 מ״ל תמצית מסאלה GT", "משלימים בטוניק ורדים או אשכוליות (כ־150 מ״ל)"], "ing": ["קרח", "50 מ״ל תמצית מסאלה GT", "כ־150 מ״ל טוניק ורדים"], "fc": "4.75", "p": 24, "m": 77, "pr": "15.59"}, {"en": "מיץ תפוזים", "he": "צ׳אי מסאלה ומיץ תפוזים", "d": "צ׳אי מסאלה עם מיץ תפוזים סחוט", "st": ["ממלאים את הכוס בקרח", "מוזגים 50 מ״ל תמצית מסאלה GT", "ממלאים במיץ תפוזים סחוט (כ־150 מ״ל)"], "ing": ["קרח", "50 מ״ל תמצית מסאלה GT", "כ־150 מ״ל מיץ תפוזים"], "fc": "5.25", "p": 28, "m": 78, "pr": "18.48"}], "ac": "var(--nama)"}, {"n": "09", "t": "קולד פואם", "he": "צ׳אי מסאלה קולד פואם", "p": "₪28–32", "drinks": [{"en": "Vanilla", "he": "צ׳אי מסאלה קולד פואם וניל", "d": "צ׳אי מסאלה עם קצף קר וניל", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ במים", "מוזגים 50 מ״ל תמצית מסאלה GT", "מכתירים בקצף קר וניל", "מקשטים במקל וניל"], "ing": ["קרח", "⅔ כוס מים", "50 מ״ל תמצית מסאלה GT", "70 מ״ל קצף קר", "מקל ותמצית וניל"], "fc": "4.00", "p": 28, "m": 83, "pr": "19.73"}, {"en": "Pistachio", "he": "צ׳אי מסאלה קולד פואם פיסטוק", "d": "צ׳אי מסאלה עם קצף קר ופיסטוק גרוס", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב", "מוזגים 50 מ״ל תמצית מסאלה GT", "מכתירים בקצף קר", "מפזרים פיסטוק גרוס"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל תמצית מסאלה GT", "70 מ״ל קצף קר", "פיסטוק גרוס"], "fc": "4.90", "p": 30, "m": 81, "pr": "20.52"}, {"en": "קוקוס תאילנדי", "he": "צ׳אי תאילנדי קוקוס קולד פואם", "d": "צ׳אי מסאלה עם קצף קר קוקוס, בסגנון תאילנדי", "st": ["ממלאים את הכוס בקרח", "משלימים במי קוקוס (כ־150 מ״ל)", "מוזגים 50 מ״ל תמצית מסאלה GT", "מכתירים בקצף קר קוקוס (70 מ״ל)"], "ing": ["קרח", "כ־150 מ״ל מי קוקוס", "50 מ״ל תמצית מסאלה GT", "70 מ״ל קרם קוקוס"], "fc": "4.90", "p": 32, "m": 82, "pr": "22.22"}, {"en": "Banana", "he": "צ׳אי מסאלה קולד פואם בננה", "d": "צ׳אי מסאלה ומחית בננה, עם קצף קר", "st": ["ממלאים את הכוס בקרח", "משלימים ל־⅔ בחלב", "מוזגים 50 מ״ל תמצית מסאלה GT ומחית בננה", "מכתירים בקצף קר"], "ing": ["קרח", "⅔ כוס חלב", "50 מ״ל תמצית מסאלה GT", "מחית בננה", "70 מ״ל קצף קר"], "fc": "4.20", "p": 31, "m": 84, "pr": "22.07"}], "ac": "#B0793B"}, {"n": "10", "t": "אובה", "he": "אובה", "p": "₪28–31", "drinks": [{"en": "Strawberry", "he": "אייס אובה תות", "d": "אייס אובה תות", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית תות", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית תות", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "5.22", "p": 30, "m": 79, "pr": "20.20"}, {"en": "Mango", "he": "אייס אובה מנגו", "d": "אייס אובה מנגו", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית מנגו", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית מנגו", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "5.22", "p": 30, "m": 79, "pr": "20.20"}, {"en": "Peach", "he": "אייס אובה אפרסק", "d": "אייס אובה אפרסק", "st": ["ממלאים את הכוס בקרח", "מוסיפים 40 מ״ל מחית אפרסק", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "40 מ״ל מחית אפרסק", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "5.22", "p": 30, "m": 79, "pr": "20.20"}, {"en": "Masala", "he": "אייס אובה מסאלה", "d": "אייס אובה מסאלה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל תמצית מסאלה GT", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "50 מ״ל תמצית מסאלה GT", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "6.27", "p": 31, "m": 76, "pr": "20.00"}, {"en": "Matcha", "he": "אייס אובה מאצ׳ה", "d": "אייס אובה מאצ׳ה", "st": ["ממלאים את הכוס בקרח", "מוסיפים 50 מ״ל מאצ׳ה מוכן (1.8 גרם אבקה)", "משלימים ל־⅔ בחלב (או בחלב צמחי)", "מוזגים 50 מ״ל אובה מוכן (2 גרם אבקה)", "מוסיפים קצף חלב מלמעלה"], "ing": ["קרח", "50 מ״ל מאצ׳ה (1.8 גרם)", "⅔ כוס חלב", "50 מ״ל אובה (2 גרם)", "70 מ״ל קצף חלב"], "fc": "4.96", "p": 28, "m": 79, "pr": "18.77"}], "ac": "var(--ube)"}];
 
 let cmC=0,cmI=0;
 
 var DFCOL={"Detox":"#D8492B","Revive":"#0FA3A3","Energy":"#4B3B8F","Consciousness":"#C2185B","American":"#C62828",
 "Fresh":"#A31F34","Desertea":"#D9A413","Calm":"#8E7CC3","Namastea":"#C98A2D","Matcha":"#5F8F4E","Ube":"#7C5CBF","Hojicha":"#A9752E"};
+function cardName(id,fallback){var h=id&&document.querySelector('#'+id+' h4');return h?h.textContent.trim():fallback;}
 function buildMatrix(){
  var box=document.getElementById('mx'); if(!box||typeof FLMAP==='undefined')return;
  var NOTE={"American":"בסיס למשקה דגל — משתלב עם מחיות אפרסק ומנגו של ODK.",
@@ -1655,8 +1715,8 @@ function buildMatrix(){
   var pairs=FLMAP[p]||[];
   var muted=pairs.length?'':' muted';
   h+='<div class="mxc'+muted+'"><div class="hd"><i class="pd" style="background:'+(DFCOL[p]||'#ccc')+'"></i>'
-    +'<span class="pn">'+p+'</span><span class="pc">'+(pairs.length?pairs.length+(pairs.length===1?' drink':' drinks'):'\u2014')+'</span></div>';
-  if(!pairs.length){ h+='<div class="note">'+(NOTE[p]||'No menu drinks yet.')+'</div></div>'; return; }
+    +'<span class="pn">'+cardName(FLCARD[p],p)+'</span><span class="pc">'+(pairs.length?(pairs.length===1?'משקה אחד':pairs.length+' משקאות'):'\u2014')+'</span></div>';
+  if(!pairs.length){ h+='<div class="note">'+(NOTE[p]||'עדיין בלי מתכוני תפריט.')+'</div></div>'; return; }
   var byCh={},order=[];
   pairs.forEach(function(pr){ if(!byCh[pr[0]]){byCh[pr[0]]=[];order.push(pr[0]);} byCh[pr[0]].push(pr[1]); });
   order.forEach(function(ci){
@@ -1749,11 +1809,11 @@ const STEP_ICONS=[
  [/\u05e7\u05e8\u05d7|ice/i,'\ud83e\uddca','\u05e7\u05e8\u05d7'],
  [/\u05de\u05d0\u05e6['\u05f3]?\u05d4|matcha/i,'\ud83c\udf75','\u05de\u05d0\u05e6\u05f3\u05d4'],
  [/\u05d0\u05d5\u05d1\u05d4|ube/i,'\ud83c\udf60','\u05d0\u05d5\u05d1\u05d4'],
- [/\u05ea\u05e8\u05db\u05d9\u05d6 (\u05de\u05e1\u05d0\u05dc\u05d4 )?GT|\u05de\u05e1\u05d0\u05dc\u05d4 GT|GT (massala )?(concentrate|essence)|GT massala/i,'\ud83e\uddc9','GT 50 \u05de\u05f4\u05dc'],
+ [/(?:\u05ea\u05e8\u05db\u05d9\u05d6|\u05ea\u05de\u05e6\u05d9\u05ea) (\u05de\u05e1\u05d0\u05dc\u05d4 )?GT|\u05de\u05e1\u05d0\u05dc\u05d4 GT|GT (massala )?(concentrate|essence)|GT massala/i,'\ud83e\uddc9','\u05ea\u05de\u05e6\u05d9\u05ea GT'],
  [/\u05e7\u05e6\u05e3|\u05e7\u05e8\u05dd \u05e7\u05d5\u05e7\u05d5\u05e1|milk foam|cold foam|foam|coconut cream/i,'\u2601\ufe0f','\u05e7\u05e6\u05e3'],
  [/\u05d7\u05dc\u05d1|milk/i,'\ud83e\udd5b','\u05d7\u05dc\u05d1'],
  [/\u05e1\u05d5\u05d3\u05d4|\u05d8\u05d5\u05e0\u05d9\u05e7|soda|tonic|sparkl/i,'\ud83e\udd64','\u05e1\u05d5\u05d3\u05d4'],
- [/\u05de\u05d9\u05dd|water/i,'\ud83d\udca7','\u05de\u05d9\u05dd'],
+ [/(?:^|[^\u05d0-\u05ea])[\u05d1\u05d5\u05dc\u05d4]?\u05de\u05d9\u05dd(?![\u05d0-\u05ea])|water/i,'\ud83d\udca7','\u05de\u05d9\u05dd'],
  [/\u05d0\u05e1\u05e4\u05e8\u05e1\u05d5|espresso|coffee/i,'\u2615','\u05d0\u05e1\u05e4\u05e8\u05e1\u05d5'],
  [/\u05d0\u05d2\u05d1\u05d4|agave/i,'\ud83c\udf6f','\u05d0\u05d2\u05d1\u05d4'],
  [/\u05de\u05e0\u05d2\u05d5|\u05ea\u05d5\u05ea|\u05d0\u05e4\u05e8\u05e1\u05e7|\u05dc\u05d9\u05e6['\u05f3]?\u05d9|\u05ea\u05e4\u05d5\u05d7|\u05d1\u05e0\u05e0\u05d4|\u05ea\u05e4\u05d5\u05d6|\u05dc\u05d9\u05de\u05d5\u05e0\u05d3\u05d4|\u05de\u05d9\u05e5|\u05e4\u05d9\u05e8\u05d4|mango|strawberry|peach|lychee|apple|banana|orange|lemonade|juice|pur\u00e9e/i,'\ud83c\udf53','\u05e4\u05e8\u05d9'],
@@ -1762,7 +1822,7 @@ const STEP_ICONS=[
 function buildRow(steps){
  const parts=[];
  steps.forEach(t=>{ for(const [re,ic,lb] of STEP_ICONS){ if(re.test(t)){ parts.push({ic,lb}); return; } } parts.push({ic:'\u2022',lb:''}); });
- return '<div class="cm-build">'+parts.map((p,i)=>(i?'<span class="sep">\u2192</span>':'')+'<span class="st"><i>'+p.ic+'</i><b>'+(i+1)+'. '+p.lb+'</b></span>').join('')+'</div>';
+ return '<div class="cm-build">'+parts.map((p,i)=>(i?'<span class="sep">\u2190</span>':'')+'<span class="st"><i>'+p.ic+'</i><b>'+(i+1)+'. '+p.lb+'</b></span>').join('')+'</div>';
 }
 
 
@@ -1784,7 +1844,7 @@ function cmSrcRender(ci,di){
  if(!srcs.length){host.innerHTML='';host.style.display='none';return;}
  host.style.display='flex';
  host.innerHTML='<span class="lbl">על בסיס</span>'+srcs.map(function(n){
-   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+n+' \u2190</a>'; }).join('');
+   return '<a href="#!" data-card="'+(FLCARD[n]||'')+'">'+cardName(FLCARD[n],n)+' \u2190</a>'; }).join('');
  host.querySelectorAll('a').forEach(function(a){
   a.addEventListener('click',function(e){e.preventDefault();
    var el=document.getElementById(a.getAttribute('data-card')); if(!el)return;
@@ -1870,7 +1930,7 @@ try{heroSwipe()}catch(e){}
 document.addEventListener('keydown',e=>{const o=document.getElementById('cmodal').classList.contains('open');if(!o)return;
  if(e.key==='Escape')cmClose();if(e.key==='ArrowRight')cmGo(1);if(e.key==='ArrowLeft')cmGo(-1);});
 document.getElementById('cmodal').addEventListener('click',e=>{if(e.target.id==='cmodal')cmClose();});
-const PUREES={"mango": {"t": "Mango", "d": "מחית מנגו בסגנון אלפונסו זהוב — שכבת השמש למשקאות הדגל, למאצ׳ה, לקוקוס ולאובה.", "drinks": [["משקה דגל Revive מנגו", 2, 2], ["אייס מאצ׳ה מנגו", 4, 1], ["מאצ׳ה קוקוס מנגו", 6, 3], ["אייס אובה מנגו", 9, 1]]}, "strawberry": {"t": "Strawberry", "d": "מחית תות אדום ובשל — שכבת רב המכר לאורך כל תפריט הקיץ.", "drinks": [["משקה דגל Detox תות", 2, 1], ["אייס מאצ׳ה תות", 4, 2], ["מאצ׳ה קוקוס תות", 6, 2], ["אייס אובה תות", 9, 0]]}, "peach": {"t": "Peach", "d": "מחית אפרסק קטיפתי — הכוכב של המדברי־אפרסק: משקה דגל, גזוז, מאצ׳ה ואובה.", "drinks": [["משקה דגל מדברי אפרסק", 2, 0], ["גזוז מדברי אפרסק", 3, 1], ["אייס מאצ׳ה אפרסק", 4, 3], ["אייס אובה אפרסק", 9, 2]]}};
+const PUREES={"mango": {"t": "Mango", "d": "מחית מנגו זהובה בסגנון אלפונסו — שכבה של קיץ במשקאות הדגל, במאצ׳ה, בקוקוס ובאובה.", "drinks": [["משקה דגל Revive מנגו", 2, 2], ["אייס מאצ׳ה מנגו", 4, 1], ["מאצ׳ה קוקוס מנגו", 6, 3], ["אייס אובה מנגו", 9, 1]]}, "strawberry": {"t": "Strawberry", "d": "מחית תות אדום ובשל — רב־המכר של תפריט הקיץ.", "drinks": [["משקה דגל Detox תות", 2, 1], ["אייס מאצ׳ה תות", 4, 2], ["מאצ׳ה קוקוס תות", 6, 2], ["אייס אובה תות", 9, 0]]}, "peach": {"t": "Peach", "d": "מחית אפרסק קטיפתית — מככבת במשקה הדגל ובגזוז המדבריים, במאצ׳ה ובאובה.", "drinks": [["משקה דגל Desertea אפרסק", 2, 0], ["גזוז Desertea אפרסק", 3, 1], ["אייס מאצ׳ה אפרסק", 4, 3], ["אייס אובה אפרסק", 9, 2]]}};
 let PIMG={"mango": "https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_d3d813f6-8108-452b-88c3-b7e61cda7dd0.png&w=1100&output=webp&q=85", "strawberry": "https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_5b5aa910-9d0b-48ff-bd69-5d3bb2adb3ed.png&w=1100&output=webp&q=85", "peach": "https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_175204_63e302a6-01eb-4b11-9b4d-a6596d45b27e.png&w=1100&output=webp&q=85"};
 
 
@@ -1890,14 +1950,14 @@ function pmSlide(d){if(!pmShots.length)return;pmI=(pmI+d+pmShots.length)%pmShots
 function pmOpen(id){
  const p=PUREES[id];
  pmShots=((PEXTRA[id]&&PEXTRA[id].length)?PEXTRA[id]:[PIMG[id]||'']).filter(Boolean);pmI=0;pmRender();
- document.getElementById('pm-title').textContent=p.t+'מחית · לאן זה הולך';
+ document.getElementById('pm-title').textContent='מחית '+cardName('p-'+id,p.t)+' · באילו משקאות היא נכנסת';
  document.getElementById('pm-sub').textContent=p.d;
  const L=document.getElementById('pm-list');L.innerHTML='';
  p.drinks.forEach(([name,ci,si])=>{
    const a=document.createElement('a');a.href='#!';
-   a.innerHTML='<span>'+name+'</span><span class="tag">'+COLS[ci].n+' \u00b7 '+COLS[ci].t+' \u2192</span>';
+   a.innerHTML='<span>'+name+'</span><span class="tag">'+COLS[ci].n+' \u00b7 '+COLS[ci].t+' \u2190</span>';
    a.style.cssText+='color:#20241F;text-decoration:none;';
-   a.firstChild.style.cssText='font-family:Assistant,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;';
+   a.firstChild.style.cssText='font-family:Roca One,Heebo,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;';
    a.lastChild.style.cssText='font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93;text-decoration:none;white-space:nowrap;';
    a.onclick=(e)=>{e.preventDefault();document.getElementById('pmodal').classList.remove('open');cmOpen(ci);cmI=si;cmRender();};
    L.appendChild(a);
@@ -1954,7 +2014,7 @@ var CYCSHOTS={"0": ["https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront
         box.appendChild(im);
       });
       var tag=document.createElement('div'); tag.className='cyc-tag';
-      tag.textContent=shots.length+'מתכונים ←';
+      tag.textContent=shots.length+' מתכונים ←';
       /* позиция задаётся инлайном — её не перебьёт ни одно правило в стилях */
       tag.style.cssText+='position:absolute;top:14px;right:14px;left:auto;bottom:auto;'
         +'max-width:calc(100% - 28px);box-sizing:border-box;z-index:6;';
@@ -2003,7 +2063,7 @@ var CYCSHOTS={"0": ["https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront
 function pAll(b){var ds=document.querySelectorAll('#pricing .ptable');
  var open=[].every.call(ds,function(d){return d.open});
  [].forEach.call(ds,function(d){d.open=!open});
- b.textContent=open?'Expand all':'סגרו הכול';}
+ b.textContent=open?'פתחו הכול':'סגרו הכול';}
 </script>
 <script>
 function pfTrack(interest,role){try{
@@ -2040,7 +2100,7 @@ function pSend(e){e.preventDefault();
    if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));
     f.classList.add('sent');btn.innerHTML='נשלח \u2713';
     document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
-   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטים חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
+   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
    if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}
    fail(PF_ERR);})

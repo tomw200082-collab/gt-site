@@ -26,7 +26,16 @@ def main():
 
     applied = missing = 0
     for r in sorted(records, key=lambda x: x["start"], reverse=True):
-        new = r["en"] if args.identity else (r.get("he") or "").strip()
+        if args.identity:
+            new = r["en"]
+        else:
+            # The Hebrew is written without edge spaces; the English span keeps
+            # the ones its surroundings rely on ('Add 40 ml ' + name, n + ' drinks').
+            # Stripping them glued words together on the page: "40 מ״למחית תות",
+            # "7מתכונים". The span's own edge whitespace is carried over instead.
+            core = (r.get("he") or "").strip()
+            en = r["en"]
+            new = (en[:len(en) - len(en.lstrip())] + core + en[len(en.rstrip()):]) if core else ""
         if not new:
             missing += 1
             continue

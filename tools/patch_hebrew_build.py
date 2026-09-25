@@ -34,15 +34,15 @@ sub(
     "head meta",
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
     '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-    '<meta name="description" content="GT Everyday — יצרנית בוטיק ישראלית של '
-    'תמציות תה, מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות, מתכונים '
-    'מתומחרים ומחירון סיטונאי גלוי.">\n'
+    '<meta name="description" content="GT Everyday — תמציות תה מתוצרת ישראל, '
+    'מאצ׳ה ומחיות פרי לבתי קפה, מסעדות ומלונות. 48 משקאות מוכנים לתפריט, '
+    'עם מתכון מדויק לכל כוס.">\n'
     '<meta name="theme-color" content="#3E6E34">\n'
     '<meta property="og:type" content="website">\n'
     '<meta property="og:locale" content="he_IL">\n'
     '<meta property="og:site_name" content="GT Everyday">\n'
-    '<meta property="og:title" content="GT Everyday · סיטונאות למסעדנות">\n'
-    '<meta property="og:description" content="48 משקאות. ספק אחד. מחירון גלוי.">\n'
+    '<meta property="og:title" content="GT Everyday · תמציות תה ומאצ׳ה לבתי קפה ומסעדות">\n'
+    '<meta property="og:description" content="48 משקאות. ספק אחד. הזמנה אחת.">\n'
     '<meta name="twitter:card" content="summary_large_image">',
 )
 
@@ -64,8 +64,8 @@ sub("POUCHCH", 'var POUCHCH={"Matcha":"אייס מאצ׳ה","Ube":"Ube"}',
 # Single bare words are indistinguishable from object keys to the extractor,
 # so these ingredient/step values are translated in place.
 sub("ing Ice", '"ing": ["Ice"', '"ing": ["\u05e7\u05e8\u05d7"', 48)
-sub("ing Garnish", '"40 \u05de\u05f4\u05dc \u05ea\u05e8\u05db\u05d9\u05d6 GT", "Garnish"]',
-    '"40 \u05de\u05f4\u05dc \u05ea\u05e8\u05db\u05d9\u05d6 GT", "\u05e7\u05d9\u05e9\u05d5\u05d8"]', 4)
+sub("ing Garnish", '"40 \u05de\u05f4\u05dc \u05ea\u05de\u05e6\u05d9\u05ea GT", "Garnish"]',
+    '"40 \u05de\u05f4\u05dc \u05ea\u05de\u05e6\u05d9\u05ea GT", "\u05e7\u05d9\u05e9\u05d5\u05d8"]', 4)
 sub("step Garnish", '(\u05db\u05be150 \u05de\u05f4\u05dc)","Garnish"]',
     '(\u05db\u05be150 \u05de\u05f4\u05dc)","\u05de\u05e7\u05e9\u05d8\u05d9\u05dd"]')
 sub("ing cinnamon", '"cinnamon"]', '"\u05e7\u05d9\u05e0\u05de\u05d5\u05df"]')
@@ -114,11 +114,11 @@ sub(
  [/\\u05e7\\u05e8\\u05d7|ice/i,'\\ud83e\\uddca','\\u05e7\\u05e8\\u05d7'],
  [/\\u05de\\u05d0\\u05e6['\\u05f3]?\\u05d4|matcha/i,'\\ud83c\\udf75','\\u05de\\u05d0\\u05e6\\u05f3\\u05d4'],
  [/\\u05d0\\u05d5\\u05d1\\u05d4|ube/i,'\\ud83c\\udf60','\\u05d0\\u05d5\\u05d1\\u05d4'],
- [/\\u05ea\\u05e8\\u05db\\u05d9\\u05d6 (\\u05de\\u05e1\\u05d0\\u05dc\\u05d4 )?GT|\\u05de\\u05e1\\u05d0\\u05dc\\u05d4 GT|GT (massala )?(concentrate|essence)|GT massala/i,'\\ud83e\\uddc9','GT 50 \\u05de\\u05f4\\u05dc'],
+ [/(?:\\u05ea\\u05e8\\u05db\\u05d9\\u05d6|\\u05ea\\u05de\\u05e6\\u05d9\\u05ea) (\\u05de\\u05e1\\u05d0\\u05dc\\u05d4 )?GT|\\u05de\\u05e1\\u05d0\\u05dc\\u05d4 GT|GT (massala )?(concentrate|essence)|GT massala/i,'\\ud83e\\uddc9','\\u05ea\\u05de\\u05e6\\u05d9\\u05ea GT'],
  [/\\u05e7\\u05e6\\u05e3|\\u05e7\\u05e8\\u05dd \\u05e7\\u05d5\\u05e7\\u05d5\\u05e1|milk foam|cold foam|foam|coconut cream/i,'\\u2601\\ufe0f','\\u05e7\\u05e6\\u05e3'],
  [/\\u05d7\\u05dc\\u05d1|milk/i,'\\ud83e\\udd5b','\\u05d7\\u05dc\\u05d1'],
  [/\\u05e1\\u05d5\\u05d3\\u05d4|\\u05d8\\u05d5\\u05e0\\u05d9\\u05e7|soda|tonic|sparkl/i,'\\ud83e\\udd64','\\u05e1\\u05d5\\u05d3\\u05d4'],
- [/\\u05de\\u05d9\\u05dd|water/i,'\\ud83d\\udca7','\\u05de\\u05d9\\u05dd'],
+ [/(?:^|[^\\u05d0-\\u05ea])[\\u05d1\\u05d5\\u05dc\\u05d4]?\\u05de\\u05d9\\u05dd(?![\\u05d0-\\u05ea])|water/i,'\\ud83d\\udca7','\\u05de\\u05d9\\u05dd'],
  [/\\u05d0\\u05e1\\u05e4\\u05e8\\u05e1\\u05d5|espresso|coffee/i,'\\u2615','\\u05d0\\u05e1\\u05e4\\u05e8\\u05e1\\u05d5'],
  [/\\u05d0\\u05d2\\u05d1\\u05d4|agave/i,'\\ud83c\\udf6f','\\u05d0\\u05d2\\u05d1\\u05d4'],
  [/\\u05de\\u05e0\\u05d2\\u05d5|\\u05ea\\u05d5\\u05ea|\\u05d0\\u05e4\\u05e8\\u05e1\\u05e7|\\u05dc\\u05d9\\u05e6['\\u05f3]?\\u05d9|\\u05ea\\u05e4\\u05d5\\u05d7|\\u05d1\\u05e0\\u05e0\\u05d4|\\u05ea\\u05e4\\u05d5\\u05d6|\\u05dc\\u05d9\\u05de\\u05d5\\u05e0\\u05d3\\u05d4|\\u05de\\u05d9\\u05e5|\\u05e4\\u05d9\\u05e8\\u05d4|mango|strawberry|peach|lychee|apple|banana|orange|lemonade|juice|pur\\u00e9e/i,'\\ud83c\\udf53','\\u05e4\\u05e8\\u05d9'],

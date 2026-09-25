@@ -59,6 +59,18 @@ ALIAS = {
     "חליטת תה ירוק לואיזה וליים": "חליטת תה ירוק וליים",
 }
 
+# The page spells צ׳אי and מאצ׳ה with the Hebrew geresh; the figures of record spell
+# the same names with an ASCII apostrophe. A lookup treats the two as one name, and
+# COLS leaves this pass with the geresh the rest of the page uses — until it did,
+# the recipe modal showed both spellings in one title block.
+GERESH = re.compile(r"(?<=[\u05d0-\u05ea])'")
+
+
+def record_key(name: str) -> str:
+    """The figures-of-record name a page name is filed under."""
+    name = name.replace("\u05f3", "'")
+    return ALIAS.get(name, name)
+
 # The page's cold-infusion class. Every member carries identical figures in the
 # record; `cold_infusion_class()` asserts that before relying on it.
 COLD_INFUSIONS = (
@@ -82,17 +94,17 @@ COLD_INFUSIONS = (
 MK_MAP = {
     "Detox": [
         ("חליטת Detox קרה — רגילה או מוגזת", None),
-        ("משקה דגל תות־לואיזה", "חליטת תות לואיזה"),
+        ("משקה דגל תות ולואיזה", "חליטת תות לואיזה"),
     ],
     "Revive": [
         ("חליטת Revive קרה — רגילה או מוגזת", None),
-        ("משקה דגל מנגו־סנצ׳ה", "חליטת מנגו סנצ'ה"),
+        ("משקה דגל מנגו וסנצ׳ה", "חליטת מנגו סנצ'ה"),
     ],
     "Energy": [
         ("חליטת Energy קרה — רגילה או מוגזת", None),
     ],
     "Consciousness": [
-        ("חליטת יסמין־ליצ׳י", "חליטת יסמין וליצ'י"),
+        ("חליטת יסמין וליצ׳י", "חליטת יסמין וליצ'י"),
         ("גזוז ליצ׳י", "גזוז יסמין וליצ'י"),
     ],
     "American": [
@@ -100,25 +112,25 @@ MK_MAP = {
     ],
     "Fresh": [
         ("חליטת Fresh", "חליטת היביסקוס וליים"),
-        ("לימונדת היביסקוס־ליים", "לימונדת היביסקוס וליים"),
-        ("משקה דגל תפוח־היביסקוס", "חליטת תפוח היביסקוס"),
-        ("גזוז היביסקוס־תפוח", "גזוז היביסקוס ותפוח"),
+        ("לימונדת היביסקוס וליים", "לימונדת היביסקוס וליים"),
+        ("משקה דגל תפוח והיביסקוס", "חליטת תפוח היביסקוס"),
+        ("גזוז היביסקוס ותפוח", "גזוז היביסקוס ותפוח"),
     ],
     "Desertea": [
         ("חליטה מדברית", "חליטה מדברית"),
         ("לימונדה מדברית", "לימונדה מדברית"),
-        ("משקה דגל מדברי־אפרסק", "חליטת אפרסק מדברית"),
-        ("גזוז מדברי־אפרסק", "גזוז מדברי ואפרסק"),
+        ("משקה דגל אפרסק מדברי", "חליטת אפרסק מדברית"),
+        ("גזוז אפרסק מדברי", "גזוז מדברי ואפרסק"),
     ],
     "Calm": [
-        ("חליטת קמומיל־תפוח — רגילה או מוגזת", "חליטת קמומיל ותפוח"),
+        ("חליטת קמומיל ותפוח — רגילה או מוגזת", "חליטת קמומיל ותפוח"),
     ],
     "Namastea": [
         ("אייס צ׳אי מסאלה קלאסי", "אייס צ'אי מסאלה קלאסי"),
         ("צ׳אי מסאלה על קרח", "צ'אי מסאלה על הקרח"),
         ("דירטי צ׳אי (עם אספרסו)", "דירטי צ'אי"),
         ("צ׳אי וטוניק תפוז מיובש", "צ'אי מסאלה תפוז וטוניק"),
-        ("טוניק ורדים ורוד", "צ'אי מסאלה פינק טוניק"),
+        ("טוניק ורדים", "צ'אי מסאלה פינק טוניק"),
         ("צ׳אי קולד פואם וניל", "צ'אי מסאלה קולד פואם וניל"),
     ],
 }
@@ -126,7 +138,7 @@ MK_MAP = {
 # The static collection cards, keyed by the English kicker that precedes each.
 CARD_ANCHORS = [
     "Iced Tea", "Lemonade", "Signature", "Gazoz", "Ice Matcha",
-    "Matcha Specials", "Matcha Coconut", "Chai Massala", "Cold Foam", "Ube",
+    "Matcha Specials", "Matcha Coconut", "Chai Masala", "Cold Foam", "Ube",
 ]
 
 # The scrolling ticker under the hero: eight of the ten collections, in its own
@@ -175,7 +187,7 @@ def main() -> None:
     def lookup(name: str | None) -> dict:
         if name is None:
             return cold
-        entry = by_name.get(ALIAS.get(name, name))
+        entry = by_name.get(record_key(name))
         if entry is None:
             die(f"{name!r} is not in the figures of record — halt rather than guess")
         return entry
@@ -190,6 +202,9 @@ def main() -> None:
 
     headline: list[str] = []
     for col in cols:
+        col["he"] = GERESH.sub("\u05f3", col["he"])
+        for d in col["drinks"]:
+            d["he"] = GERESH.sub("\u05f3", d["he"])
         prices = []
         for d in col["drinks"]:
             r = lookup(d["he"])
