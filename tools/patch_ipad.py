@@ -13,7 +13,7 @@ script or CSS appended last, where it wins.
 
   The renderer scrolled the card to the chip row (G-57)
       `scrollIntoView` on the active chip moved every scrollable ancestor, about
-      620 px, on open and on every «הבא». The chip strip scrolls itself now, the
+      620 px, on open and on every next-drink tap. The chip strip scrolls itself now, the
       body resets to the top, and a collection card opens once (the second
       listener is gone).
 
@@ -29,7 +29,7 @@ script or CSS appended last, where it wins.
   tap cue on collection cards (G-70).
 
   Upgrades: a swipe between drinks inside the card (U8: a finger moving right
-  means «הבא», it fires only when |dx| > 60 and |dx| > 1.5·|dy|), and deep links
+  means next, it fires only when |dx| > 60 and |dx| > 1.5·|dy|), and deep links
   with the back gesture (U9: pushState on open, replaceState on a drink change,
   popstate closes, `#recipe-<collection>-<drink>` opens the card on load).
 
@@ -139,7 +139,7 @@ def main() -> None:
     text = sub("a card opens once (its inline onclick already does)",
                "document.querySelectorAll('.ccard').forEach((el,i)=>{el.style.cursor='pointer';el.addEventListener('click',()=>cmOpen(i));});",
                "document.querySelectorAll('.ccard').forEach((el)=>{el.style.cursor='pointer';});\n"
-               # U8: swipe between drinks. RTL: a finger moving right means «הבא».
+               # U8: swipe between drinks. RTL: a finger moving right means next.
                "(function(){var c=document.querySelector('#cmodal .cm-card');if(!c)return;var x0=null,y0=0;"
                "c.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});"
                "c.addEventListener('touchend',function(e){if(x0==null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;"
