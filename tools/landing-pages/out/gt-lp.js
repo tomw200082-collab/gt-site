@@ -81,8 +81,6 @@
     window.open('https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines), '_blank', 'noopener');
   }
 
-  var shown = Date.now();
-
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp form'), function (f) {
     var msg = f.querySelector('.g-msg');
     var btn = f.querySelector('button[type=submit]');
@@ -106,7 +104,10 @@
         email: f.email.value.trim(),
         company_website: f.company_website.value,
         form_name: 'landing-' + f.dataset.source,
-        elapsed_ms: Date.now() - shown,
+        // Time on the page, counted from navigation start. The intake answers ok
+        // but drops anything under 3 s as a bot, and this deferred script can run
+        // seconds after the page began loading, so a clock started here reads short.
+        elapsed_ms: Math.round(performance.now()),
         page: location.href,
         referrer: document.referrer
       };

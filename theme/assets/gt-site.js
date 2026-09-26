@@ -594,7 +594,6 @@ function pfTrack(interest,role){try{
 var PF_LABEL='שליחה <span class="arr">\u2190</span>';
 var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: <a href="https://wa.me/972543982444">וואטסאפ</a> \u00b7 <a href="tel:+972543982444">054-398-2444</a>.';
 var PF_ENDPOINT="https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake";
-var PF_SHOWN=Date.now();
 function pSend(e){e.preventDefault();
  var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
  var f=document.getElementById('pform');
@@ -609,7 +608,7 @@ function pSend(e){e.preventDefault();
  var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
   role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int'),
   message:g('pf-msg'),company_website:g('pf-cw'),
-  elapsed_ms:Date.now()-PF_SHOWN,page:location.href,referrer:document.referrer};
+  elapsed_ms:Math.round(performance.now()),page:location.href,referrer:document.referrer};
  var to=setTimeout(function(){fail(PF_ERR);},15000);
  fetch(PF_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},
   body:JSON.stringify(body)})
