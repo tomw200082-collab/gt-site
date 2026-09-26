@@ -53,6 +53,20 @@ def sub(label: str, old: str, new: str, text: str) -> str:
     return text.replace(old, new, 1)
 
 
+# G-64: the hero slider's second swipe listener, removed whole (its call and its body).
+HERO_SWIPE = """function heroSwipe(){
+ var el=document.querySelector('.hs')||document.querySelector('#hero'); if(!el)return;
+ var x0=null;
+ el.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+ el.addEventListener('touchend',function(e){
+  if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)<45)return;
+  if(typeof hsGo==='function'){hsGo(dx<0?hsI+1:hsI-1); if(typeof hsRestart==='function')hsRestart();}
+ },{passive:true});
+}
+"""
+
+
 CSS = """
 /* ====================================================================
    iPad and touch (tools/patch_ipad.py, UX gate 2026-09-25). Appended last.
@@ -109,8 +123,10 @@ def main() -> None:
     text = SRC.read_text(encoding="utf-8")
 
     # ── G-57: the chip strip scrolls itself; the card never moves ──────────
+    # (`act` goes too: the scrollIntoView below was its only reader.)
     text = sub("chip strip scrolls itself, not the card",
-               "if(act&&act.scrollIntoView)try{act.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}",
+               "const act=dots.querySelector('.on');\n"
+               " if(act&&act.scrollIntoView)try{act.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}",
                "cmCenterChip();var cb=document.querySelector('#cmodal .cm-body');if(cb)cb.scrollTop=0;"
                "if(history.state&&history.state.gtRecipe)history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);", text)
     # ── open: centre the chip, lock the page (G-63), push a history entry (U9) ──
@@ -143,8 +159,9 @@ def main() -> None:
                "if(e.target.closest('.cm-dots,button,a'))return;if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy))cmGo(dx>0?1:-1);},{passive:true});})();\n"
                # U9: a shared or reloaded deep link opens its card, and the entry is marked so back closes it
                "if(cmFromHash())history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);", text)
-    # ── G-64: one swipe, one slide ──────────────────────────────────────────
+    # ── G-64: one swipe, one slide. That was heroSwipe's only call, so it goes too ──
     text = sub("one swipe, one slide", "try{heroSwipe()}catch(e){}", "", text)
+    text = sub("heroSwipe, now uncalled", HERO_SWIPE, "", text)
     # ── G-65: no hover preview on touch; the products menu closes after a pick ──
     text = sub("no hover preview on touch",
                "a.addEventListener('mouseenter',function(){ if(pu)swapImg(pu);});",
