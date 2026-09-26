@@ -241,6 +241,27 @@ if OG_IMAGE not in manifest:
     sys.exit(f"FAIL: og:image asset {OG_IMAGE} is not in the manifest — "
              "theme/layout/gt.liquid names it as the default share card")
 
+# The layout also preloads the home page's hero by asset name, and those names are
+# sha1s of the hero URLs (patch_launch.py). A new photo or a new width renames them,
+# and the hand-maintained layout would go on preloading files the theme no longer
+# has while the hero itself waits. So every preloaded name must be in the manifest,
+# and an image preload must ask for exactly what the section's hero paints.
+def attr(tag: str, name: str):
+    m = re.search(f' {name}="([^"]*)"', tag)
+    return m and m.group(1)
+
+hero = re.search(r'<img\b[^>]*fetchpriority="high"[^>]*>', body_html)
+for tag in re.findall(r'<link\b[^>]*rel="preload"[^>]*>',
+                      (THEME / "layout" / "gt.liquid").read_text(encoding="utf-8")):
+    for name in re.findall(r"'([^']+)' \| asset_url", tag):
+        if name not in manifest:
+            sys.exit(f"FAIL: theme/layout/gt.liquid preloads {name}, which is not in the "
+                     "manifest — copy the hero's src/srcset/sizes from the section into it")
+    if 'as="image"' in tag and (not hero or [attr(hero.group(0), a) for a in ("src", "srcset", "sizes")]
+                                != [attr(tag, a) for a in ("href", "imagesrcset", "imagesizes")]):
+        sys.exit("FAIL: the image preload in theme/layout/gt.liquid is not the section's hero — "
+                 "its href/imagesrcset/imagesizes must equal the hero's src/srcset/sizes")
+
 # ── structured data ─────────────────────────────────────────────────────
 #
 # The FAQ this page already answers. The questions are read out of the built
