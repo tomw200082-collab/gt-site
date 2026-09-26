@@ -52,11 +52,11 @@ jobs:
           fi
 
       - name: No price reaches a served page while prices are off
-        # Tom, 2026-09-24: "צריך גם להוריד את המחירים שלא יראו אותם". The switch and
-        # the token list are tools/strip_prices.py's; build_theme.py and
-        # landing-pages/gen.py already refuse to write a price, and this re-reads what
-        # was actually committed — the section, the script asset, the layout and all
-        # four landing pages.
+        # Tom, 2026-09-24: "צריך גם להוריד את המחירים שלא יראו אותם". The switch, the
+        # token list and the scan (find_prices) are tools/strip_prices.py's;
+        # build_theme.py and landing-pages/gen.py already refuse to write a price, and
+        # this re-reads what was actually committed — the section, the script asset,
+        # the layout and all four landing pages — with the same scan, every hit listed.
         run: |
           python3 - <<'EOF'
           import glob, sys
@@ -69,7 +69,7 @@ jobs:
           bad = []
           for f in files:
               t = open(f, encoding='utf-8').read()
-              bad += [f'{f} still carries {tok!r}' for tok in strip_prices.PRICE_TOKENS if tok in t]
+              bad += [f'{f} still carries {m.group(0)!r} at {m.start()}' for m in strip_prices.find_prices(t)]
           for b in bad:
               print(f'::error::{b}')
           print(f'{len(files)} served files checked — {len(bad)} price(s) found')

@@ -33,6 +33,9 @@ script or CSS appended last, where it wins.
   means next, it fires only when |dx| > 60 and |dx| > 1.5·|dy|), and deep links
   with the back gesture (U9: pushState on open, replaceState on a drink change,
   popstate closes, `#recipe-<collection>-<drink>` opens the card on load).
+  Closing steps back only over an entry this page load pushed; a deep link the
+  visitor arrived on keeps its entry and just loses the hash, because back()
+  from there would take them off the site.
 
 Every edit asserts its anchor, so a silent no-op is impossible. Runs last.
 """
@@ -51,6 +54,20 @@ def sub(label: str, old: str, new: str, text: str) -> str:
         sys.exit(f"FAIL [patch_ipad]: {label}: expected 1 occurrence, found {n}")
     applied.append(label)
     return text.replace(old, new, 1)
+
+
+# G-64: the hero slider's second swipe listener, removed whole (its call and its body).
+HERO_SWIPE = """function heroSwipe(){
+ var el=document.querySelector('.hs')||document.querySelector('#hero'); if(!el)return;
+ var x0=null;
+ el.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+ el.addEventListener('touchend',function(e){
+  if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; x0=null;
+  if(Math.abs(dx)<45)return;
+  if(typeof hsGo==='function'){hsGo(dx<0?hsI+1:hsI-1); if(typeof hsRestart==='function')hsRestart();}
+ },{passive:true});
+}
+"""
 
 
 CSS = """
@@ -109,25 +126,34 @@ def main() -> None:
     text = SRC.read_text(encoding="utf-8")
 
     # ── G-57: the chip strip scrolls itself; the card never moves ──────────
+    # (`act` goes too: the scrollIntoView below was its only reader.)
     text = sub("chip strip scrolls itself, not the card",
-               "if(act&&act.scrollIntoView)try{act.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}",
+               "const act=dots.querySelector('.on');\n"
+               " if(act&&act.scrollIntoView)try{act.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}",
                "cmCenterChip();var cb=document.querySelector('#cmodal .cm-body');if(cb)cb.scrollTop=0;"
-               "if(history.state&&history.state.gtRecipe)history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);", text)
+               # the entry's state is kept as it is, so a drink change never changes who owns it
+               "if(history.state&&history.state.gtRecipe)history.replaceState(history.state,'','#recipe-'+cmC+'-'+cmI);", text)
     # ── open: centre the chip, lock the page (G-63), push a history entry (U9) ──
     text = sub("open: centre chip, lock page, deep link",
                "function cmOpen(ci){cmC=ci;cmI=0;cmRender();document.getElementById('cmodal').classList.add('open');}",
                "function cmCenterChip(){var d=document.getElementById('cm-dots'),a=d&&d.querySelector('.on');"
                "if(!a||!d.clientWidth)return;var dr=d.getBoundingClientRect(),ar=a.getBoundingClientRect();"
                "d.scrollLeft+=(ar.left+ar.width/2)-(dr.left+dr.width/2);}\n"
+               # one value per page load; an entry pushed by this load carries it as `doc`
+               "var cmDoc=Math.random();\n"
                "function cmOpen(ci,di,fromPop){cmC=ci;cmI=di||0;"
-               "if(!fromPop&&!(history.state&&history.state.gtRecipe))history.pushState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);"
+               "if(!fromPop&&!(history.state&&history.state.gtRecipe))history.pushState({gtRecipe:1,doc:cmDoc},'','#recipe-'+cmC+'-'+cmI);"
                "cmRender();document.getElementById('cmodal').classList.add('open');"
                "document.documentElement.classList.add('cm-lock');cmCenterChip();}", text)
     text = sub("close: unlock page, step back out of the deep link",
                "function cmClose(){document.getElementById('cmodal').classList.remove('open');}",
                "function cmClose(fromPop){document.getElementById('cmodal').classList.remove('open');"
-               "document.documentElement.classList.remove('cm-lock');"
-               "if(!fromPop&&history.state&&history.state.gtRecipe)history.back();}\n"
+               "document.documentElement.classList.remove('cm-lock');var s=history.state;"
+               "if(fromPop||!(s&&s.gtRecipe))return;"
+               # Step back only over an entry this page load pushed. A deep link the visitor
+               # arrived on (search result, pasted URL, bookmark, reload) is their own entry:
+               # back() from it leaves the site, so it keeps its place and loses the hash.
+               "if(s.doc===cmDoc)history.back();else history.replaceState(null,'',location.pathname+location.search);}\n"
                # one reader of the deep link, for popstate and for the first load
                "function cmFromHash(){var m=/^#recipe-(\\d+)-(\\d+)$/.exec(location.hash);if(!m||typeof COLS==='undefined'||!COLS[+m[1]])return false;"
                "cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);return true;}\n"
@@ -141,10 +167,12 @@ def main() -> None:
                "c.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});"
                "c.addEventListener('touchend',function(e){if(x0==null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;"
                "if(e.target.closest('.cm-dots,button,a'))return;if(Math.abs(dx)>60&&Math.abs(dx)>1.5*Math.abs(dy))cmGo(dx>0?1:-1);},{passive:true});})();\n"
-               # U9: a shared or reloaded deep link opens its card, and the entry is marked so back closes it
+               # U9: a shared or reloaded deep link opens its card. Its entry is marked, so the hash
+               # follows the drink, but carries no `doc`: closing drops the hash instead of going back.
                "if(cmFromHash())history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);", text)
-    # ── G-64: one swipe, one slide ──────────────────────────────────────────
+    # ── G-64: one swipe, one slide. That was heroSwipe's only call, so it goes too ──
     text = sub("one swipe, one slide", "try{heroSwipe()}catch(e){}", "", text)
+    text = sub("heroSwipe, now uncalled", HERO_SWIPE, "", text)
     # ── G-65: no hover preview on touch; the products menu closes after a pick ──
     text = sub("no hover preview on touch",
                "a.addEventListener('mouseenter',function(){ if(pu)swapImg(pu);});",

@@ -258,19 +258,10 @@ function buildMatrix(){
   b.addEventListener('click',function(){cmOpen(+b.getAttribute('data-ci'));cmI=+b.getAttribute('data-di');cmRender();});
  });
 }
-function heroSwipe(){
- var el=document.querySelector('.hs')||document.querySelector('#hero'); if(!el)return;
- var x0=null;
- el.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
- el.addEventListener('touchend',function(e){
-  if(x0===null)return; var dx=e.changedTouches[0].clientX-x0; x0=null;
-  if(Math.abs(dx)<45)return;
-  if(typeof hsGo==='function'){hsGo(dx<0?hsI+1:hsI-1); if(typeof hsRestart==='function')hsRestart();}
- },{passive:true});
-}
 function cmCenterChip(){var d=document.getElementById('cm-dots'),a=d&&d.querySelector('.on');if(!a||!d.clientWidth)return;var dr=d.getBoundingClientRect(),ar=a.getBoundingClientRect();d.scrollLeft+=(ar.left+ar.width/2)-(dr.left+dr.width/2);}
-function cmOpen(ci,di,fromPop){cmC=ci;cmI=di||0;if(!fromPop&&!(history.state&&history.state.gtRecipe))history.pushState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);cmRender();document.getElementById('cmodal').classList.add('open');document.documentElement.classList.add('cm-lock');cmCenterChip();}
-function cmClose(fromPop){document.getElementById('cmodal').classList.remove('open');document.documentElement.classList.remove('cm-lock');if(!fromPop&&history.state&&history.state.gtRecipe)history.back();}
+var cmDoc=Math.random();
+function cmOpen(ci,di,fromPop){cmC=ci;cmI=di||0;if(!fromPop&&!(history.state&&history.state.gtRecipe))history.pushState({gtRecipe:1,doc:cmDoc},'','#recipe-'+cmC+'-'+cmI);cmRender();document.getElementById('cmodal').classList.add('open');document.documentElement.classList.add('cm-lock');cmCenterChip();}
+function cmClose(fromPop){document.getElementById('cmodal').classList.remove('open');document.documentElement.classList.remove('cm-lock');var s=history.state;if(fromPop||!(s&&s.gtRecipe))return;if(s.doc===cmDoc)history.back();else history.replaceState(null,'',location.pathname+location.search);}
 function cmFromHash(){var m=/^#recipe-(\d+)-(\d+)$/.exec(location.hash);if(!m||typeof COLS==='undefined'||!COLS[+m[1]])return false;cmOpen(+m[1],Math.min(+m[2],COLS[+m[1]].drinks.length-1),true);return true;}
 window.addEventListener('popstate',function(){if(!cmFromHash()&&document.getElementById('cmodal').classList.contains('open'))cmClose(true);});
 function cmGo(d){const n=COLS[cmC].drinks.length;cmI=Math.min(n-1,Math.max(0,cmI+d));cmRender();}
@@ -436,8 +427,7 @@ function cmRender(){
  c.drinks.forEach((dd,i)=>{const sp=document.createElement('button');sp.type='button';
   sp.className='cm-chip'+(i===cmI?' on':'');sp.textContent=dn(dd);
   sp.onclick=()=>{cmI=i;cmRender();};dots.appendChild(sp);});
- const act=dots.querySelector('.on');
- cmCenterChip();var cb=document.querySelector('#cmodal .cm-body');if(cb)cb.scrollTop=0;if(history.state&&history.state.gtRecipe)history.replaceState({gtRecipe:1},'','#recipe-'+cmC+'-'+cmI);
+ cmCenterChip();var cb=document.querySelector('#cmodal .cm-body');if(cb)cb.scrollTop=0;if(history.state&&history.state.gtRecipe)history.replaceState(history.state,'','#recipe-'+cmC+'-'+cmI);
  cmSrcRender(cmC,cmI);
  cmPrefetchNear();
 }
@@ -604,7 +594,6 @@ function pfTrack(interest,role){try{
 var PF_LABEL='שליחה <span class="arr">\u2190</span>';
 var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: <a href="https://wa.me/972543982444">וואטסאפ</a> \u00b7 <a href="tel:+972543982444">054-398-2444</a>.';
 var PF_ENDPOINT="https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake";
-var PF_SHOWN=Date.now();
 function pSend(e){e.preventDefault();
  var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
  var f=document.getElementById('pform');
@@ -619,7 +608,7 @@ function pSend(e){e.preventDefault();
  var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
   role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int'),
   message:g('pf-msg'),company_website:g('pf-cw'),
-  elapsed_ms:Date.now()-PF_SHOWN,page:location.href,referrer:document.referrer};
+  elapsed_ms:Math.round(performance.now()),page:location.href,referrer:document.referrer};
  var to=setTimeout(function(){fail(PF_ERR);},15000);
  fetch(PF_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},
   body:JSON.stringify(body)})

@@ -20,7 +20,8 @@ What this patch adds beyond the request itself:
 - **A no-JS path.** The form keeps a real `action`/`method`, so a visitor whose
   script is blocked still reaches a working mail draft rather than a dead
   button. That was the old behaviour for everyone; it is now the fallback only.
-- **A honeypot** and the time the form was on screen, both read by the endpoint.
+- **A honeypot** and the time on the page, from navigation start, both read by
+  the endpoint.
 - **The button says what it is doing** — sending, then sent — and cannot be
   double-submitted. Before this it stayed on "שולח…" after a success, which read
   as stuck.
@@ -121,7 +122,6 @@ def main() -> None:
 
     new_send = (
         "var PF_ENDPOINT=" + repr(ENDPOINT).replace("'", '"') + ";\n"
-        "var PF_SHOWN=Date.now();\n"
         "function pSend(e){e.preventDefault();\n"
         " var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};\n"
         " var f=document.getElementById('pform');\n"
@@ -136,7 +136,9 @@ def main() -> None:
         " var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),\n"
         "  role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int'),\n"
         "  message:g('pf-msg'),company_website:g('pf-cw'),\n"
-        "  elapsed_ms:Date.now()-PF_SHOWN,page:location.href,referrer:document.referrer};\n"
+        # From navigation start: the intake drops anything under 3 s while answering
+        # ok, and in the theme this runs from a deferred gt-site.js, seconds late.
+        "  elapsed_ms:Math.round(performance.now()),page:location.href,referrer:document.referrer};\n"
         " var to=setTimeout(function(){fail(PF_ERR);},15000);\n"
         " fetch(PF_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},\n"
         "  body:JSON.stringify(body)})\n"

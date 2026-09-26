@@ -29,10 +29,16 @@ FLAGS = ROOT / "data" / "site_flags.json"
 
 # What a price looks like on a served page, in markup or in a JS literal, plus the
 # labels that only ever stand beside one. Labels, not words: "אותה עלות מנה" in a
-# sentence is not a price, "<dt>עלות מנה" is. `assert_clean()` and the CI guard in
-# .github/workflows/build.yml both read this list.
-PRICE_TOKENS = ("₪", "\\u20aa", "&#8362;", "ש״ח", 'ש"ח',
+# sentence is not a price, "<dt>עלות מנה" is. `find_prices()` is the one scan over
+# this list; `assert_clean()` and the CI guard in .github/workflows/build.yml both
+# call it. Every token matches in any case (\u20AA, &#X20AA;, nis); the currency
+# codes only between non-letters, so "garnish" and "details" are not prices.
+PRICE_TOKENS = ("₪", "\\u20aa", "&#8362;", "&#x20aa;", "ש״ח", 'ש"ח', "שקלים", "NIS", "ILS",
                 "מחיר מומלץ", "<dt>עלות מנה", "מחירון סיטונאי גלוי", "מחירון גלוי")
+CURRENCY_CODES = ("NIS", "ILS")
+PRICE_RE = re.compile("|".join(
+    rf"(?<![A-Za-z]){re.escape(t)}(?![A-Za-z])" if t in CURRENCY_CODES else re.escape(t)
+    for t in PRICE_TOKENS), re.IGNORECASE)
 
 applied: list[str] = []
 
@@ -180,8 +186,15 @@ CSS = """
 """
 
 
+def find_prices(text: str) -> list[re.Match]:
+    """Every price token in `text`, in the order it appears."""
+    return list(PRICE_RE.finditer(text))
+
+
 def assert_clean(label: str, text: str) -> None:
-    for token in PRICE_TOKENS:
-        i = text.find(token)
-        if i >= 0:
-            die(f"{label}: a price survived — …{text[max(0, i - 80):i + 40]}…")
+    hits = find_prices(text)
+    for m in hits:
+        print(f"  {label}: {m.group(0)!r} at {m.start()}: "
+              f"…{text[max(0, m.start() - 80):m.end() + 40]!r}…", file=sys.stderr)
+    if hits:
+        die(f"{label}: {len(hits)} price(s) survived")
