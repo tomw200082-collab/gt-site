@@ -31,10 +31,14 @@ FLAGS = ROOT / "data" / "site_flags.json"
 # labels that only ever stand beside one. Labels, not words: "אותה עלות מנה" in a
 # sentence is not a price, "<dt>עלות מנה" is. `find_prices()` is the one scan over
 # this list; `assert_clean()` and the CI guard in .github/workflows/build.yml both
-# call it.
-PRICE_TOKENS = ("₪", "\\u20aa", "&#8362;", "ש״ח", 'ש"ח',
+# call it. Every token matches in any case (\u20AA, &#X20AA;, nis); the currency
+# codes only between non-letters, so "garnish" and "details" are not prices.
+PRICE_TOKENS = ("₪", "\\u20aa", "&#8362;", "&#x20aa;", "ש״ח", 'ש"ח', "שקלים", "NIS", "ILS",
                 "מחיר מומלץ", "<dt>עלות מנה", "מחירון סיטונאי גלוי", "מחירון גלוי")
-PRICE_RE = re.compile("|".join(map(re.escape, PRICE_TOKENS)))
+CURRENCY_CODES = ("NIS", "ILS")
+PRICE_RE = re.compile("|".join(
+    rf"(?<![A-Za-z]){re.escape(t)}(?![A-Za-z])" if t in CURRENCY_CODES else re.escape(t)
+    for t in PRICE_TOKENS), re.IGNORECASE)
 
 applied: list[str] = []
 
