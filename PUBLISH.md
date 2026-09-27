@@ -1,19 +1,18 @@
 # Publishing the site
 
-**Published.** `162206646513` has been MAIN since 2026-09-24 13:52Z (Admin API
-`themes`, read 2026-09-25). §1–§3 are the record of that publish; §4 is still
-the rollback. The next publish is the same act on the copy below: before it,
-the copy must be UNPUBLISHED and `162206646513` MAIN.
+**Published.** `166730072305` (the customer-portal entry) has been MAIN since 2026-09-25 (Admin API `themes`,
+read 2026-09-27). §1–§3 are the record of the first publish; §4 is still the rollback. The next publish is the
+same act on the copy below.
 
 **Nothing here runs without Tom's written word.** A session executing this file
 must be able to quote the instruction it is acting on.
 
 | | |
 |---|---|
-| Live theme | `162206646513` · `GT 2026 Site` · **MAIN** |
-| Next | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **UNPUBLISHED** — the live theme plus the customer-portal entry |
-| Preview (next) | `https://gteveryday.com/?preview_theme_id=166730072305` |
-| Rollback | publish `131669328113` (`HE-RU Vodoma 2024`, now UNPUBLISHED) — see §4. To drop only the entry, publish `162206646513` again |
+| Live theme | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **MAIN** |
+| Next | `186686636273` · `GT 2026 Site — כניסה לעסקים` · **UNPUBLISHED** — the live theme with two files from gt-site `f4b054e`: `sections/gt-home.liquid` and `assets/gt-site.css` (the portal entry reads «כניסה לעסקים» / «לעסקים», #25; the product floor shadow, #23). `assets/gt-site.js` stays the live one (#22's JS is not in it). Checksums verified 2026-09-27 |
+| Preview (next) | `https://gteveryday.com/?preview_theme_id=186686636273` |
+| Rollback | publish `166730072305` again (the entry as «כניסת לקוחות»). Further back: `162206646513` (no entry), then `131669328113` (`HE-RU Vodoma 2024`) — see §4 |
 
 ---
 
