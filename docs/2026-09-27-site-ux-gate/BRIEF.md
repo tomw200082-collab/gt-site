@@ -82,8 +82,11 @@ Say so once in your report, then move on.
   - WhatsApp `054-398-2444`;
   - the business entry reads `כניסה לעסקים` / `לעסקים`;
   - the products stand on a soft floor shadow.
-- **Copy.** Customer-visible Hebrew changes need Tom's approval. Quote the current string and give
-  the exact proposed Hebrew.
+- **Copy.** Quote the current string and give the exact proposed Hebrew. **Tom, 2026-09-27:**
+  `אל תשנה בצורה משמעותית. רק דברים שאתה בטוח שצריך לשפר, כמו שגיאות, ניסוחים לא מקצועיים בעברית מדוברת, וכאלה.`
+  Propose only errors, unprofessional or colloquial phrasing, and small clear fixes, not a rewrite of
+  copy that works. The gate's COPY dimension and the governor approve the batch, and Tom reads it in the
+  report.
 - **Out of scope:**
   - the landing pages' own forms and publication;
   - the ordering portal;

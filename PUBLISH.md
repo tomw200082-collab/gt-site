@@ -12,7 +12,7 @@ able to quote the instruction it is acting on.
 | Live theme | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **MAIN** (read 2026-09-27) |
 | Preview | `186698334449` · `GT site — preview 2026-09-27` · unpublished. Duplicated from MAIN on 2026-09-27 and reused: each round re-pushes the whole set |
 | Preview link | `https://gteveryday.com/?preview_theme_id=186698334449` |
-| Superseded | `186686636273` (`כניסה לעסקים`): its two changes, #23 and #25, are on `main` and ship with the next push. It is not to be published. `166741213425` and `166708576497` are older copies of MAIN. None of the three holds anything that `main` lacks |
+| Superseded | `186686636273` (`כניסה לעסקים`): its two changes, #23 and #25, are on `main` and ship with the next push. It is not to be published. `166741213425` and `166708576497` are older copies of MAIN. None of the three holds anything that `main` or MAIN lacks (compared file by file, 2026-09-27), so all three are safe to delete |
 | Rollback | push the previous set: check out the commit that was live, then run `python3 tools/theme_ship.py push 166730072305 --allow-live` |
 
 ---
