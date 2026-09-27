@@ -92,6 +92,11 @@ def main() -> None:
                ".fcard .prow span:last-child{opacity:.7}", text)
     text = sub("contrast: tool names", ".tool-card .ti span{font-size:12.5px;color:#77796d}",
                ".tool-card .ti span{font-size:12.5px;color:#75776B}", text)
+    # the dark Tea 2.0 section dims its small labels to .65: its amber eyebrow was 4.06:1 there; .71 clears it
+    text = sub("contrast: the Tea 2.0 eyebrow",
+               ".tea2 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;font-weight:700}",
+               ".tea2 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;font-weight:700}\n"
+               ".tea2 .eyebrow{opacity:.71}", text)
 
     # ── the modals have names (UX gate, 2026-09-27) ─────────────────────
     # The product window had no role and no name, and four of the modals'

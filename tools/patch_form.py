@@ -134,7 +134,8 @@ def main() -> None:
         " var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};\n"
         " var f=document.getElementById('pform');\n"
         " var err=document.getElementById('pf-err');\n"
-        " var btn=f.querySelector('button');\n"
+        # the send button: the form's other buttons (the business question's answers) are type=button
+        " var btn=f.querySelector('button:not([type=button])');\n"
         " if(!document.getElementById('pf-agree').checked)return false;\n"
         " var fail=function(msg){err.innerHTML=msg;err.hidden=false;\n"
         "  btn.disabled=false;btn.innerHTML=PF_LABEL;\n"

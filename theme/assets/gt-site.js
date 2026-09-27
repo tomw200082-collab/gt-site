@@ -598,7 +598,7 @@ function pSend(e){e.preventDefault();
  var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
  var f=document.getElementById('pform');
  var err=document.getElementById('pf-err');
- var btn=f.querySelector('button');
+ var btn=f.querySelector('button:not([type=button])');
  if(!document.getElementById('pf-agree').checked)return false;
  var fail=function(msg){err.innerHTML=msg;err.hidden=false;
   btn.disabled=false;btn.innerHTML=PF_LABEL;

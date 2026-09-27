@@ -181,6 +181,7 @@ section{padding:100px 0}
 .tea2 .nums{display:flex;gap:56px;justify-content:center;flex-wrap:wrap;margin-top:52px;position:relative}
 .tea2 b{font-family:'Roca One','Heebo';font-size:52px;font-weight:900;display:block;line-height:1}
 .tea2 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;font-weight:700}
+.tea2 .eyebrow{opacity:.71}
 
 /* STEPS */
 .steps4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
@@ -2232,7 +2233,7 @@ function pSend(e){e.preventDefault();
  var g=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
  var f=document.getElementById('pform');
  var err=document.getElementById('pf-err');
- var btn=f.querySelector('button');
+ var btn=f.querySelector('button:not([type=button])');
  if(!document.getElementById('pf-agree').checked)return false;
  var fail=function(msg){err.innerHTML=msg;err.hidden=false;
   btn.disabled=false;btn.innerHTML=PF_LABEL;
