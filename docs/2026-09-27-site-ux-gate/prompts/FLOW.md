@@ -1,6 +1,8 @@
+<!-- As sent by the 2026-09-27 gate, round 1. Evidence paths are the executing session's scratchpad (regenerate with BRIEF §5). -->
+
 You are running as `ux-flow-architect` inside the `/ux-release-gate` for GT's BRAND SITE (gteveryday.com), re-aimed at one question Tom asked on 2026-09-27: does every call-to-action now land a real lead in the simplest, most beautiful, highest-converting way, and let the visitor carry on scrolling?
 
-{COMMON}
+STEP 1 — read `/home/user/gt-site/docs/2026-09-27-site-ux-gate/BRIEF.md` in full. It overrides the operations-portal parts of your definition: this is GT's public brand site, Hebrew RTL by Tom's approval; portal_ux_standard.md, English-first, LTR and RUNTIME_READY do not apply. Then read the generator named in BRIEF §1 (`/home/user/gt-site/tools/patch_lead_dialog.py` in full, `tools/patch_form.py`, and the built `/home/user/gt-site/src/index.html` around `#contact`, the calls-to-action and the dialog script) and open the evidence in `/tmp/claude-0/-home-user/69951ae0-cef0-56a2-ac9c-bac1353b3e2f/scratchpad/gate-r1/site-ipad/` (Read renders PNGs) with `site_ipad_facts.json`. "Before" evidence (the live theme, where every call-to-action scrolls to the form) is in `/tmp/claude-0/-home-user/69951ae0-cef0-56a2-ac9c-bac1353b3e2f/scratchpad/ux-before-lead/site-ipad/`.
 
 YOUR DIMENSION: Flow. You own the re-aimed `/ux-flow-audit` and `/operator-task-simulation` (→ visitor-task-simulation); specs for their output sections: `/home/user/gt-factory-os-production-brain/.claude/commands/ux-flow-audit.md`, `.../operator-task-simulation.md`.
 
