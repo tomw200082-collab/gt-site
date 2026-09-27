@@ -632,7 +632,7 @@ function pSend(e){e.preventDefault();
 
 /* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
    dialog; the form moves in and back, so there is one form, one sender and one state. */
-var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldDoc=Math.random();
+var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldDoc=Math.random();
 (function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
 function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
 /* focus what the step starts with: its question; in the form, the first field on a mouse-and-
@@ -642,13 +642,12 @@ function ldStep(f){
   :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
  document.getElementById(q).focus({preventScroll:true});}
 function ldOpen(a){
- var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
+ var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot');
  if(!d||!d.showModal||d.open)return false;
  var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');
  ldInv=fm?(ldCard||a):a;
  ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
- ldCtx=fm?document.getElementById('fm-name').textContent.trim():'';
- if(a.hasAttribute('data-price')&&!i.value){i.selectedIndex=1;ldAuto=1;}
+ ldCtx=fm?document.getElementById('fm-name').textContent.trim():sl?sl.querySelector('.hs-h').textContent.trim():'';
  var h=document.querySelector('img[fetchpriority="high"]');
  d.querySelector('.ld-pic').style.backgroundImage=sl?(sl.dataset.hsbg?'url("'+sl.dataset.hsbg+'")':sl.style.getPropertyValue('--hsbg'))
   :'url("'+(fm?document.getElementById('fm-img').currentSrc:h?h.currentSrc:'')+'")';
@@ -675,8 +674,7 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
 })();
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
  d.addEventListener('close',function(){
-  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int'),h=history.state;
-  if(ldAuto&&i.selectedIndex===1&&!f.classList.contains('sent'))i.selectedIndex=0;ldAuto=0;
+  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),h=history.state;
   s.appendChild(f);s.style.height='';
   document.documentElement.classList.remove('cm-lock');
   if(h&&h.gtLead&&h.doc===ldDoc)history.back();

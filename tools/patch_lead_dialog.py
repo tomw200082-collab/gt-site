@@ -41,11 +41,10 @@ window first). A click used to scroll the visitor to the form at the bottom of t
       from 880px. On a mouse-and-keyboard screen the first field is focused on open.
 
   Intent travels with the lead.
-      data-price links (the slides, the catalogue, the economics card) preselect the first
-      interest option, the full price list, when nothing is chosen, and closing without
-      sending undoes it, so a later link starts clean. The product window's
-      add-to-menu link sends the product's name as the interest when the visitor leaves it
-      empty. generate_lead carries lead_cta.
+      The calls-to-action invite a partnership, not a price list (Tom, 2026-09-27): the page's
+      links read `בואו נעבוד יחד`, and a drink's read `הוסיפו לתפריט`. A hero slide's link sends
+      its collection's name as the interest when the visitor leaves it empty, and the product
+      window's sends the product's name. generate_lead carries lead_cta.
 
 The form also gets visible labels. The four required fields come first, and role, email,
 interest and message sit behind one disclosure. No new form_name, no intake change.
@@ -94,8 +93,7 @@ FIELDS_OLD = (
     '    <textarea id="pf-msg" name="message" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>\n'
 )
 # Labels, not placeholders: a placeholder disappears as the visitor types. The words are the old
-# placeholders'. The optional four sit behind one disclosure; the full price list stays the first
-# interest option, because the data-price links select option 1.
+# placeholders'. The optional four sit behind one disclosure.
 FIELDS_NEW = (
     '    <div class="pf-req">\n'
     '      <label class="pf-f"><span>שם מלא</span><input id="pf-name" name="name" autocomplete="name" required></label>\n'
@@ -110,7 +108,7 @@ FIELDS_NEW = (
     '      </select></label>\n'
     '      <label class="pf-f"><span>אימייל</span><input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email"></label>\n'
     '      <label class="pf-f"><span>מה מעניין אתכם</span><select id="pf-int" name="interest">\n'
-    '        <option value=""></option><option>המחירון המלא</option><option>תמציות תה</option>\n'
+    '        <option value=""></option><option>תמציות תה</option>\n'
     '        <option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>\n'
     '        <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>\n'
     '      </select></label>\n'
@@ -249,7 +247,7 @@ CSS = """
 JS = """<script>
 /* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
    dialog; the form moves in and back, so there is one form, one sender and one state. */
-var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldDoc=Math.random();
+var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldDoc=Math.random();
 (function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
 function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
 /* focus what the step starts with: its question; in the form, the first field on a mouse-and-
@@ -259,13 +257,12 @@ function ldStep(f){
   :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
  document.getElementById(q).focus({preventScroll:true});}
 function ldOpen(a){
- var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
+ var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot');
  if(!d||!d.showModal||d.open)return false;
  var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');
  ldInv=fm?(ldCard||a):a;
  ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
- ldCtx=fm?document.getElementById('fm-name').textContent.trim():'';
- if(a.hasAttribute('data-price')&&!i.value){i.selectedIndex=1;ldAuto=1;}
+ ldCtx=fm?document.getElementById('fm-name').textContent.trim():sl?sl.querySelector('.hs-h').textContent.trim():'';
  var h=document.querySelector('img[fetchpriority="high"]');
  d.querySelector('.ld-pic').style.backgroundImage=sl?(sl.dataset.hsbg?'url("'+sl.dataset.hsbg+'")':sl.style.getPropertyValue('--hsbg'))
   :'url("'+(fm?document.getElementById('fm-img').currentSrc:h?h.currentSrc:'')+'")';
@@ -292,8 +289,7 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
 })();
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
  d.addEventListener('close',function(){
-  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int'),h=history.state;
-  if(ldAuto&&i.selectedIndex===1&&!f.classList.contains('sent'))i.selectedIndex=0;ldAuto=0;
+  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),h=history.state;
   s.appendChild(f);s.style.height='';
   document.documentElement.classList.remove('cm-lock');
   if(h&&h.gtLead&&h.doc===ldDoc)history.back();
@@ -322,27 +318,27 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
 def main() -> None:
     text = SRC.read_text(encoding="utf-8")
 
-    # ── the calls-to-action: a name for lead_cta, and which ones ask for the price list ──
-    text = sub("cta: nav", '<a class="btn" href="#contact">רוצים להתחיל',
-               '<a class="btn" href="#contact" data-cta="nav">רוצים להתחיל', text)
-    text = sub("cta: hero", '<a class="btn" href="#contact">אני מעוניין',
-               '<a class="btn" href="#contact" data-cta="hero">אני מעוניין', text)
-    text = sub("cta: the ten slides", '<a class="sub-cta" href="#contact">רוצה מחירון</a>',
-               '<a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a>', text, 10)
-    text = sub("cta: catalogue", '<a class="btn" href="#contact">לקבלת הקטלוג המלא',
-               '<a class="btn" href="#contact" data-cta="catalogue" data-price>לקבלת הקטלוג המלא', text)
-    text = sub("cta: economics", '<a class="btn light" style="margin-top:24px" href="#contact">רוצה מחירון ותמחירים',
-               '<a class="btn light" style="margin-top:24px" href="#contact" data-cta="economics" data-price>רוצה מחירון ותמחירים', text)
-    text = sub("cta: closing", '<a class="btn light" href="#contact">רוצים להתחיל',
-               '<a class="btn light" href="#contact" data-cta="closing">רוצים להתחיל', text)
+    # ── the calls-to-action: a name for lead_cta. Five share their words, so each anchor has its place ──
+    W = 'בואו נעבוד יחד'
+    text = sub("cta: nav", f'\n  <a class="btn" href="#contact">{W}', f'\n  <a class="btn" href="#contact" data-cta="nav">{W}', text)
+    text = sub("cta: hero", f'<div class="ctas">\n      <a class="btn" href="#contact">{W}',
+               f'<div class="ctas">\n      <a class="btn" href="#contact" data-cta="hero">{W}', text)
+    text = sub("cta: the ten slides", '<a class="sub-cta" href="#contact">הוסיפו לתפריט</a>',
+               '<a class="sub-cta" href="#contact" data-cta="slide">הוסיפו לתפריט</a>', text, 10)
+    text = sub("cta: catalogue", f'<div class="center-cta rv"><a class="btn" href="#contact">{W}',
+               f'<div class="center-cta rv"><a class="btn" href="#contact" data-cta="catalogue">{W}', text)
+    text = sub("cta: economics", f'<a class="btn light" style="margin-top:24px" href="#contact">{W}',
+               f'<a class="btn light" style="margin-top:24px" href="#contact" data-cta="economics">{W}', text)
+    text = sub("cta: closing", f'<a class="btn light" href="#contact">{W}',
+               f'<a class="btn light" href="#contact" data-cta="closing">{W}', text)
     text = sub("cta: product window", '<a class="cta" href="#contact" onclick=',
                '<a class="cta" href="#contact" data-cta="product" onclick=', text)
 
     # ── the form: labels, required first, the slot it returns to, the check ──
     text = sub("form fields", FIELDS_OLD, FIELDS_NEW, text)
     text = sub("form heading names the dialog, then the business question",
-               '<div class="pf-head"><b>בקשת מחירון</b><span>עונים תוך יום עסקים אחד</span></div>\n',
-               '<div class="pf-head"><b id="ld-h" tabindex="-1">בקשת מחירון</b><span>עונים תוך יום עסקים אחד</span></div>\n' + ASK, text)
+               '<div class="pf-head"><b>בואו נעבוד יחד</b><span>עונים תוך יום עסקים אחד</span></div>\n',
+               '<div class="pf-head"><b id="ld-h" tabindex="-1">בואו נעבוד יחד</b><span>עונים תוך יום עסקים אחד</span></div>\n' + ASK, text)
     text = sub("form slot opens", '<form class="rv partner" id="pform"', '<div id="pf-slot"><form class="rv partner" id="pform"', text)
     text = sub("form slot closes, after the lines", '  </form>\n</div></section>', PICK + '  </form></div>\n</div></section>', text)
     text = sub("sent check", '<div class="pf-done" id="pf-done"',
