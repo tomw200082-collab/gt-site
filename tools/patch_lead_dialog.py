@@ -154,6 +154,17 @@ CSS = """
  #ldlg .ld-pic{display:block;background:var(--ld-tint,var(--gt)) center/cover no-repeat}
 }
 #ldlg .btn:active{transform:scale(.98)}
+/* short phones (iPhone SE, 320x640): a tighter rhythm, so the consent and the button are on the first screen */
+@media(max-width:639px) and (max-height:760px){
+ #ldlg .ld-grab{margin-top:6px}
+ #ldlg form.partner{padding:8px 18px 18px;gap:10px}
+ #ldlg .pf-head b{font-size:24px}
+ #ldlg .pf-req{gap:10px}
+ #ldlg .pf-f{gap:4px}
+ #ldlg input:not([type=checkbox]),#ldlg select{padding:11px 14px}
+ #ldlg .pf-more summary{min-height:40px}
+ #ldlg form.partner>button.btn{min-height:50px}
+}
 #ldlg[open]{animation:ld-up .32s cubic-bezier(.2,.8,.25,1)}
 #ldlg[open]::backdrop{animation:ld-fade .32s ease}
 @keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
