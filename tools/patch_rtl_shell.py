@@ -58,8 +58,9 @@ sub(
     '  <div class="nav-links" id="nav-links">',
 )
 
-# ── customer portal entry (gate G-27): three placements of one link. On phones a 44 px
-# icon (labelled for screen readers) beside the burger and the first row of the menu; on
+# ── customer portal entry (gate G-27): three placements of one link, each saying it is for
+# businesses (Tom 2026-09-27: private customers were reaching it). On phones a small pill
+# with the icon and the word for "businesses" beside the burger and the first row of the menu; on
 # desktop an outline pill beside the contact CTA. build_theme.py wraps all three in the theme
 # editor's show_portal_entry switch (default off) so the recipe fixes can ship before
 # the portal opens to everyone (M5). The portal lives on the API's own host
@@ -71,14 +72,14 @@ PORTAL_ICON = ('<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stro
 sub(
     "customer portal entry: phone icon and first menu row",
     '  <div class="nav-links" id="nav-links">',
-    f'  <a class="portal-ico" href="{PORTAL}" aria-label="כניסה">{PORTAL_ICON}</a>\n'
+    f'  <a class="portal-ico" href="{PORTAL}" aria-label="כניסה לעסקים">{PORTAL_ICON}לעסקים</a>\n'
     '  <div class="nav-links" id="nav-links">'
-    f'<a class="portal-link" href="{PORTAL}">כניסת לקוחות</a>',
+    f'<a class="portal-link" href="{PORTAL}">כניסה לעסקים</a>',
 )
 sub(
     "customer portal entry: desktop pill",
     '\n  </div>\n  <a class="btn" href="#contact">',
-    f'\n  </div>\n  <a class="portal-pill" href="{PORTAL}">{PORTAL_ICON}כניסת לקוחות</a>'
+    f'\n  </div>\n  <a class="portal-pill" href="{PORTAL}">{PORTAL_ICON}כניסה לעסקים</a>'
     '\n  <a class="btn" href="#contact">',
 )
 
@@ -203,8 +204,12 @@ nav.open .nav-burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links .portal-link{display:none}
 @media(max-width:980px){
   .portal-pill{display:none}
-  .portal-ico{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--ink);
-    margin-inline-start:auto;margin-inline-end:4px}
+  .portal-ico{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px 0 12px;border-radius:999px;
+    box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink);font-weight:700;font-size:14px;text-decoration:none;
+    white-space:nowrap;margin-inline-start:auto;margin-inline-end:6px}
+  .portal-ico svg{width:18px;height:18px}
+  /* under 390 px the bar is full (logo, menu, the business pill, the CTA): the word stays, the two glyphs go */
+  @media(max-width:389px){.portal-ico{padding:0 10px;font-size:13px;margin-inline-end:4px}.portal-ico svg,.nav-in .btn .arr{display:none}}
   .nav-links .portal-link{display:block;font-weight:800}
   .nav-burger{display:flex}
   /* nav carries backdrop-filter, which makes it the containing block for its
