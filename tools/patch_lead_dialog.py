@@ -20,11 +20,20 @@ window first). A click used to scroll the visitor to the form at the bottom of t
       closes the dialog instead of leaving the site. Closing steps back over that entry and
       returns focus to what opened the dialog, without scrolling.
 
-  The thank-you is earned, and then the dialog leaves.
+  Businesses only, then the details, then a line (Tom, 2026-09-27).
+      GT sells wholesale. The form first asks whether the visitor has a business. A private buyer
+      is sent to the shop that sells GT to the public, Elita Ofek, and nothing is sent to sales.
+      A business fills in the four details. After a send the form asks which line interests them
+      most, and each line is a link to the lead number's WhatsApp with a message already written.
+      The answer to the first question stays for the visit, so a second link opens the form.
+
+  The thank-you is earned, and the dialog leaves when the visitor has picked.
       A send is held until 3 s after navigation start, because the intake answers ok and stores
       nothing when elapsed_ms is under 3000. Success is res.ok, body.ok and a was_new key: the
       intake's two silent drops (honeypot, too fast) answer {ok:true} without was_new. After a
-      success the dialog shows a check and the thanks, then closes itself after LD_CLOSE_MS.
+      success the dialog shows a check, the thanks and the lines. Picking one opens WhatsApp, and
+      the dialog closes when the visitor comes back to the page. It does not close on a timer:
+      two seconds cut the thanks off for a screen reader (UX gate, 2026-09-27).
 
   The dialog wears the drink it was opened from.
       A hero slide lends its photo and colour, the product window its product, and every other
@@ -45,6 +54,7 @@ Every edit asserts its anchor, so a silent no-op is impossible. Runs last, after
 """
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "src" / "index.html"
@@ -100,12 +110,44 @@ FIELDS_NEW = (
     '      </select></label>\n'
     '      <label class="pf-f"><span>אימייל</span><input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email"></label>\n'
     '      <label class="pf-f"><span>מה מעניין אתכם</span><select id="pf-int" name="interest">\n'
-    '        <option value=""></option><option>המחירון המלא</option><option>טעימה במקום</option>\n'
-    '        <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>\n'
+    '        <option value=""></option><option>המחירון המלא</option><option>תמציות תה</option>\n'
+    '        <option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>\n'
     '        <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>\n'
     '      </select></label>\n'
     '      <label class="pf-f"><span>משהו שכדאי שנדע?</span><textarea id="pf-msg" name="message" rows="3"></textarea></label>\n'
     '    </div></details>\n'
+)
+
+# The steps around the form. The first asks whether the visitor has a business; its two answers
+# are buttons, not links, so nothing leaves the page. A private buyer gets the shop that sells GT
+# to the public. After a send, each line is a link to the lead number's WhatsApp (054-758-8132,
+# Sales-Machine D-014) with the visitor's message already written, in Tom's words. The last line
+# is not a product: it is help building a drinks menu (Tom, 2026-09-27).
+ASK = (
+    '    <div class="pf-ask"><p class="pf-q" id="pf-ask-q" tabindex="-1"><b>יש לכם עסק?</b>'
+    '<span>אנחנו עובדים רק עם עסקים, בסיטונאות.</span></p>\n'
+    '      <button class="btn" type="button" data-biz="1">כן, יש לי עסק</button>'
+    '<button class="btn" type="button" data-biz="0">לא, לשימוש פרטי</button></div>\n'
+    '    <div class="pf-priv"><p class="pf-q" id="pf-priv-q" tabindex="-1">'
+    '<span>ללקוחות פרטיים, המוצרים שלנו נמכרים באתר של אליטה אופק.</span></p>\n'
+    '      <a class="btn" href="https://elitaofek.co.il/product-category/gt/" target="_blank" rel="noopener">'
+    'למוצרי GT אצל אליטה אופק <span class="arr" aria-hidden="true">←</span></a>'
+    '<button class="pf-back" type="button" data-biz="">חזרה</button></div>\n'
+)
+WA_LEAD = "https://wa.me/972547588132?text="
+LINES = ["מאצ׳ה", "אובה", "צ׳אי מסאלה", "תמציות תה", "בניית תפריט משקאות בעסק שלי"]
+
+
+def line(name: str) -> str:
+    wide = ' class="pf-wide"' if name == LINES[-1] else ""
+    return (f'<a{wide} href="{WA_LEAD}{quote("היי, אני מעוניין ב" + name)}" target="_blank" rel="noopener">'
+            f'{name}</a>')
+
+
+PICK = (
+    '    <div class="pf-pick" role="group" aria-labelledby="pf-pick-q"><p class="pf-q" id="pf-pick-q" tabindex="-1">'
+    '<b>מה הכי מעניין אתכם?</b><span>נשלח לכם את התפריט בוואטסאפ.</span></p>\n'
+    '      <div class="pf-lines">' + "".join(line(n) for n in LINES) + '</div></div>\n'
 )
 
 # The dialog is a shell: the form moves in on open. The <style media="all"> is deliberate:
@@ -114,9 +156,7 @@ FIELDS_NEW = (
 # #contact's phone, WhatsApp and mail links among them.
 SHELL = (
     '<dialog id="ldlg" aria-labelledby="ld-h"><div class="ld-pic" aria-hidden="true"></div><div class="ld-main">'
-    '<span class="ld-grab" aria-hidden="true"></span>'
     '<button class="ld-x" type="button" aria-label="סגירה">✕</button>'
-    '<span class="ld-bar" aria-hidden="true"></span>'
     '</div></dialog>\n'
     '<noscript><style media="all">.rv{opacity:1;transform:none}</style></noscript>\n'
 )
@@ -132,13 +172,28 @@ CSS = """
 @media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
 .partner .pf-f{display:grid;gap:6px;min-width:0}
 .partner .pf-f>span{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
-/* the form's two grey lines were 3.4:1 on paper (axe); #6b6659, the consent's colour, is 5.3:1 */
-.partner .pf-head span,.partner .pf-alt{color:#6b6659}
 .partner .pf-more summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:14px;font-weight:700;color:var(--gt)}
 .partner .pf-more summary::-webkit-details-marker{display:none}
 .partner .pf-more summary::before{content:'+';width:14px;text-align:center}
 .partner .pf-more[open] summary::before{content:'\\2212'}
 .partner .pf-more>div{display:grid;gap:14px;padding-top:4px}
+/* the steps: whether the visitor has a business, the answer for a private buyer, and after a send
+   the line that interests them; each step shows the heading and itself only */
+.partner .pf-ask,.partner .pf-priv,.partner .pf-pick{display:none}
+.partner.ask>*:not(.pf-head):not(.pf-ask),.partner.priv>*:not(.pf-head):not(.pf-priv){display:none}
+.partner.ask .pf-ask,.partner.priv .pf-priv,.partner.sent .pf-pick{display:grid;gap:12px}
+.partner .pf-q{margin:0 0 4px}
+.partner .pf-q b{display:block;font-size:20px;font-weight:800;line-height:1.3}
+.partner .pf-q span{display:block;margin-top:4px;font-size:15px;line-height:1.5;color:var(--ink-soft)}
+.partner .pf-q:focus,#ld-h:focus{outline:none}
+.partner .pf-ask .btn,.partner .pf-priv .btn{justify-content:center;min-height:52px;font-size:15px}
+.partner .pf-ask .btn+.btn,.partner .pf-ask .btn+.btn:hover{background:none;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.partner .pf-ask .btn+.btn:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.partner .pf-back{justify-self:center;min-height:44px;padding:0 18px;border:0;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--gt);cursor:pointer}
+.partner .pf-lines{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.partner .pf-lines a{display:flex;align-items:center;justify-content:center;min-height:52px;padding:8px 14px;border-radius:999px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font-size:15px;font-weight:700;line-height:1.25;text-align:center;text-decoration:none;transition:box-shadow .2s}
+.partner .pf-lines a:hover,.partner .pf-lines a:focus-visible{box-shadow:inset 0 0 0 2px var(--gt);outline:none}
+.partner .pf-lines .pf-wide{grid-column:1/-1}
 /* the dialog: a bottom sheet on phones, a centred card from 640px */
 #ldlg{border:0;padding:0 0 env(safe-area-inset-bottom,0);margin:auto auto 0;width:100%;max-width:100%;max-height:92vh;max-height:92dvh;
  background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
@@ -156,12 +211,11 @@ CSS = """
 #ldlg .btn:active{transform:scale(.98)}
 /* short phones (iPhone SE, 320x640): a tighter rhythm, so the consent and the button are on the first screen */
 @media(max-width:639px) and (max-height:760px){
- #ldlg .ld-grab{margin-top:6px}
- #ldlg form.partner{padding:8px 18px 18px;gap:10px}
+ #ldlg form.partner{padding:12px 18px 16px;gap:9px}
  #ldlg .pf-head b{font-size:24px}
- #ldlg .pf-req{gap:10px}
+ #ldlg .pf-req{gap:9px}
  #ldlg .pf-f{gap:4px}
- #ldlg input:not([type=checkbox]),#ldlg select{padding:11px 14px}
+ #ldlg input:not([type=checkbox]),#ldlg select{padding:10px 14px}
  #ldlg .pf-more summary{min-height:40px}
  #ldlg form.partner>button.btn{min-height:50px}
 }
@@ -169,37 +223,38 @@ CSS = """
 #ldlg[open]::backdrop{animation:ld-fade .32s ease}
 @keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes ld-fade{from{opacity:0}}
-#ldlg .ld-grab{display:block;width:40px;height:4px;border-radius:4px;background:var(--line);margin:10px auto 0}
-@media(min-width:640px){#ldlg .ld-grab{display:none}}
 #ldlg .ld-x{position:absolute;top:12px;left:12px;z-index:1;width:44px;height:44px;border:0;border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer}
 #ldlg .ld-x:focus-visible{outline:2px solid var(--gt);outline-offset:2px}
-#ldlg form.partner{border:0;border-radius:0;box-shadow:none;background:none;padding:14px 22px 24px;gap:14px;opacity:1;transform:none;transition:none}
+#ldlg form.partner{border:0;border-radius:0;box-shadow:none;background:none;padding:20px 22px 24px;gap:14px;opacity:1;transform:none;transition:none}
 #ldlg .pf-head{padding-left:52px}
 #ldlg .pf-head b{font-size:28px;line-height:1.15}
 #ldlg input:not([type=checkbox]),#ldlg select,#ldlg textarea{background:#fff}
 #ldlg form.partner>button.btn{width:100%;min-height:54px;font-size:16px;letter-spacing:.02em}
-/* sent: a check, the thanks and the WhatsApp line; the bar shows the dialog will close itself */
+/* sent: a check and the thanks, then the lines */
 .partner .ld-check{display:none}
-#ldlg .partner.sent>*:not(.pf-done):not(.ld-check):not(.pf-alt){display:none}
+#ldlg .partner.sent>*:not(.pf-done):not(.ld-check):not(.pf-pick){display:none}
 #ldlg .partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
 .ld-check circle{fill:#EEF4EA;stroke:var(--gt);stroke-width:2}
 .ld-check path{fill:none;stroke:var(--gt);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:ld-draw .45s .1s ease-out forwards}
 @keyframes ld-draw{to{stroke-dashoffset:0}}
 #ldlg .partner.sent .pf-done{background:none;padding:6px 0 0;text-align:center;font-size:15px}
 #ldlg .partner.sent .pf-done b{margin:6px 0 4px;font-family:'Roca One','Heebo',serif;font-weight:400;font-size:28px}
-#ldlg .partner.sent .pf-alt{order:1}
-#ldlg .ld-bar{position:sticky;bottom:0;display:block;height:3px;background:var(--gt);transform-origin:right;transform:scaleX(0)}
-#ldlg.closing .ld-bar{animation:ld-bar var(--ld-close,2s) linear forwards}
-@keyframes ld-bar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
-@media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path,#ldlg.closing .ld-bar{animation:none}.ld-check path{stroke-dashoffset:0}}
+#ldlg .partner.sent .pf-pick{margin-top:6px;padding-top:18px;border-top:1px solid var(--line);text-align:center}
+@media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path{animation:none}.ld-check path{stroke-dashoffset:0}}
 """
 
 JS = """<script>
 /* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
    dialog; the form moves in and back, so there is one form, one sender and one state. */
-var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldTimer=0,ldDoc=Math.random();
+var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldDoc=Math.random();
 (function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
 function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
+/* focus what the step starts with: its question; in the form, the first field on a mouse-and-
+   keyboard screen, else the heading, so a touch keyboard does not open by itself */
+function ldStep(f){
+ var q=f.classList.contains('sent')?'pf-pick-q':f.classList.contains('ask')?'pf-ask-q':f.classList.contains('priv')?'pf-priv-q'
+  :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
+ document.getElementById(q).focus({preventScroll:true});}
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
  if(!d||!d.showModal||d.open)return false;
@@ -214,19 +269,27 @@ function ldOpen(a){
  d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
- d.querySelector('.ld-bar').before(f);
- d.style.setProperty('--ld-close',LD_CLOSE_MS+'ms');
+ d.querySelector('.ld-main').appendChild(f);
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  document.documentElement.classList.add('cm-lock');
  history.pushState({gtLead:1,doc:ldDoc},'');
- d.showModal();d.scrollTop=0;
- if(!f.classList.contains('sent')&&matchMedia('(pointer:fine)').matches)document.getElementById('pf-name').focus({preventScroll:true});
+ d.showModal();d.scrollTop=0;ldStep(f);
  return true;}
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
+(function(){var f=document.getElementById('pform');if(!f)return;
+ if(!f.classList.contains('sent'))f.classList.add('ask');
+ f.addEventListener('click',function(e){
+  var b=e.target.closest('[data-biz]'),v=b&&b.getAttribute('data-biz');
+  if(b){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');ldStep(f);return;}
+  /* a line picked: WhatsApp opens in its own tab or app, and the dialog is done when the visitor
+     comes back. Closing at once would step history back while an in-app browser, which opens the
+     link in the same tab, is still on its way to WhatsApp, and would cancel it. */
+  if(e.target.closest('.pf-lines a')&&ldIn())document.addEventListener('visibilitychange',function w(){
+   if(document.hidden)return;document.removeEventListener('visibilitychange',w);ldClose();});});
+})();
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
  d.addEventListener('close',function(){
   var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int'),h=history.state;
-  clearTimeout(ldTimer);d.classList.remove('closing');
   if(ldAuto&&i.selectedIndex===1&&!f.classList.contains('sent'))i.selectedIndex=0;ldAuto=0;
   s.appendChild(f);s.style.height='';
   document.documentElement.classList.remove('cm-lock');
@@ -242,6 +305,13 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
   if(!a||a.classList.contains('fcard')||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
   if(ldOpen(a))e.preventDefault();});
 })();
+/* the product window: its title takes focus when it opens, and the card that opened it takes it
+   back when it closes, unless the lead dialog or a recipe card has it by then */
+(function(){var fm=document.getElementById('fmodal'),on=false;if(!fm||!window.MutationObserver)return;
+ new MutationObserver(function(){var o=fm.classList.contains('open');if(o===on)return;on=o;
+  if(o)document.getElementById('fm-name').focus({preventScroll:true});
+  else if(ldCard&&!ldIn()&&!document.querySelector('#cmodal.open'))ldCard.focus({preventScroll:true});
+ }).observe(fm,{attributes:true,attributeFilter:['class']});})();
 </script>
 """
 
@@ -267,10 +337,11 @@ def main() -> None:
 
     # ── the form: labels, required first, the slot it returns to, the check ──
     text = sub("form fields", FIELDS_OLD, FIELDS_NEW, text)
-    text = sub("form heading names the dialog", '<div class="pf-head"><b>בקשת מחירון וטעימה</b>',
-               '<div class="pf-head"><b id="ld-h">בקשת מחירון וטעימה</b>', text)
+    text = sub("form heading names the dialog, then the business question",
+               '<div class="pf-head"><b>בקשת מחירון</b><span>עונים תוך יום עסקים אחד</span></div>\n',
+               '<div class="pf-head"><b id="ld-h" tabindex="-1">בקשת מחירון</b><span>עונים תוך יום עסקים אחד</span></div>\n' + ASK, text)
     text = sub("form slot opens", '<form class="rv partner" id="pform"', '<div id="pf-slot"><form class="rv partner" id="pform"', text)
-    text = sub("form slot closes", '  </form>\n</div></section>', '  </form></div>\n</div></section>', text)
+    text = sub("form slot closes, after the lines", '  </form>\n</div></section>', PICK + '  </form></div>\n</div></section>', text)
     text = sub("sent check", '<div class="pf-done" id="pf-done"',
                '<svg class="ld-check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/>'
                '<path d="M20 33l8 8 16-17"/></svg>\n    <div class="pf-done" id="pf-done"', text)
@@ -295,10 +366,11 @@ def main() -> None:
     # drops (a filled honeypot, elapsed_ms < 3000). Only the real path carries was_new.
     text = sub("send: success means stored", "   if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));",
                "   if(res.ok&&res.j&&res.j.ok&&'was_new' in res.j){pfTrack(g('pf-int')||ldCtx,g('pf-role'),ldCta);", text)
-    text = sub("send: the dialog closes itself",
+    text = sub("send: the thanks, then the lines",
                "    document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}",
-               "    if(ldIn()){var d=document.getElementById('ldlg');d.scrollTop=0;d.classList.add('closing');ldTimer=setTimeout(ldClose,LD_CLOSE_MS);}\n"
-               "    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}", text)
+               "    if(ldIn())document.getElementById('ldlg').scrollTop=0;\n"
+               "    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});\n"
+               "    if(!viaDlg||ldIn())ldStep(f);return;}", text)
     text = sub("lead_cta", "function pfTrack(interest,role){", "function pfTrack(interest,role,cta){", text)
     text = sub("lead_cta field", "  lead_interest:interest||'',lead_role:role||''});",
                "  lead_interest:interest||'',lead_role:role||'',lead_cta:cta||'contact'});", text)

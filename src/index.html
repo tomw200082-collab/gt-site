@@ -34,7 +34,7 @@ body{font-family:'Roca One','Heebo',sans-serif;color:var(--ink);background:var(-
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 h2.display{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:.01em}
 h2.display em{font-style:italic;font-family:'Roca One','Heebo',serif;font-weight:700}
-.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);font-weight:800}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#9C5C3C;font-weight:800}
 .eyebrow:before{content:"";width:34px;height:1px;background:var(--terra)}
 
 /* reveal on scroll */
@@ -101,7 +101,7 @@ section{padding:100px 0}
 .fcard:hover .ph .bottle{transform:scale(1.05) rotate(-3deg)}
 .fcard .ph img{height:212px;width:auto;background:radial-gradient(closest-side,rgba(32,36,31,.28),transparent) 50% 100%/72% 8% no-repeat;transition:transform .3s}
 .fcard .prow{display:flex;gap:14px;margin-top:10px;font-family:'Roca One','Heebo',serif;font-weight:700;font-size:15px;color:#20241F}
-.fcard .prow span:last-child{opacity:.55}
+.fcard .prow span:last-child{opacity:.7}
 .fcard .ph.full{padding:0}
 
 .fcard .ph.full img{width:100%;height:100%;object-fit:cover;filter:none;transition:transform .45s}
@@ -110,10 +110,10 @@ section{padding:100px 0}
 .glass{position:absolute;right:15%;bottom:36px;width:46px;height:78px;border-radius:6px 6px 14px 14px;opacity:0;transform:translateY(12px);transition:all .3s .05s;box-shadow:inset -6px 0 10px rgba(0,0,0,.15), inset 4px 4px 8px rgba(255,255,255,.35)}
 .fcard:hover .glass{opacity:.95;transform:translateY(0)}
 .fcard .info{padding:22px 26px 26px}
-.fcard .origin{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#9A9F93}
+.fcard .origin{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#60635C}
 .fcard h4{font-family:'Roca One','Heebo';font-weight:400;font-size:30px;margin:4px 0 6px}
 .fcard .liner{font-size:15px;color:var(--ink-soft);min-height:46px}
-.fcard .comp{font-size:13px;color:#9A9F93;margin-top:10px;opacity:0;max-height:0;transition:all .3s;border-top:1px dashed var(--line);padding-top:0}
+.fcard .comp{font-size:13px;color:#60635C;margin-top:10px;opacity:0;max-height:0;transition:all .3s;border-top:1px dashed var(--line);padding-top:0}
 .fcard:hover .comp{opacity:1;max-height:70px;padding-top:10px}
 .center-cta{text-align:center;margin-top:44px}
 
@@ -200,7 +200,7 @@ section{padding:100px 0}
 .qcard .mark{font-family:'Roca One','Heebo';font-style:italic;font-size:72px;line-height:.5;color:var(--terra);opacity:.35;position:absolute;top:34px;left:32px}
 .qcard p{font-family:'Roca One','Heebo';font-size:21px;line-height:1.5;color:#3A4034;padding-top:22px}
 .qcard footer{margin-top:20px;font-weight:800;font-size:15px;font-family:'Roca One','Heebo'}
-.qcard footer span{display:block;font-weight:600;color:#9A9F93;font-size:14px}
+.qcard footer span{display:block;font-weight:600;color:#60635C;font-size:14px}
 
 /* SPECIALS */
 .mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -232,13 +232,13 @@ section{padding:100px 0}
 /* ── заявка на партнёрство ── */
 .partner .pf-head{display:flex;flex-direction:column;gap:3px;margin-bottom:4px}
 .partner .pf-head b{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:26px}
-.partner .pf-head span{font-size:12.5px;color:#8a8577}
+.partner .pf-head span{font-size:12.5px;color:#6b6659}
 .partner .pf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .partner textarea{font-family:'Roca One','Heebo';font-size:16px;padding:15px 17px;border:1px solid var(--line);border-radius:14px;width:100%;background:var(--paper);resize:vertical;transition:border .2s}
 .partner textarea:focus{outline:none;border-color:var(--gt)}
 .partner .pf-ok{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:#6b6659;line-height:1.45}
 .partner .pf-ok input{width:16px;height:16px;flex:none;margin-top:2px;accent-color:#20241F}
-.partner .pf-alt{font-size:13px;color:#8a8577;text-align:center}
+.partner .pf-alt{font-size:13px;color:#6b6659;text-align:center}
 .partner .pf-alt a{color:var(--gt);font-weight:700}
 .partner .pf-err{background:#FBEAE7;border:1px solid #E5B4AB;border-radius:14px;padding:12px 15px;font-size:13.5px;line-height:1.5;color:#7A2E1E}
 .partner .pf-err a{color:#7A2E1E;font-weight:700}
@@ -274,7 +274,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .fmodal .mimg{min-height:420px;background:#eee}
 .fmodal .mimg img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .28s}
 .fmodal .mtxt{padding:38px 34px}
-.fmodal .mtxt .origin{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a8577;font-weight:700}
+.fmodal .mtxt .origin{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6b6659;font-weight:700}
 .fmodal .mtxt h3{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:44px;margin:6px 0 10px}
 .fmodal .mtxt .comp{font-size:13px;color:#6b6659;margin-bottom:14px}
 .fmodal .mtxt p{font-size:15.5px;line-height:1.65;color:#3a3d36;margin-bottom:14px}
@@ -295,7 +295,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .ptable h5{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:26px;margin-bottom:14px}
 .prl{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #EFE9DC;font-size:14.5px}
 .prl b{font-family:'Roca One','Heebo',serif;font-size:16px}
-.pnote{font-size:12.5px;color:#8a8577;padding-top:10px;line-height:1.5}
+.pnote{font-size:12.5px;color:#6b6659;padding-top:10px;line-height:1.5}
 /* ── прайс-лист: аккордеон на всю ширину ── */
 .pgrid{display:block;max-width:920px;margin:0 auto}
 .ptable{background:#fff;border-radius:18px;padding:0;overflow:hidden;margin-bottom:10px;
@@ -335,7 +335,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 #faq summary::after{content:"+";position:absolute;right:2px;top:-2px;font-size:22px;color:#B0793B}
 #faq details[open] summary::after{content:"–"}
 #faq details p{margin-top:10px;font-size:14.5px;line-height:1.65;color:#4c4a3f}
-.fmodal .makes h6{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a8577;margin:2px 0 8px;font-weight:700}
+.fmodal .makes h6{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6b6659;margin:2px 0 8px;font-weight:700}
 .fmodal .mk{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #EFE9DC;font-size:14px}
 .fmodal .mk i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap}
 .fmodal .mk i b{color:#4C8C46}
@@ -345,13 +345,13 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .fmodal a.mkgo:visited{color:var(--ink,#20241F)!important}
 .fmodal a.mkgo:hover{padding-left:6px;border-color:#20241F}
 .fmodal a.mkgo .nm{display:flex;flex-direction:column;gap:1px;font-weight:600;line-height:1.25}
-.fmodal a.mkgo .nm em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9A9F93}
+.fmodal a.mkgo .nm em{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#60635C}
 .fmodal a.mkgo:hover .nm em{color:#B0793B}
 .fmodal a.mkgo i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:8px}
 .fmodal a.mkgo i b{color:#4C8C46}
 .fmodal a.mkgo i u{text-decoration:none;opacity:0;transform:translateX(-4px);transition:.15s;color:#B0793B}
 .fmodal a.mkgo:hover i u{opacity:1;transform:none}
-.fmodal .mkmore{font-size:12.5px;color:#8a8577;padding-top:8px;margin-bottom:14px}
+.fmodal .mkmore{font-size:12.5px;color:#6b6659;padding-top:8px;margin-bottom:14px}
 .fmodal details.mk{display:block;border-bottom:1px solid #EFE9DC;padding:0}
 .fmodal details.mk summary{display:flex;justify-content:space-between;gap:10px;padding:9px 0;font-size:14px;cursor:pointer;list-style:none;align-items:center}
 .fmodal details.mk summary::-webkit-details-marker{display:none}
@@ -360,7 +360,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .fmodal .rec{background:#F4EFE4;border-radius:12px;padding:12px 14px;margin:2px 0 12px;font-size:13px;line-height:1.55;color:#4c4a3f}
 .fmodal .rec ol{margin:6px 0 0 16px;padding:0}
 .fmodal .rec ol li{margin:3px 0}
-.fmodal .rec .fc{margin-top:8px;font-size:12px;color:#8a8577}
+.fmodal .rec .fc{margin-top:8px;font-size:12px;color:#6b6659}
 
 /* ==== v3 Olipop-mechanic flavor cards (Волна 3) ==== */
 .fcard.v3{border:none;box-shadow:0 6px 30px rgba(32,36,31,.08)}
@@ -388,7 +388,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .dd-in a:hover{background:#FBF8F2}
 .dd-in a:after{display:none}
 .dd-dot{width:9px;height:9px;border-radius:50%;flex:none}
-.dd-head{grid-column:1/-1;font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#9A9F93;padding:8px 12px 4px}
+.dd-head{grid-column:1/-1;font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#60635C;padding:8px 12px 4px}
 
 
 /* ==== collection slide viewer (Волна: слайды коктейлей) ==== */
@@ -406,7 +406,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-x{position:absolute;top:18px;right:22px;background:rgba(255,255,255,.22);border:none;color:#fff;width:38px;height:38px;border-radius:50%;font-size:19px;cursor:pointer}
 .cm-body{display:grid;grid-template-columns:1.15fr .85fr;gap:0}
 .cm-rec{padding:24px 34px 20px}
-.cm-rec h5{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#9A9F93;margin:0 0 12px}
+.cm-rec h5{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#60635C;margin:0 0 12px}
 .cm-steps{direction:rtl;text-align:right;margin:0;padding:0;list-style:none;counter-reset:s}
 .cm-steps li{counter-increment:s;display:flex;gap:12px;align-items:baseline;font-size:15.5px;line-height:1.55;margin-bottom:9px;color:#33362f}
 .cm-steps li:before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;transform:translateY(3px)}
@@ -417,7 +417,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:22px}
 .cm-stats>div{background:#fff;padding:16px 10px;text-align:center}
 .cm-stats b{display:block;font-family:'Roca One','Heebo',serif;font-size:22px;font-weight:700}
-.cm-stats i{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93}
+.cm-stats i{font-style:normal;font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#60635C}
 .cm-nav{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:20px;row-gap:12px;padding:14px 30px 20px}
 .cm-nav>button{background:#20241F;color:#fff;border:none;border-radius:22px;padding:11px 22px;font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap}
 .cm-nav>button:disabled{opacity:.25;cursor:default}
@@ -438,20 +438,20 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .mxc .hd{display:flex;align-items:baseline;gap:9px;margin-bottom:11px}
 .mxc .pd{width:10px;height:10px;border-radius:50%;flex:0 0 auto;transform:translateY(-1px)}
 .mxc .pn{font-size:16px;font-weight:800;color:#20241F;letter-spacing:-.01em}
-.mxc .pc{margin-left:auto;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#9A9F93;white-space:nowrap}
+.mxc .pc{margin-left:auto;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#60635C;white-space:nowrap}
 .mxc .grp{margin-top:9px}
 .mxc .gl{font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:#B9BCB1;display:block;margin-bottom:5px}
 .mxc .chips{display:flex;flex-wrap:wrap;gap:5px}
 .mxd{background:#F6F3EA;border:1px solid transparent;border-radius:12px;padding:5px 10px;font-size:12.5px;font-weight:600;color:#20241F;cursor:pointer;font-family:'Roca One','Heebo',sans-serif;transition:.14s;line-height:1.2}
 .mxd:hover{background:#fff;border-color:#20241F}
-.mxc .note{font-size:12.5px;color:#9A9F93;line-height:1.4}
+.mxc .note{font-size:12.5px;color:#60635C;line-height:1.4}
 
 .cm-dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;align-content:center;max-height:78px;overflow-y:auto;padding:2px 6px;min-width:0}
 .cm-chip{background:#fff;border:1px solid var(--line);color:#5d6157;border-radius:14px;padding:5px 11px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Roca One','Heebo',sans-serif;white-space:nowrap;transition:.14s}
 .cm-chip:hover{border-color:#20241F;color:#20241F}
 .cm-chip.on{background:#20241F;border-color:#20241F;color:#fff}
 .cm-src{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:0 0 12px;font-size:13px}
-.cm-src .lbl{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9A9F93}
+.cm-src .lbl{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#60635C}
 .cm-src a{background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px 12px;font-weight:700;font-size:12.5px;color:#20241F!important;text-decoration:none!important;transition:.14s}
 .cm-src a:after{display:none}
 .cm-src a:hover{border-color:#B0793B;color:#B0793B!important}
@@ -476,7 +476,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .pm-list a{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-weight:600;font-size:14.5px;transition:transform .15s}
 .pm-list a:hover{transform:translateX(4px)}
 .pm-list a:after{display:none}
-.pm-list .tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9A9F93}
+.pm-list .tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#60635C}
 /* ── список «где применяется»: убираем синие ссылки браузера ── */
 .pm-list a{color:var(--ink,#20241F)!important;text-decoration:none!important;gap:18px;
   border-color:#EFE9DC;transition:transform .18s,border-color .2s,background .2s}
@@ -504,7 +504,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-glass{display:flex;flex-direction:column;align-items:center;margin:4px 0 18px}
 .cm-glass svg{width:96px;height:auto}
 .cm-shot{width:150px;aspect-ratio:3/4;border-radius:16px;background-repeat:no-repeat;box-shadow:0 10px 26px -8px rgba(32,36,31,.35)}
-.cm-glass .cap{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9A9F93;margin-top:8px}
+.cm-glass .cap{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#60635C;margin-top:8px}
 
 
 
@@ -545,7 +545,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-build{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 16px}
 .cm-build .st{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:52px}
 .cm-build .st i{font-style:normal;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;background:#fff;border:1.5px solid var(--line)}
-.cm-build .st b{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#9A9F93;text-align:center;line-height:1.25}
+.cm-build .st b{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#60635C;text-align:center;line-height:1.25}
 .cm-build .sep{color:#C9C4B6;font-size:13px;flex:none}
 
 
@@ -556,7 +556,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .tool-card .tp img{width:100%;height:100%;object-fit:cover;display:block}
 .tool-card .ti{padding:13px 15px;display:flex;flex-direction:column;gap:2px}
 .tool-card .ti b{font-size:14.5px}
-.tool-card .ti span{font-size:12.5px;color:#77796d}
+.tool-card .ti span{font-size:12.5px;color:#75776B}
 .tool-card .ti i{font-style:normal;font-weight:800;font-size:14px;margin-top:3px}
 @media(max-width:900px){.tools-grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -575,7 +575,7 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 .cm-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
 .cm-visual .cm-shot{position:absolute;inset:0;width:100%!important;height:100%;border-radius:0;box-shadow:none;background-size:cover;background-position:center bottom}
 .cm-rec{padding:20px 28px 16px;min-width:0}
-.cm-rec h5{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#9A9F93;margin:0 0 10px}
+.cm-rec h5{font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#60635C;margin:0 0 10px}
 .cm-steps li{margin-bottom:7px;font-size:14.5px}
 #cm-glass .cm-photo{display:none!important}
 .cm-build{margin:8px 0 4px}
@@ -1099,7 +1099,8 @@ html.cm-lock,html.cm-lock body{overflow:hidden}
 #cmodal .cm-x{width:44px;height:44px;top:14px}
 .cm-nav>button{min-height:44px}
 .mxd{min-height:36px;padding:8px 12px}
-.fmodal .x{width:44px;height:44px;border-radius:50%;background:rgba(32,36,31,.45);top:14px;left:14px}
+/* its backing: at .45 the white × on a light photo was 2.9:1; .72 is 4.6:1 (UX gate, 2026-09-27) */
+.fmodal .x{width:44px;height:44px;border-radius:50%;background:rgba(32,36,31,.72);top:14px;left:14px}
 @media(hover:none) and (min-width:761px){.fmodal .box{overflow:auto}.fmodal .mtxt{max-height:none;display:block}.fmodal .makes{overflow:visible}}
 /* G-58 parity: Safari paints the same containing blocks as Chromium */
 nav{-webkit-backdrop-filter:blur(10px)}
@@ -1126,13 +1127,28 @@ nav{-webkit-backdrop-filter:blur(10px)}
 @media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
 .partner .pf-f{display:grid;gap:6px;min-width:0}
 .partner .pf-f>span{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
-/* the form's two grey lines were 3.4:1 on paper (axe); #6b6659, the consent's colour, is 5.3:1 */
-.partner .pf-head span,.partner .pf-alt{color:#6b6659}
 .partner .pf-more summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:14px;font-weight:700;color:var(--gt)}
 .partner .pf-more summary::-webkit-details-marker{display:none}
 .partner .pf-more summary::before{content:'+';width:14px;text-align:center}
 .partner .pf-more[open] summary::before{content:'\2212'}
 .partner .pf-more>div{display:grid;gap:14px;padding-top:4px}
+/* the steps: whether the visitor has a business, the answer for a private buyer, and after a send
+   the line that interests them; each step shows the heading and itself only */
+.partner .pf-ask,.partner .pf-priv,.partner .pf-pick{display:none}
+.partner.ask>*:not(.pf-head):not(.pf-ask),.partner.priv>*:not(.pf-head):not(.pf-priv){display:none}
+.partner.ask .pf-ask,.partner.priv .pf-priv,.partner.sent .pf-pick{display:grid;gap:12px}
+.partner .pf-q{margin:0 0 4px}
+.partner .pf-q b{display:block;font-size:20px;font-weight:800;line-height:1.3}
+.partner .pf-q span{display:block;margin-top:4px;font-size:15px;line-height:1.5;color:var(--ink-soft)}
+.partner .pf-q:focus,#ld-h:focus{outline:none}
+.partner .pf-ask .btn,.partner .pf-priv .btn{justify-content:center;min-height:52px;font-size:15px}
+.partner .pf-ask .btn+.btn,.partner .pf-ask .btn+.btn:hover{background:none;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.partner .pf-ask .btn+.btn:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.partner .pf-back{justify-self:center;min-height:44px;padding:0 18px;border:0;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--gt);cursor:pointer}
+.partner .pf-lines{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.partner .pf-lines a{display:flex;align-items:center;justify-content:center;min-height:52px;padding:8px 14px;border-radius:999px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font-size:15px;font-weight:700;line-height:1.25;text-align:center;text-decoration:none;transition:box-shadow .2s}
+.partner .pf-lines a:hover,.partner .pf-lines a:focus-visible{box-shadow:inset 0 0 0 2px var(--gt);outline:none}
+.partner .pf-lines .pf-wide{grid-column:1/-1}
 /* the dialog: a bottom sheet on phones, a centred card from 640px */
 #ldlg{border:0;padding:0 0 env(safe-area-inset-bottom,0);margin:auto auto 0;width:100%;max-width:100%;max-height:92vh;max-height:92dvh;
  background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
@@ -1150,12 +1166,11 @@ nav{-webkit-backdrop-filter:blur(10px)}
 #ldlg .btn:active{transform:scale(.98)}
 /* short phones (iPhone SE, 320x640): a tighter rhythm, so the consent and the button are on the first screen */
 @media(max-width:639px) and (max-height:760px){
- #ldlg .ld-grab{margin-top:6px}
- #ldlg form.partner{padding:8px 18px 18px;gap:10px}
+ #ldlg form.partner{padding:12px 18px 16px;gap:9px}
  #ldlg .pf-head b{font-size:24px}
- #ldlg .pf-req{gap:10px}
+ #ldlg .pf-req{gap:9px}
  #ldlg .pf-f{gap:4px}
- #ldlg input:not([type=checkbox]),#ldlg select{padding:11px 14px}
+ #ldlg input:not([type=checkbox]),#ldlg select{padding:10px 14px}
  #ldlg .pf-more summary{min-height:40px}
  #ldlg form.partner>button.btn{min-height:50px}
 }
@@ -1163,29 +1178,24 @@ nav{-webkit-backdrop-filter:blur(10px)}
 #ldlg[open]::backdrop{animation:ld-fade .32s ease}
 @keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes ld-fade{from{opacity:0}}
-#ldlg .ld-grab{display:block;width:40px;height:4px;border-radius:4px;background:var(--line);margin:10px auto 0}
-@media(min-width:640px){#ldlg .ld-grab{display:none}}
 #ldlg .ld-x{position:absolute;top:12px;left:12px;z-index:1;width:44px;height:44px;border:0;border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer}
 #ldlg .ld-x:focus-visible{outline:2px solid var(--gt);outline-offset:2px}
-#ldlg form.partner{border:0;border-radius:0;box-shadow:none;background:none;padding:14px 22px 24px;gap:14px;opacity:1;transform:none;transition:none}
+#ldlg form.partner{border:0;border-radius:0;box-shadow:none;background:none;padding:20px 22px 24px;gap:14px;opacity:1;transform:none;transition:none}
 #ldlg .pf-head{padding-left:52px}
 #ldlg .pf-head b{font-size:28px;line-height:1.15}
 #ldlg input:not([type=checkbox]),#ldlg select,#ldlg textarea{background:#fff}
 #ldlg form.partner>button.btn{width:100%;min-height:54px;font-size:16px;letter-spacing:.02em}
-/* sent: a check, the thanks and the WhatsApp line; the bar shows the dialog will close itself */
+/* sent: a check and the thanks, then the lines */
 .partner .ld-check{display:none}
-#ldlg .partner.sent>*:not(.pf-done):not(.ld-check):not(.pf-alt){display:none}
+#ldlg .partner.sent>*:not(.pf-done):not(.ld-check):not(.pf-pick){display:none}
 #ldlg .partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
 .ld-check circle{fill:#EEF4EA;stroke:var(--gt);stroke-width:2}
 .ld-check path{fill:none;stroke:var(--gt);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:ld-draw .45s .1s ease-out forwards}
 @keyframes ld-draw{to{stroke-dashoffset:0}}
 #ldlg .partner.sent .pf-done{background:none;padding:6px 0 0;text-align:center;font-size:15px}
 #ldlg .partner.sent .pf-done b{margin:6px 0 4px;font-family:'Roca One','Heebo',serif;font-weight:400;font-size:28px}
-#ldlg .partner.sent .pf-alt{order:1}
-#ldlg .ld-bar{position:sticky;bottom:0;display:block;height:3px;background:var(--gt);transform-origin:right;transform:scaleX(0)}
-#ldlg.closing .ld-bar{animation:ld-bar var(--ld-close,2s) linear forwards}
-@keyframes ld-bar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
-@media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path,#ldlg.closing .ld-bar{animation:none}.ld-check path{stroke-dashoffset:0}}
+#ldlg .partner.sent .pf-pick{margin-top:6px;padding-top:18px;border-top:1px solid var(--line);text-align:center}
+@media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path{animation:none}.ld-check path{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
@@ -1246,7 +1256,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
         <a class="fcard rv v3" id="f-calm" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#E6E1F2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E6E1F2"><div class="badge">2 משקאות</div><div class="circle" style="background:#8E7CC3"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174515_0777ca30-0b2a-4183-a1ba-99776254c7b2.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174840_db9afed8-5b1e-49a9-a1d2-1d46b0fe362d.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Calm נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E6E1F2"></path></svg><div class="txtwrap" style="background:#E6E1F2"><div class="info"><div class="origin">תמצית צרפתית</div><h4>Calm</h4><div class="liner">כוס הערב. מתוקה מטבעה ונטולת קפאין. קמומיל, תפוח וציפורן — עדינה, מתאימה לכל גיל ומושלמת לשעות אחר הצהריים והערב.</div><div class="comp">קמומיל · תפוח · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
         <a class="fcard rv v3" id="f-namastea" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F0E2CC"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F0E2CC"><div class="badge">13 משקאות</div><div class="circle" style="background:#C98A2D"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072505_2194918c-1263-4660-a55b-27a72f0da833.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065820_4249880c-f06f-494a-80d6-e4ad3c4fe8f0.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Namastea נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F0E2CC"></path></svg><div class="txtwrap" style="background:#F0E2CC"><div class="info"><div class="origin">תמצית הודית</div><h4>Namastea</h4><div class="liner">רב המכר שלנו. קר, כלאטה או עם מי קוקוס. שני סוגי תה שחור וחמישה תבלינים — להיט ענק אצל הקהל הישראלי.</div><div class="comp">שני סוגי תה שחור · קינמון · הל · ג׳ינג׳ר · פלפל שחור · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
   </div>
-  <div class="center-cta rv"><a class="btn" href="#contact" data-cta="catalogue" data-price>לקבלת הקטלוג המלא <span class="arr">←</span></a><span style="margin-left:16px;color:#9A9F93;font-weight:600">ועוד Detox ו־Fresh ללא סוכר</span></div>
+  <div class="center-cta rv"><a class="btn" href="#contact" data-cta="catalogue" data-price>לקבלת הקטלוג המלא <span class="arr">←</span></a><span style="margin-left:16px;color:#60635C;font-weight:600">ועוד Detox ו־Fresh ללא סוכר</span></div>
 </div></section>
 
 <div class="partners rv" id="partners">
@@ -1483,7 +1493,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
   <div class="ghost" aria-hidden="true">GT</div>
   <div class="wrap rv">
     <h2>אפשר להפסיק עם<br>התפריט המשעמם?</h2>
-    <p>מחירון, טעימה אצלכם במקום, ותפריט קיץ שהאורחים שלכם יצלמו.</p>
+    <p>מחירון ותפריט קיץ שהאורחים שלכם יצלמו.</p>
     <a class="btn light" href="#contact" data-cta="closing">רוצים להתחיל <span class="arr">←</span></a>
   </div>
 </div>
@@ -1504,7 +1514,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
   <div class="rv">
     <span class="eyebrow">צרו קשר</span>
     <h2>בואו נדבר.</h2>
-    <p style="color:var(--ink-soft)">השאירו פרטים — נשלח את המחירון המלא ונקבע טעימה.</p>
+    <p style="color:var(--ink-soft)">השאירו פרטים — נשלח את המחירון המלא ונחזור אליכם.</p>
     <ul>
       <li>📍 הלהב 15, חולון (המפעל)</li>
       <li><a href="tel:+972543982444">📞 054-398-2444</a></li>
@@ -1514,7 +1524,11 @@ nav{-webkit-backdrop-filter:blur(10px)}
   </div>
   <div id="pf-slot"><form class="rv partner" id="pform" method="post" enctype="text/plain"
       action="mailto:info@gteveryday.com?subject=GT%20Everyday%20%E2%80%94%20בקשת%20שיתוף%20פעולה" onsubmit="return pSend(event)">
-    <div class="pf-head"><b id="ld-h">בקשת מחירון וטעימה</b><span>עונים תוך יום עסקים אחד</span></div>
+    <div class="pf-head"><b id="ld-h" tabindex="-1">בקשת מחירון</b><span>עונים תוך יום עסקים אחד</span></div>
+    <div class="pf-ask"><p class="pf-q" id="pf-ask-q" tabindex="-1"><b>יש לכם עסק?</b><span>אנחנו עובדים רק עם עסקים, בסיטונאות.</span></p>
+      <button class="btn" type="button" data-biz="1">כן, יש לי עסק</button><button class="btn" type="button" data-biz="0">לא, לשימוש פרטי</button></div>
+    <div class="pf-priv"><p class="pf-q" id="pf-priv-q" tabindex="-1"><span>ללקוחות פרטיים, המוצרים שלנו נמכרים באתר של אליטה אופק.</span></p>
+      <a class="btn" href="https://elitaofek.co.il/product-category/gt/" target="_blank" rel="noopener">למוצרי GT אצל אליטה אופק <span class="arr" aria-hidden="true">←</span></a><button class="pf-back" type="button" data-biz="">חזרה</button></div>
     <div class="pf-req">
       <label class="pf-f"><span>שם מלא</span><input id="pf-name" name="name" autocomplete="name" required></label>
       <label class="pf-f"><span>שם העסק</span><input id="pf-venue" name="venue" autocomplete="organization" required></label>
@@ -1528,8 +1542,8 @@ nav{-webkit-backdrop-filter:blur(10px)}
       </select></label>
       <label class="pf-f"><span>אימייל</span><input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email"></label>
       <label class="pf-f"><span>מה מעניין אתכם</span><select id="pf-int" name="interest">
-        <option value=""></option><option>המחירון המלא</option><option>טעימה במקום</option>
-        <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>
+        <option value=""></option><option>המחירון המלא</option><option>תמציות תה</option>
+        <option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>
         <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
       </select></label>
       <label class="pf-f"><span>משהו שכדאי שנדע?</span><textarea id="pf-msg" name="message" rows="3"></textarea></label>
@@ -1540,14 +1554,16 @@ nav{-webkit-backdrop-filter:blur(10px)}
     </div>
     <div class="pf-err" id="pf-err" role="alert" hidden></div>
     <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
-    <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
+    <button class="btn" style="justify-content:center">שליחה <span class="arr" aria-hidden="true">←</span></button>
     <div class="pf-alt">או כתבו לנו <a href="https://wa.me/972543982444" target="_blank" rel="noopener">בוואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
     <svg class="ld-check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-17"/></svg>
     <div class="pf-done" id="pf-done" role="status"><b>תודה רבה!</b><span>קיבלנו את הפרטים ונחזור אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
+    <div class="pf-pick" role="group" aria-labelledby="pf-pick-q"><p class="pf-q" id="pf-pick-q" tabindex="-1"><b>מה הכי מעניין אתכם?</b><span>נשלח לכם את התפריט בוואטסאפ.</span></p>
+      <div class="pf-lines"><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%9E%D7%90%D7%A6%D7%B3%D7%94" target="_blank" rel="noopener">מאצ׳ה</a><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%90%D7%95%D7%91%D7%94" target="_blank" rel="noopener">אובה</a><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A6%D7%B3%D7%90%D7%99%20%D7%9E%D7%A1%D7%90%D7%9C%D7%94" target="_blank" rel="noopener">צ׳אי מסאלה</a><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%AA%D7%9E%D7%A6%D7%99%D7%95%D7%AA%20%D7%AA%D7%94" target="_blank" rel="noopener">תמציות תה</a><a class="pf-wide" href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%A0%D7%99%D7%99%D7%AA%20%D7%AA%D7%A4%D7%A8%D7%99%D7%98%20%D7%9E%D7%A9%D7%A7%D7%90%D7%95%D7%AA%20%D7%91%D7%A2%D7%A1%D7%A7%20%D7%A9%D7%9C%D7%99" target="_blank" rel="noopener">בניית תפריט משקאות בעסק שלי</a></div></div>
   </form></div>
 </div></section>
 
-<dialog id="ldlg" aria-labelledby="ld-h"><div class="ld-pic" aria-hidden="true"></div><div class="ld-main"><span class="ld-grab" aria-hidden="true"></span><button class="ld-x" type="button" aria-label="סגירה">✕</button><span class="ld-bar" aria-hidden="true"></span></div></dialog>
+<dialog id="ldlg" aria-labelledby="ld-h"><div class="ld-pic" aria-hidden="true"></div><div class="ld-main"><button class="ld-x" type="button" aria-label="סגירה">✕</button></div></dialog>
 <noscript><style media="all">.rv{opacity:1;transform:none}</style></noscript>
 <footer class="site wrap">
   <span>‎© 2026 גרינטי אוירי די בע״מ</span>
@@ -1576,13 +1592,13 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 
 
-<div id="pmodal" role="dialog" aria-modal="true">
+<div id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pm-title">
  <div class="pm-card">
-  <button class="pm-x" onclick="document.getElementById('pmodal').classList.remove('open')">×</button>
+  <button class="pm-x" aria-label="סגירה" onclick="document.getElementById('pmodal').classList.remove('open')">×</button>
   <div class="pm-gal" id="pm-gal">
     <img loading="lazy" decoding="async" class="pm-img" id="pm-img" alt="">
-    <button class="pm-nav prev" onclick="pmSlide(-1)">‹</button>
-    <button class="pm-nav next" onclick="pmSlide(1)">›</button>
+    <button class="pm-nav prev" aria-label="הקודם" onclick="pmSlide(-1)">‹</button>
+    <button class="pm-nav next" aria-label="הבא" onclick="pmSlide(1)">›</button>
     <div class="pm-dots" id="pm-dots"></div>
   </div>
   <div class="pm-body">
@@ -1593,7 +1609,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
  </div>
 </div>
 
-<div id="cmodal" role="dialog" aria-modal="true">
+<div id="cmodal" role="dialog" aria-modal="true" aria-labelledby="cm-en cm-he">
  <div class="cm-card">
   <div class="cm-scroll">
   <div class="cm-head" id="cm-head">
@@ -1601,7 +1617,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
     <h3 id="cm-en"></h3>
     <div class="heh" id="cm-he"></div>
     <div class="cm-num" id="cm-num"></div>
-    <button class="cm-x" onclick="cmClose()">×</button>
+    <button class="cm-x" aria-label="סגירה" onclick="cmClose()">×</button>
   </div>
   <div class="cm-body"> <div class="cm-visual" id="cm-visual"></div> <div class="cm-rec"><div class="cm-desc" id="cm-desc" style="padding:0 0 10px;margin:0"></div><h5>איך מכינים</h5><ol class="cm-steps" id="cm-steps"></ol>
       <div id="cm-glass"></div>
@@ -1623,10 +1639,10 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
  </div>
 </div>
 
-<div class="fmodal" id="fmodal" onclick="if(event.target===this)this.classList.remove('open')">
-  <button class="x" onclick="document.getElementById('fmodal').classList.remove('open')">×</button>
+<div class="fmodal" id="fmodal" role="dialog" aria-modal="true" aria-labelledby="fm-name" onclick="if(event.target===this)this.classList.remove('open')">
+  <button class="x" aria-label="סגירה" onclick="document.getElementById('fmodal').classList.remove('open')">×</button>
   <div class="box"><div class="mimg sp-card sp-card"><img loading="lazy" decoding="async" id="fm-img" src="" alt=""></div>
-  <div class="mtxt"><div class="origin" id="fm-origin"></div><h3 id="fm-name"></h3>
+  <div class="mtxt"><div class="origin" id="fm-origin"></div><h3 id="fm-name" tabindex="-1"></h3>
   <div class="comp" id="fm-comp"></div><p id="fm-text"></p>
   <div class="facts"><span>בקבוק אחד = <bdi dir="ltr">20–25</bdi> כוסות</span><span>בלי מקרר עד הפתיחה</span><span>ללא חומרים משמרים</span></div>
   <div class="makes" id="fm-makes"></div>
@@ -2092,7 +2108,7 @@ function pmOpen(id){
    a.innerHTML='<span>'+name+'</span><span class="tag">'+COLS[ci].n+' \u00b7 '+COLS[ci].t+' \u2190</span>';
    a.style.cssText+='color:#20241F;text-decoration:none;';
    a.firstChild.style.cssText='font-family:Roca One,Heebo,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;';
-   a.lastChild.style.cssText='font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93;text-decoration:none;white-space:nowrap;';
+   a.lastChild.style.cssText='font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#60635C;text-decoration:none;white-space:nowrap;';
    a.onclick=(e)=>{e.preventDefault();document.getElementById('pmodal').classList.remove('open');cmOpen(ci);cmI=si;cmRender();};
    L.appendChild(a);
  });
@@ -2206,7 +2222,7 @@ function pfTrack(interest,role,cta){try{
   lead_interest:interest||'',lead_role:role||'',lead_cta:cta||'contact'});
  if(typeof gtag==='function')gtag('event','generate_lead',{form:'partner_enquiry'});
 }catch(e){}}
-var PF_LABEL='שליחה <span class="arr">\u2190</span>';
+var PF_LABEL='שליחה <span class="arr" aria-hidden="true">\u2190</span>';
 var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: <a href="https://wa.me/972543982444">וואטסאפ</a> \u00b7 <a href="tel:+972543982444">054-398-2444</a>.';
 var PF_ENDPOINT="https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake";
 function pSend(e){e.preventDefault();
@@ -2232,9 +2248,10 @@ function pSend(e){e.preventDefault();
   .then(function(res){clearTimeout(to);
    if(res.ok&&res.j&&res.j.ok&&'was_new' in res.j){pfTrack(g('pf-int')||ldCtx,g('pf-role'),ldCta);
     f.classList.add('sent');btn.innerHTML='נשלח \u2713';
-    if(ldIn()){var d=document.getElementById('ldlg');d.scrollTop=0;d.classList.add('closing');ldTimer=setTimeout(ldClose,LD_CLOSE_MS);}
-    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
-   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
+    if(ldIn())document.getElementById('ldlg').scrollTop=0;
+    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});
+    if(!viaDlg||ldIn())ldStep(f);return;}
+   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם מלא, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
    if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}
    fail(PF_ERR);})
@@ -2245,9 +2262,15 @@ function pSend(e){e.preventDefault();
 <script>
 /* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
    dialog; the form moves in and back, so there is one form, one sender and one state. */
-var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldTimer=0,ldDoc=Math.random();
+var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldDoc=Math.random();
 (function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
 function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
+/* focus what the step starts with: its question; in the form, the first field on a mouse-and-
+   keyboard screen, else the heading, so a touch keyboard does not open by itself */
+function ldStep(f){
+ var q=f.classList.contains('sent')?'pf-pick-q':f.classList.contains('ask')?'pf-ask-q':f.classList.contains('priv')?'pf-priv-q'
+  :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
+ document.getElementById(q).focus({preventScroll:true});}
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
  if(!d||!d.showModal||d.open)return false;
@@ -2262,19 +2285,27 @@ function ldOpen(a){
  d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
- d.querySelector('.ld-bar').before(f);
- d.style.setProperty('--ld-close',LD_CLOSE_MS+'ms');
+ d.querySelector('.ld-main').appendChild(f);
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  document.documentElement.classList.add('cm-lock');
  history.pushState({gtLead:1,doc:ldDoc},'');
- d.showModal();d.scrollTop=0;
- if(!f.classList.contains('sent')&&matchMedia('(pointer:fine)').matches)document.getElementById('pf-name').focus({preventScroll:true});
+ d.showModal();d.scrollTop=0;ldStep(f);
  return true;}
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
+(function(){var f=document.getElementById('pform');if(!f)return;
+ if(!f.classList.contains('sent'))f.classList.add('ask');
+ f.addEventListener('click',function(e){
+  var b=e.target.closest('[data-biz]'),v=b&&b.getAttribute('data-biz');
+  if(b){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');ldStep(f);return;}
+  /* a line picked: WhatsApp opens in its own tab or app, and the dialog is done when the visitor
+     comes back. Closing at once would step history back while an in-app browser, which opens the
+     link in the same tab, is still on its way to WhatsApp, and would cancel it. */
+  if(e.target.closest('.pf-lines a')&&ldIn())document.addEventListener('visibilitychange',function w(){
+   if(document.hidden)return;document.removeEventListener('visibilitychange',w);ldClose();});});
+})();
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
  d.addEventListener('close',function(){
   var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int'),h=history.state;
-  clearTimeout(ldTimer);d.classList.remove('closing');
   if(ldAuto&&i.selectedIndex===1&&!f.classList.contains('sent'))i.selectedIndex=0;ldAuto=0;
   s.appendChild(f);s.style.height='';
   document.documentElement.classList.remove('cm-lock');
@@ -2290,5 +2321,12 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
   if(!a||a.classList.contains('fcard')||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
   if(ldOpen(a))e.preventDefault();});
 })();
+/* the product window: its title takes focus when it opens, and the card that opened it takes it
+   back when it closes, unless the lead dialog or a recipe card has it by then */
+(function(){var fm=document.getElementById('fmodal'),on=false;if(!fm||!window.MutationObserver)return;
+ new MutationObserver(function(){var o=fm.classList.contains('open');if(o===on)return;on=o;
+  if(o)document.getElementById('fm-name').focus({preventScroll:true});
+  else if(ldCard&&!ldIn()&&!document.querySelector('#cmodal.open'))ldCard.focus({preventScroll:true});
+ }).observe(fm,{attributes:true,attributeFilter:['class']});})();
 </script>
 </body></html>

@@ -475,7 +475,7 @@ function pmOpen(id){
    a.innerHTML='<span>'+name+'</span><span class="tag">'+COLS[ci].n+' \u00b7 '+COLS[ci].t+' \u2190</span>';
    a.style.cssText+='color:#20241F;text-decoration:none;';
    a.firstChild.style.cssText='font-family:Roca One,Heebo,sans-serif;font-weight:600;font-size:16px;color:#20241F;text-decoration:none;';
-   a.lastChild.style.cssText='font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9A9F93;text-decoration:none;white-space:nowrap;';
+   a.lastChild.style.cssText='font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#60635C;text-decoration:none;white-space:nowrap;';
    a.onclick=(e)=>{e.preventDefault();document.getElementById('pmodal').classList.remove('open');cmOpen(ci);cmI=si;cmRender();};
    L.appendChild(a);
  });
@@ -591,7 +591,7 @@ function pfTrack(interest,role,cta){try{
   lead_interest:interest||'',lead_role:role||'',lead_cta:cta||'contact'});
  if(typeof gtag==='function')gtag('event','generate_lead',{form:'partner_enquiry'});
 }catch(e){}}
-var PF_LABEL='שליחה <span class="arr">\u2190</span>';
+var PF_LABEL='שליחה <span class="arr" aria-hidden="true">\u2190</span>';
 var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: <a href="https://wa.me/972543982444">וואטסאפ</a> \u00b7 <a href="tel:+972543982444">054-398-2444</a>.';
 var PF_ENDPOINT="https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake";
 function pSend(e){e.preventDefault();
@@ -617,9 +617,10 @@ function pSend(e){e.preventDefault();
   .then(function(res){clearTimeout(to);
    if(res.ok&&res.j&&res.j.ok&&'was_new' in res.j){pfTrack(g('pf-int')||ldCtx,g('pf-role'),ldCta);
     f.classList.add('sent');btn.innerHTML='נשלח \u2713';
-    if(ldIn()){var d=document.getElementById('ldlg');d.scrollTop=0;d.classList.add('closing');ldTimer=setTimeout(ldClose,LD_CLOSE_MS);}
-    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
-   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
+    if(ldIn())document.getElementById('ldlg').scrollTop=0;
+    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});
+    if(!viaDlg||ldIn())ldStep(f);return;}
+   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם מלא, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
    if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}
    fail(PF_ERR);})
@@ -631,9 +632,15 @@ function pSend(e){e.preventDefault();
 
 /* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
    dialog; the form moves in and back, so there is one form, one sender and one state. */
-var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldTimer=0,ldDoc=Math.random();
+var ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldDoc=Math.random();
 (function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
 function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
+/* focus what the step starts with: its question; in the form, the first field on a mouse-and-
+   keyboard screen, else the heading, so a touch keyboard does not open by itself */
+function ldStep(f){
+ var q=f.classList.contains('sent')?'pf-pick-q':f.classList.contains('ask')?'pf-ask-q':f.classList.contains('priv')?'pf-priv-q'
+  :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
+ document.getElementById(q).focus({preventScroll:true});}
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
  if(!d||!d.showModal||d.open)return false;
@@ -648,19 +655,27 @@ function ldOpen(a){
  d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
- d.querySelector('.ld-bar').before(f);
- d.style.setProperty('--ld-close',LD_CLOSE_MS+'ms');
+ d.querySelector('.ld-main').appendChild(f);
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  document.documentElement.classList.add('cm-lock');
  history.pushState({gtLead:1,doc:ldDoc},'');
- d.showModal();d.scrollTop=0;
- if(!f.classList.contains('sent')&&matchMedia('(pointer:fine)').matches)document.getElementById('pf-name').focus({preventScroll:true});
+ d.showModal();d.scrollTop=0;ldStep(f);
  return true;}
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
+(function(){var f=document.getElementById('pform');if(!f)return;
+ if(!f.classList.contains('sent'))f.classList.add('ask');
+ f.addEventListener('click',function(e){
+  var b=e.target.closest('[data-biz]'),v=b&&b.getAttribute('data-biz');
+  if(b){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');ldStep(f);return;}
+  /* a line picked: WhatsApp opens in its own tab or app, and the dialog is done when the visitor
+     comes back. Closing at once would step history back while an in-app browser, which opens the
+     link in the same tab, is still on its way to WhatsApp, and would cancel it. */
+  if(e.target.closest('.pf-lines a')&&ldIn())document.addEventListener('visibilitychange',function w(){
+   if(document.hidden)return;document.removeEventListener('visibilitychange',w);ldClose();});});
+})();
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
  d.addEventListener('close',function(){
   var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int'),h=history.state;
-  clearTimeout(ldTimer);d.classList.remove('closing');
   if(ldAuto&&i.selectedIndex===1&&!f.classList.contains('sent'))i.selectedIndex=0;ldAuto=0;
   s.appendChild(f);s.style.height='';
   document.documentElement.classList.remove('cm-lock');
@@ -676,3 +691,10 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
   if(!a||a.classList.contains('fcard')||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
   if(ldOpen(a))e.preventDefault();});
 })();
+/* the product window: its title takes focus when it opens, and the card that opened it takes it
+   back when it closes, unless the lead dialog or a recipe card has it by then */
+(function(){var fm=document.getElementById('fmodal'),on=false;if(!fm||!window.MutationObserver)return;
+ new MutationObserver(function(){var o=fm.classList.contains('open');if(o===on)return;on=o;
+  if(o)document.getElementById('fm-name').focus({preventScroll:true});
+  else if(ldCard&&!ldIn()&&!document.querySelector('#cmodal.open'))ldCard.focus({preventScroll:true});
+ }).observe(fm,{attributes:true,attributeFilter:['class']});})();

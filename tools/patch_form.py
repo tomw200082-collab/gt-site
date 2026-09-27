@@ -89,6 +89,14 @@ def main() -> None:
         text,
     )
 
+    # ── the button's arrow is decoration: a screen reader says "send" only ─
+    text = sub(
+        "button arrow hidden",
+        '<button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>',
+        '<button class="btn" style="justify-content:center">שליחה <span class="arr" aria-hidden="true">←</span></button>',
+        text,
+    )
+
     # ── the error style, beside the existing done style ──────────────────
     text = sub(
         "error style",
@@ -150,7 +158,7 @@ def main() -> None:
         "    document.getElementById('pf-done').scrollIntoView("
         "{block:'nearest',behavior:'smooth'});return;}\n"
         "   if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. "
-        "בדקו שם, שם העסק, עיר וטלפון.');return;}\n"
+        "בדקו שם מלא, שם העסק, עיר וטלפון.');return;}\n"
         "   if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. "
         "בדקו אותו ונסו שוב.');return;}\n"
         "   if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. "
@@ -176,7 +184,7 @@ def main() -> None:
         " if(typeof gtag==='function')"
         "gtag('event','generate_lead',{form:'partner_enquiry'});\n"
         "}catch(e){}}\n"
-        "var PF_LABEL='שליחה <span class=\"arr\">\\u2190</span>';\n"
+        "var PF_LABEL='שליחה <span class=\"arr\" aria-hidden=\"true\">\\u2190</span>';\n"
         "var PF_ERR='לא הצלחנו לשלוח את הפנייה. נסו שוב, או דברו איתנו ישירות: "
         "<a href=\"https://wa.me/972543982444\">וואטסאפ</a> \\u00b7 "
         "<a href=\"tel:+972543982444\">054-398-2444</a>.';\n"
