@@ -585,10 +585,10 @@ function pAll(b){var ds=document.querySelectorAll('#pricing .ptable');
 
 ;
 
-function pfTrack(interest,role){try{
+function pfTrack(interest,role,cta){try{
  window.dataLayer=window.dataLayer||[];
  window.dataLayer.push({event:'generate_lead',form:'partner_enquiry',
-  lead_interest:interest||'',lead_role:role||''});
+  lead_interest:interest||'',lead_role:role||'',lead_cta:cta||'contact'});
  if(typeof gtag==='function')gtag('event','generate_lead',{form:'partner_enquiry'});
 }catch(e){}}
 var PF_LABEL='שליחה <span class="arr">\u2190</span>';
@@ -602,11 +602,11 @@ function pSend(e){e.preventDefault();
  if(!document.getElementById('pf-agree').checked)return false;
  var fail=function(msg){err.innerHTML=msg;err.hidden=false;
   btn.disabled=false;btn.innerHTML=PF_LABEL;
-  err.scrollIntoView({block:'nearest',behavior:'smooth'});};
+  if(!viaDlg||ldIn())err.scrollIntoView({block:'nearest',behavior:'smooth'});};
  err.hidden=true;
- btn.disabled=true;btn.innerHTML='שולח\u2026';
- var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
-  role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int'),
+ var viaDlg=ldIn();btn.disabled=true;btn.innerHTML='שולח\u2026';
+ setTimeout(function(){var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
+  role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int')||ldCtx,
   message:g('pf-msg'),company_website:g('pf-cw'),
   elapsed_ms:Math.round(performance.now()),page:location.href,referrer:document.referrer};
  var to=setTimeout(function(){fail(PF_ERR);},15000);
@@ -615,12 +615,58 @@ function pSend(e){e.preventDefault();
   .then(function(r){return r.json().catch(function(){return {};})
    .then(function(j){return {ok:r.ok,j:j};});})
   .then(function(res){clearTimeout(to);
-   if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));
+   if(res.ok&&res.j&&res.j.ok&&'was_new' in res.j){pfTrack(g('pf-int')||ldCtx,g('pf-role'),ldCta);
     f.classList.add('sent');btn.innerHTML='נשלח \u2713';
-    document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
+    if(ldIn()){var d=document.getElementById('ldlg');d.scrollTop=0;d.classList.add('closing');ldTimer=setTimeout(ldClose,LD_CLOSE_MS);}
+    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
    if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
    if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}
    fail(PF_ERR);})
   .catch(function(){clearTimeout(to);fail(PF_ERR);});
+ },Math.max(0,3050-performance.now()));
  return false;}
+
+;
+
+/* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
+   dialog; the form moves in and back, so there is one form, one sender and one state. */
+var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldTimer=0,ldDoc=Math.random();
+(function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
+function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
+function ldOpen(a){
+ var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
+ if(!d||!d.showModal||d.open)return false;
+ var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');
+ ldInv=fm?(ldCard||a):a;
+ ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
+ ldCtx=fm?document.getElementById('fm-name').textContent.trim():'';
+ if(a.hasAttribute('data-price')&&!i.value)i.selectedIndex=1;
+ s.style.height=f.offsetHeight+'px';
+ f.classList.add('on');
+ d.insertBefore(f,d.querySelector('.ld-bar'));
+ d.style.setProperty('--ld-close',LD_CLOSE_MS+'ms');
+ if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+ document.documentElement.classList.add('cm-lock');
+ history.pushState({gtLead:1,doc:ldDoc},'');
+ d.showModal();d.scrollTop=0;
+ return true;}
+function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
+(function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
+ d.addEventListener('close',function(){
+  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),h=history.state;
+  clearTimeout(ldTimer);d.classList.remove('closing');
+  s.appendChild(f);s.style.height='';
+  document.documentElement.classList.remove('cm-lock');
+  if(h&&h.gtLead&&h.doc===ldDoc)history.back();
+  if(ldInv&&ldInv.focus)ldInv.focus({preventScroll:true});
+  ldCta='contact';ldCtx='';});
+ d.querySelector('.ld-x').addEventListener('click',ldClose);
+ d.addEventListener('click',function(e){if(e.target!==d)return;var r=d.getBoundingClientRect();
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)ldClose();});
+ window.addEventListener('popstate',function(){if(d.open)d.close();});
+ document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href="#contact"]');
+  if(!a||a.classList.contains('fcard')||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  if(ldOpen(a))e.preventDefault();});
+})();

@@ -17,4 +17,5 @@ python3 tools/patch_a11y.py
 python3 tools/patch_ux.py
 python3 tools/patch_launch.py
 python3 tools/patch_ipad.py
+python3 tools/patch_lead_dialog.py
 node    tools/validate.js

@@ -1101,6 +1101,53 @@ nav{-webkit-backdrop-filter:blur(10px)}
 /* G-65: the products menu folds after a pick (ddGo adds .dd-shut until the next pointerdown) */
 .nav-dd.dd-shut .dd-menu{opacity:0!important;visibility:hidden!important}
 
+/* ====================================================================
+   The lead dialog (tools/patch_lead_dialog.py). Appended last.
+   ==================================================================== */
+/* the closing call-to-action: the decorative GT behind it was painted over the button and took its taps */
+.bigcta .ghost{pointer-events:none}
+/* the form: visible labels; the four required fields first, the rest behind one disclosure */
+.partner .pf-req{display:grid;gap:14px}
+@media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
+.partner .pf-f{display:grid;gap:6px;min-width:0}
+.partner .pf-f>span{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+.partner .pf-more summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:14px;font-weight:700;color:var(--gt)}
+.partner .pf-more summary::-webkit-details-marker{display:none}
+.partner .pf-more summary::before{content:'+';width:14px;text-align:center}
+.partner .pf-more[open] summary::before{content:'\2212'}
+.partner .pf-more>div{display:grid;gap:14px;padding-top:4px}
+/* the dialog: a bottom sheet on phones, a centred card from 640px */
+#ldlg{border:0;padding:0 0 env(safe-area-inset-bottom,0);margin:auto auto 0;width:100%;max-width:100%;max-height:92vh;max-height:92dvh;
+ background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
+#ldlg::backdrop{background:rgba(24,26,22,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media(min-width:640px){#ldlg{margin:auto;max-width:480px;border-radius:26px;box-shadow:0 40px 90px -30px rgba(24,26,22,.55)}}
+#ldlg[open]{animation:ld-up .32s cubic-bezier(.2,.8,.25,1)}
+#ldlg[open]::backdrop{animation:ld-fade .32s ease}
+@keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes ld-fade{from{opacity:0}}
+#ldlg .ld-grab{display:block;width:40px;height:4px;border-radius:4px;background:var(--line);margin:10px auto 0}
+@media(min-width:640px){#ldlg .ld-grab{display:none}}
+#ldlg .ld-x{position:absolute;top:12px;left:12px;z-index:1;width:44px;height:44px;border:0;border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer}
+#ldlg .ld-x:focus-visible{outline:2px solid var(--gt);outline-offset:2px}
+#ldlg form.partner{border:0;border-radius:0;box-shadow:none;background:none;padding:14px 22px 24px;gap:14px;opacity:1;transform:none;transition:none}
+#ldlg .pf-head{padding-left:52px}
+#ldlg .pf-head b{font-size:28px;line-height:1.15}
+#ldlg input:not([type=checkbox]),#ldlg select,#ldlg textarea{background:#fff}
+#ldlg form.partner>button.btn{width:100%;min-height:54px;font-size:16px;letter-spacing:.02em}
+/* sent: a check, the thanks and the WhatsApp line; the bar shows the dialog will close itself */
+.partner .ld-check{display:none}
+#ldlg .partner.sent>*:not(.pf-done):not(.ld-check):not(.pf-alt){display:none}
+#ldlg .partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
+.ld-check circle{fill:#EEF4EA;stroke:var(--gt);stroke-width:2}
+.ld-check path{fill:none;stroke:var(--gt);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:ld-draw .45s .1s ease-out forwards}
+@keyframes ld-draw{to{stroke-dashoffset:0}}
+#ldlg .partner.sent .pf-done{background:none;padding:6px 0 0;text-align:center;font-size:15px}
+#ldlg .partner.sent .pf-done b{margin:6px 0 4px;font-family:'Roca One','Heebo',serif;font-weight:400;font-size:28px}
+#ldlg .ld-bar{position:sticky;bottom:0;display:block;height:3px;background:var(--gt);transform-origin:right;transform:scaleX(0)}
+#ldlg.closing .ld-bar{animation:ld-bar var(--ld-close,2s) linear forwards}
+@keyframes ld-bar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path,#ldlg.closing .ld-bar{animation:none}.ld-check path{stroke-dashoffset:0}}
+
 /* No prices on the served page (tools/strip_prices.py): the recipe modal's
    figures row is down to the margin, so it spans the card. */
 .cm-stats{grid-template-columns:1fr}

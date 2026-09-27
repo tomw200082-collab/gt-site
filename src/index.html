@@ -1115,6 +1115,53 @@ nav{-webkit-backdrop-filter:blur(10px)}
 }
 /* G-65: the products menu folds after a pick (ddGo adds .dd-shut until the next pointerdown) */
 .nav-dd.dd-shut .dd-menu{opacity:0!important;visibility:hidden!important}
+
+/* ====================================================================
+   The lead dialog (tools/patch_lead_dialog.py). Appended last.
+   ==================================================================== */
+/* the closing call-to-action: the decorative GT behind it was painted over the button and took its taps */
+.bigcta .ghost{pointer-events:none}
+/* the form: visible labels; the four required fields first, the rest behind one disclosure */
+.partner .pf-req{display:grid;gap:14px}
+@media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
+.partner .pf-f{display:grid;gap:6px;min-width:0}
+.partner .pf-f>span{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+.partner .pf-more summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:14px;font-weight:700;color:var(--gt)}
+.partner .pf-more summary::-webkit-details-marker{display:none}
+.partner .pf-more summary::before{content:'+';width:14px;text-align:center}
+.partner .pf-more[open] summary::before{content:'\2212'}
+.partner .pf-more>div{display:grid;gap:14px;padding-top:4px}
+/* the dialog: a bottom sheet on phones, a centred card from 640px */
+#ldlg{border:0;padding:0 0 env(safe-area-inset-bottom,0);margin:auto auto 0;width:100%;max-width:100%;max-height:92vh;max-height:92dvh;
+ background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
+#ldlg::backdrop{background:rgba(24,26,22,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media(min-width:640px){#ldlg{margin:auto;max-width:480px;border-radius:26px;box-shadow:0 40px 90px -30px rgba(24,26,22,.55)}}
+#ldlg[open]{animation:ld-up .32s cubic-bezier(.2,.8,.25,1)}
+#ldlg[open]::backdrop{animation:ld-fade .32s ease}
+@keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes ld-fade{from{opacity:0}}
+#ldlg .ld-grab{display:block;width:40px;height:4px;border-radius:4px;background:var(--line);margin:10px auto 0}
+@media(min-width:640px){#ldlg .ld-grab{display:none}}
+#ldlg .ld-x{position:absolute;top:12px;left:12px;z-index:1;width:44px;height:44px;border:0;border-radius:50%;background:var(--card);color:var(--ink);font-size:18px;cursor:pointer}
+#ldlg .ld-x:focus-visible{outline:2px solid var(--gt);outline-offset:2px}
+#ldlg form.partner{border:0;border-radius:0;box-shadow:none;background:none;padding:14px 22px 24px;gap:14px;opacity:1;transform:none;transition:none}
+#ldlg .pf-head{padding-left:52px}
+#ldlg .pf-head b{font-size:28px;line-height:1.15}
+#ldlg input:not([type=checkbox]),#ldlg select,#ldlg textarea{background:#fff}
+#ldlg form.partner>button.btn{width:100%;min-height:54px;font-size:16px;letter-spacing:.02em}
+/* sent: a check, the thanks and the WhatsApp line; the bar shows the dialog will close itself */
+.partner .ld-check{display:none}
+#ldlg .partner.sent>*:not(.pf-done):not(.ld-check):not(.pf-alt){display:none}
+#ldlg .partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
+.ld-check circle{fill:#EEF4EA;stroke:var(--gt);stroke-width:2}
+.ld-check path{fill:none;stroke:var(--gt);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:ld-draw .45s .1s ease-out forwards}
+@keyframes ld-draw{to{stroke-dashoffset:0}}
+#ldlg .partner.sent .pf-done{background:none;padding:6px 0 0;text-align:center;font-size:15px}
+#ldlg .partner.sent .pf-done b{margin:6px 0 4px;font-family:'Roca One','Heebo',serif;font-weight:400;font-size:28px}
+#ldlg .ld-bar{position:sticky;bottom:0;display:block;height:3px;background:var(--gt);transform-origin:right;transform:scaleX(0)}
+#ldlg.closing .ld-bar{animation:ld-bar var(--ld-close,2s) linear forwards}
+@keyframes ld-bar{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path,#ldlg.closing .ld-bar{animation:none}.ld-check path{stroke-dashoffset:0}}
 </style>
 </head>
 <body>
@@ -1127,14 +1174,14 @@ nav{-webkit-backdrop-filter:blur(10px)}
     <span class="nav-dd"><a href="#products">מוצרים<span class="car">▾</span></a><span class="dd-menu"><span class="dd-in"><span class="dd-head">תמציות תה</span><a href="#f-detox" onclick="ddGo(event,'f-detox')"><span class="dd-dot" style="background:#D8492B"></span>Detox</a><a href="#f-revive" onclick="ddGo(event,'f-revive')"><span class="dd-dot" style="background:#0FA3A3"></span>Revive</a><a href="#f-energy" onclick="ddGo(event,'f-energy')"><span class="dd-dot" style="background:#4B3B8F"></span>Energy</a><a href="#f-consciousness" onclick="ddGo(event,'f-consciousness')"><span class="dd-dot" style="background:#C2185B"></span>Consciousness</a><a href="#f-american" onclick="ddGo(event,'f-american')"><span class="dd-dot" style="background:#C62828"></span>American</a><a href="#f-fresh" onclick="ddGo(event,'f-fresh')"><span class="dd-dot" style="background:#A31F34"></span>Fresh</a><a href="#f-desertea" onclick="ddGo(event,'f-desertea')"><span class="dd-dot" style="background:#D9A413"></span>Desertea</a><a href="#f-calm" onclick="ddGo(event,'f-calm')"><span class="dd-dot" style="background:#8E7CC3"></span>Calm</a><a href="#f-namastea" onclick="ddGo(event,'f-namastea')"><span class="dd-dot" style="background:#C98A2D"></span>Namastea</a><span class="dd-head">אבקות ומחיות</span><a href="#f-matcha" onclick="ddGo(event,'f-matcha')"><span class="dd-dot" style="background:#7BA05B"></span>מאצ׳ה</a><a href="#f-hojicha" onclick="ddGo(event,'f-hojicha')"><span class="dd-dot" style="background:#8B5E3C"></span>הוג׳יצ׳ה</a><a href="#f-ube" onclick="ddGo(event,'f-ube')"><span class="dd-dot" style="background:#7C5CBF"></span>אובה</a><a href="#p-mango" onclick="ddGo(event,'p-mango')"><span class="dd-dot" style="background:#E8940A"></span>מנגו</a><a href="#p-strawberry" onclick="ddGo(event,'p-strawberry')"><span class="dd-dot" style="background:#D8203F"></span>תות</a><a href="#p-peach" onclick="ddGo(event,'p-peach')"><span class="dd-dot" style="background:#E8794A"></span>אפרסק</a></span></span></span><a href="#drinks">משקאות</a><a href="#partners">הלקוחות שלנו</a><a href="#pricing">מחירון</a><a href="#about">עלינו</a><a href="#faq">שאלות</a>
   </div>
   <a class="portal-pill" href="https://gt-factory-os-api-production.up.railway.app/portal/"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20.5c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>כניסה לעסקים</a>
-  <a class="btn" href="#contact">רוצים להתחיל <span class="arr">←</span></a>
+  <a class="btn" href="#contact" data-cta="nav">רוצים להתחיל <span class="arr">←</span></a>
 </div></nav>
 
 <section class="hero"><div class="wrap"><div class="in">
   <div>
     <h2>עידן חדש של משקאות<br>בבית העסק שלכם.</h2>
     <div class="ctas">
-      <a class="btn" href="#contact">אני מעוניין <span class="arr">←</span></a>
+      <a class="btn" href="#contact" data-cta="hero">אני מעוניין <span class="arr">←</span></a>
       <a class="sub-cta" href="#hs">לצפייה במשקאות</a>
     </div>
   </div>
@@ -1144,7 +1191,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
 <header class="hs" id="hs">
   <button class="hs-arr prev" onclick="hsGo(hsI-1)" aria-label="הקודם">‹</button>
   <button class="hs-arr next" onclick="hsGo(hsI+1)" aria-label="הבא">›</button>
-  <div class="hs-track" id="hs-track"><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_103852_96bf7394-4975-4dd2-9acf-6947ea2e2c37.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B0603B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 01/10</span><h2 class="hs-h">חליטות קרות</h2><div class="heh">Iced Tea</div><p>שבע חליטות קרות. מזיגה אחת ומגישים.</p><div class="meta"><span>7 משקאות</span><span>מחיר מומלץ ₪20</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(0);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_110757_d4649511-4aab-4960-a7d5-64b2657b352a.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D89A2B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 02/10</span><h2 class="hs-h">לימונדות</h2><div class="heh">Lemonade</div><p>שלוש לימונדות על בסיס תה אמיתי.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(1);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_b9da167b-2bc2-4246-ba65-dd648600de1f.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D45B3F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 03/10</span><h2 class="hs-h">משקאות הדגל</h2><div class="heh">Signature</div><p>ארבעה משקאות על מחיות עם 50% פרי.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪24–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(2);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_121010_39e00a53-d3c0-459f-9483-e401683f8d26.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6E99AA"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 04/10</span><h2 class="hs-h">גזוז</h2><div class="heh">Gazoz</div><p>בועות תל אביביות, על בסיס תה.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22–33</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(3);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_eb17ce1e-9413-4356-b8c4-3de655daf7b7.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4E8C42"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 05/10</span><h2 class="hs-h">אייס מאצ׳ה</h2><div class="heh">Ice Matcha</div><p>מאצ׳ה טקסי משיזואוקה, בשש דרכים.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪26–39</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(4);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_0ffd1f0c-ca1d-410a-ad83-5ad8028c9b5d.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#75755F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 06/10</span><h2 class="hs-h">מאצ׳ה ספיישל</h2><div class="heh">Matcha Specials</div><p>מווניל ועד שומשום שחור.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–29</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(5);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_4ad880e7-1c74-4f05-83b8-8fb8df1ff95e.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4F9186"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 07/10</span><h2 class="hs-h">מאצ׳ה קוקוס</h2><div class="heh">Matcha Coconut</div><p>מי קוקוס, קרם קוקוס, מאצ׳ה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪32–44</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(6);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_111422_0603088e-e15d-4c62-a951-4304d57ab516.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B06A38"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 08/10</span><h2 class="hs-h">צ׳אי מסאלה</h2><div class="heh">Chai Masala</div><p>הלהיט הגדול, בשש הגשות.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪24–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(7);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100616_9efaf31a-6fa0-485b-8260-870a9cb4dd07.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#9A6B33"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 09/10</span><h2 class="hs-h">קולד פואם</h2><div class="heh">Cold Foam</div><p>קצף קטיפתי, בארבעה טעמים.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪28–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(8);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_104204_d2e522db-949d-4ca9-b693-e1506bf0bf63.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6B4FB0"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 10/10</span><h2 class="hs-h">אובה</h2><div class="heh">Ube</div><p>הסגול שעוצר את הגלילה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(9);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact">רוצה מחירון</a></div></div></div></div></div>
+  <div class="hs-track" id="hs-track"><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_103852_96bf7394-4975-4dd2-9acf-6947ea2e2c37.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B0603B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 01/10</span><h2 class="hs-h">חליטות קרות</h2><div class="heh">Iced Tea</div><p>שבע חליטות קרות. מזיגה אחת ומגישים.</p><div class="meta"><span>7 משקאות</span><span>מחיר מומלץ ₪20</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(0);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_110757_d4649511-4aab-4960-a7d5-64b2657b352a.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D89A2B"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 02/10</span><h2 class="hs-h">לימונדות</h2><div class="heh">Lemonade</div><p>שלוש לימונדות על בסיס תה אמיתי.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(1);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_b9da167b-2bc2-4246-ba65-dd648600de1f.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#D45B3F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 03/10</span><h2 class="hs-h">משקאות הדגל</h2><div class="heh">Signature</div><p>ארבעה משקאות על מחיות עם 50% פרי.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪24–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(2);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_121010_39e00a53-d3c0-459f-9483-e401683f8d26.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6E99AA"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 04/10</span><h2 class="hs-h">גזוז</h2><div class="heh">Gazoz</div><p>בועות תל אביביות, על בסיס תה.</p><div class="meta"><span>3 משקאות</span><span>מחיר מומלץ ₪22–33</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(3);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_eb17ce1e-9413-4356-b8c4-3de655daf7b7.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4E8C42"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 05/10</span><h2 class="hs-h">אייס מאצ׳ה</h2><div class="heh">Ice Matcha</div><p>מאצ׳ה טקסי משיזואוקה, בשש דרכים.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪26–39</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(4);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_0ffd1f0c-ca1d-410a-ad83-5ad8028c9b5d.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#75755F"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 06/10</span><h2 class="hs-h">מאצ׳ה ספיישל</h2><div class="heh">Matcha Specials</div><p>מווניל ועד שומשום שחור.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–29</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(5);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100615_4ad880e7-1c74-4f05-83b8-8fb8df1ff95e.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#4F9186"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 07/10</span><h2 class="hs-h">מאצ׳ה קוקוס</h2><div class="heh">Matcha Coconut</div><p>מי קוקוס, קרם קוקוס, מאצ׳ה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪32–44</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(6);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_111422_0603088e-e15d-4c62-a951-4304d57ab516.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#B06A38"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 08/10</span><h2 class="hs-h">צ׳אי מסאלה</h2><div class="heh">Chai Masala</div><p>הלהיט הגדול, בשש הגשות.</p><div class="meta"><span>6 משקאות</span><span>מחיר מומלץ ₪24–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(7);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_100616_9efaf31a-6fa0-485b-8260-870a9cb4dd07.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#9A6B33"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 09/10</span><h2 class="hs-h">קולד פואם</h2><div class="heh">Cold Foam</div><p>קצף קטיפתי, בארבעה טעמים.</p><div class="meta"><span>4 משקאות</span><span>מחיר מומלץ ₪28–32</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(8);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div><div class="hs-slide copy-left" data-hsbg="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_104204_d2e522db-949d-4ca9-b693-e1506bf0bf63.png&amp;w=1600&amp;output=webp&amp;q=78&amp;il" data-bg="#6B4FB0"><div class="in"><div class="hs-copy"><span class="eyebrow">קיץ 2026 · קולקציה 10/10</span><h2 class="hs-h">אובה</h2><div class="heh">Ube</div><p>הסגול שעוצר את הגלילה.</p><div class="meta"><span>5 משקאות</span><span>מחיר מומלץ ₪28–31</span></div><div class="ctas"><a class="btn" href="#!" onclick="cmOpen(9);return false;">למתכונים <span class="arr">←</span></a><a class="sub-cta" href="#contact" data-cta="slide" data-price>רוצה מחירון</a></div></div></div></div></div>
   <div class="hs-dots" id="hs-dots"></div>
 </header>
 
@@ -1175,7 +1222,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
         <a class="fcard rv v3" id="f-calm" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#E6E1F2"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#E6E1F2"><div class="badge">2 משקאות</div><div class="circle" style="background:#8E7CC3"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174515_0777ca30-0b2a-4183-a1ba-99776254c7b2.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260814_174840_db9afed8-5b1e-49a9-a1d2-1d46b0fe362d.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_d2a4ef6d-7f33-4361-b795-7b8b0606ea33.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Calm נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#E6E1F2"></path></svg><div class="txtwrap" style="background:#E6E1F2"><div class="info"><div class="origin">תמצית צרפתית</div><h4>Calm</h4><div class="liner">כוס הערב. מתוקה מטבעה ונטולת קפאין. קמומיל, תפוח וציפורן — עדינה, מתאימה לכל גיל ומושלמת לשעות אחר הצהריים והערב.</div><div class="comp">קמומיל · תפוח · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
         <a class="fcard rv v3" id="f-namastea" href="#!" onclick="openF(this);return false;" style="cursor:pointer;background:#F0E2CC"><div class="ph vis" style="--hov:url('https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il');background:#F0E2CC"><div class="badge">13 משקאות</div><div class="circle" style="background:#C98A2D"></div><div class="duo"><img class="duo-b" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_072505_2194918c-1263-4660-a55b-27a72f0da833.png&trim=12&w=700&output=webp&q=88&n=-1" alt=""><img class="duo-s" loading="lazy" decoding="async" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260815_065820_4249880c-f06f-494a-80d6-e4ad3c4fe8f0.png&trim=12&w=460&output=webp&q=88&n=-1" alt=""></div><img class="hovimg" src="https://wsrv.nl/?url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_3DnHlJj9Ckne89yfhr8HpB5bYXZ%2Fhf_20260812_132659_af97e32e-a50f-4793-8b94-655d8f34d7bd.png&amp;w=680&amp;output=webp&amp;q=80&amp;il" alt="GT Namastea נמזג" loading="lazy"></div><svg class="wave" viewBox="0 0 340 26" preserveAspectRatio="none"><path d="M0 12 Q42 0 85 12 T170 12 T255 12 T340 12 V26 H0 Z" fill="#F0E2CC"></path></svg><div class="txtwrap" style="background:#F0E2CC"><div class="info"><div class="origin">תמצית הודית</div><h4>Namastea</h4><div class="liner">רב המכר שלנו. קר, כלאטה או עם מי קוקוס. שני סוגי תה שחור וחמישה תבלינים — להיט ענק אצל הקהל הישראלי.</div><div class="comp">שני סוגי תה שחור · קינמון · הל · ג׳ינג׳ר · פלפל שחור · ציפורן</div><div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div></div></div></a>
   </div>
-  <div class="center-cta rv"><a class="btn" href="#contact">לקבלת הקטלוג המלא <span class="arr">←</span></a><span style="margin-left:16px;color:#9A9F93;font-weight:600">ועוד Detox ו־Fresh ללא סוכר</span></div>
+  <div class="center-cta rv"><a class="btn" href="#contact" data-cta="catalogue" data-price>לקבלת הקטלוג המלא <span class="arr">←</span></a><span style="margin-left:16px;color:#9A9F93;font-weight:600">ועוד Detox ו־Fresh ללא סוכר</span></div>
 </div></section>
 
 <div class="partners rv" id="partners">
@@ -1228,7 +1275,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
     <div>
       <h2>בקבוק אחד.<br><em class="num" style="font-style:italic">שלושה עשר</em> משקאות.</h2>
       <p>מתמצית אחת יוצאים עד 13 משקאות בתפריט, ומכל בקבוק <bdi dir="ltr">20–25</bdi> כוסות. עלות חומר גלם מ־₪2.85 לכוס, רווחיות של עד 87%: קצת פחות מקפה, והרבה יותר ממשקה מוכן מהמקרר.</p>
-      <a class="btn light" style="margin-top:24px" href="#contact">רוצה מחירון ותמחירים <span class="arr">←</span></a>
+      <a class="btn light" style="margin-top:24px" href="#contact" data-cta="economics" data-price>רוצה מחירון ותמחירים <span class="arr">←</span></a>
     </div>
     <div class="stats">
       <div class="stat"><b class="num">87%</b><span>רווחיות מקסימלית למשקה</span></div>
@@ -1413,7 +1460,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
   <div class="wrap rv">
     <h2>אפשר להפסיק עם<br>התפריט המשעמם?</h2>
     <p>מחירון, טעימה אצלכם במקום, ותפריט קיץ שהאורחים שלכם יצלמו.</p>
-    <a class="btn light" href="#contact">רוצים להתחיל <span class="arr">←</span></a>
+    <a class="btn light" href="#contact" data-cta="closing">רוצים להתחיל <span class="arr">←</span></a>
   </div>
 </div>
 
@@ -1441,30 +1488,28 @@ nav{-webkit-backdrop-filter:blur(10px)}
       <li><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">📷 @gteveryday</a></li>
     </ul>
   </div>
-  <form class="rv partner" id="pform" method="post" enctype="text/plain"
+  <div id="pf-slot"><form class="rv partner" id="pform" method="post" enctype="text/plain"
       action="mailto:info@gteveryday.com?subject=GT%20Everyday%20%E2%80%94%20בקשת%20שיתוף%20פעולה" onsubmit="return pSend(event)">
-    <div class="pf-head"><b>בקשת מחירון וטעימה</b><span>עונים תוך יום עסקים אחד</span></div>
-    <div class="pf-row">
-      <input id="pf-name" name="name" autocomplete="name" placeholder="שם מלא *" required>
-      <input id="pf-venue" name="venue" autocomplete="organization" placeholder="שם העסק *" required>
+    <div class="pf-head"><b id="ld-h">בקשת מחירון וטעימה</b><span>עונים תוך יום עסקים אחד</span></div>
+    <div class="pf-req">
+      <label class="pf-f"><span>שם מלא</span><input id="pf-name" name="name" autocomplete="name" required></label>
+      <label class="pf-f"><span>שם העסק</span><input id="pf-venue" name="venue" autocomplete="organization" required></label>
+      <label class="pf-f"><span>עיר</span><input id="pf-city" name="city" autocomplete="address-level2" required></label>
+      <label class="pf-f"><span>טלפון</span><input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required></label>
     </div>
-    <div class="pf-row">
-      <input id="pf-city" name="city" autocomplete="address-level2" placeholder="עיר *" required>
-      <select id="pf-role" name="role" aria-label="תפקיד">
-        <option value="">תפקיד</option><option>בעלים</option><option>מנהל/ת</option>
+    <details class="pf-more"><summary>עוד פרטים (לא חובה)</summary><div>
+      <label class="pf-f"><span>תפקיד</span><select id="pf-role" name="role">
+        <option value=""></option><option>בעלים</option><option>מנהל/ת</option>
         <option>אחראי/ת בר</option><option>בריסטה</option><option>אחר</option>
-      </select>
-    </div>
-    <div class="pf-row">
-      <input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="טלפון *" required>
-      <input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="אימייל">
-    </div>
-    <select id="pf-int" name="interest" aria-label="מה מעניין אתכם">
-      <option value="">מה מעניין אתכם…</option><option>המחירון המלא</option><option>טעימה במקום</option>
-      <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>
-      <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
-    </select>
-    <textarea id="pf-msg" name="message" rows="3" placeholder="משהו שכדאי שנדע? (לא חובה)"></textarea>
+      </select></label>
+      <label class="pf-f"><span>אימייל</span><input id="pf-mail" name="email" type="email" inputmode="email" autocomplete="email"></label>
+      <label class="pf-f"><span>מה מעניין אתכם</span><select id="pf-int" name="interest">
+        <option value=""></option><option>המחירון המלא</option><option>טעימה במקום</option>
+        <option>תמציות תה</option><option>מאצ׳ה ואבקות</option><option>מחיות פרי</option>
+        <option>כלי בר ואביזרים</option><option>כל תפריט הקיץ</option>
+      </select></label>
+      <label class="pf-f"><span>משהו שכדאי שנדע?</span><textarea id="pf-msg" name="message" rows="3"></textarea></label>
+    </div></details>
     <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
       <label for="pf-cw">אל תמלאו שדה זה</label>
       <input id="pf-cw" name="company_website" type="text" tabindex="-1" autocomplete="off">
@@ -1473,10 +1518,13 @@ nav{-webkit-backdrop-filter:blur(10px)}
     <label class="pf-ok"><input type="checkbox" id="pf-agree" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
     <button class="btn" style="justify-content:center">שליחה <span class="arr">←</span></button>
     <div class="pf-alt">או כתבו לנו <a href="https://wa.me/972543982444" target="_blank" rel="noopener">בוואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
+    <svg class="ld-check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-17"/></svg>
     <div class="pf-done" id="pf-done" role="status"><b>תודה רבה!</b><span>קיבלנו את הפרטים ונחזור אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
-  </form>
+  </form></div>
 </div></section>
 
+<dialog id="ldlg" aria-labelledby="ld-h"><span class="ld-grab" aria-hidden="true"></span><button class="ld-x" type="button" aria-label="סגירה">✕</button><span class="ld-bar" aria-hidden="true"></span></dialog>
+<noscript><style media="all">.rv{opacity:1;transform:none}</style></noscript>
 <footer class="site wrap">
   <span>‎© 2026 גרינטי אוירי די בע״מ</span>
   <span class="social"><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">אינסטגרם</a> · <a href="https://facebook.com/greenteaeveryday" target="_blank" rel="noopener">פייסבוק</a> · <a href="https://www.youtube.com/channel/UC7U7qL5vs9xt6Rzxj2GiSOg" target="_blank" rel="noopener">יוטיוב</a></span>
@@ -1559,7 +1607,7 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
   <div class="facts"><span>בקבוק אחד = <bdi dir="ltr">20–25</bdi> כוסות</span><span>בלי מקרר עד הפתיחה</span><span>ללא חומרים משמרים</span></div>
   <div class="makes" id="fm-makes"></div>
   <div class="prow"><span>500 מ״ל · ₪33</span><span>1 ליטר · ₪65</span></div>
-  <a class="cta" href="#contact" onclick="document.getElementById('fmodal').classList.remove('open')">הוסיפו לתפריט ←</a>
+  <a class="cta" href="#contact" data-cta="product" onclick="document.getElementById('fmodal').classList.remove('open')">הוסיפו לתפריט ←</a>
   </div></div>
 </div>
 <script>
@@ -2128,10 +2176,10 @@ function pAll(b){var ds=document.querySelectorAll('#pricing .ptable');
  b.textContent=open?'פתחו הכול':'סגרו הכול';}
 </script>
 <script>
-function pfTrack(interest,role){try{
+function pfTrack(interest,role,cta){try{
  window.dataLayer=window.dataLayer||[];
  window.dataLayer.push({event:'generate_lead',form:'partner_enquiry',
-  lead_interest:interest||'',lead_role:role||''});
+  lead_interest:interest||'',lead_role:role||'',lead_cta:cta||'contact'});
  if(typeof gtag==='function')gtag('event','generate_lead',{form:'partner_enquiry'});
 }catch(e){}}
 var PF_LABEL='שליחה <span class="arr">\u2190</span>';
@@ -2145,11 +2193,11 @@ function pSend(e){e.preventDefault();
  if(!document.getElementById('pf-agree').checked)return false;
  var fail=function(msg){err.innerHTML=msg;err.hidden=false;
   btn.disabled=false;btn.innerHTML=PF_LABEL;
-  err.scrollIntoView({block:'nearest',behavior:'smooth'});};
+  if(!viaDlg||ldIn())err.scrollIntoView({block:'nearest',behavior:'smooth'});};
  err.hidden=true;
- btn.disabled=true;btn.innerHTML='שולח\u2026';
- var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
-  role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int'),
+ var viaDlg=ldIn();btn.disabled=true;btn.innerHTML='שולח\u2026';
+ setTimeout(function(){var body={contact_name:g('pf-name'),venue:g('pf-venue'),city:g('pf-city'),
+  role:g('pf-role'),phone:g('pf-phone'),email:g('pf-mail'),interest:g('pf-int')||ldCtx,
   message:g('pf-msg'),company_website:g('pf-cw'),
   elapsed_ms:Math.round(performance.now()),page:location.href,referrer:document.referrer};
  var to=setTimeout(function(){fail(PF_ERR);},15000);
@@ -2158,14 +2206,59 @@ function pSend(e){e.preventDefault();
   .then(function(r){return r.json().catch(function(){return {};})
    .then(function(j){return {ok:r.ok,j:j};});})
   .then(function(res){clearTimeout(to);
-   if(res.ok&&res.j&&res.j.ok){pfTrack(g('pf-int'),g('pf-role'));
+   if(res.ok&&res.j&&res.j.ok&&'was_new' in res.j){pfTrack(g('pf-int')||ldCtx,g('pf-role'),ldCta);
     f.classList.add('sent');btn.innerHTML='נשלח \u2713';
-    document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
+    if(ldIn()){var d=document.getElementById('ldlg');d.scrollTop=0;d.classList.add('closing');ldTimer=setTimeout(ldClose,LD_CLOSE_MS);}
+    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});return;}
    if(res.j&&res.j.error==='missing_fields'){fail('חסרים פרטי חובה. בדקו שם, שם העסק, עיר וטלפון.');return;}
    if(res.j&&res.j.error==='bad_phone'){fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.');return;}
    if(res.j&&res.j.error==='bad_email'){fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}
    fail(PF_ERR);})
   .catch(function(){clearTimeout(to);fail(PF_ERR);});
+ },Math.max(0,3050-performance.now()));
  return false;}
+</script>
+<script>
+/* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
+   dialog; the form moves in and back, so there is one form, one sender and one state. */
+var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldTimer=0,ldDoc=Math.random();
+(function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
+function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
+function ldOpen(a){
+ var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int');
+ if(!d||!d.showModal||d.open)return false;
+ var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');
+ ldInv=fm?(ldCard||a):a;
+ ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
+ ldCtx=fm?document.getElementById('fm-name').textContent.trim():'';
+ if(a.hasAttribute('data-price')&&!i.value)i.selectedIndex=1;
+ s.style.height=f.offsetHeight+'px';
+ f.classList.add('on');
+ d.insertBefore(f,d.querySelector('.ld-bar'));
+ d.style.setProperty('--ld-close',LD_CLOSE_MS+'ms');
+ if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+ document.documentElement.classList.add('cm-lock');
+ history.pushState({gtLead:1,doc:ldDoc},'');
+ d.showModal();d.scrollTop=0;
+ return true;}
+function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
+(function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
+ d.addEventListener('close',function(){
+  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),h=history.state;
+  clearTimeout(ldTimer);d.classList.remove('closing');
+  s.appendChild(f);s.style.height='';
+  document.documentElement.classList.remove('cm-lock');
+  if(h&&h.gtLead&&h.doc===ldDoc)history.back();
+  if(ldInv&&ldInv.focus)ldInv.focus({preventScroll:true});
+  ldCta='contact';ldCtx='';});
+ d.querySelector('.ld-x').addEventListener('click',ldClose);
+ d.addEventListener('click',function(e){if(e.target!==d)return;var r=d.getBoundingClientRect();
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)ldClose();});
+ window.addEventListener('popstate',function(){if(d.open)d.close();});
+ document.addEventListener('click',function(e){
+  var a=e.target.closest&&e.target.closest('a[href="#contact"]');
+  if(!a||a.classList.contains('fcard')||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  if(ldOpen(a))e.preventDefault();});
+})();
 </script>
 </body></html>
