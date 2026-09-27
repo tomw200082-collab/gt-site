@@ -42,7 +42,7 @@ window first). A click used to scroll the visitor to the form at the bottom of t
 
   Intent travels with the lead.
       The calls-to-action invite a partnership, not a price list (Tom, 2026-09-27): the page's
-      links read `בואו נעבוד יחד`, and a drink's read `הוסיפו לתפריט`. A hero slide's link sends
+      links ask to work together, and a drink's to add it to the menu. A hero slide's link sends
       its collection's name as the interest when the visitor leaves it empty, and the product
       window's sends the product's name. generate_lead carries lead_cta.
 

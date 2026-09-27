@@ -114,7 +114,11 @@ Audited on the build `8cf918d`.
   - no-JS and `#contact` deep links work;
   - axe on the dialog finds 0 in every state;
   - at every viewport, the fields, the consent and the send button fit unscrolled.
-- **After `9a7944d`:** the same run, and the height probe above.
+- **After `9a7944d`** (the build that ships), the same run: the same results at every viewport, and
+  the height probe above. At p390, the offline answer's page load failed through the proxy before its
+  test ran (`net::ERR_FAILED`), and it was re-run alone.
+- **Evidence folders:** in the executing session's scratchpad: `gate-r2/site-ipad/` (round 2), and
+  `r3-C`, `r3-D`, `r3-E` and `r3-C2` (after `9a7944d`).
 - **Copy:** `node gt-factory-os/api/scripts/portal_copy_check.mjs` reports 0 unapproved, and its
   self-test fails on a planted string.
 
