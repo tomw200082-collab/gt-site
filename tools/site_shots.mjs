@@ -65,7 +65,8 @@ async function wire(ctx) {
   // Registered last, so it wins: the lead endpoint answers from here and is never reached.
   await ctx.route(LEAD, async (r) => {
     const reply = await r.request().frame().page().evaluate(() => window.__leadReply ?? 'ok').catch(() => 'ok');
-    const body = reply === 'ok' ? { ok: true, id: 'shot-fake' } : { ok: false, error: reply };
+    // as the intake answers a stored lead: the page thanks only a reply that carries was_new
+    const body = reply === 'ok' ? { ok: true, id: 'shot-fake', was_new: true } : { ok: false, error: reply };
     await sleep(600);
     r.fulfill({ status: reply === 'ok' ? 200 : 400, contentType: 'application/json', body: JSON.stringify(body) });
   });
@@ -208,16 +209,20 @@ for (const [name, vp] of Object.entries(VPS).filter(([k]) => !ONLY || ONLY.has(k
       await p.evaluate(() => document.getElementById('contact')?.scrollIntoView()); await sleep(900);
       await shot(p, `${name}-10-form`);
       if (runAxe) await axe(p, 'form', f.axe);
-      const btn = await p.$('#pform button');
+      // the form asks first whether the visitor has a business (patch_lead_dialog.py); the send button is
+      // the form's own child, not one of the answers
+      const yes = await p.$('#pform [data-biz="1"]');
+      if (yes && await yes.isVisible()) { await press(yes, vp); await sleep(700); }
+      const btn = await p.$('#pform>button.btn');
       await press(btn, vp); await sleep(600);
       f.formEmptySubmit = await p.evaluate(() => ({ invalid: document.querySelectorAll('#pform :invalid').length, firstInvalid: document.querySelector('#pform :invalid')?.id ?? null, focused: document.activeElement?.id ?? null, sent: document.getElementById('pform').classList.contains('sent') }));
       const fill = async () => { await p.fill('#pf-name', 'בדיקה אוטומטית'); await p.fill('#pf-venue', 'קפה בדיקה'); await p.fill('#pf-city', 'תל אביב'); await p.fill('#pf-phone', '0501234567'); await p.check('#pf-agree'); };
       await fill(); await p.evaluate(() => { window.__leadReply = 'bad_phone'; });
       await press(btn, vp); await sleep(1600); await shot(p, `${name}-11-form-error`);
-      f.formError = await p.evaluate(() => ({ shown: !document.getElementById('pf-err').hidden, text: document.getElementById('pf-err').innerText.trim().slice(0, 200), button: document.querySelector('#pform button').innerText.trim(), disabled: document.querySelector('#pform button').disabled }));
+      f.formError = await p.evaluate(() => ({ shown: !document.getElementById('pf-err').hidden, text: document.getElementById('pf-err').innerText.trim().slice(0, 200), button: document.querySelector('#pform>button.btn').innerText.trim(), disabled: document.querySelector('#pform>button.btn').disabled }));
       await p.evaluate(() => { window.__leadReply = 'ok'; });
       await press(btn, vp); await sleep(1600); await shot(p, `${name}-12-form-sent`);
-      f.formSent = await p.evaluate(() => ({ sent: document.getElementById('pform').classList.contains('sent'), button: document.querySelector('#pform button').innerText.trim(), done: document.getElementById('pf-done').innerText.replace(/\s+/g, ' ').trim().slice(0, 200), generateLead: (window.dataLayer || []).some((e) => e && e.event === 'generate_lead') }));
+      f.formSent = await p.evaluate(() => ({ sent: document.getElementById('pform').classList.contains('sent'), button: document.querySelector('#pform>button.btn').innerText.trim(), done: document.getElementById('pf-done').innerText.replace(/\s+/g, ' ').trim().slice(0, 200), generateLead: (window.dataLayer || []).some((e) => e && e.event === 'generate_lead') }));
       await shot(p, `${name}-13-footer`);
     }
     // 5. keyboard: the first stops from the top of the page, and whether focus is visible
