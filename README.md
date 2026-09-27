@@ -75,15 +75,13 @@ kicker, the same pairing the collection cards use.
 
 ## Where it runs
 
-The Hebrew page is the live theme on `greenteaeveryday.myshopify.com`: MAIN
-since 2026-09-24 13:52Z (Admin API `themes`, read 2026-09-25).
+The Hebrew page is the home page of the live theme on `greenteaeveryday.myshopify.com`.
 
 | | |
 |---|---|
-| Live theme | `GT 2026 Site` · id `162206646513` · **MAIN** |
-| Next | `GT 2026 Site — כניסת לקוחות` · id `166730072305` · UNPUBLISHED — the live theme plus the customer-portal entry; publishing it is Tom's (`PUBLISH.md`) |
-| Preview (next) | `https://gteveryday.com/?preview_theme_id=166730072305` |
-| Rollback | `HE-RU Vodoma 2024` · id `131669328113` · UNPUBLISHED |
+| Live theme | `GT 2026 Site — כניסת לקוחות` · id `166730072305` · **MAIN** (read 2026-09-27) |
+| Preview | `GT site — preview 2026-09-27` · id `186698334449` · unpublished, a copy of MAIN |
+| Preview link | `https://gteveryday.com/?preview_theme_id=186698334449` |
 | Old homepage | kept as `templates/index.vodoma.json` → `?view=vodoma` |
 
 Open the full preview URL in a browser: Shopify sets a cookie and redirects, so
@@ -91,22 +89,24 @@ a client that drops cookies gets the live theme back instead. The preview then
 sticks to that browser until it is closed — seeing the new site at a bare
 `gteveryday.com` does **not** mean it was published.
 
-The theme is a duplicate of the live one, so product, collection, cart and
-account routes all still render from Vodoma underneath; only the homepage is
-ours.
+The theme is a copy of the store's original theme, so product, collection, cart
+and account routes all still render from Vodoma underneath; only the homepage
+and the four landing pages (`?view=chai|matcha|iced-tea|ube`) are ours.
 
 ### Deploying a change
 
 ```sh
-./tools/build.sh        # regenerate src/index.html
-python3 tools/build_theme.py   # regenerate theme/
-git commit && git push
+./tools/build.sh                                  # regenerate src/index.html
+python3 tools/build_theme.py                      # regenerate theme/
+git commit && git push                            # merge to main
+python3 tools/theme_ship.py push 186698334449     # the whole set to the preview; ends "drift: 0"
+python3 tools/theme_ship.py push 166730072305 --allow-live   # on Tom's word; ends "drift: 0"
 ```
 
-then `themeFilesUpsert` the changed files, pointing `body.type: URL` at the
-raw.githubusercontent.com URLs for the pushed commit — Shopify fetches them
-itself. `theme/assets.manifest.json` maps each image asset to the URL it was
-fetched from.
+`theme_ship.py` always sends the whole GT set, never only the files a change
+touched, and then checks the theme against it file by file. Uploading single
+files is how three merged PRs missed the live theme until 2026-09-27. The
+protocol, and what the tool guarantees, are in `PUBLISH.md`.
 
 Details and the traps worth knowing:
 `gt-factory-os-production-brain/.claude/skills/shopify-theme/SKILL.md`.
