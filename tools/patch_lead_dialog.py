@@ -179,7 +179,7 @@ CSS = """
    the line that interests them; each step shows the heading and itself only */
 .partner .pf-ask,.partner .pf-priv,.partner .pf-pick{display:none}
 .partner.ask>*:not(.pf-head):not(.pf-ask),.partner.priv>*:not(.pf-head):not(.pf-priv){display:none}
-.partner.priv .pf-head span{display:none}
+.partner.ask .pf-head span,.partner.priv .pf-head span{display:none}
 .partner.ask .pf-ask,.partner.priv .pf-priv,.partner.sent .pf-pick{display:grid;gap:12px}
 .partner .pf-q{margin:0 0 4px}
 .partner .pf-q b{display:block;font-size:20px;font-weight:800;line-height:1.3}
@@ -193,6 +193,11 @@ CSS = """
 .partner .pf-lines a{display:flex;align-items:center;justify-content:center;min-height:52px;padding:8px 14px;border-radius:999px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line);color:var(--ink);font-size:15px;font-weight:700;line-height:1.25;text-align:center;text-decoration:none;transition:box-shadow .2s}
 .partner .pf-lines a:hover,.partner .pf-lines a:focus-visible{box-shadow:inset 0 0 0 2px var(--gt);outline:none}
 .partner .pf-lines .pf-wide{grid-column:1/-1}
+.partner .pf-lines a:active{transform:scale(.97);transition:none}
+.partner .pf-back:active{opacity:.7}
+/* a hero slide's add-to-menu link weighs as a button beside the recipes pill: it is the one that leads to a lead */
+.hs-copy .ctas .sub-cta[href="#contact"]{display:inline-flex;align-items:center;min-height:48px;padding:0 22px;border:1.5px solid rgba(255,255,255,.75);border-radius:999px;text-decoration:none;transition:background-color .2s,border-color .2s}
+.hs-copy .ctas .sub-cta[href="#contact"]:hover{border-color:#fff;background:rgba(255,255,255,.12)}
 /* the dialog: a bottom sheet on phones, a centred card from 640px */
 #ldlg{border:0;padding:0 0 env(safe-area-inset-bottom,0);margin:auto auto 0;width:100%;max-width:100%;max-height:92vh;max-height:92dvh;
  background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
@@ -256,6 +261,15 @@ function ldStep(f){
  var q=f.classList.contains('sent')?'pf-pick-q':f.classList.contains('ask')?'pf-ask-q':f.classList.contains('priv')?'pf-priv-q'
   :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
  document.getElementById(q).focus({preventScroll:true});}
+/* a step changes the sheet's height: it grows or shrinks over the entrance's time, not in one frame
+   (UX gate DEVICE-R2-01). From 880px the card keeps one height, so nothing moves there. */
+function ldGrow(change){
+ var d=document.getElementById('ldlg');
+ if(!ldIn()||matchMedia('(prefers-reduced-motion:reduce)').matches){change();return;}
+ var h0=d.offsetHeight;change();var h1=d.offsetHeight;if(h0===h1)return;
+ d.style.height=h0+'px';d.style.overflow='hidden';d.offsetHeight;
+ d.style.transition='height .32s cubic-bezier(.2,.8,.25,1)';d.style.height=h1+'px';
+ setTimeout(function(){d.style.height=d.style.overflow=d.style.transition='';},340);}
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot');
  if(!d||!d.showModal||d.open)return false;
@@ -280,7 +294,7 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
  if(!f.classList.contains('sent'))f.classList.add('ask');
  f.addEventListener('click',function(e){
   var b=e.target.closest('[data-biz]'),v=b&&b.getAttribute('data-biz');
-  if(b){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');ldStep(f);return;}
+  if(b){ldGrow(function(){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');});ldStep(f);return;}
   /* a line picked: WhatsApp opens in its own tab or app, and the dialog is done when the visitor
      comes back. Closing at once would step history back while an in-app browser, which opens the
      link in the same tab, is still on its way to WhatsApp, and would cancel it. */
@@ -370,6 +384,8 @@ def main() -> None:
                "    if(ldIn())document.getElementById('ldlg').scrollTop=0;\n"
                "    else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});\n"
                "    if(!viaDlg||ldIn())ldStep(f);return;}", text)
+    text = sub("send: the thanks grows the sheet", "f.classList.add('sent');btn.innerHTML=",
+               "ldGrow(function(){f.classList.add('sent');});btn.innerHTML=", text)
     text = sub("lead_cta", "function pfTrack(interest,role){", "function pfTrack(interest,role,cta){", text)
     text = sub("lead_cta field", "  lead_interest:interest||'',lead_role:role||''});",
                "  lead_interest:interest||'',lead_role:role||'',lead_cta:cta||'contact'});", text)

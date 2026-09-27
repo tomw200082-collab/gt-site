@@ -616,7 +616,7 @@ function pSend(e){e.preventDefault();
    .then(function(j){return {ok:r.ok,j:j};});})
   .then(function(res){clearTimeout(to);
    if(res.ok&&res.j&&res.j.ok&&'was_new' in res.j){pfTrack(g('pf-int')||ldCtx,g('pf-role'),ldCta);
-    f.classList.add('sent');btn.innerHTML='נשלח \u2713';
+    ldGrow(function(){f.classList.add('sent');});btn.innerHTML='נשלח \u2713';
     if(ldIn())document.getElementById('ldlg').scrollTop=0;
     else if(!viaDlg)document.getElementById('pf-done').scrollIntoView({block:'nearest',behavior:'smooth'});
     if(!viaDlg||ldIn())ldStep(f);return;}
@@ -641,6 +641,15 @@ function ldStep(f){
  var q=f.classList.contains('sent')?'pf-pick-q':f.classList.contains('ask')?'pf-ask-q':f.classList.contains('priv')?'pf-priv-q'
   :matchMedia('(pointer:fine)').matches?'pf-name':'ld-h';
  document.getElementById(q).focus({preventScroll:true});}
+/* a step changes the sheet's height: it grows or shrinks over the entrance's time, not in one frame
+   (UX gate DEVICE-R2-01). From 880px the card keeps one height, so nothing moves there. */
+function ldGrow(change){
+ var d=document.getElementById('ldlg');
+ if(!ldIn()||matchMedia('(prefers-reduced-motion:reduce)').matches){change();return;}
+ var h0=d.offsetHeight;change();var h1=d.offsetHeight;if(h0===h1)return;
+ d.style.height=h0+'px';d.style.overflow='hidden';d.offsetHeight;
+ d.style.transition='height .32s cubic-bezier(.2,.8,.25,1)';d.style.height=h1+'px';
+ setTimeout(function(){d.style.height=d.style.overflow=d.style.transition='';},340);}
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot');
  if(!d||!d.showModal||d.open)return false;
@@ -665,7 +674,7 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
  if(!f.classList.contains('sent'))f.classList.add('ask');
  f.addEventListener('click',function(e){
   var b=e.target.closest('[data-biz]'),v=b&&b.getAttribute('data-biz');
-  if(b){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');ldStep(f);return;}
+  if(b){ldGrow(function(){f.classList.remove('ask','priv');if(v)f.classList.toggle('priv',v==='0');else f.classList.add('ask');});ldStep(f);return;}
   /* a line picked: WhatsApp opens in its own tab or app, and the dialog is done when the visitor
      comes back. Closing at once would step history back while an in-app browser, which opens the
      link in the same tab, is still on its way to WhatsApp, and would cancel it. */
