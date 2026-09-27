@@ -125,4 +125,23 @@ Audited on the build `8cf918d`.
 
 ## 5. Governor sign-off
 
-Pending.
+**`factory-os-governor`, 2026-09-27: PROCEED WITH CONSTRAINTS.** The gate closes SHIP. The verdict in
+full is `2026-09-27-site-ux-gate/reports/GOVERNOR.md`.
+
+- **Round 2:** met the rule, with 0 P0, two P1s and all six dimensions GREEN, in two rounds.
+- **A11Y-R2-01:** accepted as decoration under WCAG 1.4.3.
+- **DEVICE-R2-01:** fixed in `9a7944d`. The code, the reduced-motion branch and the height probe in §3
+  are enough without a third round. The probe stays in this record as it is (constraint C2).
+- **The deferred P2s:** all accepted. Five of them are Tom's copy-round work, and must be named in the
+  PR and in the report:
+  - FLOW-02, the product's name in the dialog;
+  - FLOW-04, a call-to-action after the operations section;
+  - INTER-06, a two-phase send label;
+  - the required-field markers;
+  - the orphan source strings `t0483` and `t0495`.
+- **Merge:** authorised on each PR's own green checks.
+- **The live push:** waits for Tom's written word (masterprompt §6-C), then follows the one ship path
+  and ends with drift 0 on live. The D6 lead is sent only after that word, and Tom is told that it
+  reaches the sales queue and the staff alert.
+- **Unchanged through the ship:** the intake contract, the site's WhatsApp number (054-398-2444) and the
+  frozen flags.
