@@ -103,7 +103,8 @@ html.cm-lock,html.cm-lock body{overflow:hidden}
 #cmodal .cm-x{width:44px;height:44px;top:14px}
 .cm-nav>button{min-height:44px}
 .mxd{min-height:36px;padding:8px 12px}
-.fmodal .x{width:44px;height:44px;border-radius:50%;background:rgba(32,36,31,.45);top:14px;left:14px}
+/* its backing: at .45 the white × on a light photo was 2.9:1; .72 is 4.6:1 (UX gate, 2026-09-27) */
+.fmodal .x{width:44px;height:44px;border-radius:50%;background:rgba(32,36,31,.72);top:14px;left:14px}
 @media(hover:none) and (min-width:761px){.fmodal .box{overflow:auto}.fmodal .mtxt{max-height:none;display:block}.fmodal .makes{overflow:visible}}
 /* G-58 parity: Safari paints the same containing blocks as Chromium */
 nav{-webkit-backdrop-filter:blur(10px)}

@@ -3,7 +3,11 @@
   "sections": {
     "main": {
       "type": "gt-home",
-      "settings": {}
+      "settings": {
+        "show_portal_entry": true,
+        "third_party_pixels": true,
+        "analytics_id": ""
+      }
     }
   },
   "order": [

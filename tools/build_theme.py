@@ -372,9 +372,13 @@ SECTION = f"""{{%- comment -%}}
 {{% endschema %}}
 """
 
+# The live theme's own values (read 2026-09-27). The theme owns them: tools/theme_ship.py
+# copies them from the target at staging time, so a push never changes one. They are
+# written here too so that the repo describes what is live.
 INDEX = {
     "layout": "gt",
-    "sections": {"main": {"type": "gt-home", "settings": {}}},
+    "sections": {"main": {"type": "gt-home", "settings": {
+        "show_portal_entry": True, "third_party_pixels": True, "analytics_id": ""}}},
     "order": ["main"],
 }
 

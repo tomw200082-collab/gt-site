@@ -1,151 +1,130 @@
 # Publishing the site
 
-**Published.** `166730072305` (the customer-portal entry) has been MAIN since 2026-09-25 (Admin API `themes`,
-read 2026-09-27). §1–§3 are the record of the first publish; §4 is still the rollback. The next publish is the
-same act on the copy below.
+**One path, for every change:** stage the whole GT file set, push all of it, and check the theme
+against it file by file. `tools/theme_ship.py` does all three. The live theme is updated in place
+with the Shopify CLI. It is never swapped for a copy.
 
-**Nothing here runs without Tom's written word.** A session executing this file
-must be able to quote the instruction it is acting on.
+**Nothing reaches the live theme without Tom's written word.** A session pushing to it must be
+able to quote the instruction it is acting on.
 
 | | |
 |---|---|
-| Live theme | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **MAIN** |
-| Next | `186686636273` · `GT 2026 Site — כניסה לעסקים` · **UNPUBLISHED** — the live theme with two files from gt-site `f4b054e`: `sections/gt-home.liquid` and `assets/gt-site.css` (the portal entry reads «כניסה לעסקים» / «לעסקים», #25; the product floor shadow, #23). `assets/gt-site.js` stays the live one (#22's JS is not in it). Checksums verified 2026-09-27 |
-| Preview (next) | `https://gteveryday.com/?preview_theme_id=186686636273` |
-| Rollback | publish `166730072305` again (the entry as «כניסת לקוחות»). Further back: `162206646513` (no entry), then `131669328113` (`HE-RU Vodoma 2024`) — see §4 |
+| Live theme | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **MAIN** (read 2026-09-27) |
+| Preview | `186698334449` · `GT site — preview 2026-09-27` · unpublished. Duplicated from MAIN on 2026-09-27 and reused: each round re-pushes the whole set |
+| Preview link | `https://gteveryday.com/?preview_theme_id=186698334449` |
+| Superseded | `186686636273` (`כניסה לעסקים`): its two changes, #23 and #25, are on `main` and ship with the next push. It is not to be published. `166741213425` and `166708576497` are older copies of MAIN. None of the three holds anything that `main` or MAIN lacks (compared file by file, 2026-09-27), so all three are safe to delete |
+| Rollback | push the previous set: check out the commit that was live, then run `python3 tools/theme_ship.py push 166730072305 --allow-live` |
 
 ---
 
-## 1. Blockers — the site must not go live while any of these stands
+## 1. Why there is one path
 
-Tom answered four of these on 2026-08-31. His answers are recorded in
-`docs/2026-08-31_decisions.md` with an authority grade, per truth rule 1.
+On 2026-09-27 three merged site PRs (#22, #23, #25) had never reached the live theme. The landing
+pages on it were two PRs behind, and the favicon existed only inside it. There were four causes:
 
-| # | Blocker | State |
-|---|---|---|
-| B1 | `20–30% פחות אלכוהול מאשר לפני עשור` | **Cleared.** The concern was raised — no source exists in any repo — and Tom's decision was to leave the sentence exactly as written. It is now `user_confirmed` rather than unsourced, which is a grade the constitution recognises. Do not re-open it as a finding |
-| B2 | Tom has not opened the preview in a real browser. No Claude session can render the live store | **Open — Tom** |
-| B3 | The wholesale price list is public: the `#pricing` section, 27 of the page's 105 prices | **Scope settled, flip deferred.** Tom 2026-09-02: the switch covers *the price list only* — the recommended per-cup prices and margins stay. He asked that it not be turned off yet, so the default stays on. `show_pricing` in the theme editor does it in one click, both ways, without touching a figure. `U-003` stays open until he flips it |
-| B4 | The About section has no photographs | **Open — Tom** |
-| B5 | `Don't Drink Boring.` in the footer | **Settled.** Deliberate; stays in English |
+- each upload sent only the files its own PR changed;
+- previews were duplicated from whichever theme looked newest;
+- the landing-page outputs (`tools/landing-pages/out/`) were never part of an upload check;
+- publishing swaps the whole theme, so anything set in MAIN after a copy was taken is lost when
+  the copy is published.
 
-None of the remaining three is a correctness failure. B2 and B4 are Tom's to
-supply; B3 is a commercial posture whose mechanism is built, scoped and
-proven in both states — it is now a click Tom makes when he wants it.
+So a change never ships as a subset, and code never ships by publishing a theme.
 
----
+## 2. What the tool guarantees
 
-## 2. Pre-flight — run these and read the output
+- **The whole set, every time.** `layout/gt.liquid`, `sections/gt-home.liquid`,
+  `assets/gt-site.{css,js}`, `templates/index.json`, every file in `tools/landing-pages/out/`, and
+  the images in `theme/assets.manifest.json`. The set is defined once, in `gt_set()`.
+- **Nothing else.** Staging fails if its folder holds any other file, and the push always runs
+  with `--nodelete`, so no other file in the theme is touched.
+- **Admin settings survive.** `config/settings_data.json` holds the favicon and is never in the
+  set. Each template's `sections.main.settings` (on the home page: `show_portal_entry`,
+  `third_party_pixels`, `analytics_id`) is copied from the target theme when the set is staged.
+- **Proof after every push.** It pulls the theme again and compares it with the staged set. Liquid,
+  CSS and JS are compared by md5 (the Admin API's `checksumMd5`). Templates are compared as parsed
+  JSON, because Shopify writes its own header above them. Images are content-addressed and are
+  compared by presence. Anything that differs is printed, and the exit code is 1.
+
+It needs `SHOPIFY_CLI_THEME_TOKEN` (a Theme Access password, set in the environment on
+2026-09-27).
+
+## 3. Shipping a change
 
 ```sh
-cd gt-site
-./tools/build.sh              # rebuilds and validates; fails loudly on a moved anchor
-python3 tools/verify_figures.py   # every figure against the record — must say 0 disagreements
+cd gt-site                          # on the merged main
+./tools/build.sh                    # rebuilds and validates; fails loudly on a moved anchor
+python3 tools/verify_figures.py     # must say 0 disagreements
 python3 tools/sync_figures.py --check
 python3 tools/build_theme.py
-git status --porcelain        # must be empty: the committed build is the build
+git status --porcelain              # must be empty: the committed build is the build
+
+python3 tools/theme_ship.py push 186698334449                  # preview: must end "drift: 0"
+# look at the preview; get Tom's word, and quote it
+python3 tools/theme_ship.py push 166730072305 --allow-live     # live: must end "drift: 0"
 ```
 
-Then confirm on the store, not in a browser — a preview cookie makes a browser
-lie about which theme is live:
+`python3 tools/theme_ship.py check <theme_id>` is the same comparison without the push, and it
+writes nothing. Run it before a push to see what will change.
 
-```
-theme 162206646513 -> role must still be UNPUBLISHED
-theme 131669328113 -> role must still be MAIN
-```
-
-If either has changed since this file was written, **stop** and find out who
-changed it.
-
----
-
-## 3. Publishing
-
-1. Quote Tom's instruction in the session, in writing.
-2. Re-run §2. Green, or stop.
-3. Publish `162206646513` (Shopify Admin → Online Store → Themes → Publish, or
-   `themePublish` on the Admin API).
-4. Confirm `131669328113` has become `UNPUBLISHED` and `162206646513` is `MAIN`.
-5. Tell Tom it is live, with the time.
-
-Do not delete `131669328113`. It is the rollback.
-
----
+**A new preview is needed only if the old one is gone.** Duplicate MAIN, never another theme, and
+do it at the moment you need it:
+`npx -y @shopify/cli@4.8.2 theme duplicate --store greenteaeveryday.myshopify.com --theme <MAIN id> --name '<name>' --force`.
+The tool waits for the copy to finish before it pushes. A push that lands while the copy is still
+running is overwritten by the copy job; that happened on 2026-09-27. The store holds at most 20
+themes. Deleting one is Tom's call.
 
 ## 4. Rollback
 
-Publishing the old theme back is the undo, and it is complete: the old theme was
-never modified.
+Check out the commit that was live before the push, and push its set:
 
+```sh
+git checkout <previous main>
+python3 tools/theme_ship.py push 166730072305 --allow-live
 ```
-publish 131669328113   ->  HE-RU Vodoma 2024 becomes MAIN again
-```
 
-Nothing else needs undoing. The new theme keeps its files and returns to
-UNPUBLISHED. No customer data, no product, no price and no inventory is touched
-by publishing or un-publishing either theme.
+Images are never deleted, so every older page still finds its images. The one thing that does not
+roll back is `website_lead_intake`: it is an Edge Function, not part of the theme, and a lead that
+has already been submitted should stay submitted.
 
-The one thing that does **not** roll back: `website_lead_intake` keeps
-accepting enquiries, because it is an Edge Function and not part of the theme.
-That is correct — a lead already submitted should not be lost by a rollback.
+## 5. The first ten minutes after a live push
 
----
+In this order, because the later checks matter less if an earlier one fails.
 
-## 5. The first ten minutes
-
-In this order, because the later ones matter less if an earlier one fails.
-
-1. **The homepage renders**, on a phone and on a desktop, in a browser with no
-   preview cookie. Use a private window — an ordinary one may still hold the
-   cookie from previewing and will show you the new site either way.
-2. **The enquiry form lands a lead.** Submit a real one and check it appears:
+1. **The homepage renders**, on a phone and on a desktop, in a browser without a preview cookie.
+   Use a private window. An ordinary window may still hold the cookie and will show the preview
+   either way.
+2. **The enquiry form lands a lead.** Submit one and check it:
    ```sql
-   select id, contact_name, phone_e164, created_at
-     from sales_core.lead
-    where source = 'website_form'
-    order by created_at desc limit 5;
+   select id, form_name, created_at from sales_core.lead
+    where source = 'website_form' order by created_at desc limit 5;
    ```
-   Then confirm the alert email arrived. If the row is there and the email is
-   not, the lead is safe — `routeIngest` stores before it alerts, and the poll's
-   sweep retries an alert that failed.
-3. **The store's own routes still work**: a product page, the cart, the account
-   page. They render from the Vodoma layer underneath, so if one is wrong it was
-   wrong before — but check, because customers use them.
-4. **Prices on the page match the record.** Spot-check three: מאצ'ה קוקוס תות
-   ₪44, אייס מאצ'ה מנגו ₪39, דירטי צ'אי ₪32.
-5. **Measurement is reporting.** Load the homepage and check all four; the
-   inventory and the reasoning behind each are in
+   Then confirm the staff alert arrived. If the row is there and the alert is not, the lead is safe:
+   `routeIngest` stores the lead before it alerts, and the poll's sweep retries a failed alert.
+3. **The store's own routes still work:** a product page, the cart, the account page. They render
+   from the theme underneath, so a fault there predates this change, but check anyway, because
+   customers use them.
+4. **No price on the served page**, while `data/site_flags.json` says `show_prices: false`.
+   `curl -sS https://gteveryday.com/ | grep -c '₪'` must print 0.
+5. **Measurement is reporting.** The inventory and the reasoning behind it are in
    `docs/2026-09-02_analytics.md`.
 
    ```sh
    curl -sS https://gteveryday.com/ | grep -oE 'G-[A-Z0-9]+|GTM-[A-Z0-9]+|gtag/js' | sort | uniq -c
    ```
 
-   - `G-QCNXYQR1TR` **once** — it rides the Google & YouTube channel through
-     `content_for_header`. Twice, or any `gtag/js` loader, means someone filled
-     in the `analytics_id` field and every view is being counted twice.
-   - `GTM-TFH9M99` **twice** — the head script and the body `<noscript>`. Our
-     layout replaces the Vodoma one on this page only, so this is the tag that
-     would go missing here and nowhere else.
-   - Submit the enquiry form and watch `window.dataLayer` in the console: a
-     confirmed lead pushes one `generate_lead`. A rejected one pushes nothing.
-   - Shopify's own analytics (`trekkie`) and the store's app pixels come with
-     `content_for_header` and need no check.
+   - `G-QCNXYQR1TR` **once**. It comes through the Google & YouTube channel in
+     `content_for_header`. Seeing it twice, or any `gtag/js` loader, means someone filled in the
+     `analytics_id` field, and every view is being counted twice.
+   - `GTM-TFH9M99` **twice**: the head script and the body `<noscript>`.
+   - A confirmed lead pushes one `generate_lead` to `window.dataLayer`. A rejected one pushes
+     nothing.
 
----
+## 6. Open from the first publish
 
-## 6. Who to tell
+- The About section still has no photographs. That is Tom's to supply (B4 in the first-publish
+  record: `git show 4c45338:PUBLISH.md`).
 
-- **Tom** — first, with the time it went live.
-- **Avi and Alex** — they take leads, and the form now creates them. They should
-  know enquiries will start arriving from a new source (`source = 'website_form'`
-  in the queue) before the first one lands.
-- **Nobody external.** There is no announcement in scope here.
+## 7. What is not automated
 
----
-
-## 7. What is deliberately not automated
-
-Publishing is a single irreversible-feeling action with a one-step undo, and it
-is the one thing on this project that is Tom's alone. There is no script in
-`tools/` that publishes, and there should not be one.
+Choosing to go live is Tom's. The tool pushes only when it is told to, and the CLI refuses the
+live theme unless it is given `--allow-live`.

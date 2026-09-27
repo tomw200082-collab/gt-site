@@ -63,6 +63,64 @@ def main() -> None:
     text = sub("footer contrast", "footer.site{padding:40px 0;font-size:14px;color:#8A8F82;",
                "footer.site{padding:40px 0;font-size:14px;color:#6B7065;", text)
 
+    # ── colour contrast: the rest of the page (UX gate, 2026-09-27) ────
+    # axe after one scroll through the served page: 46 nodes under 4.5:1. Each
+    # colour is darkened by the smallest step that clears AA against its worst
+    # background, as the footer was, so the page keeps its look:
+    #   #9A9F93 (card origins, the catalogue note) on the darkest card #F6D9CF
+    #     was 2.03:1; #60635C is 4.58:1.
+    #   #8a8577 (the form's grey lines, the product window's labels) on the
+    #     paper was 3.47:1; #6b6659, the consent's colour, is 5.4:1.
+    #   the terra eyebrows on the card #F3EFE6 were 3.07:1; #9C5C3C is 4.56:1.
+    #     Only their text: the rule beside them keeps the terra.
+    #   the dimmed second size (opacity .55 on the cards) was 3.34:1; .7 clears it.
+    #   the tools' English names #77796d on white were 4.43:1; #75776B is 4.56:1.
+    n = text.count("color:#9A9F93")
+    if n < 1:
+        die("no color:#9A9F93 left to darken")
+    text = text.replace("color:#9A9F93", "color:#60635C")
+    applied.append(f"contrast #9A9F93 x{n}")
+    n = text.count("color:#8a8577")
+    if n < 1:
+        die("no color:#8a8577 left to darken")
+    text = text.replace("color:#8a8577", "color:#6b6659")
+    applied.append(f"contrast #8a8577 x{n}")
+    text = sub("contrast: eyebrow",
+               "text-transform:uppercase;color:var(--terra);font-weight:800}",
+               "text-transform:uppercase;color:#9C5C3C;font-weight:800}", text)
+    text = sub("contrast: the dimmed size", ".fcard .prow span:last-child{opacity:.55}",
+               ".fcard .prow span:last-child{opacity:.7}", text)
+    text = sub("contrast: tool names", ".tool-card .ti span{font-size:12.5px;color:#77796d}",
+               ".tool-card .ti span{font-size:12.5px;color:#75776B}", text)
+    # the dark Tea 2.0 section dims its small labels to .65: its amber eyebrow was 4.06:1 there; .71 clears it
+    text = sub("contrast: the Tea 2.0 eyebrow",
+               ".tea2 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;font-weight:700}",
+               ".tea2 span{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;font-weight:700}\n"
+               ".tea2 .eyebrow{opacity:.71}", text)
+
+    # ── the modals have names (UX gate, 2026-09-27) ─────────────────────
+    # The product window had no role and no name, and four of the modals'
+    # buttons were a bare glyph to a screen reader. The product window's title
+    # takes focus when it opens (patch_lead_dialog.py), so it is focusable.
+    text = sub("product window: a named modal dialog", '<div class="fmodal" id="fmodal" onclick=',
+               '<div class="fmodal" id="fmodal" role="dialog" aria-modal="true" aria-labelledby="fm-name" onclick=', text)
+    text = sub("product window: its title takes focus", '<h3 id="fm-name"></h3>',
+               '<h3 id="fm-name" tabindex="-1"></h3>', text)
+    text = sub("product window: close", '<button class="x" onclick=',
+               '<button class="x" aria-label="סגירה" onclick=', text)
+    text = sub("recipe card: close", '<button class="cm-x" onclick=',
+               '<button class="cm-x" aria-label="סגירה" onclick=', text)
+    text = sub("recipe card: named", '<div id="cmodal" role="dialog" aria-modal="true">',
+               '<div id="cmodal" role="dialog" aria-modal="true" aria-labelledby="cm-en cm-he">', text)
+    text = sub("gallery: named", '<div id="pmodal" role="dialog" aria-modal="true">',
+               '<div id="pmodal" role="dialog" aria-modal="true" aria-labelledby="pm-title">', text)
+    text = sub("gallery: close", '<button class="pm-x" onclick=',
+               '<button class="pm-x" aria-label="סגירה" onclick=', text)
+    text = sub("gallery: previous", '<button class="pm-nav prev" onclick=',
+               '<button class="pm-nav prev" aria-label="הקודם" onclick=', text)
+    text = sub("gallery: next", '<button class="pm-nav next" onclick=',
+               '<button class="pm-nav next" aria-label="הבא" onclick=', text)
+
     # ── the watermarks are decoration ───────────────────────────────────
     n = text.count('<div class="ghost">')
     if n != 2:
