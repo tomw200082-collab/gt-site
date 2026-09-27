@@ -28,7 +28,8 @@ window first). A click used to scroll the visitor to the form at the bottom of t
 
   Intent travels with the lead.
       data-price links (the slides, the catalogue, the economics card) preselect the first
-      interest option, the full price list, when nothing is chosen. The product window's
+      interest option, the full price list, when nothing is chosen, and closing without
+      sending undoes it, so a later link starts clean. The product window's
       add-to-menu link sends the product's name as the interest when the visitor leaves it
       empty. generate_lead carries lead_cta.
 
@@ -126,6 +127,8 @@ CSS = """
 @media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
 .partner .pf-f{display:grid;gap:6px;min-width:0}
 .partner .pf-f>span{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+/* the form's two grey lines were 3.4:1 on paper (axe); #6b6659, the consent's colour, is 5.3:1 */
+.partner .pf-head span,.partner .pf-alt{color:#6b6659}
 .partner .pf-more summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:14px;font-weight:700;color:var(--gt)}
 .partner .pf-more summary::-webkit-details-marker{display:none}
 .partner .pf-more summary::before{content:'+';width:14px;text-align:center}
@@ -168,7 +171,7 @@ CSS = """
 JS = """<script>
 /* The lead dialog (tools/patch_lead_dialog.py). Every a[href="#contact"] opens #pform in a modal
    dialog; the form moves in and back, so there is one form, one sender and one state. */
-var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldTimer=0,ldDoc=Math.random();
+var LD_CLOSE_MS=2000,ldInv=null,ldCard=null,ldCta='contact',ldCtx='',ldAuto=0,ldTimer=0,ldDoc=Math.random();
 (function(){var o=window.openF;if(o)window.openF=function(c){ldCard=c;return o.apply(this,arguments);};})();
 function ldIn(){var d=document.getElementById('ldlg');return !!(d&&d.open);}
 function ldOpen(a){
@@ -178,7 +181,7 @@ function ldOpen(a){
  ldInv=fm?(ldCard||a):a;
  ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
  ldCtx=fm?document.getElementById('fm-name').textContent.trim():'';
- if(a.hasAttribute('data-price')&&!i.value)i.selectedIndex=1;
+ if(a.hasAttribute('data-price')&&!i.value){i.selectedIndex=1;ldAuto=1;}
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
  d.insertBefore(f,d.querySelector('.ld-bar'));
@@ -191,8 +194,9 @@ function ldOpen(a){
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;
  d.addEventListener('close',function(){
-  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),h=history.state;
+  var f=document.getElementById('pform'),s=document.getElementById('pf-slot'),i=document.getElementById('pf-int'),h=history.state;
   clearTimeout(ldTimer);d.classList.remove('closing');
+  if(ldAuto&&i.selectedIndex===1&&!f.classList.contains('sent'))i.selectedIndex=0;ldAuto=0;
   s.appendChild(f);s.style.height='';
   document.documentElement.classList.remove('cm-lock');
   if(h&&h.gtLead&&h.doc===ldDoc)history.back();

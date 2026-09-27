@@ -1111,6 +1111,8 @@ nav{-webkit-backdrop-filter:blur(10px)}
 @media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
 .partner .pf-f{display:grid;gap:6px;min-width:0}
 .partner .pf-f>span{font-size:13.5px;font-weight:700;color:var(--ink-soft)}
+/* the form's two grey lines were 3.4:1 on paper (axe); #6b6659, the consent's colour, is 5.3:1 */
+.partner .pf-head span,.partner .pf-alt{color:#6b6659}
 .partner .pf-more summary{display:flex;align-items:center;gap:8px;min-height:44px;cursor:pointer;list-style:none;font-size:14px;font-weight:700;color:var(--gt)}
 .partner .pf-more summary::-webkit-details-marker{display:none}
 .partner .pf-more summary::before{content:'+';width:14px;text-align:center}
