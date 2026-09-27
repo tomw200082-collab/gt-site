@@ -14,8 +14,9 @@ Shape taken from the 2026-09-25 customer-portal gate
 
 1. **The lead dialog.** Every lead call-to-action (every `a[href="#contact"]`) now opens the enquiry
    form in a native modal dialog, instead of scrolling the visitor to the form at the bottom. The
-   dialog sends the lead, shows a check and the thanks, and closes itself. The page stays where it
-   was.
+   dialog sends the lead and shows a check and the thanks. The page stays where it was. From round 2
+   the dialog has steps (Tom, 2026-09-27; §9): whether the visitor has a business, the form, then the
+   line that interests them, which opens WhatsApp.
 2. **The call-to-action flow.** There are nineteen links: the nav, the hero, ten hero slides, the
    catalogue, the economics card, the closing banner, the product window's «הוסיפו לתפריט», and
    three flavour cards. The flavour cards open the product window first.
@@ -198,3 +199,75 @@ renders PNGs.
 - Prefer one precise finding over a vague theme.
 - Do not pad. If something is excellent, say so in one line.
 - Do not edit any file. This is read-only, and your report is the deliverable.
+
+## 9. Round 2 (2026-09-27): what changed, and what was decided on round 1
+
+The six round-1 reports are in `reports/`. Round 1 did not pass: A11Y was RED (2 P0), DEVICE and
+INTER were AMBER. Round 2 audits the preview after the commit `77ba29d` on the branch
+`claude/caveman-ponytail-sd3opc`.
+
+### 9.1 Tom's flow (2026-09-27, in writing; settled, do not reopen)
+
+1. **Businesses only.** The form first asks `יש לכם עסק?` (`אנחנו עובדים רק עם עסקים, בסיטונאות.`),
+   with `כן, יש לי עסק` and `לא, לשימוש פרטי`. "No" shows that private buyers get GT at Elita Ofek's
+   shop, with a link to its GT page (`https://elitaofek.co.il/product-category/gt/`) and `חזרה`.
+   Nothing is sent. The answer holds for the visit.
+2. **The details**, as in round 1.
+3. **After a send**, `מה הכי מעניין אתכם?` with five links: `מאצ׳ה`, `אובה`, `צ׳אי מסאלה`,
+   `תמציות תה` and `בניית תפריט משקאות בעסק שלי`. Each opens the lead number's WhatsApp
+   (`wa.me/972547588132`) with `היי, אני מעוניין ב…` already written. The dialog does not close on a
+   timer. It closes when the visitor comes back to the page from WhatsApp.
+4. **No "tasting"** anywhere: the heading is `בקשת מחירון`.
+5. **Out of scope:** the automatic reply that sends the line's menu PDF on WhatsApp. Tom approved it;
+   it is a separate build, and until it is live a person sends it. The copy says only
+   `נשלח לכם את התפריט בוואטסאפ.`
+
+### 9.2 Round-1 findings: fixed
+
+A11Y-01, INTER-03, FLOW-01 and DEV-05 (no timer) · A11Y-02 (the product window is a named modal; its
+title takes focus, and the card takes it back) · A11Y-03 and INTER-02 (each step focuses its
+question; on touch the form focuses its heading) · A11Y-04 and A11Y-05 (the modal buttons are named)
+· A11Y-06 (every failing text colour is darkened by the smallest step that clears 4.5:1) · A11Y-11 ·
+DEV-01 (the grab handle is gone) · VIS-02 (`lead.fits.send`) · INTER-04 · COPY-03.
+
+### 9.3 Round-1 findings: not changed, with the reason (the governor rules on each)
+
+| Finding | Why it stays |
+|---|---|
+| INTER-01 (the product window stays open) | Not reproduced: its link's own `onclick` closes it before the dialog opens (`src/index.html`, `#fmodal a.cta`). Round 2 measures it: `lead.ctas[].fmodalAfter`. |
+| VIS-09 (the step arrows point back) | Already `←` in RTL: `tools/patch_rtl_shell.py`, `.step:not(:last-child):after{…content:'←'}`. |
+| COPY-01 (the About placeholder's alt text) | Not on the page: `tools/patch_claims.py` removes the block. |
+| VIS-01 (photo on the right, form on the left from 880 px) | The product window, which the dialog follows, has its photo on the right too; a visitor on the V3 path sees one arrangement, not two. |
+| DEV-02 (the × on the left) | All four of the page's modals put it on the left (`tools/patch_rtl_shell.py`: `.fmodal .x,.cm-x,.pm-x{right:auto;left:22px}`); the dialog matches them. |
+| COPY-02 (`אני מעוניין` is masculine) | Tom's own voice: his WhatsApp message is `היי, אני מעוניין ב…`. |
+| DEV-04 (landscape keyboard over the send button) | Inferred, not observed; a lead form in landscape on a phone is rare. Accepted as a P1 until a device shows it. |
+| A11Y-07 (heading order) | Pre-existing across 29 card titles; the fix is the page's heading outline, not this work. Accepted as a P1. |
+| P2s not listed in §9.2 | Deferred to the report. |
+
+### 9.4 New evidence (the harness, extended)
+
+- Shots: `-lead-02-open` is now the business question; `-lead-02b-form` is the form after `כן`
+  (every viewport); `-lead-06-private` is the private-buyer answer (p390, d1360). `-lead-04-sent` is
+  the thanks and the five lines; `-lead-05-after-close` is the page after the visitor came back.
+- Facts: `lead.ask` (the two answers: label, height, on screen), `lead.form`, `lead.fits.send`,
+  `lead.steps` (no, back, yes, reopen; `sends` must be 0), `lead.replies.ok` (`stayedOpen`,
+  `focusSent`, `lines[]` with each link's target and message, `openWhileAway`, `closedOnReturn`,
+  `y2`), `lead.ctas[]` (`fmodalFocus`, `fmodalAfter`), `lead.noJs` and `lead.deepLink` (`asks`,
+  `fieldsShown`).
+- The harness cannot hide a page. It records `openWhileAway` after the WhatsApp page opens, then
+  signals the page hidden and visible again, which is what a phone does when the visitor switches back.
+
+### 9.5 Tasks added to §6
+
+| Task | The visitor and what they do |
+|---|---|
+| V11 | A private buyer: opens the dialog, answers no, understands that GT sells only to businesses, reaches Elita Ofek's GT page. Nothing reaches sales. |
+| V12 | After a send: picks a line, WhatsApp opens with the message written; coming back, the dialog is gone and the page is where it was. |
+
+V1 now starts with `כן, יש לי עסק`. V6 reopens to the thanks and the five lines.
+
+### 9.6 What each dimension does in round 2
+
+1. For each of your round-1 findings: FIXED, OPEN or ACCEPTED (§9.3), with the evidence that shows it.
+2. Audit the new steps (§9.1) in your dimension, V11 and V12 included.
+3. Report in the §8 shape, with only the findings that are open now.

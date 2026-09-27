@@ -1160,8 +1160,10 @@ nav{-webkit-backdrop-filter:blur(10px)}
 #ldlg .ld-pic{display:none}
 @media(min-width:880px){
  #ldlg{max-width:820px;border-top:0}
- #ldlg[open]{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+ #ldlg[open]{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);min-height:min(520px,92dvh)}
  #ldlg .ld-pic{display:block;background:var(--ld-tint,var(--gt)) center/cover no-repeat}
+ /* one card height for every step: the short ones sit in the middle, so answering does not resize it */
+ #ldlg .ld-main{display:flex;flex-direction:column;justify-content:center}
 }
 #ldlg .btn:active{transform:scale(.98)}
 /* short phones (iPhone SE, 320x640): a tighter rhythm, so the consent and the button are on the first screen */
