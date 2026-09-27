@@ -203,7 +203,7 @@ renders PNGs.
 ## 9. Round 2 (2026-09-27): what changed, and what was decided on round 1
 
 The six round-1 reports are in `reports/`. Round 1 did not pass: A11Y was RED (2 P0), DEVICE and
-INTER were AMBER. Round 2 audits the preview after the commit `77ba29d` on the branch
+INTER were AMBER. Round 2 audits the preview built from `8cf918d` on the branch
 `claude/caveman-ponytail-sd3opc`.
 
 ### 9.1 Tom's flow (2026-09-27, in writing; settled, do not reopen)
@@ -217,8 +217,14 @@ INTER were AMBER. Round 2 audits the preview after the commit `77ba29d` on the b
    `תמציות תה` and `בניית תפריט משקאות בעסק שלי`. Each opens the lead number's WhatsApp
    (`wa.me/972547588132`) with `היי, אני מעוניין ב…` already written. The dialog does not close on a
    timer. It closes when the visitor comes back to the page from WhatsApp.
-4. **No "tasting"** anywhere: the heading is `בקשת מחירון`.
-5. **Out of scope:** the automatic reply that sends the line's menu PDF on WhatsApp. Tom approved it;
+4. **No "tasting"** anywhere.
+5. **Partnership, not a price list** (Tom, 2026-09-27, in writing: `כפתור שהוא מעבר למחירון, שהוא מוביל
+   לשותפות עסקית ביחד ותחילת עבודה איתנו`). The page's five lead links and the dialog's heading read
+   `בואו נעבוד יחד`; each hero slide's link reads `הוסיפו לתפריט`, as the product window's does, and sends
+   its collection as the interest. The contact line and the closing banner speak of building the drinks
+   menu together. No link preselects the price list, and the optional interest list no longer offers it.
+   The words are the session's; COPY judges them (gate record §5.5, U-24 and U-25).
+6. **Out of scope:** the automatic reply that sends the line's menu PDF on WhatsApp. Tom approved it;
    it is a separate build, and until it is live a person sends it. The copy says only
    `נשלח לכם את התפריט בוואטסאפ.`
 
@@ -228,7 +234,8 @@ A11Y-01, INTER-03, FLOW-01 and DEV-05 (no timer) · A11Y-02 (the product window 
 title takes focus, and the card takes it back) · A11Y-03 and INTER-02 (each step focuses its
 question; on touch the form focuses its heading) · A11Y-04 and A11Y-05 (the modal buttons are named)
 · A11Y-06 (every failing text colour is darkened by the smallest step that clears 4.5:1) · A11Y-11 ·
-DEV-01 (the grab handle is gone) · VIS-02 (`lead.fits.send`) · INTER-04 · COPY-03.
+DEV-01 (the grab handle is gone) · VIS-02 (`lead.fits.send`) · INTER-04 · COPY-03 · COPY-02 and FLOW-03
+(one voice: §9.1 item 5).
 
 ### 9.3 Round-1 findings: not changed, with the reason (the governor rules on each)
 
@@ -239,7 +246,6 @@ DEV-01 (the grab handle is gone) · VIS-02 (`lead.fits.send`) · INTER-04 · COP
 | COPY-01 (the About placeholder's alt text) | Not on the page: `tools/patch_claims.py` removes the block. |
 | VIS-01 (photo on the right, form on the left from 880 px) | The product window, which the dialog follows, has its photo on the right too; a visitor on the V3 path sees one arrangement, not two. |
 | DEV-02 (the × on the left) | All four of the page's modals put it on the left (`tools/patch_rtl_shell.py`: `.fmodal .x,.cm-x,.pm-x{right:auto;left:22px}`); the dialog matches them. |
-| COPY-02 (`אני מעוניין` is masculine) | Tom's own voice: his WhatsApp message is `היי, אני מעוניין ב…`. |
 | DEV-04 (landscape keyboard over the send button) | Inferred, not observed; a lead form in landscape on a phone is rare. Accepted as a P1 until a device shows it. |
 | A11Y-07 (heading order) | Pre-existing across 29 card titles; the fix is the page's heading outline, not this work. Accepted as a P1. |
 | P2s not listed in §9.2 | Deferred to the report. |
