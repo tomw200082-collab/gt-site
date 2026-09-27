@@ -26,6 +26,11 @@ window first). A click used to scroll the visitor to the form at the bottom of t
       intake's two silent drops (honeypot, too fast) answer {ok:true} without was_new. After a
       success the dialog shows a check and the thanks, then closes itself after LD_CLOSE_MS.
 
+  The dialog wears the drink it was opened from.
+      A hero slide lends its photo and colour, the product window its product, and every other
+      link the hero's bottles: the colour on the phone sheet's rim, the photo beside the form
+      from 880px. On a mouse-and-keyboard screen the first field is focused on open.
+
   Intent travels with the lead.
       data-price links (the slides, the catalogue, the economics card) preselect the first
       interest option, the full price list, when nothing is chosen, and closing without
@@ -108,11 +113,11 @@ FIELDS_NEW = (
 # inside <noscript>, so that without JavaScript the revealed-on-scroll blocks (.rv) are visible,
 # #contact's phone, WhatsApp and mail links among them.
 SHELL = (
-    '<dialog id="ldlg" aria-labelledby="ld-h">'
+    '<dialog id="ldlg" aria-labelledby="ld-h"><div class="ld-pic" aria-hidden="true"></div><div class="ld-main">'
     '<span class="ld-grab" aria-hidden="true"></span>'
     '<button class="ld-x" type="button" aria-label="סגירה">✕</button>'
     '<span class="ld-bar" aria-hidden="true"></span>'
-    '</dialog>\n'
+    '</div></dialog>\n'
     '<noscript><style media="all">.rv{opacity:1;transform:none}</style></noscript>\n'
 )
 
@@ -139,6 +144,16 @@ CSS = """
  background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
 #ldlg::backdrop{background:rgba(24,26,22,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 @media(min-width:640px){#ldlg{margin:auto;max-width:480px;border-radius:26px;box-shadow:0 40px 90px -30px rgba(24,26,22,.55)}}
+/* the dialog wears the drink it was opened from: its colour on the sheet's rim, and from 880px its
+   photo beside the form, the way the product window pairs photo and text */
+#ldlg{border-top:6px solid var(--ld-tint,var(--gt))}
+#ldlg .ld-pic{display:none}
+@media(min-width:880px){
+ #ldlg{max-width:820px;border-top:0}
+ #ldlg[open]{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+ #ldlg .ld-pic{display:block;background:var(--ld-tint,var(--gt)) center/cover no-repeat}
+}
+#ldlg .btn:active{transform:scale(.98)}
 #ldlg[open]{animation:ld-up .32s cubic-bezier(.2,.8,.25,1)}
 #ldlg[open]::backdrop{animation:ld-fade .32s ease}
 @keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
@@ -182,14 +197,19 @@ function ldOpen(a){
  ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
  ldCtx=fm?document.getElementById('fm-name').textContent.trim():'';
  if(a.hasAttribute('data-price')&&!i.value){i.selectedIndex=1;ldAuto=1;}
+ var h=document.querySelector('img[fetchpriority="high"]');
+ d.querySelector('.ld-pic').style.backgroundImage=sl?(sl.dataset.hsbg?'url("'+sl.dataset.hsbg+'")':sl.style.getPropertyValue('--hsbg'))
+  :'url("'+(fm?document.getElementById('fm-img').currentSrc:h?h.currentSrc:'')+'")';
+ d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
- d.insertBefore(f,d.querySelector('.ld-bar'));
+ d.querySelector('.ld-bar').before(f);
  d.style.setProperty('--ld-close',LD_CLOSE_MS+'ms');
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  document.documentElement.classList.add('cm-lock');
  history.pushState({gtLead:1,doc:ldDoc},'');
  d.showModal();d.scrollTop=0;
+ if(!f.classList.contains('sent')&&matchMedia('(pointer:fine)').matches)document.getElementById('pf-name').focus({preventScroll:true});
  return true;}
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}
 (function(){var d=document.getElementById('ldlg');if(!d||!d.showModal)return;

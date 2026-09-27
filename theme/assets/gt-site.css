@@ -1123,6 +1123,16 @@ nav{-webkit-backdrop-filter:blur(10px)}
  background:var(--paper);color:var(--ink);border-radius:26px 26px 0 0;box-shadow:0 -18px 60px -20px rgba(24,26,22,.45);overflow:auto;overscroll-behavior:contain}
 #ldlg::backdrop{background:rgba(24,26,22,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 @media(min-width:640px){#ldlg{margin:auto;max-width:480px;border-radius:26px;box-shadow:0 40px 90px -30px rgba(24,26,22,.55)}}
+/* the dialog wears the drink it was opened from: its colour on the sheet's rim, and from 880px its
+   photo beside the form, the way the product window pairs photo and text */
+#ldlg{border-top:6px solid var(--ld-tint,var(--gt))}
+#ldlg .ld-pic{display:none}
+@media(min-width:880px){
+ #ldlg{max-width:820px;border-top:0}
+ #ldlg[open]{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+ #ldlg .ld-pic{display:block;background:var(--ld-tint,var(--gt)) center/cover no-repeat}
+}
+#ldlg .btn:active{transform:scale(.98)}
 #ldlg[open]{animation:ld-up .32s cubic-bezier(.2,.8,.25,1)}
 #ldlg[open]::backdrop{animation:ld-fade .32s ease}
 @keyframes ld-up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
