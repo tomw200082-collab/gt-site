@@ -1121,6 +1121,7 @@ nav{-webkit-backdrop-filter:blur(10px)}
    the line that interests them; each step shows the heading and itself only */
 .partner .pf-ask,.partner .pf-priv,.partner .pf-pick{display:none}
 .partner.ask>*:not(.pf-head):not(.pf-ask),.partner.priv>*:not(.pf-head):not(.pf-priv){display:none}
+.partner.priv .pf-head span{display:none}
 .partner.ask .pf-ask,.partner.priv .pf-priv,.partner.sent .pf-pick{display:grid;gap:12px}
 .partner .pf-q{margin:0 0 4px}
 .partner .pf-q b{display:block;font-size:20px;font-weight:800;line-height:1.3}

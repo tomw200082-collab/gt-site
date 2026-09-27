@@ -128,7 +128,7 @@ ASK = (
     '<span>אנחנו עובדים רק עם עסקים, בסיטונאות.</span></p>\n'
     '      <button class="btn" type="button" data-biz="1">כן, יש לי עסק</button>'
     '<button class="btn" type="button" data-biz="0">לא, לשימוש פרטי</button></div>\n'
-    '    <div class="pf-priv"><p class="pf-q" id="pf-priv-q" tabindex="-1">'
+    '    <div class="pf-priv"><p class="pf-q" id="pf-priv-q" tabindex="-1"><b>אנחנו עובדים רק עם עסקים.</b>'
     '<span>ללקוחות פרטיים, המוצרים שלנו נמכרים באתר של אליטה אופק.</span></p>\n'
     '      <a class="btn" href="https://elitaofek.co.il/product-category/gt/" target="_blank" rel="noopener">'
     'למוצרי GT אצל אליטה אופק <span class="arr" aria-hidden="true">←</span></a>'
@@ -181,6 +181,7 @@ CSS = """
    the line that interests them; each step shows the heading and itself only */
 .partner .pf-ask,.partner .pf-priv,.partner .pf-pick{display:none}
 .partner.ask>*:not(.pf-head):not(.pf-ask),.partner.priv>*:not(.pf-head):not(.pf-priv){display:none}
+.partner.priv .pf-head span{display:none}
 .partner.ask .pf-ask,.partner.priv .pf-priv,.partner.sent .pf-pick{display:grid;gap:12px}
 .partner .pf-q{margin:0 0 4px}
 .partner .pf-q b{display:block;font-size:20px;font-weight:800;line-height:1.3}
