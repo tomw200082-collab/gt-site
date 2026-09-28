@@ -206,6 +206,8 @@ jobs:
               fail.append('analytics_id must exist and must default to empty')
           if 'generate_lead' not in js:
               fail.append('the enquiry form no longer reports a conversion')
+          if 'generate_lead' not in open('tools/landing-pages/out/gt-lp.js', encoding='utf-8').read():
+              fail.append('the landing pages form no longer reports a conversion')
           for f in fail:
               print(f'::error::{f}')
           sys.exit(1 if fail else 0)

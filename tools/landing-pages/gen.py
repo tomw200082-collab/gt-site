@@ -38,6 +38,11 @@ def dim(asset):
 geresh = lambda s: re.sub(r"(?<=[\u05d0-\u05ea])'", "\u05f3", s)
 esc = lambda s: html.escape(geresh(s), quote=True)
 WA = "972543982444"
+# The lead line (Sales-Machine D-014): an ad's visitor who taps WhatsApp enters the lead journey
+# with the same ready text as the home page's lines, so the page's menu is recognised
+# (D-032, Tom 2026-09-28; U-032: acquisition surfaces point at the lead line). Calls stay on WA.
+WA_LEAD = "972547588132"
+LEAD_LINE = {"chai": "צ׳אי מסאלה", "matcha": "מאצ׳ה", "iced-tea": "תמציות תה", "ube": "אובה"}
 # Where the form sends a lead: the public intake the home page's enquiry form
 # already uses (gt-factory-os supabase/functions/website_lead_intake). It files
 # the lead in sales_core — the sales team's queue — and emails them. The
@@ -185,8 +190,8 @@ def build(slug, cfg):
     ds = [d for d in D if d['page'] == cfg['key']]
     cards = "".join(card(d) for d in ds)
     p = cfg['prod']
-    wa = f"https://wa.me/{WA}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
-        geresh(f"היי, הגעתי מהעמוד על {cfg['key']} באתר ואשמח לקבל את המחירון"))
+    wa = f"https://wa.me/{WA_LEAD}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
+        f"היי, אני מעוניין ב{LEAD_LINE[slug]}")
     # The ledger's third cell: the cheapest cup on the page, or with prices off,
     # how many cups the product pours.
     third = ((f"₪{min(float(d['cost']) for d in ds):.2f}", "עלות המנה הנמוכה כאן")
@@ -215,7 +220,7 @@ def build(slug, cfg):
 """
 
     siblings = "".join(
-        f'<a href="/pages/{o}">{esc(PAGES[o]["key"])}</a>'
+        f'<a href="{{% if template.name == \'index\' %}}/?view={o}{{% else %}}/pages/{o}{{% endif %}}">{esc(PAGES[o]["key"])}</a>'
         for o in PAGES if o != slug)
 
     extra = ""
@@ -322,12 +327,12 @@ def build(slug, cfg):
         <h2 class="g-display">בואו נהיה <em>שותפים.</em></h2>
         <p>המחירון הסיטונאי, המתכונים המתומחרים והתאמה לתפריט שלכם. חוזרים תוך יום עסקים אחד.</p>
         <ul class="g-contact">
-          <li><a href="{wa}" target="_blank" rel="noopener">וואטסאפ · 054-398-2444</a></li>
+          <li><a href="{wa}" target="_blank" rel="noopener">וואטסאפ · 054-758-8132</a></li>
           <li><a href="tel:+{WA}">חייגו · 054-398-2444</a></li>
           <li>הלהב 15, חולון · info@gteveryday.com</li>
         </ul>
       </div>
-      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | default: '{INTAKE}' | escape }}}}" data-source="site-{slug}" data-wa="{WA}" novalidate>
+      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | default: '{INTAKE}' | escape }}}}" data-source="site-{slug}" data-wa="{WA_LEAD}" novalidate>
         <div class="g-f-row">
           <label><span>שם העסק</span><input name="display_name" required autocomplete="organization"></label>
           <label><span>שם מלא</span><input name="contact_name" required autocomplete="name"></label>

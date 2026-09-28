@@ -78,7 +78,10 @@
       payload.city ? 'עיר: ' + payload.city : '',
       payload.email ? 'אימייל: ' + payload.email : ''
     ].filter(Boolean).join('\n');
-    window.open('https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines), '_blank', 'noopener');
+    var url = 'https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines);
+    // A popup opened seconds after the tap is blocked, so the details also stay one tap away.
+    window.open(url, '_blank', 'noopener');
+    return url;
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp form'), function (f) {
@@ -115,15 +118,30 @@
       btn.disabled = true;
       say('שולחים…', false);
 
-      fetch(f.dataset.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      // The intake answers {ok:true} with no was_new when it drops a send as a bot (under
+      // 3 s, or the hidden field filled): hold the send past 3 s, and thank only a reply that
+      // stored the lead, as the home page's form does. A stalled connection fails at 15 s.
+      var ctl = window.AbortController ? new AbortController() : null;
+      new Promise(function (ok) { setTimeout(ok, Math.max(0, 3050 - performance.now())); }).then(function () {
+        payload.elapsed_ms = Math.round(performance.now());
+        var t = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+        return fetch(f.dataset.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: ctl ? ctl.signal : undefined
+        }).then(function (r) { clearTimeout(t); return r; }, function (e) { clearTimeout(t); throw e; });
       }).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
-          if (r.ok && j.ok !== false) {
+          if (r.ok && j.ok === true && 'was_new' in j) {
             f.reset();
             say('תודה — קיבלנו. נחזור אליכם תוך יום עסקים אחד.', false);
+            // the conversion, with no personal data (as the home page's pfTrack)
+            try {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: 'generate_lead', form: 'landing-' + f.dataset.source, lead_cta: 'lp' });
+              if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'landing-' + f.dataset.source });
+            } catch (e) {}
             return;
           }
           // A typo is the visitor's to fix, not a reason to leave for WhatsApp.
@@ -133,7 +151,9 @@
         });
       }).catch(function () {
         say('השליחה נכשלה. פותחים וואטסאפ עם הפרטים כדי שלא ילכו לאיבוד.', true);
-        waFallback(f, payload);
+        var a = document.createElement('a');
+        a.href = waFallback(f, payload); a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'וואטסאפ';
+        msg.appendChild(document.createTextNode(' ')); msg.appendChild(a);
       }).then(function () {
         btn.disabled = false;
       });

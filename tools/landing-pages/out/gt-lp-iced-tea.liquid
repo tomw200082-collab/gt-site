@@ -18,7 +18,7 @@
       <p class="g-promise">תמציות תה מוכנות למזיגה. 50 מ״ל על קרח, משלימים במים או בסודה, והמשקה מוכן. בקבוק סגור לא תופס מקום במקרר.</p>
       <div class="g-ctas">
         <a class="g-btn" href="#g-lp-form">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></a>
-        <a class="g-btn g-ghost" href="https://wa.me/972543982444?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%AA%D7%94%20%D7%A7%D7%A8%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F" target="_blank" rel="noopener">וואטסאפ <span class="g-arr" aria-hidden="true">←</span></a>
+        <a class="g-btn g-ghost" href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%AA%D7%9E%D7%A6%D7%99%D7%95%D7%AA%20%D7%AA%D7%94" target="_blank" rel="noopener">וואטסאפ <span class="g-arr" aria-hidden="true">←</span></a>
       </div>
     </div>
     <div class="g-ledger">
@@ -331,12 +331,12 @@
         <h2 class="g-display">בואו נהיה <em>שותפים.</em></h2>
         <p>המחירון הסיטונאי, המתכונים המתומחרים והתאמה לתפריט שלכם. חוזרים תוך יום עסקים אחד.</p>
         <ul class="g-contact">
-          <li><a href="https://wa.me/972543982444?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%A2%D7%9E%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%AA%D7%94%20%D7%A7%D7%A8%20%D7%91%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F" target="_blank" rel="noopener">וואטסאפ · 054-398-2444</a></li>
+          <li><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%AA%D7%9E%D7%A6%D7%99%D7%95%D7%AA%20%D7%AA%D7%94" target="_blank" rel="noopener">וואטסאפ · 054-758-8132</a></li>
           <li><a href="tel:+972543982444">חייגו · 054-398-2444</a></li>
           <li>הלהב 15, חולון · info@gteveryday.com</li>
         </ul>
       </div>
-      <form class="g-fade-up" data-endpoint="{{ section.settings.lead_webhook | default: 'https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake' | escape }}" data-source="site-iced-tea" data-wa="972543982444" novalidate>
+      <form class="g-fade-up" data-endpoint="{{ section.settings.lead_webhook | default: 'https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_intake' | escape }}" data-source="site-iced-tea" data-wa="972547588132" novalidate>
         <div class="g-f-row">
           <label><span>שם העסק</span><input name="display_name" required autocomplete="organization"></label>
           <label><span>שם מלא</span><input name="contact_name" required autocomplete="name"></label>
@@ -358,7 +358,7 @@
 
   <nav class="g-siblings" aria-label="עוד מ־GT">
     <span>עוד מ־GT</span>
-    <a href="/pages/chai">צ׳אי</a><a href="/pages/matcha">מאצ׳ה</a><a href="/pages/ube">אובה</a>
+    <a href="{% if template.name == 'index' %}/?view=chai{% else %}/pages/chai{% endif %}">צ׳אי</a><a href="{% if template.name == 'index' %}/?view=matcha{% else %}/pages/matcha{% endif %}">מאצ׳ה</a><a href="{% if template.name == 'index' %}/?view=ube{% else %}/pages/ube{% endif %}">אובה</a>
   </nav>
 
   <a class="g-sticky" href="#g-lp-form">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></a>
