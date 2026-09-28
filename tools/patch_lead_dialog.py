@@ -165,6 +165,10 @@ CSS = """
    ==================================================================== */
 /* the closing call-to-action: the decorative GT behind it was painted over the button and took its taps */
 .bigcta .ghost{pointer-events:none}
+/* the hero's two calls-to-action stack on a phone whatever the font: side by side they fit only in the
+   fallback font, so the web font's arrival wrapped the second and moved the page below it
+   (CLS 0.1975 at 390 px on the preview, 2026-09-28; the live page, with a shorter button, 0.0038) */
+@media(max-width:440px){.hero .ctas{flex-direction:column;align-items:flex-start}}
 /* the form: visible labels; the four required fields first, the rest behind one disclosure */
 .partner .pf-req{display:grid;gap:14px}
 @media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
