@@ -321,6 +321,8 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 #faq summary::after{content:"+";position:absolute;right:2px;top:-2px;font-size:22px;color:#B0793B}
 #faq details[open] summary::after{content:"–"}
 #faq details p{margin-top:10px;font-size:14.5px;line-height:1.65;color:#4c4a3f}
+#faq .faq-sub{margin-top:12px;font-size:16px;line-height:1.6;color:var(--ink-soft)}
+#faq .faq-group{margin:40px 0 4px;font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--terra)}
 .fmodal .makes h6{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6b6659;margin:2px 0 8px;font-weight:700}
 .fmodal .mk{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #EFE9DC;font-size:14px}
 .fmodal .mk i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap}
