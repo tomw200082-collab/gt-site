@@ -133,7 +133,7 @@ ASK = (
     '<button class="pf-back" type="button" data-biz="">חזרה</button></div>\n'
 )
 WA_LEAD = "https://wa.me/972547588132?text="
-LINES = ["מאצ׳ה", "אובה", "צ׳אי מסאלה", "תמציות תה", "בניית תפריט משקאות בעסק שלי"]
+LINES = ["מאצ׳ה", "אובה", "צ׳אי מסאלה", "תמציות תה", "בניית תפריט משקאות עשיר ורווחי לעסק"]
 
 
 def line(name: str) -> str:
