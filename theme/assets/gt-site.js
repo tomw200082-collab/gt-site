@@ -662,20 +662,21 @@ function ldGrow(change){
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot');
  if(!d||!d.showModal||d.open)return false;
- var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');
- ldInv=fm?(ldCard||a):a;
+ var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide'),cm=a.closest('#cmodal'),pm=a.closest('#pmodal'),ci=cm&&document.querySelector('#cm-visual img'),ph=pm&&pmCard&&pmCard.querySelector('h4');
+ ldInv=fm?(ldCard||a):cm?(document.querySelector('.ccard[data-ci="'+cmC+'"]')||a):pm?(pmCard||a):a;
  ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
- ldCtx=fm?document.getElementById('fm-name').textContent.trim():sl?sl.querySelector('.hs-h').textContent.trim():'';
+ ldCtx=fm?document.getElementById('fm-name').textContent.trim():sl?sl.querySelector('.hs-h').textContent.trim():cm?document.getElementById('cm-en').textContent.trim():ph?ph.textContent.trim():'';
  var h=document.querySelector('img[fetchpriority="high"]');
  d.querySelector('.ld-pic').style.backgroundImage=sl?(sl.dataset.hsbg?'url("'+sl.dataset.hsbg+'")':sl.style.getPropertyValue('--hsbg'))
-  :'url("'+(fm?document.getElementById('fm-img').currentSrc:h?h.currentSrc:'')+'")';
- d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');
+  :'url("'+(fm?document.getElementById('fm-img').currentSrc:ci?ci.currentSrc:pm?document.getElementById('pm-img').currentSrc:h?h.currentSrc:'')+'")';
+ d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||(cm&&document.getElementById('cm-head').style.background)||(pm&&pmCard&&pmCard.style.backgroundColor)||'var(--gt)');
+ if(cm)cm.classList.remove('open');
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
  d.querySelector('.ld-main').appendChild(f);
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  document.documentElement.classList.add('cm-lock');
- history[history.state&&history.state.gtWin&&history.state.doc===cmDoc?'replaceState':'pushState']({gtLead:1,doc:ldDoc},'');
+ history[history.state&&(history.state.gtWin||history.state.gtRecipe)&&history.state.doc===cmDoc?'replaceState':'pushState']({gtLead:1,doc:ldDoc},'');
  d.showModal();d.scrollTop=0;ldStep(f);
  return true;}
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}

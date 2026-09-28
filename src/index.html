@@ -1249,6 +1249,13 @@ html{scroll-padding-top:124px}
 .partner [aria-invalid="true"]{border-color:#7A2E1E;box-shadow:0 0 0 1px #7A2E1E}
 .partner.sent>*:not(.pf-head):not(.pf-done):not(.ld-check):not(.pf-pick){display:none}
 .partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
+/* the recipe card and the gallery: one tap to add the drink to the menu (FLOW-07) */
+#cmodal .cm-stats{display:flex;align-items:center;background:#fff}
+#cmodal .cm-stats>div{flex:1 1 0;min-width:0}
+#cmodal .cm-stats>.cta,#pmodal .pm-body>.cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:#20241F;color:#fff;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+#cmodal .cm-stats>.cta{margin:6px 14px}
+#pmodal .pm-body>.cta{margin-top:16px}
+#cmodal .cm-stats>.cta:hover,#pmodal .pm-body>.cta:hover{background:#000}
 /* the lines wrap: the page keeps WhatsApp links on one line for phone numbers, and at 390 px the
    fifth line ran past its pill */
 .partner .pf-lines a{white-space:normal}
@@ -1686,6 +1693,7 @@ document.querySelectorAll('.rv').forEach(el=>{var r=el.getBoundingClientRect();i
     <h3 id="pm-title" tabindex="-1"></h3>
     <div class="sub" id="pm-sub"></div>
     <div class="pm-list" id="pm-list"></div>
+    <a class="cta" href="#contact" data-cta="puree" onclick="document.getElementById('pmodal').classList.remove('open')">הוסיפו לתפריט <span class="arr" aria-hidden="true">←</span></a>
   </div>
  </div>
 </div>
@@ -1711,6 +1719,7 @@ document.querySelectorAll('.rv').forEach(el=>{var r=el.getBoundingClientRect();i
     <div><i>מחיר מומלץ · כולל מע״מ</i><b id="cm-p"></b></div>
     <div><i>רווחיות</i><b id="cm-m"></b></div>
     <div><i>רווח לכוס</i><b id="cm-pr"></b></div>
+    <a class="cta" href="#contact" data-cta="recipe">הוסיפו לתפריט <span class="arr" aria-hidden="true">←</span></a>
   </div>
   <div class="cm-nav">
     <button id="cm-prev" onclick="cmGo(-1)">→ הקודם</button>
@@ -2373,20 +2382,21 @@ function ldGrow(change){
 function ldOpen(a){
  var d=document.getElementById('ldlg'),f=document.getElementById('pform'),s=document.getElementById('pf-slot');
  if(!d||!d.showModal||d.open)return false;
- var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');
- ldInv=fm?(ldCard||a):a;
+ var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide'),cm=a.closest('#cmodal'),pm=a.closest('#pmodal'),ci=cm&&document.querySelector('#cm-visual img'),ph=pm&&pmCard&&pmCard.querySelector('h4');
+ ldInv=fm?(ldCard||a):cm?(document.querySelector('.ccard[data-ci="'+cmC+'"]')||a):pm?(pmCard||a):a;
  ldCta=(a.getAttribute('data-cta')||'link')+(sl?'-'+([].indexOf.call(sl.parentNode.children,sl)+1):'');
- ldCtx=fm?document.getElementById('fm-name').textContent.trim():sl?sl.querySelector('.hs-h').textContent.trim():'';
+ ldCtx=fm?document.getElementById('fm-name').textContent.trim():sl?sl.querySelector('.hs-h').textContent.trim():cm?document.getElementById('cm-en').textContent.trim():ph?ph.textContent.trim():'';
  var h=document.querySelector('img[fetchpriority="high"]');
  d.querySelector('.ld-pic').style.backgroundImage=sl?(sl.dataset.hsbg?'url("'+sl.dataset.hsbg+'")':sl.style.getPropertyValue('--hsbg'))
-  :'url("'+(fm?document.getElementById('fm-img').currentSrc:h?h.currentSrc:'')+'")';
- d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');
+  :'url("'+(fm?document.getElementById('fm-img').currentSrc:ci?ci.currentSrc:pm?document.getElementById('pm-img').currentSrc:h?h.currentSrc:'')+'")';
+ d.style.setProperty('--ld-tint',(sl&&sl.getAttribute('data-bg'))||(fm&&ldCard&&ldCard.style.backgroundColor)||(cm&&document.getElementById('cm-head').style.background)||(pm&&pmCard&&pmCard.style.backgroundColor)||'var(--gt)');
+ if(cm)cm.classList.remove('open');
  s.style.height=f.offsetHeight+'px';
  f.classList.add('on');
  d.querySelector('.ld-main').appendChild(f);
  if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
  document.documentElement.classList.add('cm-lock');
- history[history.state&&history.state.gtWin&&history.state.doc===cmDoc?'replaceState':'pushState']({gtLead:1,doc:ldDoc},'');
+ history[history.state&&(history.state.gtWin||history.state.gtRecipe)&&history.state.doc===cmDoc?'replaceState':'pushState']({gtLead:1,doc:ldDoc},'');
  d.showModal();d.scrollTop=0;ldStep(f);
  return true;}
 function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();}

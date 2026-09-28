@@ -163,6 +163,13 @@ html{scroll-padding-top:124px}
 .partner [aria-invalid="true"]{border-color:#7A2E1E;box-shadow:0 0 0 1px #7A2E1E}
 .partner.sent>*:not(.pf-head):not(.pf-done):not(.ld-check):not(.pf-pick){display:none}
 .partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
+/* the recipe card and the gallery: one tap to add the drink to the menu (FLOW-07) */
+#cmodal .cm-stats{display:flex;align-items:center;background:#fff}
+#cmodal .cm-stats>div{flex:1 1 0;min-width:0}
+#cmodal .cm-stats>.cta,#pmodal .pm-body>.cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:#20241F;color:#fff;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+#cmodal .cm-stats>.cta{margin:6px 14px}
+#pmodal .pm-body>.cta{margin-top:16px}
+#cmodal .cm-stats>.cta:hover,#pmodal .pm-body>.cta:hover{background:#000}
 /* the lines wrap: the page keeps WhatsApp links on one line for phone numbers, and at 390 px the
    fifth line ran past its pill */
 .partner .pf-lines a{white-space:normal}
@@ -299,6 +306,31 @@ def main() -> None:
         sys.exit(f"FAIL [patch_keyboard]: collection photos: expected 10, found {n}")
     text = re.sub(r'(<img class="cimg"[^>]*?) alt="[^"]*"', r'\1 alt=""', text)
     applied.append("collection photos: the card's heading names it")
+    # ── FLOW-07: the recipe card and the gallery get the add-to-menu link the product window has ──
+    text = sub("recipe card: add to the menu", '    <div><i>רווח לכוס</i><b id="cm-pr"></b></div>\n  </div>',
+               '    <div><i>רווח לכוס</i><b id="cm-pr"></b></div>\n'
+               '    <a class="cta" href="#contact" data-cta="recipe">הוסיפו לתפריט <span class="arr" aria-hidden="true">←</span></a>\n  </div>', text)
+    text = sub("gallery: add to the menu", '    <div class="pm-list" id="pm-list"></div>\n',
+               '    <div class="pm-list" id="pm-list"></div>\n'
+               '    <a class="cta" href="#contact" data-cta="puree" onclick="document.getElementById(\'pmodal\').classList.remove(\'open\')">'
+               'הוסיפו לתפריט <span class="arr" aria-hidden="true">←</span></a>\n', text)
+    text = sub("dialog: knows the recipe card and the gallery",
+               " var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide');\n ldInv=fm?(ldCard||a):a;",
+               " var fm=a.closest('#fmodal'),sl=a.closest('.hs-slide'),cm=a.closest('#cmodal'),pm=a.closest('#pmodal'),"
+               "ci=cm&&document.querySelector('#cm-visual img'),ph=pm&&pmCard&&pmCard.querySelector('h4');\n"
+               " ldInv=fm?(ldCard||a):cm?(document.querySelector('.ccard[data-ci=\"'+cmC+'\"]')||a):pm?(pmCard||a):a;", text)
+    text = sub("dialog: the drink or the puree is the interest",
+               "sl?sl.querySelector('.hs-h').textContent.trim():'';",
+               "sl?sl.querySelector('.hs-h').textContent.trim()"
+               ":cm?document.getElementById('cm-en').textContent.trim():ph?ph.textContent.trim():'';", text)
+    text = sub("dialog: the drink's photo",
+               ":'url(\"'+(fm?document.getElementById('fm-img').currentSrc:h?h.currentSrc:'')+'\")';",
+               ":'url(\"'+(fm?document.getElementById('fm-img').currentSrc:ci?ci.currentSrc"
+               ":pm?document.getElementById('pm-img').currentSrc:h?h.currentSrc:'')+'\")';", text)
+    text = sub("dialog: the drink's colour; the recipe card steps aside",
+               "(fm&&ldCard&&ldCard.style.backgroundColor)||'var(--gt)');",
+               "(fm&&ldCard&&ldCard.style.backgroundColor)||(cm&&document.getElementById('cm-head').style.background)"
+               "||(pm&&pmCard&&pmCard.style.backgroundColor)||'var(--gt)');\n if(cm)cm.classList.remove('open');", text)
     text = sub("the English tagline is English", '<span class="serif">Don\'t Drink Boring.</span>',
                '<span class="serif" lang="en">Don\'t Drink Boring.</span>', text)
 
@@ -360,9 +392,9 @@ def main() -> None:
                "fail('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.',['pf-phone']);return;}", text)
     text = sub("send: a bad email is marked", "fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.');return;}",
                "fail('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.',['pf-mail']);return;}", text)
-    # the product window's add-to-menu hands over to the dialog: its entry is replaced, not stacked
+    # an add-to-menu link in a window hands over to the dialog: the window's entry is replaced, not stacked
     text = sub("dialog takes over a window's entry", "history.pushState({gtLead:1,doc:ldDoc},'');",
-               "history[history.state&&history.state.gtWin&&history.state.doc===cmDoc?'replaceState':'pushState']({gtLead:1,doc:ldDoc},'');", text)
+               "history[history.state&&(history.state.gtWin||history.state.gtRecipe)&&history.state.doc===cmDoc?'replaceState':'pushState']({gtLead:1,doc:ldDoc},'');", text)
     # the dialog closing over a window leaves the page locked under it
     text = sub("dialog close keeps a window's lock",
                "  s.appendChild(f);s.style.height='';\n  document.documentElement.classList.remove('cm-lock');",
