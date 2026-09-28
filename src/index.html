@@ -1256,6 +1256,14 @@ html{scroll-padding-top:124px}
 #cmodal .cm-stats>.cta{margin:6px 14px}
 #pmodal .pm-body>.cta{margin-top:16px}
 #cmodal .cm-stats>.cta:hover,#pmodal .pm-body>.cta:hover{background:#000}
+/* the FAQ is a destination (VIS-03, VIS-04): a real section title, and group headings that label */
+#faq h2{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.03;margin:10px 0 0}
+#faq .faq-group{margin:44px 0 0;padding-bottom:10px;border-bottom:1px solid var(--line);font-size:19px;font-weight:800;letter-spacing:0;color:var(--ink)}
+/* hover is for pointers: on touch the send button stays ink after the sheet grows under the finger (VIS-06) */
+@media(hover:none){.btn:hover{background:var(--ink)}.btn.light:hover{background:var(--paper)}.btn:hover .arr{transform:none}}
+/* the side caption keeps its phone gutters on both sides (VIS-10) */
+@media(max-width:900px){.bandcap.side{padding:0 6vw}}
+.partner .pf-done .nw{white-space:nowrap}
 /* the lines wrap: the page keeps WhatsApp links on one line for phone numbers, and at 390 px the
    fifth line ran past its pill */
 .partner .pf-lines a{white-space:normal}
@@ -1606,7 +1614,7 @@ html{scroll-padding-top:124px}
       <li>📍 הלהב 15, חולון (המפעל)</li>
       <li><a href="tel:+972543982444">📞 054-398-2444</a></li>
       <li><a href="mailto:info@gteveryday.com">✉️ info@gteveryday.com</a></li>
-      <li><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">📷 @gteveryday</a></li>
+      <li><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">📷 <bdi dir="ltr">@gteveryday</bdi></a></li>
     </ul>
   </div>
   <div id="pf-slot"><form class="rv partner" id="pform" method="post" enctype="text/plain"
@@ -1644,7 +1652,7 @@ html{scroll-padding-top:124px}
     <button class="btn" style="justify-content:center">שליחה <span class="arr" aria-hidden="true">←</span></button>
     <div class="pf-alt">או כתבו לנו <a href="https://wa.me/972543982444" target="_blank" rel="noopener">בוואטסאפ</a> · <a href="tel:+972543982444">054-398-2444</a></div>
     <svg class="ld-check" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path d="M20 33l8 8 16-17"/></svg>
-    <div class="pf-done" id="pf-done" tabindex="-1"><b>תודה רבה!</b><span>קיבלנו את הפרטים ונחזור אליכם תוך יום עסקים אחד. אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.</span></div>
+    <div class="pf-done" id="pf-done" tabindex="-1"><b>תודה רבה!</b><span>קיבלנו את הפרטים ונחזור אליכם תוך יום עסקים אחד. אם דחוף — <span class="nw"><a href="tel:+972543982444">054-398-2444</a>.</span></span></div>
     <div class="pf-pick" role="group" aria-labelledby="pf-pick-q"><p class="pf-q" id="pf-pick-q" tabindex="-1"><b>מה הכי מעניין אתכם?</b><span>נשלח לכם את התפריט בוואטסאפ.</span></p>
       <div class="pf-lines"><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%9E%D7%90%D7%A6%D7%B3%D7%94" target="_blank" rel="noopener">מאצ׳ה</a><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%90%D7%95%D7%91%D7%94" target="_blank" rel="noopener">אובה</a><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%A6%D7%B3%D7%90%D7%99%20%D7%9E%D7%A1%D7%90%D7%9C%D7%94" target="_blank" rel="noopener">צ׳אי מסאלה</a><a href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%AA%D7%9E%D7%A6%D7%99%D7%95%D7%AA%20%D7%AA%D7%94" target="_blank" rel="noopener">תמציות תה</a><a class="pf-wide" href="https://wa.me/972547588132?text=%D7%94%D7%99%D7%99%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%A0%D7%99%D7%99%D7%AA%20%D7%AA%D7%A4%D7%A8%D7%99%D7%98%20%D7%9E%D7%A9%D7%A7%D7%90%D7%95%D7%AA%20%D7%A2%D7%A9%D7%99%D7%A8%20%D7%95%D7%A8%D7%95%D7%95%D7%97%D7%99%20%D7%9C%D7%A2%D7%A1%D7%A7" target="_blank" rel="noopener">בניית תפריט משקאות עשיר ורווחי לעסק</a></div></div>
   </form></div>
@@ -1656,7 +1664,7 @@ html{scroll-padding-top:124px}
 <footer class="site wrap">
   <span>‎© 2026 גרינטי אוירי די בע״מ</span>
   <span class="social"><a href="https://www.instagram.com/gteveryday/" target="_blank" rel="noopener">אינסטגרם</a> · <a href="https://facebook.com/greenteaeveryday" target="_blank" rel="noopener">פייסבוק</a> · <a href="https://www.youtube.com/channel/UC7U7qL5vs9xt6Rzxj2GiSOg" target="_blank" rel="noopener">יוטיוב</a></span>
-  <span class="serif" lang="en">Don't Drink Boring.</span>
+  <span class="serif" dir="ltr" lang="en">Don't Drink Boring.</span>
 </footer>
 
 <script>
@@ -2473,8 +2481,10 @@ var pmCard=null;
     if(!(history.state&&history.state.gtWin))history.pushState({gtWin:id,doc:cmDoc},'');
     if(id==='pmodal')document.getElementById('pm-title').focus({preventScroll:true});},
    function(){last={el:id==='fmodal'?ldCard:pmCard,t:Date.now()};unlock();
-    var s=history.state;
-    if(fromPop[id])fromPop[id]=0;else if(s&&s.gtWin===id&&s.doc===cmDoc)history.back();
+    /* one task later: an add-to-menu link closes its window in its own onclick, before the
+       dialog replaces the window's entry; stepping back now would close the dialog it opens */
+    if(fromPop[id])fromPop[id]=0;
+    else setTimeout(function(){var s=history.state;if(!isOpen(id)&&s&&s.gtWin===id&&s.doc===cmDoc)history.back();},0);
     if(id==='pmodal'&&!anyOpen()&&!ldIn()&&shown(pmCard))pmCard.focus({preventScroll:true});});});
  window.addEventListener('popstate',function(){['fmodal','pmodal'].forEach(function(id){var s=history.state;
   if(isOpen(id)&&!(s&&s.gtWin===id)){fromPop[id]=1;document.getElementById(id).classList.remove('open');}});});

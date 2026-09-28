@@ -170,6 +170,14 @@ html{scroll-padding-top:124px}
 #cmodal .cm-stats>.cta{margin:6px 14px}
 #pmodal .pm-body>.cta{margin-top:16px}
 #cmodal .cm-stats>.cta:hover,#pmodal .pm-body>.cta:hover{background:#000}
+/* the FAQ is a destination (VIS-03, VIS-04): a real section title, and group headings that label */
+#faq h2{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.03;margin:10px 0 0}
+#faq .faq-group{margin:44px 0 0;padding-bottom:10px;border-bottom:1px solid var(--line);font-size:19px;font-weight:800;letter-spacing:0;color:var(--ink)}
+/* hover is for pointers: on touch the send button stays ink after the sheet grows under the finger (VIS-06) */
+@media(hover:none){.btn:hover{background:var(--ink)}.btn.light:hover{background:var(--paper)}.btn:hover .arr{transform:none}}
+/* the side caption keeps its phone gutters on both sides (VIS-10) */
+@media(max-width:900px){.bandcap.side{padding:0 6vw}}
+.partner .pf-done .nw{white-space:nowrap}
 /* the lines wrap: the page keeps WhatsApp links on one line for phone numbers, and at 390 px the
    fifth line ran past its pill */
 .partner .pf-lines a{white-space:normal}
@@ -215,8 +223,10 @@ var pmCard=null;
     if(!(history.state&&history.state.gtWin))history.pushState({gtWin:id,doc:cmDoc},'');
     if(id==='pmodal')document.getElementById('pm-title').focus({preventScroll:true});},
    function(){last={el:id==='fmodal'?ldCard:pmCard,t:Date.now()};unlock();
-    var s=history.state;
-    if(fromPop[id])fromPop[id]=0;else if(s&&s.gtWin===id&&s.doc===cmDoc)history.back();
+    /* one task later: an add-to-menu link closes its window in its own onclick, before the
+       dialog replaces the window's entry; stepping back now would close the dialog it opens */
+    if(fromPop[id])fromPop[id]=0;
+    else setTimeout(function(){var s=history.state;if(!isOpen(id)&&s&&s.gtWin===id&&s.doc===cmDoc)history.back();},0);
     if(id==='pmodal'&&!anyOpen()&&!ldIn()&&shown(pmCard))pmCard.focus({preventScroll:true});});});
  window.addEventListener('popstate',function(){['fmodal','pmodal'].forEach(function(id){var s=history.state;
   if(isOpen(id)&&!(s&&s.gtWin===id)){fromPop[id]=1;document.getElementById(id).classList.remove('open');}});});
@@ -332,7 +342,12 @@ def main() -> None:
                "(fm&&ldCard&&ldCard.style.backgroundColor)||(cm&&document.getElementById('cm-head').style.background)"
                "||(pm&&pmCard&&pmCard.style.backgroundColor)||'var(--gt)');\n if(cm)cm.classList.remove('open');", text)
     text = sub("the English tagline is English", '<span class="serif">Don\'t Drink Boring.</span>',
-               '<span class="serif" lang="en">Don\'t Drink Boring.</span>', text)
+               '<span class="serif" dir="ltr" lang="en">Don\'t Drink Boring.</span>', text)
+    # the handle reads left to right, and the thanks keeps its number and its full stop together (VIS-12, VIS-14)
+    text = sub("instagram handle isolated", '>📷 @gteveryday</a>', '>📷 <bdi dir="ltr">@gteveryday</bdi></a>', text)
+    text = sub("the urgent number keeps its full stop",
+               'אם דחוף — <a href="tel:+972543982444">054-398-2444</a>.',
+               'אם דחוף — <span class="nw"><a href="tel:+972543982444">054-398-2444</a>.</span>', text)
 
     # ── the recipe card: chips kept, current marked, ends aria-disabled; the header's colour ──
     text = sub("recipe chips kept across drinks", CHIPS_OLD, CHIPS_NEW, text)

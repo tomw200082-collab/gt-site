@@ -29,7 +29,7 @@
   font-family:Bellefair,Georgia,serif;font-weight:400;
   font-size:clamp(34px,5.2vw,64px);line-height:1.02;letter-spacing:.005em;text-wrap:balance;
 }
-.g-lp .g-display em{font-style:italic;font-family:"Playfair Display",Georgia,serif;font-weight:700;color:var(--a)}
+.g-lp .g-display em{font-style:italic;font-family:"Playfair Display",Bellefair,Heebo,Georgia,serif;font-weight:700;color:var(--a)}
 .g-lp .g-serif{font-family:Bellefair,Georgia,serif}
 .g-lp .g-eyebrow{
   display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.28em;
@@ -547,3 +547,9 @@
 .g-lp .g-drink{cursor:pointer}
 .g-lp .g-btn{min-height:44px}
 .g-lp .g-contact a,.g-lp .g-siblings a{display:inline-block;padding-block:12px}
+/* the hero's primary button on the dark scrim is paper, as the home page's .btn.light on a dark
+   ground; the sticky bar stays ink on the paper (VIS-02). An open recipe leaves its row-mates their
+   own height (VIS-09). */
+.g-lp .g-hero-in .g-btn:not(.g-ghost){background:var(--paper);color:var(--ink)}
+.g-lp .g-hero-in .g-btn:not(.g-ghost):hover{background:var(--white)}
+.g-lp .g-grid:has(details[open]) .g-drink:not(:has(details[open])){align-self:start}

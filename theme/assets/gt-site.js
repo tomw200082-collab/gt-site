@@ -754,8 +754,10 @@ var pmCard=null;
     if(!(history.state&&history.state.gtWin))history.pushState({gtWin:id,doc:cmDoc},'');
     if(id==='pmodal')document.getElementById('pm-title').focus({preventScroll:true});},
    function(){last={el:id==='fmodal'?ldCard:pmCard,t:Date.now()};unlock();
-    var s=history.state;
-    if(fromPop[id])fromPop[id]=0;else if(s&&s.gtWin===id&&s.doc===cmDoc)history.back();
+    /* one task later: an add-to-menu link closes its window in its own onclick, before the
+       dialog replaces the window's entry; stepping back now would close the dialog it opens */
+    if(fromPop[id])fromPop[id]=0;
+    else setTimeout(function(){var s=history.state;if(!isOpen(id)&&s&&s.gtWin===id&&s.doc===cmDoc)history.back();},0);
     if(id==='pmodal'&&!anyOpen()&&!ldIn()&&shown(pmCard))pmCard.focus({preventScroll:true});});});
  window.addEventListener('popstate',function(){['fmodal','pmodal'].forEach(function(id){var s=history.state;
   if(isOpen(id)&&!(s&&s.gtWin===id)){fromPop[id]=1;document.getElementById(id).classList.remove('open');}});});
