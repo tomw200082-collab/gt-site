@@ -23,8 +23,6 @@ h2.display em{font-style:italic;font-family:'Roca One','Heebo',serif;font-weight
 .eyebrow:before{content:"";width:34px;height:1px;background:var(--terra)}
 
 /* reveal on scroll */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-.rv.on{opacity:1;transform:none}
 
 /* NAV */
 nav{position:sticky;top:0;background:rgba(251,248,242,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:80}
@@ -321,6 +319,8 @@ footer.site .serif{font-size:17px;color:var(--ink)}
 #faq summary::after{content:"+";position:absolute;right:2px;top:-2px;font-size:22px;color:#B0793B}
 #faq details[open] summary::after{content:"–"}
 #faq details p{margin-top:10px;font-size:14.5px;line-height:1.65;color:#4c4a3f}
+#faq .faq-sub{margin-top:12px;font-size:16px;line-height:1.6;color:var(--ink-soft)}
+#faq .faq-group{margin:40px 0 4px;font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--terra)}
 .fmodal .makes h6{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#6b6659;margin:2px 0 8px;font-weight:700}
 .fmodal .mk{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #EFE9DC;font-size:14px}
 .fmodal .mk i{font-style:normal;font-family:'Roca One','Heebo',serif;font-weight:700;white-space:nowrap}
@@ -1108,6 +1108,10 @@ nav{-webkit-backdrop-filter:blur(10px)}
    ==================================================================== */
 /* the closing call-to-action: the decorative GT behind it was painted over the button and took its taps */
 .bigcta .ghost{pointer-events:none}
+/* the hero's two calls-to-action stack on a phone whatever the font: side by side they fit only in the
+   fallback font, so the web font's arrival wrapped the second and moved the page below it
+   (CLS 0.1975 at 390 px on the preview, 2026-09-28; the live page, with a shorter button, 0.0038) */
+@media(max-width:440px){.hero .ctas{flex-direction:column;align-items:flex-start}}
 /* the form: visible labels; the four required fields first, the rest behind one disclosure */
 .partner .pf-req{display:grid;gap:14px}
 @media(min-width:640px){.partner .pf-req{grid-template-columns:1fr 1fr}}
@@ -1190,6 +1194,67 @@ nav{-webkit-backdrop-filter:blur(10px)}
 #ldlg .partner.sent .pf-done b{margin:6px 0 4px;font-family:'Roca One','Heebo',serif;font-weight:400;font-size:28px}
 #ldlg .partner.sent .pf-pick{margin-top:6px;padding-top:18px;border-top:1px solid var(--line);text-align:center}
 @media(prefers-reduced-motion:reduce){#ldlg[open],#ldlg[open]::backdrop,.ld-check path{animation:none}.ld-check path{stroke-dashoffset:0}}
+
+/* ====================================================================
+   Keyboard, focus and motion (tools/patch_keyboard.py, site gate 2026-09-28). Appended last.
+   ==================================================================== */
+/* the page is readable before its script runs: .rv hides only once gt-site.js has marked what is on screen */
+.rv-on .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv-on .rv.on{opacity:1;transform:none}
+/* the recipe card: white text at 4.5:1 on its header, a × that reads on every colour, a keyboard-scrollable body */
+#cmodal .cm-head .ch,#cmodal .cm-head .heh{opacity:1}
+#cmodal .cm-x{background:rgba(20,22,18,.32)}
+#cmodal .cm-num{opacity:.8}
+#cm-en:focus,#pm-title:focus,.partner .pf-done:focus{outline:none}
+#cmodal .cm-body:focus-visible{outline:2px solid var(--gt);outline-offset:-2px}
+.cm-nav>button[aria-disabled="true"]{opacity:.25;cursor:default}
+@media(max-width:700px){#cmodal .cm-head{padding-left:78px}}
+/* the product window and the gallery keep a flick inside them */
+.fmodal .box,.pm-card{overscroll-behavior:contain}
+/* the hero: a finger's 44 px arrows; focus never scrolls the clipped track */
+.hs{overflow:clip}
+.hs-arr{width:44px;height:44px}
+/* on colour and on photos the focus ring is white (on the paper it stays green) */
+.econ :focus-visible,.bigcta :focus-visible,.hs .hs-copy :focus-visible{outline-color:#fff}
+.hs-arr:focus-visible{outline-color:var(--ink)}
+/* small terra text is #9C5C3C on the paper (4.9:1), as the eyebrows have been since 2026-09-27 */
+#faq .faq-group{color:#9C5C3C}
+@media(max-width:980px){.nav-links .dd-head{color:#9C5C3C}}
+/* a focused control is never under the sticky nav (80 px on phones, 108 on desktop) */
+html{scroll-padding-top:124px}
+@media(max-width:640px){html{scroll-padding-top:96px}}
+/* glyphs are not part of a name */
+#faq summary::after{content:"+";content:"+" / ""}
+#faq details[open] summary::after{content:"\2013";content:"\2013" / ""}
+.partner .pf-more summary::before{content:'+';content:'+' / ''}
+.partner .pf-more[open] summary::before{content:'\2212';content:'\2212' / ''}
+/* desktop: focus on «מוצרים» does not open its 15 links into the Tab path; the pointer still opens it */
+@media(min-width:981px){.nav-dd:focus-within:not(:hover) .dd-menu{opacity:0;visibility:hidden}}
+/* the form: a field the send found wanting is marked; sent inline, the used form folds like the dialog's */
+.partner [aria-invalid="true"]{border-color:#7A2E1E;box-shadow:0 0 0 1px #7A2E1E}
+.partner.sent>*:not(.pf-head):not(.pf-done):not(.ld-check):not(.pf-pick){display:none}
+.partner.sent .ld-check{display:block;width:64px;height:64px;margin:8px auto 0}
+/* the recipe card and the gallery: one tap to add the drink to the menu (FLOW-07) */
+#cmodal .cm-stats{display:flex;align-items:center;background:#fff}
+#cmodal .cm-stats>div{flex:1 1 0;min-width:0}
+#cmodal .cm-stats>.cta,#pmodal .pm-body>.cta{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:#20241F;color:#fff;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap}
+#cmodal .cm-stats>.cta{margin:6px 14px}
+#pmodal .pm-body>.cta{margin-top:16px}
+#cmodal .cm-stats>.cta:hover,#pmodal .pm-body>.cta:hover{background:#000}
+/* the FAQ is a destination (VIS-03, VIS-04): a real section title, and group headings that label */
+#faq h2{font-family:'Roca One','Heebo',serif;font-weight:400;font-size:clamp(34px,4.6vw,54px);line-height:1.03;margin:10px 0 0}
+#faq .faq-group{margin:44px 0 0;padding-bottom:10px;border-bottom:1px solid var(--line);font-size:19px;font-weight:800;letter-spacing:0;color:var(--ink)}
+/* hover is for pointers: on touch the send button stays ink after the sheet grows under the finger (VIS-06) */
+@media(hover:none){.btn:hover{background:var(--ink)}.btn.light:hover{background:var(--paper)}.btn:hover .arr{transform:none}}
+/* the side caption keeps its phone gutters on both sides (VIS-10) */
+@media(max-width:900px){.bandcap.side{padding:0 6vw}}
+.partner .pf-done .nw{white-space:nowrap}
+/* the lines wrap: the page keeps WhatsApp links on one line for phone numbers, and at 390 px the
+   fifth line ran past its pill */
+.partner .pf-lines a{white-space:normal}
+/* motion: nothing slides in for a visitor who asked for less; the marquees stop under the pointer */
+@media(prefers-reduced-motion:reduce){.rv-on .rv,.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.ticker:hover .track,.pmarquee:hover .ptrack,.pmarquee:focus-within .ptrack{animation-play-state:paused}
 
 /* No prices on the served page (tools/strip_prices.py): the recipe modal's
    figures row is down to the margin, so it spans the card. */

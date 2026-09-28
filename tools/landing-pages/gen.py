@@ -38,6 +38,11 @@ def dim(asset):
 geresh = lambda s: re.sub(r"(?<=[\u05d0-\u05ea])'", "\u05f3", s)
 esc = lambda s: html.escape(geresh(s), quote=True)
 WA = "972543982444"
+# The lead line (Sales-Machine D-014): an ad's visitor who taps WhatsApp enters the lead journey
+# with the same ready text as the home page's lines, so the page's menu is recognised
+# (D-032, Tom 2026-09-28; U-032: acquisition surfaces point at the lead line). Calls stay on WA.
+WA_LEAD = "972547588132"
+LEAD_LINE = {"chai": "צ׳אי מסאלה", "matcha": "מאצ׳ה", "iced-tea": "תמציות תה", "ube": "אובה"}
 # Where the form sends a lead: the public intake the home page's enquiry form
 # already uses (gt-factory-os supabase/functions/website_lead_intake). It files
 # the lead in sales_core — the sales team's queue — and emails them. The
@@ -46,7 +51,7 @@ INTAKE = "https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_int
 
 PAGES = {
  "chai": dict(
-   key="צ'אי", unit="מבקבוק אחד", accent="#D96B3F", atext="#B85B36", tint="#F6E4D9", deep="#412013",
+   key="צ'אי", unit="מבקבוק אחד", accent="#D96B3F", atext="#A25030", tint="#F6E4D9", deep="#412013",
    hero="gt-74108519a7.webp", eyebrow="צ׳אי מסאלה · NAMASTEA",
    h1=("בקבוק אחד. ", "אחד־עשר משקאות."),
    promise="תמצית משני סוגי תה שחור וחמישה תבלינים, מוכנה למזיגה. 50 מ״ל לכוס — בלי ציוד ובלי הכנה מראש.",
@@ -59,7 +64,7 @@ PAGES = {
    cups=("20", "כוסות מבקבוק של ליטר"),
    extra=None),
  "matcha": dict(
-   key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#4C823D", tint="#E5ECDB", deep="#1C3117",
+   key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#447537", tint="#E5ECDB", deep="#1C3117",
    hero="gt-lp-matcha-hero-cropped.webp", eyebrow="מאצ׳ה · שיזואוקה",
    h1=("מאצ׳ה יפנית ", "ישר מהחקלאים."),
    promise="בדרגה טקסית, ממחוז שיזואוקה. מכינים בסיס אחד בתחילת המשמרת, והוא משמש את כל שישה־עשר המשקאות בתפריט.",
@@ -76,7 +81,7 @@ PAGES = {
      comp="מאצ׳ה מובחרת קלויה · נימות אגוז לוז וקקאו",
      sizes=[("500 גרם","₪375")], img="gt-a06eb940fc.webp")),
  "iced-tea": dict(
-   key="תה קר", unit="מאותה סדרת תמציות", accent="#E63950", atext="#DA364C", tint="#F8DDDB", deep="#451118",
+   key="תה קר", unit="מאותה סדרת תמציות", accent="#E63950", atext="#BB2E41", tint="#F8DDDB", deep="#451118",
    hero="gt-d3abd65414.webp", eyebrow="חליטות קרות · אחת־עשרה תמציות",
    h1=("שישה־עשר משקאות. ", "בלי אף מכונה."),
    promise="תמציות תה מוכנות למזיגה. 50 מ״ל על קרח, משלימים במים או בסודה, והמשקה מוכן. בקבוק סגור לא תופס מקום במקרר.",
@@ -90,7 +95,7 @@ PAGES = {
    cups=("20–25", "כוסות מבקבוק של ליטר"),
    extra=None),
  "ube": dict(
-   key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7B5CC6", tint="#E9E2EC", deep="#251C3B",
+   key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7155B6", tint="#E9E2EC", deep="#251C3B",
    hero="gt-lp-ube-hero-cropped.webp", eyebrow="אובה · שורש יאם סגול",
    h1=("הטרנד הסגול ", "מגיע לבר שלכם."),
    promise="אבקת שורש יאם סגול — מרקם קרמי ומתיקות עדינה בין וניל לאגוז, וצבע שמצטלם מעולה.",
@@ -150,19 +155,24 @@ def figs(d):
             <div><dt>עלות מנה</dt><dd>₪{d['cost']}</dd></div>
             <div><dt>מחיר מומלץ</dt><dd>₪{d['price']}</dd></div>""" + keep
 
+CARD_N = [0]
+
+
 def card(d):
+    CARD_N[0] += 1
+    hid = f"d-{CARD_N[0]}"
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])
     note = f'<p class="g-note">{esc(d["note"])}</p>' if d['note'] else ""
     return f"""
       <article class="g-drink">
         {shot(d)}
         <div class="g-drink-tx">
-          <h3>{esc(d['he'])}</h3>
-          <span class="g-en">{esc(d['en'])}</span>
+          <h3 id="{hid}">{esc(d['he'])}</h3>
+          <span class="g-en" lang="en">{esc(d['en'])}</span>
           <dl class="g-fig">{figs(d)}
           </dl>
           <details>
-            <summary>איך מכינים</summary>
+            <summary aria-describedby="{hid}">איך מכינים</summary>
             <ol>{steps}</ol>
             {note}
           </details>
@@ -185,8 +195,8 @@ def build(slug, cfg):
     ds = [d for d in D if d['page'] == cfg['key']]
     cards = "".join(card(d) for d in ds)
     p = cfg['prod']
-    wa = f"https://wa.me/{WA}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
-        geresh(f"היי, הגעתי מהעמוד על {cfg['key']} באתר ואשמח לקבל את המחירון"))
+    wa = f"https://wa.me/{WA_LEAD}?text=" + __import__('urllib.parse', fromlist=['quote']).quote(
+        f"היי, אני מעוניין ב{LEAD_LINE[slug]}")
     # The ledger's third cell: the cheapest cup on the page, or with prices off,
     # how many cups the product pours.
     third = ((f"₪{min(float(d['cost']) for d in ds):.2f}", "עלות המנה הנמוכה כאן")
@@ -215,7 +225,7 @@ def build(slug, cfg):
 """
 
     siblings = "".join(
-        f'<a href="/pages/{o}">{esc(PAGES[o]["key"])}</a>'
+        f'<a href="{{% if template.name == \'index\' %}}/?view={o}{{% else %}}/pages/{o}{{% endif %}}">{esc(PAGES[o]["key"])}</a>'
         for o in PAGES if o != slug)
 
     extra = ""
@@ -246,6 +256,7 @@ def build(slug, cfg):
 {{%- endcomment -%}}
 <div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--at:{cfg['atext']};--tint:{cfg['tint']};--deep:{cfg['deep']};--frame:{F[slug]['ground']};--on-frame:{F[slug]['on']}">
 
+  <main class="g-main">
   <header class="g-hero">
     <img class="g-hero-img" src="{{{{ '{cfg['hero']}' | asset_url }}}}" alt="" {dim(cfg['hero'])} fetchpriority="high" decoding="async">
     <div class="g-hero-in">
@@ -322,12 +333,12 @@ def build(slug, cfg):
         <h2 class="g-display">בואו נהיה <em>שותפים.</em></h2>
         <p>המחירון הסיטונאי, המתכונים המתומחרים והתאמה לתפריט שלכם. חוזרים תוך יום עסקים אחד.</p>
         <ul class="g-contact">
-          <li><a href="{wa}" target="_blank" rel="noopener">וואטסאפ · 054-398-2444</a></li>
+          <li><a href="{wa}" target="_blank" rel="noopener">וואטסאפ · 054-758-8132</a></li>
           <li><a href="tel:+{WA}">חייגו · 054-398-2444</a></li>
           <li>הלהב 15, חולון · info@gteveryday.com</li>
         </ul>
       </div>
-      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | default: '{INTAKE}' | escape }}}}" data-source="site-{slug}" data-wa="{WA}" novalidate>
+      <form class="g-fade-up" data-endpoint="{{{{ section.settings.lead_webhook | default: '{INTAKE}' | escape }}}}" data-source="site-{slug}" data-wa="{WA_LEAD}" novalidate>
         <div class="g-f-row">
           <label><span>שם העסק</span><input name="display_name" required autocomplete="organization"></label>
           <label><span>שם מלא</span><input name="contact_name" required autocomplete="name"></label>
@@ -338,7 +349,7 @@ def build(slug, cfg):
         </div>
         <label><span>אימייל (לא חובה)</span><input name="email" type="email" autocomplete="email"></label>
         <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
-          <label>אל תמלאו שדה זה<input name="company_website" type="text" tabindex="-1" autocomplete="off"></label>
+          <label>אל תמלאו שדה זה<input name="gt_hp" type="text" tabindex="-1" autocomplete="off"></label>
         </div>
         <label class="g-ok"><input type="checkbox" name="consent" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
         <button type="submit" class="g-btn g-solid">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></button>
@@ -346,6 +357,8 @@ def build(slug, cfg):
       </form>
     </div>
   </section>
+
+  </main>
 
   <nav class="g-siblings" aria-label="עוד מ־GT">
     <span>עוד מ־GT</span>
@@ -357,7 +370,7 @@ def build(slug, cfg):
   <footer class="g-foot">
     <div class="g-wrap">
       <span>‎© 2026 גרינטי אוירי די בע״מ</span>
-      <span class="g-serif" dir="ltr">Don't Drink Boring.</span>
+      <span class="g-serif" dir="ltr" lang="en">Don't Drink Boring.</span>
     </div>
   </footer>
 </div>

@@ -62,11 +62,24 @@
   /* The sticky bar is a second copy of the hero's call to action, so it should not
      appear while the first one is still on screen -- there it just covers content. */
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp'), function (lp) {
-    var hero = lp.querySelector('.g-hero');
+    var hero = lp.querySelector('.g-hero'), cap = lp.querySelector('.g-capture');
     if (!hero || !window.IntersectionObserver) { lp.classList.add('g-sticky-on'); return; }
-    new IntersectionObserver(function (es) {
-      lp.classList.toggle('g-sticky-on', !es[0].isIntersecting);
-    }, { threshold: 0 }).observe(hero);
+    // nor over its own form, where it would cover the form's message
+    var seen = { hero: true, cap: false };
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { seen[e.target === hero ? 'hero' : 'cap'] = e.isIntersecting; });
+      lp.classList.toggle('g-sticky-on', !seen.hero && !seen.cap);
+    }, { threshold: 0 });
+    io.observe(hero);
+    if (cap) io.observe(cap);
+  });
+
+  /* A drink card opens its recipe from the photo or the name too, not only from its small label. */
+  document.addEventListener('click', function (e) {
+    var c = e.target.closest && e.target.closest('.g-lp .g-drink');
+    if (!c || e.target.closest('details,a,button')) return;
+    var d = c.querySelector('details');
+    if (d) d.open = !d.open;
   });
 
   function waFallback(f, payload) {
@@ -78,7 +91,10 @@
       payload.city ? 'עיר: ' + payload.city : '',
       payload.email ? 'אימייל: ' + payload.email : ''
     ].filter(Boolean).join('\n');
-    window.open('https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines), '_blank', 'noopener');
+    var url = 'https://wa.me/' + f.dataset.wa + '?text=' + encodeURIComponent(lines);
+    // A popup opened seconds after the tap is blocked, so the details also stay one tap away.
+    window.open(url, '_blank', 'noopener');
+    return url;
   }
 
   Array.prototype.forEach.call(document.querySelectorAll('.g-lp form'), function (f) {
@@ -102,7 +118,7 @@
         phone: f.phone.value.trim(),
         city: f.city.value.trim(),
         email: f.email.value.trim(),
-        company_website: f.company_website.value,
+        company_website: f.gt_hp.value,
         form_name: 'landing-' + f.dataset.source,
         // Time on the page, counted from navigation start. The intake answers ok
         // but drops anything under 3 s as a bot, and this deferred script can run
@@ -115,25 +131,43 @@
       btn.disabled = true;
       say('שולחים…', false);
 
-      fetch(f.dataset.endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+      // The intake answers {ok:true} with no was_new when it drops a send as a bot (under
+      // 3 s, or the hidden field filled): hold the send past 3 s, and thank only a reply that
+      // stored the lead, as the home page's form does. A stalled connection fails at 15 s.
+      var ctl = window.AbortController ? new AbortController() : null;
+      new Promise(function (ok) { setTimeout(ok, Math.max(0, 3050 - performance.now())); }).then(function () {
+        payload.elapsed_ms = Math.round(performance.now());
+        var t = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+        return fetch(f.dataset.endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: ctl ? ctl.signal : undefined
+        }).then(function (r) { clearTimeout(t); return r; }, function (e) { clearTimeout(t); throw e; });
       }).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
-          if (r.ok && j.ok !== false) {
+          if (r.ok && j.ok === true && 'was_new' in j) {
             f.reset();
             say('תודה — קיבלנו. נחזור אליכם תוך יום עסקים אחד.', false);
+            // the conversion, with no personal data (as the home page's pfTrack)
+            try {
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({ event: 'generate_lead', form: 'landing-' + f.dataset.source, lead_cta: 'lp' });
+              if (typeof gtag === 'function') gtag('event', 'generate_lead', { form: 'landing-' + f.dataset.source });
+            } catch (e) {}
             return;
           }
           // A typo is the visitor's to fix, not a reason to leave for WhatsApp.
           if (j.error === 'bad_phone') { say('מספר הטלפון לא נראה תקין. בדקו אותו ונסו שוב.', true); return; }
           if (j.error === 'bad_email') { say('כתובת המייל לא נראית תקינה. בדקו אותה ונסו שוב.', true); return; }
+          if (j.error === 'missing_fields') { say('חסרים פרטי חובה. בדקו שם מלא, שם העסק, עיר וטלפון.', true); return; }
           throw new Error(j.error || 'HTTP ' + r.status);
         });
       }).catch(function () {
         say('השליחה נכשלה. פותחים וואטסאפ עם הפרטים כדי שלא ילכו לאיבוד.', true);
-        waFallback(f, payload);
+        var a = document.createElement('a');
+        a.href = waFallback(f, payload); a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'וואטסאפ';
+        msg.appendChild(document.createTextNode(' ')); msg.appendChild(a);
       }).then(function () {
         btn.disabled = false;
       });
