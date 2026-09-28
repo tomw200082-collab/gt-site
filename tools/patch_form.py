@@ -81,7 +81,7 @@ def main() -> None:
         '    <div aria-hidden="true" style="position:absolute;width:1px;height:1px;'
         'overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">\n'
         '      <label for="pf-cw">אל תמלאו שדה זה</label>\n'
-        '      <input id="pf-cw" name="company_website" type="text"'
+        '      <input id="pf-cw" name="gt_hp" type="text"'
         ' tabindex="-1" autocomplete="off">\n'
         '    </div>\n'
         '    <div class="pf-err" id="pf-err" role="alert" hidden></div>\n'

@@ -269,12 +269,12 @@
   cursor:pointer;font-weight:800;font-size:12px;color:var(--at);list-style:none;
   letter-spacing:.02em;
   /* 48 of these per site, the single most-repeated tap target on the pages.
-     Text alone is ~19px tall -- well under the 44px touch-target minimum. */
-  padding-block:10px;
+     Text alone is ~19px tall: 13px above and below make it 44px (site gate 2026-09-28). */
+  padding-block:13px;
 }
 .g-lp .g-drink summary::-webkit-details-marker{display:none}
-.g-lp .g-drink summary:after{content:" +"}
-.g-lp .g-drink details[open] summary:after{content:" −"}
+.g-lp .g-drink summary:after{content:" +";content:" +" / ""}
+.g-lp .g-drink details[open] summary:after{content:" −";content:" −" / ""}
 .g-lp .g-drink ol{margin-top:10px;padding-inline-start:18px;display:grid;gap:6px;font-size:13.5px;color:var(--ink-soft)}
 .g-lp .g-note{margin-top:10px;font-size:11.5px;color:var(--ink-soft);border-top:1px dotted var(--rule);padding-top:8px}
 /* Opening only: the browser's own display:none<->block on <details> is instant
@@ -405,7 +405,7 @@
 }
 .g-lp .g-capture input:focus-visible{outline:2px solid var(--a);outline-offset:1px}
 .g-lp .g-capture .g-ok{display:flex;align-items:flex-start;gap:9px;font-weight:400;font-size:13px;color:var(--ink)}
-.g-lp .g-capture .g-ok input{margin-top:3px;accent-color:var(--a);flex:0 0 auto;width:16px;height:16px;border-radius:0}
+.g-lp .g-capture .g-ok input{margin-top:0;accent-color:var(--a);flex:0 0 auto;width:22px;height:22px;border-radius:0}
 .g-lp .g-msg:empty{display:none}
 .g-lp .g-msg{font-size:13.5px;font-weight:700;color:var(--deep);background:var(--tint);padding:11px 13px;line-height:1.5}
 .g-lp .g-msg[data-err]{color:#8E2417;background:#F7E7E3}
@@ -539,3 +539,11 @@
   .g-lp .g-btl:hover:before{opacity:0;transform:scale(.72)}
   .g-lp .g-plate figure:hover:before{width:74%;opacity:1}
 }
+
+/* site gate 2026-09-28: the story band's eyebrow on ink reads in the band's own soft tone (the accent
+   text is tuned for light grounds); the photo and the name open the recipe too (gt-lp.js); a finger's
+   44 px on the hero buttons and the contact and sibling links */
+.g-lp .g-story .g-eyebrow{color:var(--on-dark-soft)}
+.g-lp .g-drink{cursor:pointer}
+.g-lp .g-btn{min-height:44px}
+.g-lp .g-contact a,.g-lp .g-siblings a{display:inline-block;padding-block:12px}

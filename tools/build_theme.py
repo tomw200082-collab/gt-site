@@ -273,7 +273,8 @@ def faq_pairs(html_: str):
     for m in re.finditer(r"<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>",
                          html_, re.S):
         q = re.sub(r"<[^>]+>", " ", m.group(1))
-        a = re.sub(r"<[^>]+>", " ", m.group(2))
+        # a link inside an answer is part of its sentence: no space where its tags were
+        a = re.sub(r"<[^>]+>", " ", re.sub(r"</?a\b[^>]*>", "", m.group(2)))
         q, a = " ".join(q.split()), " ".join(a.split())
         # The drink modal uses <details> too; only real prose Q&A qualifies.
         if q.endswith("?") and 20 <= len(a) <= 900:

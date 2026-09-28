@@ -51,7 +51,7 @@ INTAKE = "https://rvadsozabmxkkrktwgnv.supabase.co/functions/v1/website_lead_int
 
 PAGES = {
  "chai": dict(
-   key="צ'אי", unit="מבקבוק אחד", accent="#D96B3F", atext="#B85B36", tint="#F6E4D9", deep="#412013",
+   key="צ'אי", unit="מבקבוק אחד", accent="#D96B3F", atext="#A25030", tint="#F6E4D9", deep="#412013",
    hero="gt-74108519a7.webp", eyebrow="צ׳אי מסאלה · NAMASTEA",
    h1=("בקבוק אחד. ", "אחד־עשר משקאות."),
    promise="תמצית משני סוגי תה שחור וחמישה תבלינים, מוכנה למזיגה. 50 מ״ל לכוס — בלי ציוד ובלי הכנה מראש.",
@@ -64,7 +64,7 @@ PAGES = {
    cups=("20", "כוסות מבקבוק של ליטר"),
    extra=None),
  "matcha": dict(
-   key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#4C823D", tint="#E5ECDB", deep="#1C3117",
+   key="מאצ'ה", unit="מאבקה אחת", accent="#5FA34C", atext="#447537", tint="#E5ECDB", deep="#1C3117",
    hero="gt-lp-matcha-hero-cropped.webp", eyebrow="מאצ׳ה · שיזואוקה",
    h1=("מאצ׳ה יפנית ", "ישר מהחקלאים."),
    promise="בדרגה טקסית, ממחוז שיזואוקה. מכינים בסיס אחד בתחילת המשמרת, והוא משמש את כל שישה־עשר המשקאות בתפריט.",
@@ -81,7 +81,7 @@ PAGES = {
      comp="מאצ׳ה מובחרת קלויה · נימות אגוז לוז וקקאו",
      sizes=[("500 גרם","₪375")], img="gt-a06eb940fc.webp")),
  "iced-tea": dict(
-   key="תה קר", unit="מאותה סדרת תמציות", accent="#E63950", atext="#DA364C", tint="#F8DDDB", deep="#451118",
+   key="תה קר", unit="מאותה סדרת תמציות", accent="#E63950", atext="#BB2E41", tint="#F8DDDB", deep="#451118",
    hero="gt-d3abd65414.webp", eyebrow="חליטות קרות · אחת־עשרה תמציות",
    h1=("שישה־עשר משקאות. ", "בלי אף מכונה."),
    promise="תמציות תה מוכנות למזיגה. 50 מ״ל על קרח, משלימים במים או בסודה, והמשקה מוכן. בקבוק סגור לא תופס מקום במקרר.",
@@ -95,7 +95,7 @@ PAGES = {
    cups=("20–25", "כוסות מבקבוק של ליטר"),
    extra=None),
  "ube": dict(
-   key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7B5CC6", tint="#E9E2EC", deep="#251C3B",
+   key="אובה", unit="מאבקה אחת", accent="#7B5CC6", atext="#7155B6", tint="#E9E2EC", deep="#251C3B",
    hero="gt-lp-ube-hero-cropped.webp", eyebrow="אובה · שורש יאם סגול",
    h1=("הטרנד הסגול ", "מגיע לבר שלכם."),
    promise="אבקת שורש יאם סגול — מרקם קרמי ומתיקות עדינה בין וניל לאגוז, וצבע שמצטלם מעולה.",
@@ -155,19 +155,24 @@ def figs(d):
             <div><dt>עלות מנה</dt><dd>₪{d['cost']}</dd></div>
             <div><dt>מחיר מומלץ</dt><dd>₪{d['price']}</dd></div>""" + keep
 
+CARD_N = [0]
+
+
 def card(d):
+    CARD_N[0] += 1
+    hid = f"d-{CARD_N[0]}"
     steps = "".join(f"<li>{esc(s)}</li>" for s in d['steps'])
     note = f'<p class="g-note">{esc(d["note"])}</p>' if d['note'] else ""
     return f"""
       <article class="g-drink">
         {shot(d)}
         <div class="g-drink-tx">
-          <h3>{esc(d['he'])}</h3>
-          <span class="g-en">{esc(d['en'])}</span>
+          <h3 id="{hid}">{esc(d['he'])}</h3>
+          <span class="g-en" lang="en">{esc(d['en'])}</span>
           <dl class="g-fig">{figs(d)}
           </dl>
           <details>
-            <summary>איך מכינים</summary>
+            <summary aria-describedby="{hid}">איך מכינים</summary>
             <ol>{steps}</ol>
             {note}
           </details>
@@ -251,6 +256,7 @@ def build(slug, cfg):
 {{%- endcomment -%}}
 <div class="g-lp g-lp-{slug}" style="--a:{cfg['accent']};--at:{cfg['atext']};--tint:{cfg['tint']};--deep:{cfg['deep']};--frame:{F[slug]['ground']};--on-frame:{F[slug]['on']}">
 
+  <main class="g-main">
   <header class="g-hero">
     <img class="g-hero-img" src="{{{{ '{cfg['hero']}' | asset_url }}}}" alt="" {dim(cfg['hero'])} fetchpriority="high" decoding="async">
     <div class="g-hero-in">
@@ -343,7 +349,7 @@ def build(slug, cfg):
         </div>
         <label><span>אימייל (לא חובה)</span><input name="email" type="email" autocomplete="email"></label>
         <div aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap">
-          <label>אל תמלאו שדה זה<input name="company_website" type="text" tabindex="-1" autocomplete="off"></label>
+          <label>אל תמלאו שדה זה<input name="gt_hp" type="text" tabindex="-1" autocomplete="off"></label>
         </div>
         <label class="g-ok"><input type="checkbox" name="consent" required> אפשר לפנות אליי בנושא אספקה סיטונאית.</label>
         <button type="submit" class="g-btn g-solid">להצטרף כשותפים <span class="g-arr" aria-hidden="true">←</span></button>
@@ -351,6 +357,8 @@ def build(slug, cfg):
       </form>
     </div>
   </section>
+
+  </main>
 
   <nav class="g-siblings" aria-label="עוד מ־GT">
     <span>עוד מ־GT</span>
@@ -362,7 +370,7 @@ def build(slug, cfg):
   <footer class="g-foot">
     <div class="g-wrap">
       <span>‎© 2026 גרינטי אוירי די בע״מ</span>
-      <span class="g-serif" dir="ltr">Don't Drink Boring.</span>
+      <span class="g-serif" dir="ltr" lang="en">Don't Drink Boring.</span>
     </div>
   </footer>
 </div>
