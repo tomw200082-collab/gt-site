@@ -9,11 +9,11 @@ able to quote the instruction it is acting on.
 
 | | |
 |---|---|
-| Live theme | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **MAIN** (read 2026-09-27) |
+| Live theme | `166730072305` · `GT 2026 Site — כניסת לקוחות` · **MAIN**. Carries `main` at `73c302e` (#30), pushed 2026-09-29 with `drift: 0` on Tom's word of 2026-09-28 night (quoted in #30's gate record) |
 | Preview | `186698334449` · `GT site — preview 2026-09-27` · unpublished. Duplicated from MAIN on 2026-09-27 and reused: each round re-pushes the whole set |
 | Preview link | `https://gteveryday.com/?preview_theme_id=186698334449` |
-| Superseded | `186686636273` (`כניסה לעסקים`): its two changes, #23 and #25, are on `main` and ship with the next push. It is not to be published. `166741213425` and `166708576497` are older copies of MAIN. None of the three holds anything that `main` or MAIN lacks (compared file by file, 2026-09-27), so all three are safe to delete |
-| Rollback | push the previous set: check out the commit that was live, then run `python3 tools/theme_ship.py push 166730072305 --allow-live` |
+| Superseded | `186686636273` (`כניסה לעסקים`): its two changes, #23 and #25, went live with `73c302e` on 2026-09-29. It is not to be published. `166741213425` and `166708576497` are older copies of MAIN. None of the three holds anything that `main` or MAIN lacks (compared file by file, 2026-09-27), so all three are safe to delete |
+| Rollback | push the previous set: check out the commit that was live, then run `python3 tools/theme_ship.py push 166730072305 --allow-live`. Before 2026-09-29 the live set was `8a19041` (#24) |
 
 ---
 
@@ -104,7 +104,10 @@ In this order, because the later checks matter less if an earlier one fails.
    from the theme underneath, so a fault there predates this change, but check anyway, because
    customers use them.
 4. **No price on the served page**, while `data/site_flags.json` says `show_prices: false`.
-   `curl -sS https://gteveryday.com/ | grep -c '₪'` must print 0.
+   The visible text must carry no ₪: in the browser, `document.body.innerText` has none. A raw
+   `curl | grep '₪'` finds 2, both money-format templates of installed apps (`{{amount}} ₪`, the
+   request-a-quote app and the `xo` app), not prices; the count was the same before and after
+   the 2026-09-29 push.
 5. **Measurement is reporting.** The inventory and the reasoning behind it are in
    `docs/2026-09-02_analytics.md`.
 
@@ -112,9 +115,11 @@ In this order, because the later checks matter less if an earlier one fails.
    curl -sS https://gteveryday.com/ | grep -oE 'G-[A-Z0-9]+|GTM-[A-Z0-9]+|gtag/js' | sort | uniq -c
    ```
 
-   - `G-QCNXYQR1TR` **once**. It comes through the Google & YouTube channel in
-     `content_for_header`. Seeing it twice, or any `gtag/js` loader, means someone filled in the
-     `analytics_id` field, and every view is being counted twice.
+   - `G-QCNXYQR1TR` comes through the Google & YouTube channel in `content_for_header`, inside the
+     web pixel's configuration JSON, where it appears once per configured event (12 times on
+     2026-09-29, the same before and after that push). A `gtag/js` loader in the page means
+     someone filled in the `analytics_id` field, and every view is being counted twice: there
+     must be none.
    - `GTM-TFH9M99` **twice**: the head script and the body `<noscript>`.
    - A confirmed lead pushes one `generate_lead` to `window.dataLayer`. A rejected one pushes
      nothing.
