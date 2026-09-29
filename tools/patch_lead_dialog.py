@@ -322,6 +322,19 @@ function ldClose(){var d=document.getElementById('ldlg');if(d&&d.open)d.close();
   if(!a||a.classList.contains('fcard')||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
   if(ldOpen(a))e.preventDefault();});
 })();
+/* a campaign link (?c=matcha|ube|chai|tea|menu, one per Facebook campaign): the lead dialog opens on
+   arrival, and after the form the WhatsApp step offers only that campaign's menu, one button with the
+   same prepared message the lead line recognises. Without ?c= the page is as before. */
+(function(){var C={matcha:['במאצ׳ה','מאצ׳ה','תפריט המאצ׳ה'],ube:['באובה','אובה','תפריט האובה'],chai:['בצ׳אי מסאלה','צ׳אי מסאלה','תפריט הצ׳אי מסאלה'],
+  tea:['בתמציות תה','תמציות תה','תפריט תמציות התה'],menu:['בבניית תפריט','בניית תפריט משקאות','תפריט הפתיחה']};
+ var k=new URLSearchParams(location.search).get('c'),c=C[k],f=document.getElementById('pform');if(!c||!f)return;
+ var keep=null;[].forEach.call(f.querySelectorAll('.pf-lines a'),function(a){
+  if(!keep&&decodeURIComponent(a.href.split('text=')[1]||'').indexOf(c[0])>-1)keep=a;else a.style.display='none';});
+ if(!keep)return;
+ keep.textContent='לקבלת '+c[2]+' בוואטסאפ';keep.classList.add('pf-wide');
+ var q=f.querySelector('#pf-pick-q b');if(q)q.style.display='none';
+ var go=function(){if(ldOpen(document.querySelector('a[data-cta="nav"]'))){ldCta='campaign-'+k;ldCtx=c[1];}};
+ if(document.readyState==='complete')go();else addEventListener('load',go);})();
 /* the product window: its title takes focus when it opens, and the card that opened it takes it
    back when it closes, unless the lead dialog or a recipe card has it by then */
 (function(){var fm=document.getElementById('fmodal'),on=false;if(!fm||!window.MutationObserver)return;
