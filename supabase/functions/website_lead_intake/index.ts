@@ -1,4 +1,5 @@
-// Public intake for the brand site's enquiry form.
+// Public intake for the brand site's enquiry form, and for the form on each of
+// the four category landing pages (gt-site tools/landing-pages/).
 //
 // The form used to build a `mailto:` and set its own "sent" class whether or not
 // a mail client existed, so on most phones an enquiry vanished silently. This is
@@ -23,20 +24,25 @@
 //
 // Checked against the deployed normaliser (`_lib/ingest_body.ts`) and
 // `sales_core.ingest_lead`, not assumed. On the flat shape this form uses, the
-// meta that reaches the `created` event is exactly:
+// meta that reaches the `created` event is:
 //
 //     campaign_name campaign_id ad_name ad_id form_id form_name platform
-//     is_organic
+//     is_organic notes
 //
-// `city` is mapped onto the lead object and then never passed to `ingest_lead`,
-// which has no city parameter and never writes `org.city`. `role`, `interest`
-// and the visitor's own message have no field in that contract at all.
+// `notes` is the visitor's own message, and it is there since 2026-09-03: the
+// alert email is where a lead is actually worked, and an alert carrying a name
+// and a phone but not the question is an alert that has to be put down and
+// looked up. `city` is mapped onto the lead object and then never passed to
+// `ingest_lead`, which has no city parameter and never writes `org.city`.
+// `role` and `interest` have no field in that contract at all.
 //
-// So everything the visitor typed beyond name / business / phone / email is
-// this function's responsibility to store, and it stores it as a note event on
-// the lead — human-readable text for whoever works the queue, plus the same
-// answers as structured JSON beside it so nothing has to be parsed back out of
-// a sentence.
+// So everything the visitor typed beyond name / business / phone / email /
+// message is this function's responsibility to store, and it stores it as a
+// note event on the lead — human-readable text for whoever works the queue,
+// plus the same answers as structured JSON beside it so nothing has to be
+// parsed back out of a sentence. The message is repeated there deliberately:
+// the note is the record of the whole submission, and a record with a hole
+// where the message was is worse than one that repeats it.
 //
 // The note is written over a direct connection: PostgREST is not an option,
 // because `sales_core` is deliberately off its exposed-schema list — those
@@ -67,6 +73,19 @@ const ALLOWED_ORIGINS = [
   "https://greenteaeveryday.myshopify.com",
 ];
 
+// Which form a lead came from. The home page's enquiry form sends none and is
+// `partner_enquiry`; each landing page names itself, and that name is the key
+// `sales_core.campaign_map` already holds for it (migration 0344), so the
+// category funnel attributes the lead to its page. A value outside this list is
+// recorded as the home form rather than stored as whatever a browser sent.
+const FORM_NAMES = new Set([
+  "partner_enquiry",
+  "landing-site-chai",
+  "landing-site-matcha",
+  "landing-site-iced-tea",
+  "landing-site-ube",
+]);
+
 const MAX_BODY = 8 * 1024; // an enquiry is a few hundred bytes
 const LIMITS: Record<string, number> = {
   contact_name: 120, venue: 160, city: 80, role: 80,
@@ -88,6 +107,19 @@ const json = (body: unknown, status: number, origin: string | null) =>
     status,
     headers: { "content-type": "application/json", ...cors(origin) },
   });
+
+// A number the desk can call. Stricter than sales_core.normalize_phone_il and never
+// looser, so everything accepted here normalises there: a mobile (05x) or 07x
+// number has 9 digits after the 0 and a landline (02/03/04/08/09) has 8. A digit
+// typed twice or dropped goes back to the visitor to fix instead of becoming a
+// lead nobody can call, which a WhatsApp message from the same person cannot join
+// (2026-09-29: eleven digits, one typed twice, and two leads). Foreign numbers:
+// + and 8 to 15 digits, as in the database.
+function phoneOk(raw: string): boolean {
+  const s = raw.replace(/^p:/, "").replace(/[^0-9+]/g, "");
+  if (s.startsWith("+") && !s.startsWith("+972")) return /^\+[0-9]{8,15}$/.test(s);
+  return /^(?:[57][0-9]{8}|[23489][0-9]{7})$/.test(s.replace(/^\+?972/, "").replace(/^0+/, ""));
+}
 
 const dbUrl = () =>
   Deno.env.get("DATABASE_URL_POOLED") ?? Deno.env.get("SUPABASE_DB_URL") ?? "";
@@ -158,13 +190,14 @@ Deno.serve(async (req) => {
   const phone = s("phone");
   const email = s("email");
   const page = typeof b.page === "string" ? b.page.slice(0, 300) : "";
+  const form_name = FORM_NAMES.has(s("form_name")) ? s("form_name") : "partner_enquiry";
   const referrer = typeof b.referrer === "string" ? b.referrer.slice(0, 300) : "";
 
   const missing = [
     ["contact_name", contact_name], ["venue", venue], ["city", city], ["phone", phone],
   ].filter(([, v]) => !v).map(([k]) => k);
   if (missing.length) return json({ error: "missing_fields", missing }, 400, origin);
-  if (!/\d/.test(phone) || phone.replace(/\D/g, "").length < 9) {
+  if (!phoneOk(phone)) {
     return json({ error: "bad_phone" }, 400, origin);
   }
   if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -206,8 +239,13 @@ Deno.serve(async (req) => {
         email: email || null,
         display_name: venue,
         city,
+        // The one free-text answer, carried into the alert rather than only
+        // into the note below. A website enquiry is mostly this field: it is
+        // the difference between "someone enquired" and knowing what to open
+        // the call with. `_lib/mapping.ts` keeps it as `meta.notes`.
+        message: message || null,
         created_at: new Date().toISOString(),
-        form_name: "partner_enquiry",
+        form_name,
         platform: "website",
         is_organic: true,
         // campaign_name is deliberately absent. The source_id taxonomy is still
@@ -250,7 +288,7 @@ Deno.serve(async (req) => {
     const payload = {
       note: lines,
       form: {
-        form_name: "partner_enquiry",
+        form_name,
         city, role: role || null, interest: interest || null,
         message: message || null, page: page || null, referrer: referrer || null,
       },
